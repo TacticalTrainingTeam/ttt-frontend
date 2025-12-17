@@ -17,8 +17,20 @@ export const routes: Routes = [
     },
     {
         path: 'datenschutz',
-        loadComponent: () => import('./components/main/datenschutz/datenschutz.component').then((m) => m.DatenschutzComponent),
+        loadComponent: () =>
+            import('./components/main/datenschutz/datenschutz.component').then(
+                (m) => m.DatenschutzComponent,
+            ),
         title: 'Datenschutz - Tactical Training Team',
+        canActivate: [securityGuard],
+    },
+    {
+        path: 'datenschutz/social-media',
+        loadComponent: () =>
+            import('./components/main/datenschutz/datenschutz-social-media.component').then(
+                (m) => m.DatenschutzSocialMediaComponent,
+            ),
+        title: 'Datenschutz für Social Media - Tactical Training Team',
         canActivate: [securityGuard],
     },
     {
