@@ -19,4 +19,15 @@ describe('DatenschutzComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should have correct page title', () => {
+        expect(component.pageTitle).toBe('Datenschutzerklärung');
+    });
+
+    it('should have external links defined', () => {
+        expect(component.externalLinks).toBeDefined();
+        expect(component.externalLinks.hetzner).toBeDefined();
+        expect(component.externalLinks.cloudflare).toBeDefined();
+        expect(component.externalLinks.mailchimp).toBeDefined();
+    });
 });
