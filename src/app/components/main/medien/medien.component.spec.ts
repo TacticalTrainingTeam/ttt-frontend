@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { MedienComponent } from './medien.component';
+import { MedienService } from '../../../core/services/medien.service';
 
 describe('MedienComponent', () => {
     let component: MedienComponent;
@@ -9,7 +10,7 @@ describe('MedienComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [MedienComponent],
-            providers: [provideRouter([])],
+            providers: [provideRouter([]), MedienService],
         }).compileComponents();
 
         fixture = TestBed.createComponent(MedienComponent);

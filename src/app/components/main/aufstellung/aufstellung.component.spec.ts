@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AufstellungComponent } from './aufstellung.component';
+import { MemberService } from '../../../core/services/member.service';
+import { DOCUMENT } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
 
 describe('AufstellungComponent', () => {
     let component: AufstellungComponent;
@@ -8,10 +11,12 @@ describe('AufstellungComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [AufstellungComponent],
+            providers: [MemberService, { provide: DOCUMENT, useValue: document }, { provide: PLATFORM_ID, useValue: 'browser' }],
         }).compileComponents();
 
         fixture = TestBed.createComponent(AufstellungComponent);
         component = fixture.componentInstance;
+        fixture.detectChanges();
     });
 
     it('should create', () => {

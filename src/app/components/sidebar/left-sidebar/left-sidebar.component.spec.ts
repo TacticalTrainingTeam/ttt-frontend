@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LeftSidebarComponent } from './left-sidebar.component';
+import { EventsService } from '../../../core/services/events.service';
 
 describe('LeftSidebarComponent', () => {
     let component: LeftSidebarComponent;
@@ -9,6 +9,7 @@ describe('LeftSidebarComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [LeftSidebarComponent],
+            providers: [EventsService],
         }).compileComponents();
 
         fixture = TestBed.createComponent(LeftSidebarComponent);
