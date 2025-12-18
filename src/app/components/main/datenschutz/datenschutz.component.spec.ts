@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideRouter } from '@angular/router';
 import { DatenschutzComponent } from './datenschutz.component';
 
 describe('DatenschutzComponent', () => {
@@ -9,6 +9,7 @@ describe('DatenschutzComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [DatenschutzComponent],
+            providers: [provideRouter([])],
         }).compileComponents();
 
         fixture = TestBed.createComponent(DatenschutzComponent);

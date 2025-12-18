@@ -144,4 +144,4 @@ jobs:
             ${{ runner.os }}-angular-cache-
 
       - name: Run unit tests (headless)
-        run: pnpm run test -- --watch=false --browsers ChromeHeadless
+        run: pnpm ng test -- --watch=false --browsers ChromeHeadless

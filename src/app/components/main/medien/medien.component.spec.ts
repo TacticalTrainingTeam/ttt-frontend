@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { provideRouter } from '@angular/router';
 import { MedienComponent } from './medien.component';
 import { MedienService } from '../../../core/services/medien.service';
@@ -9,7 +10,7 @@ describe('MedienComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [MedienComponent],
+            imports: [MedienComponent, HttpClientTestingModule],
             providers: [provideRouter([]), MedienService],
         }).compileComponents();
 

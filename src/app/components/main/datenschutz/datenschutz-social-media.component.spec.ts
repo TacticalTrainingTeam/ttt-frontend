@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideRouter } from '@angular/router';
 import { DatenschutzSocialMediaComponent } from './datenschutz-social-media.component';
 
 describe('DatenschutzSocialMediaComponent', () => {
@@ -9,6 +9,7 @@ describe('DatenschutzSocialMediaComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [DatenschutzSocialMediaComponent],
+            providers: [provideRouter([])],
         }).compileComponents();
 
         fixture = TestBed.createComponent(DatenschutzSocialMediaComponent);
