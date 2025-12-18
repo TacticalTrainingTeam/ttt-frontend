@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { LeftSidebarComponent } from './left-sidebar.component';
 import { EventsService } from '../../../core/services/events.service';
 
@@ -9,8 +10,8 @@ describe('LeftSidebarComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [LeftSidebarComponent, HttpClientTestingModule],
-            providers: [EventsService],
+            imports: [LeftSidebarComponent],
+            providers: [EventsService, provideHttpClient(), provideHttpClientTesting()],
         }).compileComponents();
 
         fixture = TestBed.createComponent(LeftSidebarComponent);

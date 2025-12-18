@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { AufstellungComponent } from './aufstellung.component';
 import { MemberService } from '../../../core/services/member.service';
 import { DOCUMENT } from '@angular/common';
@@ -11,8 +12,14 @@ describe('AufstellungComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [AufstellungComponent, HttpClientTestingModule],
-            providers: [MemberService, { provide: DOCUMENT, useValue: document }, { provide: PLATFORM_ID, useValue: 'browser' }],
+            imports: [AufstellungComponent],
+            providers: [
+                MemberService,
+                { provide: DOCUMENT, useValue: document },
+                { provide: PLATFORM_ID, useValue: 'browser' },
+                provideHttpClient(),
+                provideHttpClientTesting(),
+            ],
         }).compileComponents();
 
         fixture = TestBed.createComponent(AufstellungComponent);

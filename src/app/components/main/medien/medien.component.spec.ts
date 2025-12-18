@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideRouter } from '@angular/router';
 import { MedienComponent } from './medien.component';
 import { MedienService } from '../../../core/services/medien.service';
@@ -10,8 +11,8 @@ describe('MedienComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [MedienComponent, HttpClientTestingModule],
-            providers: [provideRouter([]), MedienService],
+            imports: [MedienComponent],
+            providers: [provideRouter([]), MedienService, provideHttpClient(), provideHttpClientTesting()],
         }).compileComponents();
 
         fixture = TestBed.createComponent(MedienComponent);

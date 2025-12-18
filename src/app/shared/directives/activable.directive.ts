@@ -19,8 +19,8 @@ export class ActivableDirective implements OnChanges {
     /** Emitted on activation (click, Enter, or Space). */
     @Output() activableActivate = new EventEmitter<void>();
 
-    private el = inject(ElementRef<HTMLElement>);
-    private renderer = inject(Renderer2);
+    private readonly el = inject(ElementRef<HTMLElement>);
+    private readonly renderer = inject(Renderer2);
 
     ngOnChanges(): void {
         // tabindex
