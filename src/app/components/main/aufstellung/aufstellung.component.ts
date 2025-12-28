@@ -50,7 +50,7 @@ const AUFSTELLUNG_CONFIG = {
     },
     CSS_CLASSES: {
         BUTTON_PRIMARY:
-            'inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-tttRed to-tttRed-600 px-4 py-2 text-sm font-bold text-tttWhite shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-tttRed/30',
+            'inline-flex items-center gap-2 rounded-lg bg-tttRed px-4 py-2 text-sm font-bold text-tttWhite shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-tttRed/30',
         BUTTON_SECONDARY:
             'inline-flex items-center gap-2 rounded-lg border border-tttWhite/30 bg-tttWhite/10 px-4 py-2 text-sm font-bold text-tttWhite transition-all duration-300 hover:bg-tttWhite/20',
     },
