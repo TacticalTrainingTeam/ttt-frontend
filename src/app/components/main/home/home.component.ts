@@ -80,7 +80,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     // Public mutable properties
     communityStats: { value: string; label: string; color: string }[] = [
-        { value: '...', label: 'Mitglieder', color: 'text-tttGreen' },
+        { value: '80+', label: 'Mitglieder', color: 'text-tttGreen' },
         { value: '2013', label: 'Gegründet', color: 'text-tttGreen' },
         { value: '2', label: 'Events/Woche', color: 'text-tttGreen' },
     ];
