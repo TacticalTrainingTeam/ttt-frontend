@@ -1,4 +1,4 @@
-# Security Documentation
+# Security
 
 ## Security Headers
 
@@ -10,47 +10,23 @@ Configured in `src/index.html`:
 - `Referrer-Policy: strict-origin-when-cross-origin`
 - `Permissions-Policy: camera=(), microphone=(), geolocation=()`
 
-### Route Protection
+## Route Protection
 
-- Guard: `SecurityGuard` (`src/app/core/guards/security.guard.ts`)
-- Features:
-    - XSS pattern detection in route parameters
-    - Rate limiting (100ms minimum between route changes)
-- Applied to: All application routes via `canActivate`
-- Note: Route validation removed (redundant with Angular router's wildcard route)
+**Guard:** `SecurityGuard` (`src/app/core/guards/security.guard.ts`)
 
-### HTTP Security
+- XSS pattern detection in route parameters
+- Rate limiting (100ms minimum between route changes)
+- Applied to all routes via `canActivate`
 
-- Interceptor: `SecurityInterceptor`
-- Features: HTTPS enforcement, security headers
+## HTTP Security
 
-### ESLint Security Rules
+**Interceptor:** `SecurityInterceptor` (`src/app/core/interceptors/security.interceptor.ts`)
 
-- `no-eval`, `no-implied-eval`, `no-new-func`
-- `no-script-url`
-- `@typescript-eslint/no-explicit-any`
+- HTTPS enforcement
+- Security headers injection
 
-## Trusted External Sources
+## ESLint Security Rules
 
-### Discord
-
-- Main: `https://discord.com`
-- CDN: `https://cdn.discordapp.com`
-- Assets: `https://*.discordapp.com`
-- Gateway: `wss://gateway.discord.gg`
-
-### Google Services
-
-- Fonts: `https://fonts.googleapis.com`
-- Static: `https://fonts.gstatic.com`
-
-## Known Vulnerabilities
-
-### Dependencies (Dev-only)
-
-- `@babel/helpers`: Moderate - RegExp complexity
-- `brace-expansion`: Low - ReDoS vulnerability
-- `on-headers`: Low - Header manipulation
-- `tmp`: Low - Symbolic link vulnerability
-
-Status: No impact on production build
+- No eval, implied-eval, new Function
+- No script URLs
+- No explicit any types

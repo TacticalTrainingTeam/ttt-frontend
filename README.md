@@ -7,63 +7,46 @@ Angular 20 application for Tactical Training Team website.
 ```
 src/app/
 ├── core/
-│   ├── services/          # Singleton services (API, CSP, events, medien, members)
-│   ├── guards/           # Route guards (security)
-│   ├── interceptors/     # HTTP interceptors (security)
-│   └── config/          # Application configuration (CSP)
+│   ├── services/        # Singleton services (API, events, medien, members)
+│   ├── guards/          # Route guards (security)
+│   └── interceptors/    # HTTP interceptors (security)
 ├── shared/
-│   ├── components/       # Shared components (base-page, page-layout)
-│   ├── types/           # TypeScript type definitions
-│   └── utils/           # Barrel exports for shared utilities
+│   ├── components/      # Shared components (page-layout)
+│   ├── directives/      # Custom directives
+│   └── types/           # TypeScript interfaces
 ├── components/
-│   ├── header/          # Header component
-│   ├── footer/          # Footer component
+│   ├── header/          # Navigation
+│   ├── footer/          # Footer
 │   ├── sidebar/         # Left and right sidebars
-│   └── main/            # Main content pages (home, aufstellung, chronik, medien, etc.)
-└── environments/        # Environment configurations
+│   └── main/            # Content pages
+└── environments/        # Environment configs
 ```
 
-## Development
+## Getting Started
 
 ```bash
 pnpm install
-pnpm run start
+pnpm start
 ```
 
-## Build
+## Build & Test
 
 ```bash
-pnpm run build
+pnpm build          # Production build
+pnpm test           # Unit tests
+pnpm lint           # ESLint
+pnpm prettier       # Format code
 ```
 
 ## Documentation
 
-- [Security](docs/security.md) - Security implementation details
-- [CSP Management](docs/csp-management.md) - Content Security Policy configuration
-- [Backend Overview](docs/backend-overview.md) - Backend API integration
+- [Security](docs/security.md) - Security implementation
+- [Backend Overview](docs/backend-overview.md) - API integration
 
-## Technology Stack
+## Tech Stack
 
-- **Angular 20** - Frontend framework
-- **PrimeNG 20** - UI component library with @primeuix/themes
-- **TailwindCSS 4** - Utility-first CSS framework
-- **RxJS 7** - Reactive programming library
-- **TypeScript 5.9** - Type-safe JavaScript
-
-## Testing
-
-```bash
-pnpm run test        # Run unit tests
-pnpm run lint        # Run ESLint
-```
-
-## Code Quality
-
-```bash
-pnpm run prettier        # Format code
-pnpm run prettier:check  # Check code formatting
-```
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Angular 20
+- PrimeNG 20 with @primeuix/themes
+- TailwindCSS 4
+- RxJS 7
+- TypeScript 5

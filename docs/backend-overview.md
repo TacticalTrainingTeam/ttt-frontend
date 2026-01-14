@@ -1,95 +1,62 @@
-# Backend & Data Overview
+# Backend Integration
 
-This document explains how the frontend communicates with the backend and what data shapes / endpoints are expected by this project.
+## Overview
 
-## Key points
+All backend communication goes through `ApiService` (`src/app/core/services/api.service.ts`).
 
-- The frontend does not contain any database logic — DB and server-state live on the backend service.
-- All backend calls go through `ApiService` (`src/app/core/services/api.service.ts`).
-- The base API URL is configured in `src/environments/environment.ts` (`environment.apiBaseUrl`).
-- Several services wrap backend endpoints and provide fallbacks (dummy data) for development or when the backend is unavailable.
+Base API URL: `environment.apiBaseUrl`
 
-## Important services and endpoints
+## Services
 
 ### ApiService
 
-- Location: `src/app/core/services/api.service.ts`
-- Simple wrapper around Angular `HttpClient` providing `get`, `post`, `put`, `patch`, `delete` methods and a common `ApiRequestOptions` shape.
-- Use this service for any HTTP interaction to keep requests consistent and centralised.
+Central HTTP client wrapper with consistent request/response handling.
 
 ### MemberService
 
-- Location: `src/app/core/services/member.service.ts`
-- Base URL: `${environment.apiBaseUrl}`
-- Endpoints used by the frontend:
-    - `GET ${baseUrl}/members` -> expected `MemberResponse` (see types below)
-    - `GET ${baseUrl}/members/stats` -> expected `MemberStatsResponse`
-    - `GET ${baseUrl}/members/:id` -> `Member`
-    - `GET ${baseUrl}/members?rank=:rank` -> `MemberResponse`
-    - `PATCH ${baseUrl}/members/:id` -> `Member` (update)
-    - `GET ${baseUrl}/medals` -> `Medal[]`
-    - `GET ${baseUrl}/campaign-ribbons` -> `CampaignRibbon[]`
-    - `GET ${baseUrl}/abteilungen` -> `Abteilung[]`
+**Endpoints:**
 
-Notes:
+- `GET /members` → `MemberResponse`
+- `GET /members/stats` → `MemberStatsResponse`
+- `GET /members/:id` → `Member`
+- `GET /members?rank=:rank` → `MemberResponse`
+- `GET /medals` → `Medal[]`
+- `GET /campaign-ribbons` → `CampaignRibbon[]`
+- `GET /abteilungen` → `Abteilung[]`
 
-- `getAllMembers()` applies a `timeout(2000)` and falls back to a built-in dummy member list if the backend call fails.
-- `getMemberStats()` falls back to a fixed distribution when the backend is unavailable.
-- The service uses the central `ApiService` and is the single place to change request behavior for member-related endpoints.
+Fallback: Dummy data if backend unavailable.
 
 ### MedienService
 
-- Location: `src/app/core/services/medien.service.ts`
-- Endpoint used:
-    - `GET ${baseUrl}/twitch/streams` -> expected `TwitchStream[]`
-- The current implementation attempts the backend and falls back to a small dummy array with a single stream.
+**Endpoint:**
 
-### Security / HTTP middleware
+- `GET /twitch/streams` → `TwitchStream[]`
 
-- `securityInterceptor` (`src/app/core/interceptors/security.interceptor.ts`) runs for HTTP requests and enforces simple rules (e.g. block http requests in https context, add headers).
-- `securityGuard` (`src/app/core/guards/security.guard.ts`) is used for route-level checks (parameter validation, simple rate limiting).
+## Data Types
 
-## Data types (shared)
+See `src/app/shared/types/member.types.ts` for interfaces.
 
-See `src/app/shared/types/member.types.ts` for canonical TypeScript interfaces. Important shapes:
+**Member:**
 
-- Member
-
-```ts
+```typescript
 interface Member {
     id: string;
     name: string;
-    rank: "offizier" | "unteroffizier" | "veteran" | "soldat" | "rekrut" | "gast";
+    rank: RankType;
     avatar: string;
-    memberSince: string; // ISO date string
+    memberSince: string;
     medals: Medal[];
     campaignRibbons: CampaignRibbon[];
     abteilungen: Abteilung[];
 }
 ```
 
-- MemberResponse
+**MemberResponse:**
 
-```ts
+```typescript
 interface MemberResponse {
     members: Member[];
     total: number;
     lastUpdated: string;
 }
 ```
-
-- MemberStatsResponse
-
-```ts
-interface MemberStatsResponse {
-    stats: Record<string, number>; // rank -> count
-    totalMembers: number;
-    activeMembers: number;
-}
-```
-
-## Where the database logic lives
-
-- This repository is the frontend only; there is no database code here.
-- Database implementation, migrations, models and server-side business logic belong to the backend service(s) the frontend calls via the endpoints listed above.
-- The frontend relies on the backend to expose a JSON REST API under the configured `apiBaseUrl`.
