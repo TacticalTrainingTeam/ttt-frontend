@@ -126,12 +126,12 @@
     }
 
     .ttt-feature-description {
-        @apply text-tttGray-300 text-sm leading-relaxed break-words;
+        @apply text-tttGray-300 text-base leading-relaxed break-words;
     }
 
     /* Special Text */
     .ttt-small-text {
-        @apply text-sm;
+        @apply text-base;
     }
 
     .ttt-highlight-text {
@@ -182,7 +182,7 @@
     }
 
     .ttt-step-link {
-        @apply text-tttRed hover:text-tttRed-400 inline-flex items-center gap-1 text-xs font-medium transition-colors;
+        @apply text-tttRed hover:text-tttRed-400 inline-flex items-center gap-1 text-sm font-medium transition-colors;
     }
 
     .ttt-req-text {

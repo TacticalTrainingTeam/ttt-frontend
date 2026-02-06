@@ -17,10 +17,10 @@
                             [attr.aria-describedby]="'evt-' + ev.id"
                         >
                             <div class="truncate">
-                                <div class="text-tttWhite truncate text-sm font-medium" [attr.title]="ev.title">
+                                <div class="text-tttWhite truncate text-base font-medium" [attr.title]="ev.title">
                                     {{ ev.title }}
                                 </div>
-                                <div class="text-tttGray-400 text-xs">
+                                <div class="text-tttGray-400 text-sm">
                                     {{ ev.date | date: "dd.MM.yyyy" }} • {{ ev.startTime }} • {{ ev.durationHours }} h
                                 </div>
                             </div>
@@ -28,10 +28,10 @@
                             <div
                                 role="tooltip"
                                 [id]="'evt-' + ev.id"
-                                class="ttt-content-card border-tttRed/40 bg-tttRed/5 text-tttWhite absolute top-full left-0 z-50 mt-2 hidden w-[min(20rem,90vw)] max-w-xs rounded-xl border p-4 whitespace-normal shadow-xl backdrop-blur-sm group-hover:block group-focus:block focus-within:block"
+                                class="ttt-content-card border-tttRed/40 text-tttWhite absolute top-full left-0 z-50 mt-2 hidden w-[min(20rem,90vw)] max-w-xs rounded-xl border p-4 whitespace-normal shadow-xl backdrop-blur-sm group-hover:block group-focus:block focus-within:block"
                             >
-                                <div class="text-tttWhite text-sm font-bold">{{ ev.title }}</div>
-                                <div class="text-tttRed mt-1 text-xs font-semibold">
+                                <div class="text-tttWhite text-base font-bold">{{ ev.title }}</div>
+                                <div class="text-tttRed mt-1 text-sm font-semibold">
                                     {{ ev.date | date: "dd.MM.yyyy" }} • {{ ev.startTime }} • {{ ev.durationHours }} h
                                 </div>
                                 <div class="mt-2">

@@ -55,7 +55,7 @@
                                         loading="lazy"
                                     />
                                 </div>
-                                <h3 class="text-tttWhite mb-1 text-sm font-semibold">{{ getRankInfo(rank).name }}</h3>
+                                <h3 class="text-tttWhite mb-1 text-base font-semibold">{{ getRankInfo(rank).name }}</h3>
                                 <div class="mb-0.5 text-2xl font-bold" [class]="getRankInfo(rank).color">
                                     {{ memberStats[rank] }}
                                 </div>
@@ -102,7 +102,7 @@
                                     }
                                     <h3 class="text-tttWhite text-xl font-bold">{{ getRankInfo(rank).name }}</h3>
                                     <div class="bg-tttRed/30 h-px flex-1"></div>
-                                    <span class="text-tttWhite/70 text-sm font-medium">{{ membersByRank[rank].length }} Mitglieder</span>
+                                    <span class="text-tttWhite/70 text-base font-medium">{{ membersByRank[rank].length }} Mitglieder</span>
                                 </div>
 
                                 <!-- Members Grid -->
@@ -164,7 +164,7 @@
 
                                                     <!-- Member info -->
                                                     <h4
-                                                        class="text-tttWhite group-hover:text-tttRed mb-1 truncate text-sm font-bold transition-colors duration-300"
+                                                        class="text-tttWhite group-hover:text-tttRed mb-1 truncate text-base font-bold transition-colors duration-300"
                                                         [class.mt-2]="member.rank !== 'offizier'"
                                                     >
                                                         {{ member.name }}
@@ -263,12 +263,12 @@
                                                                 <h4 class="text-tttWhite mb-1 text-xl font-bold">{{ member.name }}</h4>
                                                                 <div class="flex items-center gap-2">
                                                                     <span
-                                                                        class="rounded px-2 py-1 text-sm font-medium"
+                                                                        class="rounded px-2 py-1 text-base font-medium"
                                                                         [class]="getRankBadgeExpandedClasses(member.rank)"
                                                                     >
                                                                         {{ getRankInfo(member.rank).name }}
                                                                     </span>
-                                                                    <span class="text-tttGray-400 text-sm">
+                                                                    <span class="text-tttGray-400 text-base">
                                                                         Mitglied seit {{ getFormattedMemberSince(member.memberSince) }}
                                                                     </span>
                                                                 </div>
@@ -286,7 +286,9 @@
                                                             <!-- Medals -->
                                                             @if (member.medals.length > 0) {
                                                                 <div class="space-y-2">
-                                                                    <h5 class="text-tttWhite flex items-center gap-2 text-sm font-semibold">
+                                                                    <h5
+                                                                        class="text-tttWhite flex items-center gap-2 text-base font-semibold"
+                                                                    >
                                                                         <i class="pi pi-star-fill text-yellow-400" aria-hidden="true"></i>
                                                                         Auszeichnungen
                                                                     </h5>
@@ -318,7 +320,9 @@
                                                             <!-- Campaign Ribbons -->
                                                             @if (member.campaignRibbons.length > 0) {
                                                                 <div class="space-y-2">
-                                                                    <h5 class="text-tttWhite flex items-center gap-2 text-sm font-semibold">
+                                                                    <h5
+                                                                        class="text-tttWhite flex items-center gap-2 text-base font-semibold"
+                                                                    >
                                                                         <i class="pi pi-flag text-purple-400" aria-hidden="true"></i>
                                                                         Kampagnen-Teilnahmen
                                                                     </h5>
@@ -353,7 +357,9 @@
                                                             <!-- Departments -->
                                                             @if (member.abteilungen.length > 0) {
                                                                 <div class="space-y-2">
-                                                                    <h5 class="text-tttWhite flex items-center gap-2 text-sm font-semibold">
+                                                                    <h5
+                                                                        class="text-tttWhite flex items-center gap-2 text-base font-semibold"
+                                                                    >
                                                                         <i class="pi pi-briefcase text-blue-400" aria-hidden="true"></i>
                                                                         Abteilungen
                                                                     </h5>

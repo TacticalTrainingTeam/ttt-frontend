@@ -94,16 +94,16 @@
                             </div>
                             <div class="mb-1 flex min-w-0 flex-col items-center gap-1">
                                 <span
-                                    class="max-w-[100px] truncate rounded px-2 py-0.5 text-center text-xs font-medium"
+                                    class="max-w-[100px] truncate rounded px-2 py-0.5 text-center text-sm font-medium"
                                     [ngClass]="event.color"
                                     title="{{ getEventTypeLabel(event.type) }}"
                                 >
                                     {{ getEventTypeLabel(event.type) }}
                                 </span>
-                                <span class="text-tttGray-400 text-center text-xs" title="{{ event.date }}">{{ event.date }}</span>
+                                <span class="text-tttGray-400 text-center text-sm" title="{{ event.date }}">{{ event.date }}</span>
                             </div>
                             <div class="mb-1">
-                                <p class="text-tttGray-300 line-clamp-3 text-xs leading-snug">{{ event.description }}</p>
+                                <p class="text-tttGray-300 line-clamp-3 text-sm leading-snug">{{ event.description }}</p>
                             </div>
                             <div class="mt-1 flex justify-center">
                                 <i
@@ -116,9 +116,7 @@
                         </button>
                         <!-- Expanded details -->
                         @if (event.expanded) {
-                            <div
-                                class="ttt-content-card border-tttRed/70 bg-tttRed/10 animate-fadeIn absolute right-0 left-0 z-10 mt-2 p-3 shadow-xl"
-                            >
+                            <div class="ttt-content-card border-tttRed/70 animate-fadeIn absolute right-0 left-0 z-10 mt-2 p-3 shadow-xl">
                                 <button
                                     (click)="toggleEventDetails(event)"
                                     class="bg-tttGray-800/70 hover:bg-tttRed/30 absolute top-2 right-2 flex h-6 w-6 items-center justify-center rounded-full transition-all duration-200"
@@ -129,11 +127,11 @@
                                 </button>
                                 @if (event.details && event.details.length > 0) {
                                     <div>
-                                        <h4 class="text-tttWhite mb-1 text-xs font-semibold tracking-wide uppercase">Weitere Details:</h4>
+                                        <h4 class="text-tttWhite mb-1 text-sm font-semibold tracking-wide uppercase">Weitere Details:</h4>
                                         <ul class="space-y-1">
                                             @for (detail of event.details; track detail) {
-                                                <li class="text-tttGray-400 flex items-start gap-2 text-xs">
-                                                    <i class="pi pi-angle-right text-tttRed mt-0.5 flex-shrink-0 text-xs"></i>
+                                                <li class="text-tttGray-400 flex items-start gap-2 text-sm">
+                                                    <i class="pi pi-angle-right text-tttRed mt-0.5 flex-shrink-0 text-sm"></i>
                                                     <span>{{ detail }}</span>
                                                 </li>
                                             }
@@ -165,12 +163,12 @@
             </div>
 
             <!-- Fictional story content -->
-            <div class="text-tttGray-300 group-hover:text-tttGray-200 space-y-3 text-sm transition-colors duration-300">
+            <div class="text-tttGray-300 group-hover:text-tttGray-200 space-y-3 text-base transition-colors duration-300">
                 <div class="mt-4 flex items-center gap-2">
                     <a
                         [href]="fictionDocumentationLink"
                         target="_blank"
-                        class="border-tttWhite/30 bg-tttWhite/10 text-tttWhite hover:bg-tttWhite/20 group-hover:border-tttRed/40 group-hover:bg-tttRed/10 inline-flex items-center gap-2 rounded-lg border px-3 py-1 text-xs font-bold transition-all duration-300"
+                        class="border-tttWhite/30 bg-tttWhite/10 text-tttWhite hover:bg-tttWhite/20 group-hover:border-tttRed/40 group-hover:bg-tttRed/10 inline-flex items-center gap-2 rounded-lg border px-3 py-1 text-sm font-bold transition-all duration-300"
                     >
                         <i class="pi pi-external-link transition-transform duration-300 group-hover:scale-105"></i>
                         Vollständige Dokumentation
@@ -189,7 +187,7 @@
     <div class="ttt-text-center">
         <div class="ttt-content-card px-5 py-4">
             <h2 class="text-tttWhite mb-2 text-xl font-bold">Werde Teil der Geschichte</h2>
-            <p class="text-tttGray-300 mb-4 text-sm">Die Chronik des TTT wird täglich fortgeschrieben.</p>
+            <p class="text-tttGray-300 mb-4 text-base">Die Chronik des TTT wird täglich fortgeschrieben.</p>
             <div class="flex flex-col justify-center gap-3 sm:flex-row">
                 <!-- Discord Link -->
                 <a href="https://discord.tacticalteam.de" target="_blank" rel="noopener noreferrer" class="ttt-btn-primary">
