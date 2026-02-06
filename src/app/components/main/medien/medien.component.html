@@ -22,7 +22,12 @@
                 >
                     <!-- Stream Thumbnail -->
                     <div class="relative mb-4">
-                        <img [src]="stream.thumbnailUrl" [alt]="stream.title" class="h-48 w-full rounded-lg object-cover" />
+                        <img
+                            [src]="stream.thumbnailUrl"
+                            [alt]="stream.title"
+                            [title]="stream.title"
+                            class="h-48 w-full rounded-lg object-cover"
+                        />
                         <div class="absolute inset-0 rounded-lg bg-black/40"></div>
                         <div class="absolute top-3 left-3">
                             <span

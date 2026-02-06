@@ -1,0 +1,27 @@
+.banner-slide {
+    position: absolute;
+    inset: 0;
+}
+
+.banner-overlay {
+    position: absolute;
+    inset: 0;
+}
+
+.bg-animation-delay-2s {
+    animation-delay: 2s;
+}
+
+.bg-animation-slow-spin {
+    animation-duration: 30s;
+}
+
+.grid-pattern-overlay {
+    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.4) 1px, transparent 0);
+    background-size: 50px 50px;
+}
+
+.galleria-img {
+    display: block;
+    margin: 0 auto;
+}

@@ -5,16 +5,20 @@
         <div class="h-full w-full">
             @for (slide of bannerSlides; track slide.image; let i = $index) {
                 <div
-                    class="h-full w-full transition-opacity duration-1000 ease-in-out"
+                    class="banner-slide h-full w-full transition-opacity duration-1000 ease-in-out"
                     [class.opacity-100]="i === currentImageIndex"
                     [class.opacity-0]="i !== currentImageIndex"
-                    style="position: absolute; inset: 0"
                 >
-                    <img [src]="slide.image" [alt]="slide.title + ' - ' + slide.subtitle" class="h-full w-full object-cover" />
+                    <img
+                        [src]="slide.image"
+                        [alt]="slide.title + ' - ' + slide.subtitle"
+                        [title]="slide.title"
+                        class="h-full w-full object-cover"
+                    />
                 </div>
             }
             <!-- Dark overlay for better text readability -->
-            <div class="h-full w-full bg-black/60" style="position: absolute; inset: 0"></div>
+            <div class="banner-overlay h-full w-full bg-black/60"></div>
         </div>
         <!-- Slide Indicators -->
         <fieldset class="m-0 mt-4 flex justify-center space-x-2 border-0 p-0">
@@ -24,6 +28,7 @@
                     type="button"
                     (click)="goToImage(i)"
                     class="banner-indicator"
+                    [title]="'Banner ' + (i + 1)"
                     [ngClass]="{
                         'bg-tttRed': i === currentImageIndex,
                         'bg-tttWhite/40': i !== currentImageIndex,
@@ -154,24 +159,14 @@
     <!-- Animated Background Elements -->
     <div class="absolute inset-0 opacity-20">
         <div class="bg-tttRed/15 absolute top-10 left-10 h-48 w-48 animate-pulse rounded-full blur-3xl"></div>
+        <div class="bg-tttGreen/10 bg-animation-delay-2s absolute right-10 bottom-10 h-64 w-64 animate-pulse rounded-full blur-3xl"></div>
         <div
-            class="bg-tttGreen/10 absolute right-10 bottom-10 h-64 w-64 animate-pulse rounded-full blur-3xl"
-            style="animation-delay: 2s"
-        ></div>
-        <div
-            class="bg-tttRed/5 absolute top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 animate-spin rounded-full blur-3xl"
-            style="animation-duration: 30s"
+            class="bg-tttRed/5 bg-animation-slow-spin absolute top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 animate-spin rounded-full blur-3xl"
         ></div>
     </div>
 
     <!-- Grid Pattern Overlay -->
-    <div
-        class="absolute inset-0 opacity-5"
-        style="
-            background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.4) 1px, transparent 0);
-            background-size: 50px 50px;
-        "
-    ></div>
+    <div class="grid-pattern-overlay absolute inset-0 opacity-5"></div>
 
     <div class="ttt-page-container relative">
         <!-- Header -->
@@ -447,8 +442,8 @@
                 <img
                     [src]="item.itemImageSrc"
                     [alt]="item.alt"
-                    class="h-64 w-full rounded-xl object-cover"
-                    style="display: block; margin: 0 auto"
+                    [title]="item.alt"
+                    class="galleria-img h-64 w-full rounded-xl object-cover"
                 />
             </ng-template>
         </p-galleria>

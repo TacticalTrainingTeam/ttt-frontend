@@ -50,6 +50,7 @@
                                     <img
                                         [src]="getRankInfo(rank).icon"
                                         [alt]="getRankInfo(rank).name + ' Abzeichen'"
+                                        [title]="getRankInfo(rank).name"
                                         class="h-8 w-8 object-contain transition-transform duration-300 hover:scale-110"
                                         loading="lazy"
                                     />
@@ -94,6 +95,7 @@
                                         <img
                                             [src]="getRankInfo(rank).icon"
                                             [alt]="getRankInfo(rank).name + ' Abzeichen'"
+                                            [title]="getRankInfo(rank).name"
                                             class="h-6 w-6 object-contain"
                                             loading="lazy"
                                         />
@@ -144,6 +146,7 @@
                                                                     <img
                                                                         [src]="member.avatar"
                                                                         [alt]="member.name + ' Avatar'"
+                                                                        [title]="member.name"
                                                                         class="h-full w-full object-cover"
                                                                         loading="lazy"
                                                                     />
@@ -241,6 +244,7 @@
                                                                         <img
                                                                             [src]="member.avatar"
                                                                             [alt]="member.name"
+                                                                            [title]="member.name"
                                                                             class="h-full w-full object-cover"
                                                                         />
                                                                     </div>
@@ -272,6 +276,7 @@
                                                             <button
                                                                 (click)="toggleMemberDetails(member)"
                                                                 class="bg-tttGray-800/50 hover:bg-tttRed/20 flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300"
+                                                                aria-label="Details schließen"
                                                             >
                                                                 <i class="pi pi-times text-tttGray-400" aria-hidden="true"></i>
                                                             </button>
@@ -293,6 +298,7 @@
                                                                                 <img
                                                                                     [src]="medal.image"
                                                                                     [alt]="medal.name"
+                                                                                    [title]="medal.name"
                                                                                     class="h-6 w-6 object-contain"
                                                                                 />
                                                                                 <div class="min-w-0 flex-1">
@@ -327,6 +333,7 @@
                                                                                 <img
                                                                                     [src]="ribbon.image"
                                                                                     [alt]="ribbon.name"
+                                                                                    [title]="ribbon.name"
                                                                                     class="h-6 w-6 object-contain"
                                                                                 />
                                                                                 <div class="min-w-0 flex-1">
@@ -358,6 +365,7 @@
                                                                                 <img
                                                                                     [src]="abt.icon"
                                                                                     [alt]="abt.name"
+                                                                                    [title]="abt.name"
                                                                                     class="h-6 w-6 object-contain"
                                                                                 />
                                                                                 <div class="min-w-0 flex-1">
