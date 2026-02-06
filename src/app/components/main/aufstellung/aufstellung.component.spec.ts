@@ -75,6 +75,23 @@ describe('AufstellungComponent', () => {
         }
     });
 
+    it('should close other expanded members when opening a new one', () => {
+        component.ngOnInit();
+        if (component.members && component.members.length >= 2) {
+            const memberA = component.members[0];
+            const memberB = component.members[1];
+
+            component.toggleMemberDetails(memberA);
+            expect(memberA.isExpanded).toBe(true);
+
+            component.toggleMemberDetails(memberB);
+            expect(memberB.isExpanded).toBe(true);
+            expect(memberA.isExpanded).toBe(false);
+        } else {
+            expect(component.members).toBeDefined();
+        }
+    });
+
     it('should detect expandable content correctly', () => {
         component.ngOnInit();
         const memberWithContent = component.members.find(

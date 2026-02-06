@@ -72,7 +72,7 @@
 
     /* Standard content card/section styling */
     .ttt-content-card {
-        @apply border-tttGray-700 from-tttGray-800 to-tttGray-900 rounded-xl border bg-gradient-to-br p-6;
+        @apply border-tttGray-700 bg-tttGray-800 rounded-xl border p-6;
     }
 
     /* TTT Typography System - Comprehensive Design System */

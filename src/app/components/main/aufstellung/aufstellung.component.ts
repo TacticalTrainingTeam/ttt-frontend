@@ -260,7 +260,18 @@ export class AufstellungComponent implements OnInit {
     }
 
     toggleMemberDetails(member: Member): void {
-        member.isExpanded = !member.isExpanded;
+        const isOpening = !member.isExpanded;
+
+        // Close all other expanded members
+        if (isOpening) {
+            this.members.forEach((m) => {
+                if (m !== member) {
+                    m.isExpanded = false;
+                }
+            });
+        }
+
+        member.isExpanded = isOpening;
 
         // Scroll to member after expansion animation
         if (member.isExpanded && isPlatformBrowser(this.platformId)) {
