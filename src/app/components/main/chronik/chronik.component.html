@@ -100,7 +100,7 @@
                                 >
                                     {{ getEventTypeLabel(event.type) }}
                                 </span>
-                                <span class="text-tttGray-400 text-center text-sm" title="{{ event.date }}">{{ event.date }}</span>
+                                <span class="text-tttGray-300 text-center text-sm" title="{{ event.date }}">{{ event.date }}</span>
                             </div>
                             <div class="mb-1">
                                 <p class="text-tttGray-300 line-clamp-3 text-sm leading-snug">{{ event.description }}</p>
@@ -123,14 +123,14 @@
                                     tabindex="-1"
                                     aria-label="Details schließen"
                                 >
-                                    <i class="pi pi-times text-tttGray-400 text-sm" aria-hidden="true"></i>
+                                    <i class="pi pi-times text-tttGray-300 text-sm" aria-hidden="true"></i>
                                 </button>
                                 @if (event.details && event.details.length > 0) {
                                     <div>
                                         <h4 class="text-tttWhite mb-1 text-sm font-semibold tracking-wide uppercase">Weitere Details:</h4>
                                         <ul class="space-y-1">
                                             @for (detail of event.details; track detail) {
-                                                <li class="text-tttGray-400 flex items-start gap-2 text-sm">
+                                                <li class="text-tttGray-300 flex items-start gap-2 text-sm">
                                                     <i class="pi pi-angle-right text-tttRed mt-0.5 flex-shrink-0 text-sm"></i>
                                                     <span>{{ detail }}</span>
                                                 </li>
