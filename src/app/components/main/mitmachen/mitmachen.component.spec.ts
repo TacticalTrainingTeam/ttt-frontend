@@ -19,4 +19,10 @@ describe('MitmachenComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should expose external links', () => {
+        expect(component.externalLinks.discord).toBe('https://discord.tacticalteam.de');
+        expect(component.externalLinks.events).toBe('https://events.tacticalteam.de/events/');
+        expect(component.externalLinks.arma3SyncGuide).toContain('wiki.tacticalteam.de');
+    });
 });

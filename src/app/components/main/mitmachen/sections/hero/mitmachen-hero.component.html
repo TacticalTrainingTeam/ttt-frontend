@@ -1,0 +1,30 @@
+<!-- Hero section with background -->
+<section class="relative overflow-hidden py-20">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+        <img src="/img/home-banner/home-banner1.webp" alt="TTT Mitmachen Background" class="h-full w-full object-cover" />
+        <div class="bg-tttBlack/90 absolute inset-0"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 flex h-full items-center">
+        <div class="ttt-text-center mx-auto max-w-3xl px-6">
+            <div class="ttt-badge mb-6">
+                <i class="pi pi-users"></i>
+                <span>Das TTT als offene Community</span>
+            </div>
+
+            <h1 class="ttt-hero-title">MITMACHEN BEIM <span class="text-tttRed">TTT</span></h1>
+
+            <p class="ttt-hero-text">
+                {{ pageSubtitle }}
+                Unsere Treffen sind <strong class="text-tttRed">{{ eventSchedule }}</strong
+                >. Mitmachen kann jeder - egal ob Rekrut oder Gast.
+            </p>
+
+            <div class="mt-8 flex justify-center">
+                <img src="/img/logo-hex-black.webp" alt="TTT Logo" class="h-20 w-auto" />
+            </div>
+        </div>
+    </div>
+</section>
