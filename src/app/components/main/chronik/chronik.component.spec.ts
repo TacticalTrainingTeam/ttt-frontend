@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { ChronikComponent } from './chronik.component';
 
@@ -9,6 +10,7 @@ describe('ChronikComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [ChronikComponent],
+            providers: [provideRouter([])],
         }).compileComponents();
 
         fixture = TestBed.createComponent(ChronikComponent);
@@ -25,17 +27,7 @@ describe('ChronikComponent', () => {
         expect(Array.isArray(component.timelineEvents)).toBe(true);
     });
 
-    it('should have event type configuration methods', () => {
-        expect(component.getEventTypeColor).toBeDefined();
-        expect(component.getEventTypeLabel).toBeDefined();
-        expect(component.getEventIconClasses).toBeDefined();
-    });
-
-    it('should return correct event type styling', () => {
-        const anniversaryColor = component.getEventTypeColor('anniversary');
-        const milestoneColor = component.getEventTypeColor('milestone');
-
-        expect(anniversaryColor).toContain('border-tttRed');
-        expect(milestoneColor).toContain('border-blue-500');
+    it('should expose documentation link', () => {
+        expect(component.fictionDocumentationLink).toContain('drive.google.com');
     });
 });

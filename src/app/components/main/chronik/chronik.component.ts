@@ -1,25 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageLayoutComponent } from '../../../shared/components/page-layout/page-layout.component';
-
-type TimelineEventType = 'anniversary' | 'milestone' | 'system';
-
-interface TimelineEvent {
-    id: string;
-    title: string;
-    date: string;
-    type: TimelineEventType;
-    icon: string;
-    color: string;
-    description: string;
-    details: string[];
-    expanded?: boolean;
-}
+import { TimelineEvent, TimelineEventType } from '../../../shared/types/chronik.types';
+import { ChronikOriginComponent } from './sections/origin/chronik-origin.component';
+import { ChronikTimelineComponent } from './sections/timeline/chronik-timeline.component';
+import { ChronikFictionComponent } from './sections/fiction/chronik-fiction.component';
+import { ChronikCtaComponent } from './sections/cta/chronik-cta.component';
 
 @Component({
     selector: 'ttt-chronik',
     standalone: true,
-    imports: [CommonModule, PageLayoutComponent],
+    imports: [CommonModule, PageLayoutComponent, ChronikOriginComponent, ChronikTimelineComponent, ChronikFictionComponent, ChronikCtaComponent],
     templateUrl: './chronik.component.html',
     styleUrl: './chronik.component.css',
 })
@@ -147,44 +138,6 @@ export class ChronikComponent {
             ]
         ),
     ];
-
-    // Public methods
-    toggleEventDetails(event: TimelineEvent): void {
-        if (event.expanded) {
-            event.expanded = false;
-            return;
-        }
-        for (const e of this.timelineEvents) {
-            e.expanded = false;
-        }
-        event.expanded = true;
-    }
-
-    handleEventKeyboard(eventObj: TimelineEvent, event: KeyboardEvent): void {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            this.toggleEventDetails(eventObj);
-        }
-    }
-
-    getEventTypeColor(type: string): string {
-        const config = this.eventTypeConfig[type as keyof typeof this.eventTypeConfig];
-        return config?.color || this.eventTypeConfig.default.color;
-    }
-
-    getEventTypeLabel(type: string): string {
-        const config = this.eventTypeConfig[type as keyof typeof this.eventTypeConfig];
-        return config?.label || this.eventTypeConfig.default.label;
-    }
-
-    getEventIconClasses(icon: string): string {
-        return `pi ${icon} text-inherit`;
-    }
-
-    getCleanTitle(title: string): string {
-        const doc = new DOMParser().parseFromString(title, 'text/html');
-        return doc.body.textContent || '';
-    }
 
     // Private methods
     private createTimelineEvent(
