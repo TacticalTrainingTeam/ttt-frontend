@@ -1,0 +1,68 @@
+<!-- Live Streams Section -->
+<div class="mb-8">
+    <div class="ttt-text-center mb-6">
+        <h2 class="ttt-section-title mb-2 flex items-center justify-center gap-3">
+            <i class="pi pi-video text-tttRed"></i>
+            Livestreams
+        </h2>
+        <p class="ttt-description-text">Aktuelle Live-Uebertragungen unserer Community</p>
+    </div>
+
+    @if (liveStreams$ | async; as liveStreams) {
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            @for (stream of liveStreams; track stream.id) {
+                <a
+                    class="ttt-content-card group hover:border-tttRed/50 cursor-pointer transition-all duration-300"
+                    [attr.aria-label]="'Live Stream oeffnen: ' + stream.title"
+                    [href]="stream.url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <div class="relative mb-4">
+                        <img
+                            [src]="stream.thumbnailUrl"
+                            [alt]="stream.title || 'Livestream Thumbnail'"
+                            title="{{ stream.title }}"
+                            class="h-48 w-full rounded-lg object-cover"
+                        />
+                        <div class="absolute inset-0 rounded-lg bg-black/40"></div>
+                        <div class="absolute top-3 left-3">
+                            <span
+                                class="inline-flex items-center gap-1 rounded-full bg-red-500/90 px-2 py-1 text-xs font-medium text-white"
+                            >
+                                <i class="pi pi-circle-fill animate-pulse"></i>
+                                LIVE
+                            </span>
+                        </div>
+                        <div class="absolute bottom-3 left-3">
+                            <span class="inline-flex items-center gap-1 rounded-full bg-black/70 px-2 py-1 text-xs font-medium text-white">
+                                <i class="pi pi-eye"></i>
+                                {{ stream.viewerCount }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h3 class="text-tttWhite group-hover:text-tttRed line-clamp-2 text-lg font-bold transition-colors">
+                            {{ stream.title }}
+                        </h3>
+                        <p class="text-tttGray-300 text-base">
+                            <i class="pi pi-user mr-1"></i>
+                            {{ stream.userName }}
+                        </p>
+                    </div>
+                </a>
+            }
+        </div>
+    }
+
+    @if ((liveStreams$ | async)?.length === 0) {
+        <div class="py-12 text-center">
+            <div class="mb-4">
+                <i class="pi pi-video text-tttGray-600 text-4xl"></i>
+            </div>
+            <h3 class="text-tttWhite mb-2 text-xl font-bold">Keine Livestreams</h3>
+            <p class="text-tttGray-300">Derzeit sind keine Live-Uebertragungen aktiv.</p>
+        </div>
+    }
+</div>

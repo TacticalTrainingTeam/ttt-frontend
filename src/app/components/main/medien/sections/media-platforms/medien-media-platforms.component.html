@@ -1,0 +1,42 @@
+<!-- Media Platforms Section -->
+<div class="mb-8">
+    <div class="ttt-text-center mb-6">
+        <h2 class="ttt-section-title mb-2 flex items-center justify-center gap-3">
+            <i class="pi pi-play text-tttRed"></i>
+            Medien & Kanaele
+        </h2>
+        <p class="ttt-description-text">Unsere Videos, Podcasts und anderen Medien</p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        @for (platform of mediaPlatforms; track platform.id) {
+            <a
+                [href]="platform.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="ttt-content-card group block text-left transition-all duration-300"
+                [ngClass]="platform.cardClass"
+                [attr.aria-label]="platform.ariaLabel"
+            >
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0">
+                        <div
+                            class="flex h-12 w-12 items-center justify-center rounded-lg transition-transform group-hover:scale-110"
+                            [ngClass]="platform.iconWrapperClass"
+                        >
+                            <i [ngClass]="platform.iconClass"></i>
+                        </div>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <h3 class="text-tttWhite group-hover:text-tttRed mb-1 text-lg font-bold transition-colors">{{ platform.name }}</h3>
+                        <p class="text-tttGray-300 mb-2 text-base">{{ platform.description }}</p>
+                        <div class="text-tttGray-300 flex items-center gap-2 text-sm">
+                            <i class="pi pi-external-link"></i>
+                            {{ platform.displayUrl }}
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+</div>

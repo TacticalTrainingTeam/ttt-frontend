@@ -46,16 +46,12 @@ describe('MedienComponent', () => {
         expect(component.externalLinks.files).toBe('https://files.tacticalteam.de/s/36FWSHsGNwaXLHg');
     });
 
-    it('should return correct platform styling', () => {
-        const youtubeStyle = component.getPlatformStyling('youtube');
-        const twitchStyle = component.getPlatformStyling('twitch');
-        const githubStyle = component.getPlatformStyling('github');
-        const unknownStyle = component.getPlatformStyling('unknown');
+    it('should expose media and social platform cards', () => {
+        expect(component.mediaPlatforms.length).toBe(3);
+        expect(component.socialPlatforms.length).toBe(8);
 
-        expect(youtubeStyle).toContain('red-500');
-        expect(twitchStyle).toContain('purple-500');
-        expect(githubStyle).toContain('gray-400');
-        expect(unknownStyle).toContain('tttRed');
+        expect(component.mediaPlatforms[0].id).toBe('youtube');
+        expect(component.socialPlatforms.find((item) => item.id === 'github')?.handle).toBe('TacticalTrainingTeam');
     });
 
     it('should have live streams as observable', () => {

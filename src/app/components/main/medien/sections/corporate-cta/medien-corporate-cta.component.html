@@ -1,0 +1,53 @@
+<!-- Corporate Design Section -->
+<div class="mb-8">
+    <div class="ttt-text-center mb-6">
+        <h2 class="ttt-section-title mb-2 flex items-center justify-center gap-3">
+            <i class="pi pi-palette text-tttRed"></i>
+            Corporate Design
+        </h2>
+        <p class="ttt-description-text">Logos, Richtlinien und offizielle Ressourcen</p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6">
+        <a
+            [href]="wikiUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="ttt-content-card group hover:border-tttRed/50 hover:bg-tttRed/10 block text-left transition-all duration-300"
+            aria-label="Corporate Design Wiki oeffnen"
+        >
+            <div class="flex items-start gap-4">
+                <div class="flex-shrink-0">
+                    <div
+                        class="bg-tttRed/20 flex h-12 w-12 items-center justify-center rounded-lg transition-transform group-hover:scale-110"
+                    >
+                        <i class="pi pi-palette text-tttRed text-2xl"></i>
+                    </div>
+                </div>
+                <div class="min-w-0 flex-1">
+                    <h3 class="text-tttWhite group-hover:text-tttRed mb-1 text-lg font-bold transition-colors">Corporate Design Wiki</h3>
+                    <p class="text-tttGray-300 mb-2 text-base">Offizielle Richtlinien fuer Logos, Farben und Design-Elemente</p>
+                    <div class="text-tttGray-300 flex items-center gap-2 text-sm">
+                        <i class="pi pi-external-link"></i>
+                        wiki.tacticalteam.de
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="ttt-text-center">
+    <div class="ttt-content-card px-6 py-8">
+        <h2 class="text-tttWhite mb-4 text-2xl font-bold">Werde Teil unserer Community</h2>
+        <p class="text-tttGray-300 mb-6">
+            Folge uns auf deinen bevorzugten Plattformen und bleibe ueber unsere Aktivitaeten, Events und neue Inhalte auf dem Laufenden.
+            Jede Interaktion hilft uns dabei, die TTT-Community zu vergroessern!
+        </p>
+        <a routerLink="/mitmachen" class="ttt-btn-primary px-6 py-3 text-lg">
+            <i class="pi pi-arrow-right"></i>
+            Jetzt mitmachen
+        </a>
+    </div>
+</div>
