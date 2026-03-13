@@ -1,12 +1,3 @@
-<ttt-home-hero-slider
-    [bannerSlides]="bannerSlides"
-    [currentImageIndex]="currentImageIndex"
-    (imageSelected)="goToImage($event)"
-></ttt-home-hero-slider>
-
-<ttt-home-features-join [communityStats]="communityStats"></ttt-home-features-join>
-
-<!-- Gallery Section (PrimeNG Galleria) -->
 <section class="bg-tttBlack relative overflow-hidden py-16">
     <div class="ttt-page-container">
         <p-galleria
@@ -22,10 +13,11 @@
             <ng-template pTemplate="item" let-item>
                 <img
                     [src]="item.itemImageSrc"
+                    alt="Galerie-Bild"
                     title="Galerie-Bild"
-                    [attr.alt]="item.alt"
-                    [attr.title]="item.alt"
-                    class="mx-auto block h-64 w-full rounded-xl object-cover"
+                    [alt]="item.alt"
+                    [title]="item.alt"
+                    class="h-64 w-full rounded-xl object-cover"
                 />
             </ng-template>
         </p-galleria>
@@ -36,5 +28,3 @@
         </div>
     </div>
 </section>
-
-<ttt-home-orbat></ttt-home-orbat>

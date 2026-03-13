@@ -1,0 +1,59 @@
+<section class="h-80 overflow-hidden">
+    <div class="relative h-full w-full">
+        <div class="h-full w-full">
+            @for (slide of bannerSlides; track slide.image; let i = $index) {
+                <div
+                    class="absolute inset-0 h-full w-full transition-opacity duration-1000 ease-in-out"
+                    [class.opacity-100]="i === currentImageIndex"
+                    [class.opacity-0]="i !== currentImageIndex"
+                >
+                    <img
+                        [src]="slide.image"
+                        alt="Banner-Bild"
+                        title="Banner-Bild"
+                        [attr.alt]="slide.title + ' - ' + slide.subtitle"
+                        [attr.title]="slide.title"
+                        class="h-full w-full object-cover"
+                    />
+                </div>
+            }
+            <div class="absolute inset-0 h-full w-full bg-black/60"></div>
+        </div>
+
+        <fieldset class="m-0 mt-4 flex justify-center space-x-2 border-0 p-0">
+            <legend class="sr-only">Banner-Navigation</legend>
+            @for (slide of bannerSlides; track slide.image; let i = $index) {
+                <button
+                    type="button"
+                    (click)="selectImage(i)"
+                    title="Banner wechseln"
+                    class="h-2 w-8 rounded-full transition-all duration-300 hover:scale-110"
+                    [attr.title]="'Banner ' + (i + 1)"
+                    [ngClass]="{
+                        'bg-tttRed': i === currentImageIndex,
+                        'bg-tttWhite/40': i !== currentImageIndex,
+                        'scale-125': i === currentImageIndex,
+                    }"
+                    [attr.aria-label]="'Zu Banner ' + (i + 1) + ' wechseln: ' + getCleanTitle(slide.title)"
+                    [attr.aria-current]="i === currentImageIndex ? 'true' : 'false'"
+                >
+                    <span class="sr-only">Banner {{ i + 1 }}</span>
+                </button>
+            }
+        </fieldset>
+
+        <div class="pointer-events-none absolute inset-0 z-10 flex h-full items-center">
+            <div class="ttt-hero-container pointer-events-auto">
+                <h1 class="ttt-hero-title" [attr.aria-label]="getCleanTitle(currentSlide?.title || 'Tactical Training Team')">
+                    <span [innerHTML]="currentSlide?.title || 'Tactical Training Team'"></span>
+                    @if (!currentSlide?.title) {
+                        <span class="sr-only">Tactical Training Team</span>
+                    }
+                </h1>
+                <p class="ttt-hero-text">
+                    {{ currentSlide?.subtitle }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

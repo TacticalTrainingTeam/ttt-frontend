@@ -1,20 +1,15 @@
 import { Component, OnInit, OnDestroy, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { ButtonDirective } from 'primeng/button';
-import { GalleriaModule } from 'primeng/galleria';
 import { MemberService } from '../../../core/services/member.service';
-
-interface BannerSlide {
-    image: string;
-    title: string;
-    subtitle: string;
-}
+import { HomeFeaturesJoinComponent } from './sections/features-join/home-features-join.component';
+import { HomeHeroSliderComponent } from './sections/hero-slider/home-hero-slider.component';
+import { HomeOrbatComponent } from './sections/orbat/home-orbat.component';
+import { HomeBannerSlide, HomeCommunityStat, HomeGalleryImage } from '../../../shared/types/home.types';
+import { GalleriaModule } from 'primeng/galleria';
 
 @Component({
     selector: 'ttt-home',
     standalone: true,
-    imports: [CommonModule, RouterLink, ButtonDirective, GalleriaModule],
+    imports: [HomeHeroSliderComponent, HomeFeaturesJoinComponent, HomeOrbatComponent, GalleriaModule],
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
 })
@@ -23,7 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private readonly memberService = inject(MemberService);
 
     // Public readonly properties
-    readonly bannerSlides: BannerSlide[] = [
+    readonly bannerSlides: HomeBannerSlide[] = [
         {
             image: '/img/home-banner/home-banner1.webp',
             title: 'TACTICAL TRAINING <span class="text-tttRed">TEAM</span>',
@@ -43,43 +38,43 @@ export class HomeComponent implements OnInit, OnDestroy {
                 'Über 80 aktive Community-Mitglieder, regelmäßige Missionen und eine europaweite vernetzte MilSim-Community erwarten dich.',
         },
     ];
-    readonly galleryImages = [
+    readonly galleryImages: HomeGalleryImage[] = [
         {
-            itemImageSrc: '/img/home-gallery/gallery-img1.webp',
+            itemImageSrc: 'img/home-gallery/gallery-img1.webp',
             alt: 'TTT Community Moment 1',
         },
         {
-            itemImageSrc: '/img/home-gallery/gallery-img2.webp',
+            itemImageSrc: 'img/home-gallery/gallery-img2.webp',
             alt: 'TTT Community Moment 2',
         },
         {
-            itemImageSrc: '/img/home-gallery/gallery-img3.webp',
+            itemImageSrc: 'img/home-gallery/gallery-img3.webp',
             alt: 'TTT Community Moment 3',
         },
         {
-            itemImageSrc: '/img/home-gallery/gallery-img4.webp',
+            itemImageSrc: 'img/home-gallery/gallery-img4.webp',
             alt: 'TTT Community Moment 4',
         },
         {
-            itemImageSrc: '/img/home-gallery/gallery-img5.webp',
+            itemImageSrc: 'img/home-gallery/gallery-img5.webp',
             alt: 'TTT Community Moment 5',
         },
         {
-            itemImageSrc: '/img/home-gallery/gallery-img6.webp',
+            itemImageSrc: 'img/home-gallery/gallery-img6.webp',
             alt: 'TTT Community Moment 6',
         },
         {
-            itemImageSrc: '/img/home-gallery/gallery-img7.webp',
+            itemImageSrc: 'img/home-gallery/gallery-img7.webp',
             alt: 'TTT Community Moment 7',
         },
         {
-            itemImageSrc: '/img/home-gallery/gallery-img8.webp',
+            itemImageSrc: 'img/home-gallery/gallery-img8.webp',
             alt: 'TTT Community Moment 8',
         },
     ];
 
     // Public mutable properties
-    communityStats: { value: string; label: string; color: string }[] = [
+    communityStats: HomeCommunityStat[] = [
         { value: '80+', label: 'Mitglieder', color: 'text-tttGreen' },
         { value: '2013', label: 'Gegründet', color: 'text-tttGreen' },
         { value: '2', label: 'Events/Woche', color: 'text-tttGreen' },
