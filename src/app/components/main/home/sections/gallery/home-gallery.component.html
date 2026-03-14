@@ -11,14 +11,7 @@
             styleClass="w-full rounded-xl shadow-lg"
         >
             <ng-template pTemplate="item" let-item>
-                <img
-                    [src]="item.itemImageSrc"
-                    alt="Galerie-Bild"
-                    title="Galerie-Bild"
-                    [alt]="item.alt"
-                    [title]="item.alt"
-                    class="h-64 w-full rounded-xl object-cover"
-                />
+                <img [src]="item.itemImageSrc" alt="{{ item.alt }}" title="{{ item.alt }}" class="h-64 w-full rounded-xl object-cover" />
             </ng-template>
         </p-galleria>
         <div class="mt-8 text-center">

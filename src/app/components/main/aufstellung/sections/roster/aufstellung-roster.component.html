@@ -75,7 +75,7 @@
                                         </h4>
                                         <span
                                             class="mb-1 block rounded px-1.5 py-0.5 text-xs font-medium"
-                                            [class]="getRankBadgeClasses(member.rank)"
+                                            [ngClass]="getRankBadgeClasses(member.rank)"
                                         >
                                             {{ getRankInfo(member.rank).shortName }}
                                         </span>
@@ -156,7 +156,7 @@
                                                     <div class="flex items-center gap-2">
                                                         <span
                                                             class="rounded px-2 py-1 text-sm font-medium"
-                                                            [class]="getRankBadgeExpandedClasses(member.rank)"
+                                                            [ngClass]="getRankBadgeExpandedClasses(member.rank)"
                                                         >
                                                             {{ getRankInfo(member.rank).name }}
                                                         </span>

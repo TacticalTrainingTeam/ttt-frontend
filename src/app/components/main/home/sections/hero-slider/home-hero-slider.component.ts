@@ -20,9 +20,4 @@ export class HomeHeroSliderComponent {
     selectImage(index: number): void {
         this.imageSelected.emit(index);
     }
-
-    getCleanTitle(title: string): string {
-        const doc = new DOMParser().parseFromString(title, 'text/html');
-        return doc.body.textContent || '';
-    }
 }

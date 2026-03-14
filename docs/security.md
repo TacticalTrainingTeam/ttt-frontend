@@ -2,27 +2,33 @@
 
 ## Security Headers
 
-Configured in `src/index.html`:
+Server-side HTTP headers (must be configured in nginx/Apache/CDN, not in HTML):
 
 - `X-Content-Type-Options: nosniff`
 - `X-Frame-Options: DENY`
-- `X-XSS-Protection: 1; mode=block`
-- `Referrer-Policy: strict-origin-when-cross-origin`
 - `Permissions-Policy: camera=(), microphone=(), geolocation=()`
+
+Notes:
+
+- `X-XSS-Protection` is obsolete and should not be used.
+- `Referrer-Policy` can be set as HTTP header or as HTML meta tag.
+
+Browser-side meta configuration in `src/index.html`:
+
+- `<meta name="referrer" content="strict-origin-when-cross-origin">`
 
 ## Route Protection
 
-**Guard:** `SecurityGuard` (`src/app/core/guards/security.guard.ts`)
+**Guard:** `securityGuard` (`src/app/core/guards/security.guard.ts`)
 
-- XSS pattern detection in route parameters
-- Rate limiting (100ms minimum between route changes)
-- Applied to all routes via `canActivate`
+- Lightweight route guard placeholder (no client-side XSS pattern matching / rate limiting)
+- Application uses Angular's built-in template sanitization
 
 ## HTTP Security
 
 **Interceptor:** `SecurityInterceptor` (`src/app/core/interceptors/security.interceptor.ts`)
 
-- HTTPS enforcement
+- Blocks insecure `http://` requests when app runs in HTTPS context
 - Security headers injection
 
 ## ESLint Security Rules

@@ -104,17 +104,17 @@ export class AufstellungRosterComponent {
         }
     }
 
-    private getRankBadgeClassesBase(rank: RankType, baseClasses: string): string {
+    private getRankBadgeClassesBase(rank: RankType): string {
         const colors = this.getRankColorClasses(rank);
-        return `${baseClasses} ${colors.text} ${colors.bg}`;
+        return `${colors.text} ${colors.bg}`;
     }
 
     getRankBadgeClasses(rank: RankType): string {
-        return this.getRankBadgeClassesBase(rank, 'text-xs px-1.5 py-0.5 rounded font-medium block mb-1');
+        return this.getRankBadgeClassesBase(rank);
     }
 
     getRankBadgeExpandedClasses(rank: RankType): string {
-        return this.getRankBadgeClassesBase(rank, 'text-sm px-2 py-1 rounded font-medium');
+        return this.getRankBadgeClassesBase(rank);
     }
 
     getAvatarBorderClasses(rank: RankType): Record<string, boolean> {

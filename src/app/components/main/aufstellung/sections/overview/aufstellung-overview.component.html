@@ -17,7 +17,7 @@
                         />
                     </div>
                     <h3 class="text-tttWhite mb-1 text-base font-semibold">{{ getRankInfo(rank).name }}</h3>
-                    <div class="mb-0.5 text-2xl font-bold" [class]="getRankInfo(rank).color">
+                    <div class="mb-0.5 text-2xl font-bold" [ngClass]="getRankInfo(rank).color">
                         {{ memberStats[rank] }}
                     </div>
                     <div class="text-tttWhite/50 text-[10px]">Mitglieder</div>

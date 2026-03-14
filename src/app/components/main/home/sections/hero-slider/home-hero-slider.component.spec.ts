@@ -13,8 +13,8 @@ describe('HomeHeroSliderComponent', () => {
         fixture = TestBed.createComponent(HomeHeroSliderComponent);
         component = fixture.componentInstance;
         component.bannerSlides = [
-            { image: '/img/home-banner/home-banner1.webp', title: 'Title', subtitle: 'Subtitle' },
-            { image: '/img/home-banner/home-banner2.webp', title: 'Title2', subtitle: 'Subtitle2' },
+            { image: '/img/home-banner/home-banner1.webp', title: 'Title', titleText: 'Title', subtitle: 'Subtitle' },
+            { image: '/img/home-banner/home-banner2.webp', title: 'Title2', titleText: 'Title2', subtitle: 'Subtitle2' },
         ];
         component.currentImageIndex = 0;
         fixture.detectChanges();

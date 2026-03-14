@@ -22,53 +22,56 @@ export class HomeComponent implements OnInit, OnDestroy {
         {
             image: '/img/home-banner/home-banner1.webp',
             title: 'TACTICAL TRAINING <span class="text-tttRed">TEAM</span>',
+            titleText: 'TACTICAL TRAINING TEAM',
             subtitle:
                 'Als eine der größeren Arma-Gemeinschaften im deutschsprachigen Raum bieten wir dir das volle Paket: Von Ausbildung und Training bis hin zu Events und Kampagnen ist alles dabei.',
         },
         {
             image: '/img/home-banner/home-banner2.webp',
             title: 'REALISTISCHES <span class="text-tttRed">MILSIM</span>',
+            titleText: 'REALISTISCHES MILSIM',
             subtitle:
                 'Erlebe authentische militärische Simulation in Arma 3 und Arma Reforger mit taktischem Tiefgang und koordinierten Großoperationen.',
         },
         {
             image: '/img/home-banner/home-banner3.webp',
             title: 'STARKE <span class="text-tttRed">COMMUNITY</span>',
+            titleText: 'STARKE COMMUNITY',
             subtitle:
                 'Über 80 aktive Community-Mitglieder, regelmäßige Missionen und eine europaweite vernetzte MilSim-Community erwarten dich.',
         },
     ];
     readonly galleryImages: HomeGalleryImage[] = [
         {
-            itemImageSrc: 'img/home-gallery/gallery-img1.webp',
+            itemImageSrc: '/img/home-gallery/gallery-img1.webp',
             alt: 'TTT Community Moment 1',
         },
         {
-            itemImageSrc: 'img/home-gallery/gallery-img2.webp',
+            itemImageSrc: '/img/home-gallery/gallery-img2.webp',
             alt: 'TTT Community Moment 2',
         },
         {
-            itemImageSrc: 'img/home-gallery/gallery-img3.webp',
+            itemImageSrc: '/img/home-gallery/gallery-img3.webp',
             alt: 'TTT Community Moment 3',
         },
         {
-            itemImageSrc: 'img/home-gallery/gallery-img4.webp',
+            itemImageSrc: '/img/home-gallery/gallery-img4.webp',
             alt: 'TTT Community Moment 4',
         },
         {
-            itemImageSrc: 'img/home-gallery/gallery-img5.webp',
+            itemImageSrc: '/img/home-gallery/gallery-img5.webp',
             alt: 'TTT Community Moment 5',
         },
         {
-            itemImageSrc: 'img/home-gallery/gallery-img6.webp',
+            itemImageSrc: '/img/home-gallery/gallery-img6.webp',
             alt: 'TTT Community Moment 6',
         },
         {
-            itemImageSrc: 'img/home-gallery/gallery-img7.webp',
+            itemImageSrc: '/img/home-gallery/gallery-img7.webp',
             alt: 'TTT Community Moment 7',
         },
         {
-            itemImageSrc: 'img/home-gallery/gallery-img8.webp',
+            itemImageSrc: '/img/home-gallery/gallery-img8.webp',
             alt: 'TTT Community Moment 8',
         },
     ];
@@ -98,20 +101,29 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.stopSlider();
     }
 
-    nextImage(): void {
+    nextImage(isAutoAdvance = false): void {
+        if (!isAutoAdvance) {
+            this.stopSlider();
+        }
+
         this.currentImageIndex = (this.currentImageIndex + 1) % this.bannerSlides.length;
-        this.restartSlider();
+
+        if (!isAutoAdvance) {
+            this.startSlider();
+        }
     }
 
     previousImage(): void {
+        this.stopSlider();
         this.currentImageIndex = this.currentImageIndex === 0 ? this.bannerSlides.length - 1 : this.currentImageIndex - 1;
-        this.restartSlider();
+        this.startSlider();
     }
 
     goToImage(index: number): void {
         if (index >= 0 && index < this.bannerSlides.length) {
+            this.stopSlider();
             this.currentImageIndex = index;
-            this.restartSlider();
+            this.startSlider();
         }
     }
 
@@ -119,7 +131,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.stopSlider();
         if (this.bannerSlides.length > 1) {
             this.sliderInterval = setInterval(() => {
-                this.nextImage();
+                this.nextImage(true);
             }, this.slideInterval);
         }
     }
@@ -129,14 +141,5 @@ export class HomeComponent implements OnInit, OnDestroy {
             clearInterval(this.sliderInterval);
             this.sliderInterval = undefined;
         }
-    }
-
-    private restartSlider(): void {
-        this.startSlider();
-    }
-
-    getCleanTitle(title: string): string {
-        const doc = new DOMParser().parseFromString(title, 'text/html');
-        return doc.body.textContent || '';
     }
 }

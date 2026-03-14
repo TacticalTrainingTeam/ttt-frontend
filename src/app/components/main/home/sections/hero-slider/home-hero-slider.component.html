@@ -9,10 +9,8 @@
                 >
                     <img
                         [src]="slide.image"
-                        alt="Banner-Bild"
-                        title="Banner-Bild"
-                        [attr.alt]="slide.title + ' - ' + slide.subtitle"
-                        [attr.title]="slide.title"
+                        alt="{{ slide.titleText }} - {{ slide.subtitle }}"
+                        title="{{ slide.titleText }}"
                         class="h-full w-full object-cover"
                     />
                 </div>
@@ -34,7 +32,7 @@
                         'bg-tttWhite/40': i !== currentImageIndex,
                         'scale-125': i === currentImageIndex,
                     }"
-                    [attr.aria-label]="'Zu Banner ' + (i + 1) + ' wechseln: ' + getCleanTitle(slide.title)"
+                    [attr.aria-label]="'Zu Banner ' + (i + 1) + ' wechseln: ' + slide.titleText"
                     [attr.aria-current]="i === currentImageIndex ? 'true' : 'false'"
                 >
                     <span class="sr-only">Banner {{ i + 1 }}</span>
@@ -44,7 +42,7 @@
 
         <div class="pointer-events-none absolute inset-0 z-10 flex h-full items-center">
             <div class="ttt-hero-container pointer-events-auto">
-                <h1 class="ttt-hero-title" [attr.aria-label]="getCleanTitle(currentSlide?.title || 'Tactical Training Team')">
+                <h1 class="ttt-hero-title" [attr.aria-label]="currentSlide?.titleText || 'Tactical Training Team'">
                     <span [innerHTML]="currentSlide?.title || 'Tactical Training Team'"></span>
                     @if (!currentSlide?.title) {
                         <span class="sr-only">Tactical Training Team</span>

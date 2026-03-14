@@ -1,12 +1,15 @@
 import { HttpInterceptorFn } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 /**
  * Adds security headers and blocks insecure HTTP requests in HTTPS context
  */
 export const securityInterceptor: HttpInterceptorFn = (req, next) => {
-    if (req.url.startsWith('http://') && location.protocol === 'https:') {
+    const isHttpsContext = globalThis.location?.protocol === 'https:';
+
+    if (req.url.startsWith('http://') && isHttpsContext) {
         console.warn('Blocking insecure HTTP request in HTTPS context:', req.url);
-        throw new Error('Insecure HTTP request blocked');
+        return throwError(() => new Error('Insecure HTTP request blocked'));
     }
 
     const secureReq = req.clone({

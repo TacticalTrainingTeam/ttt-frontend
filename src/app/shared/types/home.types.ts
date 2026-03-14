@@ -1,6 +1,7 @@
 export interface HomeBannerSlide {
     image: string;
     title: string;
+    titleText: string;
     subtitle: string;
 }
 

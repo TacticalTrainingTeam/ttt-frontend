@@ -1,19 +1,26 @@
 // @ts-check
 const eslint = require('@eslint/js');
+const { defineConfig } = require('eslint/config');
 const tseslint = require('typescript-eslint');
 const angular = require('angular-eslint');
 const eslintConfigPrettier = require('eslint-config-prettier');
 
-module.exports = tseslint.config(
+/** @type {any} */
+const tsExtends = [
+    eslint.configs.recommended,
+    ...tseslint.configs.recommended,
+    ...tseslint.configs.stylistic,
+    ...angular.configs.tsRecommended,
+    eslintConfigPrettier,
+];
+
+/** @type {any} */
+const htmlExtends = [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility];
+
+module.exports = defineConfig(
     {
         files: ['**/*.ts'],
-        extends: [
-            eslint.configs.recommended,
-            ...tseslint.configs.recommended,
-            ...tseslint.configs.stylistic,
-            ...angular.configs.tsRecommended,
-            eslintConfigPrettier,
-        ],
+        extends: tsExtends,
         processor: angular.processInlineTemplates,
         rules: {
             // Security rules
@@ -21,7 +28,6 @@ module.exports = tseslint.config(
             'no-implied-eval': 'error',
             'no-new-func': 'error',
             'no-script-url': 'error',
-            'no-unsafe-innerHTML': 'off', // Angular handles sanitization automatically
             '@typescript-eslint/no-explicit-any': 'warn',
 
             '@angular-eslint/directive-selector': [
@@ -44,7 +50,7 @@ module.exports = tseslint.config(
     },
     {
         files: ['**/*.html'],
-        extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
+        extends: htmlExtends,
         rules: {},
     }
 );
