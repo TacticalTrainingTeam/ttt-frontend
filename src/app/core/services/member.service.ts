@@ -140,7 +140,7 @@ export class MemberService {
                     },
                     {
                         id: 'abt-2',
-                        name: 'Medien & PR',
+                        name: 'PR',
                         icon: '/img/aufstellung/group/group-pr-icon.png',
                         description: 'Social Media und Öffentlichkeitsarbeit',
                     },
