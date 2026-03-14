@@ -1,12 +1,10 @@
 <!-- Live Streams Section -->
 <div class="mb-8">
-    <div class="ttt-text-center mb-6">
-        <h2 class="ttt-section-title mb-2 flex items-center justify-center gap-3">
-            <i class="pi pi-video text-tttRed"></i>
-            Livestreams
-        </h2>
-        <p class="ttt-description-text">Aktuelle Live-Uebertragungen unserer Community</p>
-    </div>
+    <ttt-section-header
+        title="Livestreams"
+        subtitle="Aktuelle Live-Uebertragungen unserer Community"
+        iconClass="pi pi-video text-tttRed"
+    ></ttt-section-header>
 
     @if (liveStreams$ | async; as liveStreams) {
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

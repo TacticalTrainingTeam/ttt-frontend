@@ -10,9 +10,15 @@ import { ChronikCtaComponent } from './sections/cta/chronik-cta.component';
 @Component({
     selector: 'ttt-chronik',
     standalone: true,
-    imports: [CommonModule, PageLayoutComponent, ChronikOriginComponent, ChronikTimelineComponent, ChronikFictionComponent, ChronikCtaComponent],
+    imports: [
+        CommonModule,
+        PageLayoutComponent,
+        ChronikOriginComponent,
+        ChronikTimelineComponent,
+        ChronikFictionComponent,
+        ChronikCtaComponent,
+    ],
     templateUrl: './chronik.component.html',
-    styleUrl: './chronik.component.css',
 })
 export class ChronikComponent {
     // Public readonly properties

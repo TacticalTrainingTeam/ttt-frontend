@@ -4,22 +4,13 @@ import { MenuItem } from 'primeng/api';
 import { Menubar } from 'primeng/menubar';
 import { ButtonDirective } from 'primeng/button';
 
-const HEADER_CONFIG = {
-    LOGO_PATH: '/img/logo.webp',
-    LOGO_ALT: 'Tactical Training Team Logo',
-} as const;
-
 @Component({
     selector: 'ttt-header',
     standalone: true,
     imports: [RouterLink, Menubar, ButtonDirective],
     templateUrl: './header.component.html',
-    styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-    readonly logoPath = HEADER_CONFIG.LOGO_PATH;
-    readonly logoAlt = HEADER_CONFIG.LOGO_ALT;
-
     readonly items: MenuItem[] = [
         {
             label: 'Home',

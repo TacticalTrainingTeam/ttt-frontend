@@ -4,11 +4,12 @@ import { ActivableDirective } from '../../../../../shared/directives/activable.d
 import { CampaignRibbon, RankType } from '../../../../../shared/types/member.types';
 import { AUFSTELLUNG_SECURITY } from '../../aufstellung.shared';
 import { Member, MembersByRank, RankInfoMap } from '../../../../../shared/types/aufstellung.types';
+import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
 
 @Component({
     selector: 'ttt-aufstellung-roster',
     standalone: true,
-    imports: [CommonModule, ActivableDirective],
+    imports: [CommonModule, ActivableDirective, SectionHeaderComponent],
     templateUrl: './aufstellung-roster.component.html',
     styleUrl: './aufstellung-roster.component.css',
 })

@@ -3,13 +3,13 @@ import { DatePipe, AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { SlotbotEvent } from '../../../shared/types/events.types';
 import { EventsService } from '../../../core/services/events.service';
+import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 
 @Component({
     selector: 'ttt-left-sidebar',
     standalone: true,
-    imports: [DatePipe, AsyncPipe],
+    imports: [DatePipe, AsyncPipe, SectionHeaderComponent],
     templateUrl: './left-sidebar.component.html',
-    styleUrl: './left-sidebar.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeftSidebarComponent {

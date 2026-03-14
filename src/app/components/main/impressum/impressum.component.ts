@@ -7,7 +7,6 @@ import { PageLayoutComponent } from '../../../shared/components/page-layout/page
     standalone: true,
     imports: [CommonModule, PageLayoutComponent],
     templateUrl: './impressum.component.html',
-    styleUrl: './impressum.component.css',
 })
 export class ImpressumComponent {
     readonly pageTitle = 'Impressum';

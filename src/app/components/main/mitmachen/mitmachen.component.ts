@@ -16,7 +16,6 @@ import { MitmachenEntryCtaComponent } from './sections/entry-cta/mitmachen-entry
         MitmachenEntryCtaComponent,
     ],
     templateUrl: './mitmachen.component.html',
-    styleUrl: './mitmachen.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MitmachenComponent {

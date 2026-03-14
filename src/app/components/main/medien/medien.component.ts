@@ -20,7 +20,6 @@ import { MedienCorporateCtaComponent } from './sections/corporate-cta/medien-cor
         MedienCorporateCtaComponent,
     ],
     templateUrl: './medien.component.html',
-    styleUrl: './medien.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MedienComponent {

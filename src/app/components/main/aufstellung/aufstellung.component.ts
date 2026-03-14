@@ -83,7 +83,6 @@ const AUFSTELLUNG_CONFIG = {
         AufstellungRosterComponent,
     ],
     templateUrl: './aufstellung.component.html',
-    styleUrl: './aufstellung.component.css',
 })
 export class AufstellungComponent implements OnInit {
     private readonly memberService = inject(MemberService);

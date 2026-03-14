@@ -7,7 +7,6 @@ import { HomeBannerSlide } from '../../../../../shared/types/home.types';
     standalone: true,
     imports: [CommonModule],
     templateUrl: './home-hero-slider.component.html',
-    styleUrl: './home-hero-slider.component.css',
 })
 export class HomeHeroSliderComponent {
     @Input({ required: true }) bannerSlides: HomeBannerSlide[] = [];

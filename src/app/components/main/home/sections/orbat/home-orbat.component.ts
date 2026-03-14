@@ -7,6 +7,5 @@ import { ButtonDirective } from 'primeng/button';
     standalone: true,
     imports: [RouterLink, ButtonDirective],
     templateUrl: './home-orbat.component.html',
-    styleUrl: './home-orbat.component.css',
 })
 export class HomeOrbatComponent {}

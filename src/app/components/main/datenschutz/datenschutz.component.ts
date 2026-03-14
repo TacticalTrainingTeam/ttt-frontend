@@ -8,7 +8,6 @@ import { PageLayoutComponent } from '../../../shared/components/page-layout/page
     standalone: true,
     imports: [CommonModule, RouterModule, PageLayoutComponent],
     templateUrl: './datenschutz.component.html',
-    styleUrl: './datenschutz.component.css',
 })
 export class DatenschutzComponent {
     readonly pageTitle = 'Datenschutzerklärung';

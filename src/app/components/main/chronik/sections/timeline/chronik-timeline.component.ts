@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { TimelineEvent } from '../../../../../shared/types/chronik.types';
+import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
 
 @Component({
     selector: 'ttt-chronik-timeline',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, SectionHeaderComponent],
     templateUrl: './chronik-timeline.component.html',
     styleUrl: './chronik-timeline.component.css',
 })

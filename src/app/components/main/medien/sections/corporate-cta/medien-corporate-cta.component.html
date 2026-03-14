@@ -1,39 +1,22 @@
 <!-- Corporate Design Section -->
 <div class="mb-8">
-    <div class="ttt-text-center mb-6">
-        <h2 class="ttt-section-title mb-2 flex items-center justify-center gap-3">
-            <i class="pi pi-palette text-tttRed"></i>
-            Corporate Design
-        </h2>
-        <p class="ttt-description-text">Logos, Richtlinien und offizielle Ressourcen</p>
-    </div>
+    <ttt-section-header
+        title="Corporate Design"
+        subtitle="Logos, Richtlinien und offizielle Ressourcen"
+        iconClass="pi pi-palette text-tttRed"
+    ></ttt-section-header>
 
     <div class="grid grid-cols-1 gap-6">
-        <a
+        <ttt-external-link-tile
             [href]="wikiUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="ttt-content-card group hover:border-tttRed/50 hover:bg-tttRed/10 block text-left transition-all duration-300"
-            aria-label="Corporate Design Wiki oeffnen"
-        >
-            <div class="flex items-start gap-4">
-                <div class="flex-shrink-0">
-                    <div
-                        class="bg-tttRed/20 flex h-12 w-12 items-center justify-center rounded-lg transition-transform group-hover:scale-110"
-                    >
-                        <i class="pi pi-palette text-tttRed text-2xl"></i>
-                    </div>
-                </div>
-                <div class="min-w-0 flex-1">
-                    <h3 class="text-tttWhite group-hover:text-tttRed mb-1 text-lg font-bold transition-colors">Corporate Design Wiki</h3>
-                    <p class="text-tttGray-300 mb-2 text-base">Offizielle Richtlinien fuer Logos, Farben und Design-Elemente</p>
-                    <div class="text-tttGray-300 flex items-center gap-2 text-sm">
-                        <i class="pi pi-external-link"></i>
-                        wiki.tacticalteam.de
-                    </div>
-                </div>
-            </div>
-        </a>
+            title="Corporate Design Wiki"
+            description="Offizielle Richtlinien fuer Logos, Farben und Design-Elemente"
+            iconClass="pi pi-palette text-tttRed text-2xl"
+            displayUrl="wiki.tacticalteam.de"
+            ariaLabel="Corporate Design Wiki oeffnen"
+            iconWrapperClass="bg-tttRed/20 flex h-12 w-12 items-center justify-center rounded-lg transition-transform group-hover:scale-110"
+            cardClass="ttt-content-card group hover:border-tttRed/50 hover:bg-tttRed/10 block text-left transition-all duration-300"
+        ></ttt-external-link-tile>
     </div>
 </div>
 

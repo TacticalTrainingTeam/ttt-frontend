@@ -8,7 +8,6 @@ import { PageLayoutComponent } from '../../../shared/components/page-layout/page
     standalone: true,
     imports: [CommonModule, RouterModule, PageLayoutComponent],
     templateUrl: './datenschutz-social-media.component.html',
-    styleUrl: './datenschutz-social-media.component.css',
 })
 export class DatenschutzSocialMediaComponent {
     readonly pageTitle = 'Datenschutzerklärung für Social Media';

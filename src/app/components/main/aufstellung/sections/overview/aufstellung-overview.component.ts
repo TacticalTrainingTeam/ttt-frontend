@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MemberStats, RankInfoMap } from '../../../../../shared/types/aufstellung.types';
 import { RankType } from '../../../../../shared/types/member.types';
+import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
 
 @Component({
     selector: 'ttt-aufstellung-overview',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, SectionHeaderComponent],
     templateUrl: './aufstellung-overview.component.html',
     styleUrl: './aufstellung-overview.component.css',
 })

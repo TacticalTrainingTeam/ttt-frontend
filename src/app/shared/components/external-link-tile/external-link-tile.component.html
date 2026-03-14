@@ -1,0 +1,19 @@
+<a [href]="href" target="_blank" rel="noopener noreferrer" [class]="cardClass" [attr.aria-label]="ariaLabel || title + ' oeffnen'">
+    <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+            <div [class]="iconWrapperClass">
+                <i [ngClass]="iconClass"></i>
+            </div>
+        </div>
+        <div class="min-w-0 flex-1">
+            <h3 class="text-tttWhite group-hover:text-tttRed mb-1 text-lg font-bold transition-colors">{{ title }}</h3>
+            <p class="text-tttGray-300 mb-2 text-base">{{ description }}</p>
+            @if (displayUrl) {
+                <div class="text-tttGray-300 flex items-center gap-2 text-sm">
+                    <i class="pi pi-external-link"></i>
+                    {{ displayUrl }}
+                </div>
+            }
+        </div>
+    </div>
+</a>

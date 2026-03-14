@@ -26,8 +26,13 @@ describe('RightSidebarComponent', () => {
         expect(compiled.textContent).toContain('Live Discord');
     });
 
-    it('should have Discord configuration', () => {
-        expect(component.discordConfig).toBeDefined();
-        expect(component.discordIcon).toBeDefined();
+    it('should include Discord widget and fallback link', () => {
+        const compiled = fixture.nativeElement as HTMLElement;
+        const iframe = compiled.querySelector('iframe');
+        const fallbackLink = compiled.querySelector('a[href="https://discord.tacticalteam.de"]');
+
+        expect(iframe).toBeTruthy();
+        expect(iframe?.getAttribute('src')).toContain('discord.com/widget');
+        expect(fallbackLink).toBeTruthy();
     });
 });

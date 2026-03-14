@@ -1,12 +1,6 @@
 <section class="bg-tttGray-900 py-8">
     <div class="ttt-page-container">
-        <div class="ttt-text-center mb-6">
-            <h2 class="ttt-section-title mb-2 flex items-center justify-center gap-3">
-                <i class="pi pi-users text-tttRed"></i>
-                {{ title }}
-            </h2>
-            <p class="ttt-description-text">{{ subtitle }}</p>
-        </div>
+        <ttt-section-header [title]="title" [subtitle]="subtitle" iconClass="pi pi-users text-tttRed"></ttt-section-header>
 
         <div class="space-y-8">
             @for (rank of rankOrder; track rank) {
