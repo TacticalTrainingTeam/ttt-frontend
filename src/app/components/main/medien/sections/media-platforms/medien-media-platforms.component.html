@@ -9,6 +9,7 @@
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         @for (platform of mediaPlatforms; track platform.id) {
             <ttt-external-link-tile
+                class="block h-full"
                 [href]="platform.url"
                 [title]="platform.name"
                 [description]="platform.description"
@@ -16,10 +17,10 @@
                 [displayUrl]="platform.displayUrl"
                 [ariaLabel]="platform.ariaLabel"
                 [iconWrapperClass]="
-                    'flex h-12 w-12 items-center justify-center rounded-lg transition-transform group-hover:scale-110 ' +
+                    'flex h-12 w-12 items-center justify-center rounded-lg ' +
                     platform.iconWrapperClass
                 "
-                [cardClass]="'ttt-content-card group block text-left transition-all duration-300 ' + platform.cardClass"
+                [cardClass]="'ttt-content-card group block text-left h-full ' + platform.cardClass"
             ></ttt-external-link-tile>
         }
     </div>

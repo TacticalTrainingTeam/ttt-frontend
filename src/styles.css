@@ -105,7 +105,7 @@
     }
 
     .ttt-feature-title {
-        @apply text-tttWhite group-hover:text-tttRed text-lg font-bold break-words transition-colors duration-300;
+        @apply text-tttWhite text-lg font-bold break-words transition-colors duration-300;
     }
 
     /* Body Text */
@@ -148,7 +148,7 @@
 
     /* Links & Interactive */
     .ttt-link {
-        @apply text-tttRed hover:text-tttRed-300 transition-colors;
+        @apply text-tttRed transition-colors;
     }
 
     /* Layout Helpers */
@@ -170,7 +170,7 @@
     }
 
     .ttt-card-title {
-        @apply text-tttWhite group-hover:text-tttRed mb-1 text-lg font-bold break-words transition-colors duration-300;
+        @apply text-tttWhite mb-1 text-lg font-bold break-words transition-colors duration-300;
     }
 
     .ttt-stat-value {
@@ -182,7 +182,7 @@
     }
 
     .ttt-step-link {
-        @apply text-tttRed hover:text-tttRed-400 inline-flex items-center gap-1 text-sm font-medium transition-colors;
+        @apply text-tttRed inline-flex items-center gap-1 text-sm font-medium transition-transform duration-300 hover:scale-105;
     }
 
     .ttt-req-text {
@@ -191,8 +191,8 @@
 }
 /* Central Button Styles */
 .ttt-btn-primary {
-    @apply bg-tttRed text-tttWhite hover:shadow-tttRed/30 inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold shadow-lg transition-all duration-300 hover:shadow-xl;
+    @apply bg-tttRed text-tttWhite inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold shadow-lg transition-transform duration-300 hover:scale-105;
 }
 .ttt-btn-secondary {
-    @apply border-tttWhite/30 bg-tttWhite/10 text-tttWhite hover:bg-tttWhite/20 inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-all duration-300;
+    @apply border-tttWhite/30 bg-tttWhite/10 text-tttWhite inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-transform duration-300 hover:scale-105;
 }

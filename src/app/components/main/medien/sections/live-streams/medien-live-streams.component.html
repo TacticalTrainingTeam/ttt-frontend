@@ -10,7 +10,7 @@
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             @for (stream of liveStreams; track stream.id) {
                 <a
-                    class="ttt-content-card group hover:border-tttRed/50 cursor-pointer transition-all duration-300"
+                    class="ttt-content-card group cursor-pointer transition-transform duration-300 hover:scale-105"
                     [attr.aria-label]="'Live Stream oeffnen: ' + stream.title"
                     [href]="stream.url"
                     target="_blank"
@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="space-y-2">
-                        <h3 class="text-tttWhite group-hover:text-tttRed line-clamp-2 text-lg font-bold transition-colors">
+                        <h3 class="text-tttWhite line-clamp-2 text-lg font-bold transition-colors">
                             {{ stream.title }}
                         </h3>
                         <p class="text-tttGray-300 text-base">

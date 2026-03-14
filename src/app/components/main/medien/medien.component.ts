@@ -54,7 +54,7 @@ export class MedienComponent {
             displayUrl: 'youtube.com/@tacticalteamde',
             ariaLabel: 'YouTube Kanal öffnen',
             iconClass: 'pi pi-youtube text-2xl text-red-400',
-            cardClass: 'hover:border-red-400/50 hover:bg-red-400/10',
+            cardClass: 'transition-transform duration-300 hover:scale-105',
             iconWrapperClass: 'bg-red-500/20',
         },
         {
@@ -65,7 +65,7 @@ export class MedienComponent {
             displayUrl: 'twitch.tv/tacticaltrainingteam',
             ariaLabel: 'Twitch Kanal öffnen',
             iconClass: 'pi pi-video text-2xl text-purple-400',
-            cardClass: 'hover:border-purple-400/50 hover:bg-purple-400/10',
+            cardClass: 'transition-transform duration-300 hover:scale-105',
             iconWrapperClass: 'bg-purple-500/20',
         },
         {
@@ -76,7 +76,7 @@ export class MedienComponent {
             displayUrl: 'kick.com/tacticaltrainingteam',
             ariaLabel: 'Kick Kanal öffnen',
             iconClass: 'pi pi-play text-2xl text-green-400',
-            cardClass: 'hover:border-green-400/50 hover:bg-green-400/10',
+            cardClass: 'transition-transform duration-300 hover:scale-105',
             iconWrapperClass: 'bg-green-500/20',
         },
     ];
@@ -89,7 +89,7 @@ export class MedienComponent {
             handle: '@TTT_ArmA',
             ariaLabel: 'Social Media öffnen: X (Twitter)',
             iconClass: 'pi pi-twitter text-xl text-blue-400',
-            cardClass: 'hover:border-blue-400/50 hover:bg-blue-400/10',
+            cardClass: 'transition-transform duration-300 hover:scale-105',
         },
         {
             id: 'mastodon',
@@ -98,7 +98,7 @@ export class MedienComponent {
             handle: '@tacticaltrainingteam',
             ariaLabel: 'Social Media öffnen: Mastodon',
             iconClass: 'pi pi-share-alt text-xl text-purple-400',
-            cardClass: 'hover:border-purple-400/50 hover:bg-purple-400/10',
+            cardClass: 'transition-transform duration-300 hover:scale-105',
         },
         {
             id: 'bluesky',
@@ -107,7 +107,7 @@ export class MedienComponent {
             handle: 'tacticalteam.bsky.social',
             ariaLabel: 'Social Media öffnen: Bluesky',
             iconClass: 'pi pi-cloud text-xl text-blue-500',
-            cardClass: 'hover:border-blue-500/50 hover:bg-blue-500/10',
+            cardClass: 'transition-transform duration-300 hover:scale-105',
         },
         {
             id: 'instagram',
@@ -116,7 +116,7 @@ export class MedienComponent {
             handle: 'tacticaltrainingteam',
             ariaLabel: 'Social Media öffnen: Instagram',
             iconClass: 'pi pi-camera text-xl text-pink-400',
-            cardClass: 'hover:border-pink-400/50 hover:bg-pink-400/10',
+            cardClass: 'transition-transform duration-300 hover:scale-105',
         },
         {
             id: 'tiktok',
@@ -125,7 +125,7 @@ export class MedienComponent {
             handle: '@tacticaltrainingteam',
             ariaLabel: 'Social Media öffnen: TikTok',
             iconClass: 'pi pi-play text-xl text-black',
-            cardClass: 'hover:border-black/50 hover:bg-black/10',
+            cardClass: 'transition-transform duration-300 hover:scale-105',
         },
         {
             id: 'steam',
@@ -134,7 +134,7 @@ export class MedienComponent {
             handle: 'Community-Gruppe',
             ariaLabel: 'Steam Gruppe öffnen',
             iconClass: 'pi pi-users text-xl text-blue-400',
-            cardClass: 'hover:border-blue-600/50 hover:bg-blue-600/10',
+            cardClass: 'transition-transform duration-300 hover:scale-105',
         },
         {
             id: 'reddit',
@@ -143,7 +143,7 @@ export class MedienComponent {
             handle: 'u/tacticaltrainingteam',
             ariaLabel: 'Reddit Subreddit öffnen',
             iconClass: 'pi pi-reddit text-xl text-orange-500',
-            cardClass: 'hover:border-orange-500/50 hover:bg-orange-500/10',
+            cardClass: 'transition-transform duration-300 hover:scale-105',
         },
         {
             id: 'github',
@@ -152,7 +152,7 @@ export class MedienComponent {
             handle: 'TacticalTrainingTeam',
             ariaLabel: 'GitHub Repository öffnen',
             iconClass: 'pi pi-github text-xl text-gray-400',
-            cardClass: 'hover:border-gray-400/50 hover:bg-gray-400/10',
+            cardClass: 'transition-transform duration-300 hover:scale-105',
         },
     ];
 }

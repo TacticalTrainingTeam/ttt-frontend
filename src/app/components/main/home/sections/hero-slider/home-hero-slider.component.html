@@ -27,7 +27,7 @@
                     type="button"
                     (click)="selectImage(i)"
                     title="Banner wechseln"
-                    class="h-2 w-8 rounded-full transition-all duration-300 hover:scale-110"
+                    class="h-2 w-8 rounded-full transition-transform duration-300 hover:scale-110"
                     [attr.title]="'Banner ' + (i + 1)"
                     [ngClass]="{
                         'bg-tttRed': i === currentImageIndex,

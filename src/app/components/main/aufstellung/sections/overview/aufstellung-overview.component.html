@@ -4,15 +4,13 @@
 
         <div class="mb-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
             @for (rank of rankOrder; track rank) {
-                <div
-                    class="border-tttWhite/10 bg-tttGray-800/50 hover:border-tttRed/30 hover:shadow-tttRed/10 rounded-lg border p-3 text-center backdrop-blur-sm transition-all duration-300 hover:shadow-lg"
-                >
+                <div class="border-tttWhite/10 bg-tttGray-800/50 rounded-lg border p-3 text-center backdrop-blur-sm transition-transform duration-300 hover:scale-105">
                     <div class="mb-2 flex justify-center">
                         <img
                             [src]="getRankInfo(rank).icon"
                             [alt]="getRankInfo(rank).name + ' Abzeichen'"
                             title="{{ getRankInfo(rank).name }}"
-                            class="h-8 w-8 object-contain transition-transform duration-300 hover:scale-110"
+                            class="h-8 w-8 object-contain"
                             loading="lazy"
                         />
                     </div>

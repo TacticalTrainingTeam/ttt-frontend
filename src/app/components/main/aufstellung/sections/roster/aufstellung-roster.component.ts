@@ -120,19 +120,19 @@ export class AufstellungRosterComponent {
     getAvatarBorderClasses(rank: RankType): Record<string, boolean> {
         switch (rank) {
             case 'offizier':
-                return { 'border-yellow-400/50': true, 'group-hover:border-yellow-400': true };
+                return { 'border-yellow-400/50': true };
             case 'unteroffizier':
-                return { 'border-gray-400/50': true, 'group-hover:border-gray-400': true };
+                return { 'border-gray-400/50': true };
             case 'veteran':
-                return { 'border-green-400/50': true, 'group-hover:border-green-400': true };
+                return { 'border-green-400/50': true };
             case 'soldat':
-                return { 'border-blue-600/50': true, 'group-hover:border-blue-600': true };
+                return { 'border-blue-600/50': true };
             case 'rekrut':
-                return { 'border-blue-300/50': true, 'group-hover:border-blue-300': true };
+                return { 'border-blue-300/50': true };
             case 'gast':
-                return { 'border-gray-300/50': true, 'group-hover:border-gray-300': true };
+                return { 'border-gray-300/50': true };
             default:
-                return { 'border-gray-400/50': true, 'group-hover:border-gray-400': true };
+                return { 'border-gray-400/50': true };
         }
     }
 }

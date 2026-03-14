@@ -14,7 +14,6 @@ export class ExternalLinkTileComponent {
     @Input({ required: true }) iconClass!: string;
     @Input() displayUrl?: string;
     @Input() ariaLabel?: string;
-    @Input() cardClass = 'ttt-content-card group block text-left transition-all duration-300';
-    @Input() iconWrapperClass =
-        'bg-tttGray-700/50 flex h-12 w-12 items-center justify-center rounded-lg transition-transform group-hover:scale-110';
+    @Input() cardClass = 'ttt-content-card group block text-left transition-transform duration-300 hover:scale-105';
+    @Input() iconWrapperClass = 'bg-tttGray-700/50 flex h-12 w-12 items-center justify-center rounded-lg';
 }
