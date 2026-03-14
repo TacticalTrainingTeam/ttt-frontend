@@ -1,0 +1,34 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AufstellungOverviewComponent } from './aufstellung-overview.component';
+
+describe('AufstellungOverviewComponent', () => {
+    let component: AufstellungOverviewComponent;
+    let fixture: ComponentFixture<AufstellungOverviewComponent>;
+
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [AufstellungOverviewComponent],
+        }).compileComponents();
+
+        fixture = TestBed.createComponent(AufstellungOverviewComponent);
+        component = fixture.componentInstance;
+        component.rankOrder = ['offizier'];
+        component.rankInfo = {
+            offizier: { name: 'Offizier', shortName: 'Off.', icon: '/img/rank.png', color: 'text-yellow-400', priority: 1 },
+            unteroffizier: { name: 'Unteroffizier', shortName: 'Uffz.', icon: '/img/rank.png', color: 'text-gray-400', priority: 2 },
+            veteran: { name: 'Veteran', shortName: 'Vet.', icon: '/img/rank.png', color: 'text-green-400', priority: 3 },
+            soldat: { name: 'Soldat', shortName: 'Sdt.', icon: '/img/rank.png', color: 'text-blue-600', priority: 4 },
+            rekrut: { name: 'Rekrut', shortName: 'Rekr.', icon: '/img/rank.png', color: 'text-blue-300', priority: 5 },
+            gast: { name: 'Gast', shortName: 'Gast', icon: '/img/rank.png', color: 'text-gray-300', priority: 6 },
+        };
+        component.memberStats = { offizier: 1, unteroffizier: 0, veteran: 0, soldat: 0, rekrut: 0, gast: 0 };
+        component.totalMembers = 1;
+        component.title = 'Mitgliederübersicht';
+        component.subtitle = 'Subtitle';
+        fixture.detectChanges();
+    });
+
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
+});

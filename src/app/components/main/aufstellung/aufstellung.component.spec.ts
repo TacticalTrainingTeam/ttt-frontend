@@ -1,30 +1,58 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient } from '@angular/common/http';
-import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { of, throwError } from 'rxjs';
 import { AufstellungComponent } from './aufstellung.component';
 import { MemberService } from '../../../core/services/member.service';
-import { DOCUMENT } from '@angular/common';
-import { PLATFORM_ID } from '@angular/core';
+import { Member } from '../../../shared/types/member.types';
 
 describe('AufstellungComponent', () => {
     let component: AufstellungComponent;
     let fixture: ComponentFixture<AufstellungComponent>;
+    let memberServiceSpy: jasmine.SpyObj<MemberService>;
+
+    const mockMembers: Member[] = [
+        {
+            id: 'member-1',
+            name: 'Alpha',
+            rank: 'offizier',
+            avatar: '',
+            memberSince: '2020-01-01',
+            medals: [],
+            campaignRibbons: [],
+            abteilungen: [],
+        },
+        {
+            id: 'member-2',
+            name: 'Bravo',
+            rank: 'soldat',
+            avatar: '',
+            memberSince: '2021-01-01',
+            medals: [],
+            campaignRibbons: [],
+            abteilungen: [],
+        },
+        {
+            id: 'member-3',
+            name: 'Charlie',
+            rank: 'soldat',
+            avatar: '',
+            memberSince: '2022-01-01',
+            medals: [],
+            campaignRibbons: [],
+            abteilungen: [],
+        },
+    ];
 
     beforeEach(async () => {
+        memberServiceSpy = jasmine.createSpyObj<MemberService>('MemberService', ['getAllMembers']);
+        memberServiceSpy.getAllMembers.and.returnValue(of(mockMembers));
+
         await TestBed.configureTestingModule({
             imports: [AufstellungComponent],
-            providers: [
-                MemberService,
-                { provide: DOCUMENT, useValue: document },
-                { provide: PLATFORM_ID, useValue: 'browser' },
-                provideHttpClient(),
-                provideHttpClientTesting(),
-            ],
+            providers: [{ provide: MemberService, useValue: memberServiceSpy }],
         }).compileComponents();
 
         fixture = TestBed.createComponent(AufstellungComponent);
         component = fixture.componentInstance;
-        fixture.detectChanges();
     });
 
     it('should create', () => {
@@ -33,21 +61,22 @@ describe('AufstellungComponent', () => {
 
     it('should load dummy members', () => {
         component.ngOnInit();
-        expect(component.members).toBeDefined();
-        expect(component.members.length).toBeGreaterThanOrEqual(0);
-        expect(component.totalMembers).toBeGreaterThanOrEqual(0);
+        expect(memberServiceSpy.getAllMembers).toHaveBeenCalled();
+        expect(component.members.length).toBe(3);
+        expect(component.members.every((member) => member.isExpanded === false)).toBeTrue();
+        expect(component.totalMembers).toBe(3);
     });
 
     it('should group members by rank correctly', () => {
         component.ngOnInit();
         const membersByRank = component.membersByRank;
 
-        expect(membersByRank.offizier).toBeDefined();
-        expect(membersByRank.unteroffizier).toBeDefined();
-        expect(membersByRank.veteran).toBeDefined();
-        expect(membersByRank.soldat).toBeDefined();
-        expect(membersByRank.rekrut).toBeDefined();
-        expect(membersByRank.gast).toBeDefined();
+        expect(membersByRank.offizier.length).toBe(1);
+        expect(membersByRank.soldat.length).toBe(2);
+        expect(membersByRank.unteroffizier.length).toBe(0);
+        expect(membersByRank.veteran.length).toBe(0);
+        expect(membersByRank.rekrut.length).toBe(0);
+        expect(membersByRank.gast.length).toBe(0);
     });
 
     it('should calculate member stats correctly', () => {
@@ -55,79 +84,39 @@ describe('AufstellungComponent', () => {
         const stats = component.memberStats;
         const totalFromStats = Object.values(stats).reduce((sum, count) => sum + count, 0);
 
+        expect(stats.offizier).toBe(1);
+        expect(stats.soldat).toBe(2);
         expect(totalFromStats).toBe(component.totalMembers);
     });
 
-    it('should toggle member details', () => {
-        component.ngOnInit();
-        if (component.members && component.members.length > 0) {
-            const member = component.members[0];
-            const initialExpanded = member.isExpanded || false;
-
-            component.toggleMemberDetails(member);
-            expect(member.isExpanded).toBe(!initialExpanded);
-
-            component.toggleMemberDetails(member);
-            expect(member.isExpanded).toBe(initialExpanded);
-        } else {
-            expect(component.members).toBeDefined();
-            expect(Array.isArray(component.members)).toBe(true);
-        }
+    it('should provide expected static configuration', () => {
+        expect(component.pageTitle).toBe('Aufstellung');
+        expect(component.pageSubtitle).toContain('Mitglieder');
+        expect(component.sections.OVERVIEW.TITLE).toBeTruthy();
+        expect(component.sections.ROSTER.TITLE).toBeTruthy();
+        expect(component.loadingMessages.LOADING).toBeTruthy();
     });
 
-    it('should close other expanded members when opening a new one', () => {
-        component.ngOnInit();
-        if (component.members && component.members.length >= 2) {
-            const memberA = component.members[0];
-            const memberB = component.members[1];
-
-            component.toggleMemberDetails(memberA);
-            expect(memberA.isExpanded).toBe(true);
-
-            component.toggleMemberDetails(memberB);
-            expect(memberB.isExpanded).toBe(true);
-            expect(memberA.isExpanded).toBe(false);
-        } else {
-            expect(component.members).toBeDefined();
-        }
+    it('should expose rank metadata for all ranks', () => {
+        expect(component.rankOrder.length).toBe(6);
+        expect(component.rankInfo['offizier'].name).toBe('Offizier');
+        expect(component.rankInfo['rekrut'].priority).toBe(5);
+        expect(component.rankInfo['gast'].shortName).toBe('Gast');
     });
 
-    it('should detect expandable content correctly', () => {
-        component.ngOnInit();
-        const memberWithContent = component.members.find(
-            (m) => m.medals.length > 0 || m.campaignRibbons.length > 0 || m.abteilungen.length > 0
-        );
-        const memberWithoutContent = component.members.find(
-            (m) => m.medals.length === 0 && m.campaignRibbons.length === 0 && m.abteilungen.length === 0
-        );
+    it('should handle loading errors', () => {
+        memberServiceSpy.getAllMembers.and.returnValue(throwError(() => new Error('boom')));
 
-        if (memberWithContent) {
-            expect(component.hasExpandableContent(memberWithContent)).toBe(true);
-        } else if (memberWithoutContent) {
-            expect(component.hasExpandableContent(memberWithoutContent)).toBe(false);
-        } else {
-            // Fallback: ensure method exists and handles undefined gracefully
-            expect(typeof component.hasExpandableContent).toBe('function');
-            expect(Array.isArray(component.members)).toBe(true);
-        }
+        component.ngOnInit();
+
+        expect(component.isLoading).toBeFalse();
+        expect(component.loadingError).toBe('Fehler beim Laden der Mitgliederdaten');
+        expect(component.members.length).toBe(0);
     });
 
-    it('should format member since date correctly', () => {
-        component.ngOnInit();
-        const testDate = '2020-03-15';
-        const formatted = component.getFormattedMemberSince(testDate);
+    it('should retry loading on retryLoading call', () => {
+        component.retryLoading();
 
-        expect(formatted).toBeTruthy();
-        expect(typeof formatted).toBe('string');
-    });
-
-    it('should return correct rank info', () => {
-        const offizierInfo = component.getRankInfo('offizier');
-        expect(offizierInfo.name).toBe('Offizier');
-        expect(offizierInfo.priority).toBe(1);
-
-        const rekrutInfo = component.getRankInfo('rekrut');
-        expect(rekrutInfo.name).toBe('Rekrut');
-        expect(rekrutInfo.priority).toBe(5);
+        expect(memberServiceSpy.getAllMembers).toHaveBeenCalledTimes(1);
     });
 });
