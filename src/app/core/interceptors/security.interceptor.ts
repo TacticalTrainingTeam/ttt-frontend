@@ -14,7 +14,6 @@ export const securityInterceptor: HttpInterceptorFn = (req, next) => {
 
     const secureReq = req.clone({
         setHeaders: {
-            'X-Requested-With': 'XMLHttpRequest',
             'Cache-Control': 'no-cache',
             Pragma: 'no-cache',
         },

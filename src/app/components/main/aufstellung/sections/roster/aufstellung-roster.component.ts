@@ -48,13 +48,6 @@ export class AufstellungRosterComponent {
         }
     }
 
-    handleMemberSpaceKey(member: Member, event: Event): void {
-        if (this.hasExpandableContent(member)) {
-            event.preventDefault();
-            this.toggleMemberDetails(member);
-        }
-    }
-
     getRankInfo(rank: RankType) {
         return this.rankInfo[rank];
     }

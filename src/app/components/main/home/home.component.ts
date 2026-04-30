@@ -2,14 +2,14 @@ import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { MemberService } from '../../../core/services/member.service';
 import { HomeFeaturesJoinComponent } from './sections/features-join/home-features-join.component';
 import { HomeHeroSliderComponent } from './sections/hero-slider/home-hero-slider.component';
+import { HomeGalleryComponent } from './sections/gallery/home-gallery.component';
 import { HomeOrbatComponent } from './sections/orbat/home-orbat.component';
 import { HomeBannerSlide, HomeCommunityStat, HomeGalleryImage } from '../../../shared/types/home.types';
-import { GalleriaModule } from 'primeng/galleria';
 
 @Component({
     selector: 'ttt-home',
     standalone: true,
-    imports: [HomeHeroSliderComponent, HomeFeaturesJoinComponent, HomeOrbatComponent, GalleriaModule],
+    imports: [HomeHeroSliderComponent, HomeFeaturesJoinComponent, HomeGalleryComponent, HomeOrbatComponent],
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
 })

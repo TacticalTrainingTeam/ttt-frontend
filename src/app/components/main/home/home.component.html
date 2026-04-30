@@ -6,34 +6,7 @@
 
 <ttt-home-features-join [communityStats]="communityStats"></ttt-home-features-join>
 
-<!-- Gallery Section (PrimeNG Galleria) -->
-<section class="bg-tttBlack relative overflow-hidden py-16">
-    <div class="ttt-page-container">
-        <p-galleria
-            [value]="galleryImages"
-            [showThumbnails]="false"
-            [showIndicators]="true"
-            [circular]="true"
-            [autoPlay]="true"
-            [transitionInterval]="5000"
-            [containerStyle]="{ 'max-width': '100vw', margin: 'auto' }"
-            styleClass="w-full rounded-xl shadow-lg"
-        >
-            <ng-template pTemplate="item" let-item>
-                <img
-                    [src]="item.itemImageSrc"
-                    alt="{{ item.alt }}"
-                    title="{{ item.alt }}"
-                    class="mx-auto block h-64 w-full rounded-xl object-cover"
-                />
-            </ng-template>
-        </p-galleria>
-        <div class="mt-8 text-center">
-            <p class="ttt-constrained-text ttt-feature-description md:text-lg">
-                Einblicke aus unseren <span class="ttt-accent-text font-semibold">Events</span>
-            </p>
-        </div>
-    </div>
-</section>
+<!-- Gallery Section -->
+<ttt-home-gallery [galleryImages]="galleryImages"></ttt-home-gallery>
 
 <ttt-home-orbat></ttt-home-orbat>

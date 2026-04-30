@@ -188,11 +188,12 @@
     .ttt-req-text {
         @apply text-tttWhite flex-1 text-base font-semibold;
     }
-}
-/* Central Button Styles */
-.ttt-btn-primary {
-    @apply bg-tttRed text-tttWhite inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold shadow-lg transition-transform duration-300 hover:scale-105;
-}
-.ttt-btn-secondary {
-    @apply border-tttWhite/30 bg-tttWhite/10 text-tttWhite inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-transform duration-300 hover:scale-105;
+
+    /* Central Button Styles */
+    .ttt-btn-primary {
+        @apply bg-tttRed text-tttWhite inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold shadow-lg transition-transform duration-300 hover:scale-105;
+    }
+    .ttt-btn-secondary {
+        @apply border-tttWhite/30 bg-tttWhite/10 text-tttWhite inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-transform duration-300 hover:scale-105;
+    }
 }

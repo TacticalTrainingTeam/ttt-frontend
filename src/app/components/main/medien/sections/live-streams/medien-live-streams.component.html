@@ -1,13 +1,13 @@
 <!-- Live Streams Section -->
 <div class="mb-8">
-    <ttt-section-header title="Livestreams" subtitle="Aktuelle Live-Uebertragungen unserer Community"></ttt-section-header>
+    <ttt-section-header title="Livestreams" subtitle="Aktuelle Live-Übertragungen unserer Community"></ttt-section-header>
 
     @if (liveStreams$ | async; as liveStreams) {
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             @for (stream of liveStreams; track stream.id) {
                 <a
                     class="ttt-content-card group cursor-pointer transition-transform duration-300 hover:scale-105"
-                    [attr.aria-label]="'Live Stream oeffnen: ' + stream.title"
+                    [attr.aria-label]="'Live Stream öffnen: ' + stream.title"
                     [href]="stream.url"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -56,7 +56,7 @@
                 <i class="pi pi-video text-tttGray-600 text-4xl"></i>
             </div>
             <h3 class="text-tttWhite mb-2 text-xl font-bold">Keine Livestreams</h3>
-            <p class="text-tttGray-300">Derzeit sind keine Live-Uebertragungen aktiv.</p>
+            <p class="text-tttGray-300">Derzeit sind keine Live-Übertragungen aktiv.</p>
         </div>
     }
 </div>

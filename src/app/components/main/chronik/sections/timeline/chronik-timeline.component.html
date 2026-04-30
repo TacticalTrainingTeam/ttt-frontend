@@ -11,7 +11,6 @@
                         'bg-tttRed/10 border-tttRed/70': event.expanded,
                     }"
                     (click)="toggleEventDetails(event)"
-                    (keydown)="handleEventKeyboard(event, $event)"
                     [attr.aria-label]="'Details fuer ' + event.title + (event.expanded ? ' ausblenden' : ' anzeigen')"
                     [attr.aria-expanded]="event.expanded"
                 >
