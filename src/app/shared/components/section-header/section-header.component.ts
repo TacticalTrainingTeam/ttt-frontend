@@ -10,7 +10,6 @@ import { Component, Input } from '@angular/core';
 export class SectionHeaderComponent {
     @Input({ required: true }) title!: string;
     @Input() subtitle?: string;
-    @Input() iconClass?: string;
 
     @Input() containerClass = 'ttt-text-center mb-6';
     @Input() titleClass = 'ttt-section-title mb-2 flex items-center justify-center gap-3';

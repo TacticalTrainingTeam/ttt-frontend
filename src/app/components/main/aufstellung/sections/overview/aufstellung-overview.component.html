@@ -1,12 +1,10 @@
 <section class="mb-6">
     <div class="ttt-page-container">
-        <ttt-section-header [title]="title" [subtitle]="subtitle" iconClass="pi pi-chart-bar text-tttRed"></ttt-section-header>
+        <ttt-section-header [title]="title" [subtitle]="subtitle"></ttt-section-header>
 
         <div class="mb-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
             @for (rank of rankOrder; track rank) {
-                <div
-                    class="border-tttWhite/10 bg-tttGray-800/50 rounded-lg border p-3 text-center backdrop-blur-sm transition-transform duration-300 hover:scale-105"
-                >
+                <div class="border-tttWhite/10 bg-tttGray-800/50 rounded-lg border p-3 text-center backdrop-blur-sm">
                     <div class="mb-2 flex justify-center">
                         <img
                             [src]="getRankInfo(rank).icon"

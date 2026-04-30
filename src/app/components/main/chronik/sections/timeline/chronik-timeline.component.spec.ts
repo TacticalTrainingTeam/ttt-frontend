@@ -19,7 +19,6 @@ describe('ChronikTimelineComponent', () => {
                 title: 'Test Event',
                 date: '2020',
                 type: 'milestone',
-                icon: 'pi-star',
                 color: 'border-blue-500 bg-blue-500/20 text-blue-300',
                 description: 'desc',
                 details: ['detail'],

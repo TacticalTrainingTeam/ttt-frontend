@@ -1,10 +1,6 @@
 <!-- Live Streams Section -->
 <div class="mb-8">
-    <ttt-section-header
-        title="Livestreams"
-        subtitle="Aktuelle Live-Uebertragungen unserer Community"
-        iconClass="pi pi-video text-tttRed"
-    ></ttt-section-header>
+    <ttt-section-header title="Livestreams" subtitle="Aktuelle Live-Uebertragungen unserer Community"></ttt-section-header>
 
     @if (liveStreams$ | async; as liveStreams) {
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
