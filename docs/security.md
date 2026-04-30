@@ -26,7 +26,7 @@ Browser-side meta configuration in `src/index.html`:
 
 ## HTTP Security
 
-**Interceptor:** `SecurityInterceptor` (`src/app/core/interceptors/security.interceptor.ts`)
+**Interceptor:** `securityInterceptor` (`src/app/core/interceptors/security.interceptor.ts`)
 
 - Blocks insecure `http://` requests when app runs in HTTPS context
 - Security headers injection

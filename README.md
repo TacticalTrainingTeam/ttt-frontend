@@ -19,7 +19,7 @@ src/app/
 │   ├── footer/          # Footer
 │   ├── sidebar/         # Left and right sidebars
 │   └── main/            # Content pages
-└── environments/        # Environment configs
+└── environments/        # Environment configs (src/environments/)
 ```
 
 ## Getting Started
