@@ -28,10 +28,10 @@ export class ChronikComponent {
 
     // Private readonly properties
     private readonly eventTypeConfig = {
-        anniversary: { color: 'border-tttRed bg-tttRed text-tttWhite', label: 'Jubiläum' },
-        milestone: { color: 'border-blue-500 bg-blue-500/20 text-blue-300', label: 'Meilenstein' },
-        system: { color: 'border-orange-500 bg-orange-500/20 text-orange-300', label: 'System' },
-        default: { color: 'border-tttGray-500 bg-tttGray-500/20 text-tttGray-300', label: 'Event' },
+        anniversary: { color: 'text-tttWhite', label: 'Jubiläum' },
+        milestone: { color: 'text-blue-300', label: 'Meilenstein' },
+        system: { color: 'text-orange-300', label: 'System' },
+        default: { color: 'text-tttGray-300', label: 'Event' },
     };
 
     // Public properties

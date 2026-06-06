@@ -98,8 +98,7 @@ export class AufstellungRosterComponent {
     }
 
     private getRankBadgeClassesBase(rank: RankType): string {
-        const colors = this.getRankColorClasses(rank);
-        return `${colors.text} ${colors.bg}`;
+        return this.getRankColorClasses(rank).text;
     }
 
     getRankBadgeClasses(rank: RankType): string {

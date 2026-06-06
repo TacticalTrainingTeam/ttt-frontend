@@ -28,7 +28,6 @@
                                     class="group ttt-content-card relative flex min-h-[140px] flex-col justify-between p-3 text-center transition-transform duration-300 hover:scale-105"
                                     [ngClass]="{
                                         'cursor-pointer': hasExpandableContent(member),
-                                        'bg-tttRed/5': member.isExpanded,
                                         'border-tttRed/50': member.isExpanded,
                                     }"
                                     [tttActivable]="hasExpandableContent(member)"
@@ -77,14 +76,14 @@
                                             class="mb-1 block rounded px-1.5 py-0.5 text-xs font-medium"
                                             [ngClass]="getRankBadgeClasses(member.rank)"
                                         >
-                                            {{ getRankInfo(member.rank).shortName }}
+                                            {{ getRankInfo(member.rank).name }}
                                         </span>
                                     </div>
 
                                     <div class="mb-1 flex justify-center gap-1 text-xs">
                                         @if (member.medals.length > 0) {
                                             <span
-                                                class="flex h-5 w-5 items-center justify-center rounded bg-yellow-400/20"
+                                                class="flex h-5 w-5 items-center justify-center"
                                                 [title]="member.medals.length + ' Medaille(n)'"
                                             >
                                                 <i class="pi pi-star-fill text-xs text-yellow-400" aria-hidden="true"></i>
@@ -92,7 +91,7 @@
                                         }
                                         @if (member.campaignRibbons.length > 0) {
                                             <span
-                                                class="flex h-5 w-5 items-center justify-center rounded bg-purple-400/20"
+                                                class="flex h-5 w-5 items-center justify-center"
                                                 [title]="member.campaignRibbons.length + ' Kampagne(n)'"
                                             >
                                                 <i class="pi pi-flag text-xs text-purple-400" aria-hidden="true"></i>
@@ -100,7 +99,7 @@
                                         }
                                         @if (member.abteilungen.length > 0) {
                                             <span
-                                                class="flex h-5 w-5 items-center justify-center rounded bg-blue-400/20"
+                                                class="flex h-5 w-5 items-center justify-center"
                                                 [title]="member.abteilungen.length + ' Abteilung(en)'"
                                             >
                                                 <i class="pi pi-briefcase text-xs text-blue-400" aria-hidden="true"></i>

@@ -8,7 +8,7 @@
                     type="button"
                     class="group ttt-content-card relative flex h-full min-h-[110px] flex-col justify-between p-2 text-left shadow-md"
                     [ngClass]="{
-                        'bg-tttRed/10 border-tttRed/70': event.expanded,
+                        'border-tttRed/70': event.expanded,
                     }"
                     (click)="toggleEventDetails(event)"
                     [attr.aria-label]="'Details fuer ' + event.title + (event.expanded ? ' ausblenden' : ' anzeigen')"
@@ -23,7 +23,7 @@
                         </h3>
                     </div>
                     <div class="mb-1 flex min-w-0 flex-col items-center gap-1">
-                        <span class="max-w-[100px] truncate rounded px-2 py-0.5 text-center text-sm font-medium" [ngClass]="event.color">
+                        <span class="max-w-[100px] truncate text-center text-sm font-medium" [ngClass]="event.color">
                             {{ getEventTypeLabel(event.type) }}
                         </span>
                         <span class="text-tttGray-300 text-center text-sm" [title]="event.date">{{ event.date }}</span>
