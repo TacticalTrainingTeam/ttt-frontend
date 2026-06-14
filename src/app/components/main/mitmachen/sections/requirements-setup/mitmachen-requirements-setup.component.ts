@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
 
 @Component({
@@ -6,9 +6,10 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
     standalone: true,
     imports: [SectionHeaderComponent],
     templateUrl: './mitmachen-requirements-setup.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MitmachenRequirementsSetupComponent {
-    @Input({ required: true }) arma3SyncGuideUrl!: string;
-    @Input({ required: true }) arma3SyncVideoUrl!: string;
-    @Input({ required: true }) arma3SyncTipsUrl!: string;
+    arma3SyncGuideUrl = input.required<string>();
+    arma3SyncVideoUrl = input.required<string>();
+    arma3SyncTipsUrl = input.required<string>();
 }

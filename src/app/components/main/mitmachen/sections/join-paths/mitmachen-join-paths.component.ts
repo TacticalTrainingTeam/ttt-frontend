@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
 
 @Component({
@@ -6,7 +6,8 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
     standalone: true,
     imports: [SectionHeaderComponent],
     templateUrl: './mitmachen-join-paths.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MitmachenJoinPathsComponent {
-    @Input({ required: true }) discordUrl!: string;
+    discordUrl = input.required<string>();
 }

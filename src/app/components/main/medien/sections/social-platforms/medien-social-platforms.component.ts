@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { SocialPlatformCard } from '../../../../../shared/types/medien.types';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
 
@@ -8,7 +8,8 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
     standalone: true,
     imports: [CommonModule, SectionHeaderComponent],
     templateUrl: './medien-social-platforms.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MedienSocialPlatformsComponent {
-    @Input({ required: true }) socialPlatforms!: SocialPlatformCard[];
+    socialPlatforms = input.required<SocialPlatformCard[]>();
 }

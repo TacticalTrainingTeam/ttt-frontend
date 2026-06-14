@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
 import { ExternalLinkTileComponent } from '../../../../../shared/components/external-link-tile/external-link-tile.component';
@@ -8,7 +8,8 @@ import { ExternalLinkTileComponent } from '../../../../../shared/components/exte
     standalone: true,
     imports: [RouterLink, SectionHeaderComponent, ExternalLinkTileComponent],
     templateUrl: './medien-corporate-cta.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MedienCorporateCtaComponent {
-    @Input({ required: true }) wikiUrl!: string;
+    wikiUrl = input.required<string>();
 }

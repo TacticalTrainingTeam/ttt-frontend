@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ButtonDirective } from 'primeng/button';
 
@@ -7,5 +7,6 @@ import { ButtonDirective } from 'primeng/button';
     standalone: true,
     imports: [RouterLink, ButtonDirective],
     templateUrl: './home-orbat.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeOrbatComponent {}

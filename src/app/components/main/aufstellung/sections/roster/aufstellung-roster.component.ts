@@ -1,5 +1,5 @@
 import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { Component, inject, Input, PLATFORM_ID } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, PLATFORM_ID, input } from '@angular/core';
 import { ActivableDirective } from '../../../../../shared/directives/activable.directive';
 import { CampaignRibbon, RankType } from '../../../../../shared/types/member.types';
 import { AUFSTELLUNG_SECURITY } from '../../aufstellung.shared';
@@ -12,23 +12,24 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
     imports: [CommonModule, ActivableDirective, SectionHeaderComponent],
     templateUrl: './aufstellung-roster.component.html',
     styleUrl: './aufstellung-roster.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AufstellungRosterComponent {
     private readonly document = inject(DOCUMENT);
     private readonly platformId = inject(PLATFORM_ID);
 
-    @Input({ required: true }) members: Member[] = [];
-    @Input({ required: true }) membersByRank!: MembersByRank;
-    @Input({ required: true }) rankOrder: RankType[] = [];
-    @Input({ required: true }) rankInfo!: RankInfoMap;
-    @Input({ required: true }) title!: string;
-    @Input({ required: true }) subtitle!: string;
+    members = input.required<Member[]>();
+    membersByRank = input.required<MembersByRank>();
+    rankOrder = input.required<RankType[]>();
+    rankInfo = input.required<RankInfoMap>();
+    title = input.required<string>();
+    subtitle = input.required<string>();
 
     toggleMemberDetails(member: Member): void {
         const isOpening = !member.isExpanded;
 
         if (isOpening) {
-            this.members.forEach((m) => {
+            this.members().forEach((m) => {
                 if (m !== member) {
                     m.isExpanded = false;
                 }
@@ -49,7 +50,7 @@ export class AufstellungRosterComponent {
     }
 
     getRankInfo(rank: RankType) {
-        return this.rankInfo[rank];
+        return this.rankInfo()[rank];
     }
 
     getFormattedMemberSince(dateString: string): string {

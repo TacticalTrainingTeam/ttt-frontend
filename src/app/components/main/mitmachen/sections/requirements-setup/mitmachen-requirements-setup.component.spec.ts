@@ -13,9 +13,9 @@ describe('MitmachenRequirementsSetupComponent', () => {
 
         fixture = TestBed.createComponent(MitmachenRequirementsSetupComponent);
         component = fixture.componentInstance;
-        component.arma3SyncGuideUrl = 'https://example.com/guide';
-        component.arma3SyncVideoUrl = 'https://example.com/video';
-        component.arma3SyncTipsUrl = 'https://example.com/tips';
+        fixture.componentRef.setInput('arma3SyncGuideUrl', 'https://example.com/guide');
+        fixture.componentRef.setInput('arma3SyncVideoUrl', 'https://example.com/video');
+        fixture.componentRef.setInput('arma3SyncTipsUrl', 'https://example.com/tips');
         fixture.detectChanges();
     });
 

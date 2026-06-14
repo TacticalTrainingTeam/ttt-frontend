@@ -13,7 +13,7 @@ describe('MitmachenJoinPathsComponent', () => {
 
         fixture = TestBed.createComponent(MitmachenJoinPathsComponent);
         component = fixture.componentInstance;
-        component.discordUrl = 'https://discord.tacticalteam.de';
+        fixture.componentRef.setInput('discordUrl', 'https://discord.tacticalteam.de');
         fixture.detectChanges();
     });
 

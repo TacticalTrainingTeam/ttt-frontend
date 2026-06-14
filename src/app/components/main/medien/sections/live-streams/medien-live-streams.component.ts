@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TwitchStream } from '../../../../../shared/types/medien.types';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
@@ -9,7 +9,8 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
     standalone: true,
     imports: [CommonModule, SectionHeaderComponent],
     templateUrl: './medien-live-streams.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MedienLiveStreamsComponent {
-    @Input({ required: true }) liveStreams$!: Observable<TwitchStream[]>;
+    liveStreams$ = input.required<Observable<TwitchStream[]>>();
 }

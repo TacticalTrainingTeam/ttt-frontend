@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { GalleriaModule } from 'primeng/galleria';
 import { HomeGalleryImage } from '../../../../../shared/types/home.types';
 
@@ -8,7 +8,8 @@ import { HomeGalleryImage } from '../../../../../shared/types/home.types';
     imports: [GalleriaModule],
     templateUrl: './home-gallery.component.html',
     styleUrl: './home-gallery.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeGalleryComponent {
-    @Input({ required: true }) galleryImages: HomeGalleryImage[] = [];
+    galleryImages = input.required<HomeGalleryImage[]>();
 }

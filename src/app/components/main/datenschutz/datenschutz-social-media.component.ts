@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PageLayoutComponent } from '../../../shared/components/page-layout/page-layout.component';
@@ -8,6 +8,7 @@ import { PageLayoutComponent } from '../../../shared/components/page-layout/page
     standalone: true,
     imports: [CommonModule, RouterModule, PageLayoutComponent],
     templateUrl: './datenschutz-social-media.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatenschutzSocialMediaComponent {
     readonly pageTitle = 'Datenschutzerklärung für Social Media';

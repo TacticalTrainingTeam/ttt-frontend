@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { TimelineEvent } from '../../../../../shared/types/chronik.types';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
 
@@ -9,9 +9,10 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
     imports: [CommonModule, SectionHeaderComponent],
     templateUrl: './chronik-timeline.component.html',
     styleUrl: './chronik-timeline.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChronikTimelineComponent {
-    @Input({ required: true }) timelineEvents: TimelineEvent[] = [];
+    timelineEvents = input.required<TimelineEvent[]>();
 
     private readonly eventTypeConfig = {
         anniversary: { color: 'text-tttWhite', label: 'Jubiläum' },
@@ -26,7 +27,7 @@ export class ChronikTimelineComponent {
             return;
         }
 
-        for (const e of this.timelineEvents) {
+        for (const e of this.timelineEvents()) {
             e.expanded = false;
         }
         event.expanded = true;

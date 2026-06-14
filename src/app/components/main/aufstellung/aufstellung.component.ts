@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageLayoutComponent } from '../../../shared/components/page-layout/page-layout.component';
 import { Member as BackendMember, RankType } from '../../../shared/types/member.types';
@@ -83,6 +83,7 @@ const AUFSTELLUNG_CONFIG = {
         AufstellungRosterComponent,
     ],
     templateUrl: './aufstellung.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AufstellungComponent implements OnInit {
     private readonly memberService = inject(MemberService);
@@ -92,8 +93,8 @@ export class AufstellungComponent implements OnInit {
     readonly sections: AufstellungSections = AUFSTELLUNG_CONFIG.SECTIONS;
     readonly loadingMessages: AufstellungLoadingMessages = AUFSTELLUNG_CONFIG.LOADING_MESSAGES;
 
-    isLoading = false;
-    loadingError: string | null = null;
+    readonly isLoading = signal(false);
+    readonly loadingError = signal<string | null>(null);
 
     ngOnInit(): void {
         this.loadMembers();
@@ -146,24 +147,24 @@ export class AufstellungComponent implements OnInit {
 
     readonly rankOrder: RankType[] = ['offizier', 'unteroffizier', 'veteran', 'soldat', 'rekrut', 'gast'] as const;
 
-    members: Member[] = [];
-    membersByRank: MembersByRank = {
+    readonly members = signal<Member[]>([]);
+    readonly membersByRank = signal<MembersByRank>({
         offizier: [],
         unteroffizier: [],
         veteran: [],
         soldat: [],
         rekrut: [],
         gast: [],
-    };
-    memberStats: MemberStats = {
+    });
+    readonly memberStats = signal<MemberStats>({
         offizier: 0,
         unteroffizier: 0,
         veteran: 0,
         soldat: 0,
         rekrut: 0,
         gast: 0,
-    };
-    totalMembers = 0;
+    });
+    readonly totalMembers = signal(0);
 
     private createEmptyRankRecord<T>(factory: () => T): Record<RankType, T> {
         return this.rankOrder.reduce(
@@ -180,34 +181,37 @@ export class AufstellungComponent implements OnInit {
     }
 
     private loadMembers(): void {
-        this.isLoading = true;
-        this.loadingError = null;
+        this.isLoading.set(true);
+        this.loadingError.set(null);
         this.memberService.getAllMembers().subscribe({
             next: (members: BackendMember[]) => {
                 // Add isExpanded property for UI state
-                this.members = members.map((m) => ({ ...m, isExpanded: false }));
+                this.members.set(members.map((m) => ({ ...m, isExpanded: false })));
                 this.computeMemberData();
-                this.isLoading = false;
+                this.isLoading.set(false);
             },
             error: () => {
-                this.loadingError = 'Fehler beim Laden der Mitgliederdaten';
-                this.isLoading = false;
+                this.loadingError.set('Fehler beim Laden der Mitgliederdaten');
+                this.isLoading.set(false);
             },
         });
     }
 
     private computeMemberData(): void {
-        this.membersByRank = this.createEmptyRankRecord<Member[]>(() => []);
-        this.memberStats = this.createEmptyRankRecord<number>(() => 0);
+        const membersByRank = this.createEmptyRankRecord<Member[]>(() => []);
+        const memberStats = this.createEmptyRankRecord<number>(() => 0);
 
-        for (const member of this.members) {
-            this.membersByRank[member.rank].push(member);
-            this.memberStats[member.rank]++;
+        const members = this.members();
+        for (const member of members) {
+            membersByRank[member.rank].push(member);
+            memberStats[member.rank]++;
         }
-        for (const rank of Object.keys(this.membersByRank)) {
-            this.membersByRank[rank as RankType].sort((a, b) => a.name.localeCompare(b.name));
+        for (const rank of Object.keys(membersByRank)) {
+            membersByRank[rank as RankType].sort((a, b) => a.name.localeCompare(b.name));
         }
 
-        this.totalMembers = this.members.length;
+        this.membersByRank.set(membersByRank);
+        this.memberStats.set(memberStats);
+        this.totalMembers.set(members.length);
     }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { Menubar } from 'primeng/menubar';
@@ -9,6 +9,7 @@ import { ButtonDirective } from 'primeng/button';
     standalone: true,
     imports: [RouterLink, Menubar, ButtonDirective],
     templateUrl: './header.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
     readonly items: MenuItem[] = [

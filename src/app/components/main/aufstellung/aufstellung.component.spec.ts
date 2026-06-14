@@ -62,14 +62,14 @@ describe('AufstellungComponent', () => {
     it('should load dummy members', () => {
         component.ngOnInit();
         expect(memberServiceSpy.getAllMembers).toHaveBeenCalled();
-        expect(component.members.length).toBe(3);
-        expect(component.members.every((member) => member.isExpanded === false)).toBeTrue();
-        expect(component.totalMembers).toBe(3);
+        expect(component.members().length).toBe(3);
+        expect(component.members().every((member) => member.isExpanded === false)).toBeTrue();
+        expect(component.totalMembers()).toBe(3);
     });
 
     it('should group members by rank correctly', () => {
         component.ngOnInit();
-        const membersByRank = component.membersByRank;
+        const membersByRank = component.membersByRank();
 
         expect(membersByRank.offizier.length).toBe(1);
         expect(membersByRank.soldat.length).toBe(2);
@@ -81,12 +81,12 @@ describe('AufstellungComponent', () => {
 
     it('should calculate member stats correctly', () => {
         component.ngOnInit();
-        const stats = component.memberStats;
+        const stats = component.memberStats();
         const totalFromStats = Object.values(stats).reduce((sum, count) => sum + count, 0);
 
         expect(stats.offizier).toBe(1);
         expect(stats.soldat).toBe(2);
-        expect(totalFromStats).toBe(component.totalMembers);
+        expect(totalFromStats).toBe(component.totalMembers());
     });
 
     it('should provide expected static configuration', () => {
@@ -109,9 +109,9 @@ describe('AufstellungComponent', () => {
 
         component.ngOnInit();
 
-        expect(component.isLoading).toBeFalse();
-        expect(component.loadingError).toBe('Fehler beim Laden der Mitgliederdaten');
-        expect(component.members.length).toBe(0);
+        expect(component.isLoading()).toBeFalse();
+        expect(component.loadingError()).toBe('Fehler beim Laden der Mitgliederdaten');
+        expect(component.members().length).toBe(0);
     });
 
     it('should retry loading on retryLoading call', () => {

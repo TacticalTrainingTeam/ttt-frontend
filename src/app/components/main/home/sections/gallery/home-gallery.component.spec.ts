@@ -12,10 +12,10 @@ describe('HomeGalleryComponent', () => {
 
         fixture = TestBed.createComponent(HomeGalleryComponent);
         component = fixture.componentInstance;
-        component.galleryImages = [
+        fixture.componentRef.setInput('galleryImages', [
             { itemImageSrc: '/img/home-gallery/gallery-img1.webp', alt: 'Image 1' },
             { itemImageSrc: '/img/home-gallery/gallery-img2.webp', alt: 'Image 2' },
-        ];
+        ]);
         fixture.detectChanges();
     });
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, inject, signal } from '@angular/core';
 import { MemberService } from '../../../core/services/member.service';
 import { HomeFeaturesJoinComponent } from './sections/features-join/home-features-join.component';
 import { HomeHeroSliderComponent } from './sections/hero-slider/home-hero-slider.component';
@@ -12,6 +12,7 @@ import { HomeBannerSlide, HomeCommunityStat, HomeGalleryImage } from '../../../s
     imports: [HomeHeroSliderComponent, HomeFeaturesJoinComponent, HomeGalleryComponent, HomeOrbatComponent],
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit, OnDestroy {
     // Services
@@ -76,13 +77,13 @@ export class HomeComponent implements OnInit, OnDestroy {
         },
     ];
 
-    // Public mutable properties
-    communityStats: HomeCommunityStat[] = [
+    // Public mutable state
+    readonly communityStats = signal<HomeCommunityStat[]>([
         { value: '80+', label: 'Mitglieder', color: 'text-tttGreen' },
         { value: '2013', label: 'Gegründet', color: 'text-tttGreen' },
         { value: '2', label: 'Events/Woche', color: 'text-tttGreen' },
-    ];
-    currentImageIndex = 0;
+    ]);
+    readonly currentImageIndex = signal(0);
 
     // Private properties
     private sliderInterval?: ReturnType<typeof setInterval>;
@@ -93,7 +94,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.startSlider();
         this.memberService.getMemberStats().subscribe((stats) => {
             const total = Object.values(stats).reduce((sum, n) => sum + n, 0);
-            this.communityStats[0].value = total.toString();
+            this.communityStats.update((current) => [{ ...current[0], value: total.toString() }, ...current.slice(1)]);
         });
     }
 
@@ -106,7 +107,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.stopSlider();
         }
 
-        this.currentImageIndex = (this.currentImageIndex + 1) % this.bannerSlides.length;
+        this.currentImageIndex.update((index) => (index + 1) % this.bannerSlides.length);
 
         if (!isAutoAdvance) {
             this.startSlider();
@@ -115,14 +116,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     previousImage(): void {
         this.stopSlider();
-        this.currentImageIndex = this.currentImageIndex === 0 ? this.bannerSlides.length - 1 : this.currentImageIndex - 1;
+        this.currentImageIndex.update((index) => (index === 0 ? this.bannerSlides.length - 1 : index - 1));
         this.startSlider();
     }
 
     goToImage(index: number): void {
         if (index >= 0 && index < this.bannerSlides.length) {
             this.stopSlider();
-            this.currentImageIndex = index;
+            this.currentImageIndex.set(index);
             this.startSlider();
         }
     }

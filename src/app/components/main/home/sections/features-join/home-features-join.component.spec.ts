@@ -14,11 +14,11 @@ describe('HomeFeaturesJoinComponent', () => {
 
         fixture = TestBed.createComponent(HomeFeaturesJoinComponent);
         component = fixture.componentInstance;
-        component.communityStats = [
+        fixture.componentRef.setInput('communityStats', [
             { value: '80+', label: 'Mitglieder', color: 'text-tttGreen' },
             { value: '2013', label: 'Gegründet', color: 'text-tttGreen' },
             { value: '2', label: 'Events/Woche', color: 'text-tttGreen' },
-        ];
+        ]);
         fixture.detectChanges();
     });
 

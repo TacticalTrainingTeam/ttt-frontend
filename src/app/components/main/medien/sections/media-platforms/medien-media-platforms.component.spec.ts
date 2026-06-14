@@ -13,7 +13,7 @@ describe('MedienMediaPlatformsComponent', () => {
 
         fixture = TestBed.createComponent(MedienMediaPlatformsComponent);
         component = fixture.componentInstance;
-        component.mediaPlatforms = [];
+        fixture.componentRef.setInput('mediaPlatforms', []);
         fixture.detectChanges();
     });
 

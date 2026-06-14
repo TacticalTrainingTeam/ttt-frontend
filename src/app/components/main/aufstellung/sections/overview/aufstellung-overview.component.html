@@ -1,9 +1,9 @@
 <section class="mb-6">
     <div class="ttt-page-container">
-        <ttt-section-header [title]="title" [subtitle]="subtitle"></ttt-section-header>
+        <ttt-section-header [title]="title()" [subtitle]="subtitle()"></ttt-section-header>
 
         <div class="mb-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-            @for (rank of rankOrder; track rank) {
+            @for (rank of rankOrder(); track rank) {
                 <div class="border-tttWhite/10 bg-tttGray-800/50 rounded-lg border p-3 text-center backdrop-blur-sm">
                     <div class="mb-2 flex justify-center">
                         <img
@@ -16,7 +16,7 @@
                     </div>
                     <h3 class="text-tttWhite mb-1 text-base font-semibold">{{ getRankInfo(rank).name }}</h3>
                     <div class="mb-0.5 text-2xl font-bold" [ngClass]="getRankInfo(rank).color">
-                        {{ memberStats[rank] }}
+                        {{ memberStats()[rank] }}
                     </div>
                     <div class="text-tttWhite/50 text-[10px]">Mitglieder</div>
                 </div>
@@ -26,7 +26,7 @@
         <div class="text-center">
             <div class="bg-tttRed inline-flex items-center gap-2 rounded-lg px-3 py-1.5">
                 <i class="pi pi-users text-tttWhite text-base" aria-hidden="true"></i>
-                <span class="text-tttWhite text-base font-bold">{{ totalMembers }} aktive Mitglieder</span>
+                <span class="text-tttWhite text-base font-bold">{{ totalMembers() }} aktive Mitglieder</span>
             </div>
         </div>
     </div>

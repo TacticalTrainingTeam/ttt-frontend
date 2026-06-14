@@ -1,10 +1,10 @@
 <ttt-home-hero-slider
     [bannerSlides]="bannerSlides"
-    [currentImageIndex]="currentImageIndex"
+    [currentImageIndex]="currentImageIndex()"
     (imageSelected)="goToImage($event)"
 ></ttt-home-hero-slider>
 
-<ttt-home-features-join [communityStats]="communityStats"></ttt-home-features-join>
+<ttt-home-features-join [communityStats]="communityStats()"></ttt-home-features-join>
 
 <!-- Gallery Section -->
 <ttt-home-gallery [galleryImages]="galleryImages"></ttt-home-gallery>

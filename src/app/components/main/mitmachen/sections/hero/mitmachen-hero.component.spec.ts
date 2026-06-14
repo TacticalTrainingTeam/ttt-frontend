@@ -13,8 +13,8 @@ describe('MitmachenHeroComponent', () => {
 
         fixture = TestBed.createComponent(MitmachenHeroComponent);
         component = fixture.componentInstance;
-        component.pageSubtitle = 'test';
-        component.eventSchedule = 'test';
+        fixture.componentRef.setInput('pageSubtitle', 'test');
+        fixture.componentRef.setInput('eventSchedule', 'test');
         fixture.detectChanges();
     });
 

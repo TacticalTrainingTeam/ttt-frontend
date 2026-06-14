@@ -1,9 +1,9 @@
-<div [ngClass]="containerClass">
-    <h2 [ngClass]="titleClass">
-        {{ title }}
+<div [ngClass]="containerClass()">
+    <h2 [ngClass]="titleClass()">
+        {{ title() }}
     </h2>
 
-    @if (subtitle) {
-        <p [ngClass]="subtitleClass">{{ subtitle }}</p>
+    @if (subtitle()) {
+        <p [ngClass]="subtitleClass()">{{ subtitle() }}</p>
     }
 </div>

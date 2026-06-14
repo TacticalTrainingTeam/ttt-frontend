@@ -223,7 +223,7 @@
 
         <div class="border-tttWhite/10 bg-tttGray-800 mt-12 rounded-xl border p-8 backdrop-blur-sm">
             <div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-6">
-                @for (stat of communityStats; track stat.label) {
+                @for (stat of communityStats(); track stat.label) {
                     <div
                         class="border-tttWhite/10 bg-tttWhite/5 flex flex-col items-center justify-center rounded-lg border p-4 text-center backdrop-blur-sm"
                     >

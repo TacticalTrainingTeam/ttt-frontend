@@ -13,7 +13,7 @@ describe('MedienSocialPlatformsComponent', () => {
 
         fixture = TestBed.createComponent(MedienSocialPlatformsComponent);
         component = fixture.componentInstance;
-        component.socialPlatforms = [];
+        fixture.componentRef.setInput('socialPlatforms', []);
         fixture.detectChanges();
     });
 

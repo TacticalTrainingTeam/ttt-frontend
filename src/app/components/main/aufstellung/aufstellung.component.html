@@ -1,26 +1,26 @@
 <!-- Roster component -->
 <ttt-page-layout [pageTitle]="pageTitle" [pageSubtitle]="pageSubtitle">
     <ttt-aufstellung-loading-state
-        [isLoading]="isLoading"
-        [loadingError]="loadingError"
+        [isLoading]="isLoading()"
+        [loadingError]="loadingError()"
         [loadingMessages]="loadingMessages"
         (retry)="retryLoading()"
     ></ttt-aufstellung-loading-state>
 
-    @if (!isLoading && !loadingError) {
+    @if (!isLoading() && !loadingError()) {
         <div>
             <ttt-aufstellung-overview
                 [rankOrder]="rankOrder"
                 [rankInfo]="rankInfo"
-                [memberStats]="memberStats"
-                [totalMembers]="totalMembers"
+                [memberStats]="memberStats()"
+                [totalMembers]="totalMembers()"
                 [title]="sections.OVERVIEW.TITLE"
                 [subtitle]="sections.OVERVIEW.SUBTITLE"
             ></ttt-aufstellung-overview>
 
             <ttt-aufstellung-roster
-                [members]="members"
-                [membersByRank]="membersByRank"
+                [members]="members()"
+                [membersByRank]="membersByRank()"
                 [rankOrder]="rankOrder"
                 [rankInfo]="rankInfo"
                 [title]="sections.ROSTER.TITLE"

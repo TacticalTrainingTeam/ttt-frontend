@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageLayoutComponent } from '../../../shared/components/page-layout/page-layout.component';
 import { TimelineEvent, TimelineEventType } from '../../../shared/types/chronik.types';
@@ -19,6 +19,7 @@ import { ChronikCtaComponent } from './sections/cta/chronik-cta.component';
         ChronikCtaComponent,
     ],
     templateUrl: './chronik.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChronikComponent {
     // Public readonly properties

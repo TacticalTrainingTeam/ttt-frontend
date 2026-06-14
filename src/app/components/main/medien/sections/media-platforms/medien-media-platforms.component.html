@@ -3,7 +3,7 @@
     <ttt-section-header title="Medien & Kanäle" subtitle="Unsere Videos, Podcasts und anderen Medien"></ttt-section-header>
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        @for (platform of mediaPlatforms; track platform.id) {
+        @for (platform of mediaPlatforms(); track platform.id) {
             <ttt-external-link-tile
                 class="block h-full"
                 [href]="platform.url"

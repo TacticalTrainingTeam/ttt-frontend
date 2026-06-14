@@ -13,8 +13,8 @@ describe('MitmachenEntryCtaComponent', () => {
 
         fixture = TestBed.createComponent(MitmachenEntryCtaComponent);
         component = fixture.componentInstance;
-        component.eventsUrl = 'https://events.tacticalteam.de/events/';
-        component.discordUrl = 'https://discord.tacticalteam.de';
+        fixture.componentRef.setInput('eventsUrl', 'https://events.tacticalteam.de/events/');
+        fixture.componentRef.setInput('discordUrl', 'https://discord.tacticalteam.de');
         fixture.detectChanges();
     });
 

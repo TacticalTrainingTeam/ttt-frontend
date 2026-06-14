@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from '@angular/core';
 import { AufstellungLoadingMessages } from '../../../../../shared/types/aufstellung.types';
 
 @Component({
@@ -8,11 +8,12 @@ import { AufstellungLoadingMessages } from '../../../../../shared/types/aufstell
     imports: [CommonModule],
     templateUrl: './aufstellung-loading-state.component.html',
     styleUrl: './aufstellung-loading-state.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AufstellungLoadingStateComponent {
-    @Input({ required: true }) isLoading = false;
-    @Input() loadingError: string | null = null;
-    @Input({ required: true }) loadingMessages!: AufstellungLoadingMessages;
+    isLoading = input.required<boolean>();
+    loadingError = input<string | null>(null);
+    loadingMessages = input.required<AufstellungLoadingMessages>();
     @Output() readonly retry = new EventEmitter<void>();
 
     onRetry(): void {

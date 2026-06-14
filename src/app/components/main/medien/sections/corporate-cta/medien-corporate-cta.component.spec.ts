@@ -15,7 +15,7 @@ describe('MedienCorporateCtaComponent', () => {
 
         fixture = TestBed.createComponent(MedienCorporateCtaComponent);
         component = fixture.componentInstance;
-        component.wikiUrl = 'https://wiki.tacticalteam.de/de/TTT-PR/Corporate-Identity';
+        fixture.componentRef.setInput('wikiUrl', 'https://wiki.tacticalteam.de/de/TTT-PR/Corporate-Identity');
         fixture.detectChanges();
     });
 

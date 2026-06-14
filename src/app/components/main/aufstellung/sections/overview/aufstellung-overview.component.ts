@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MemberStats, RankInfoMap } from '../../../../../shared/types/aufstellung.types';
 import { RankType } from '../../../../../shared/types/member.types';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
@@ -10,16 +10,17 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
     imports: [CommonModule, SectionHeaderComponent],
     templateUrl: './aufstellung-overview.component.html',
     styleUrl: './aufstellung-overview.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AufstellungOverviewComponent {
-    @Input({ required: true }) rankOrder: RankType[] = [];
-    @Input({ required: true }) rankInfo!: RankInfoMap;
-    @Input({ required: true }) memberStats!: MemberStats;
-    @Input({ required: true }) totalMembers = 0;
-    @Input({ required: true }) title!: string;
-    @Input({ required: true }) subtitle!: string;
+    rankOrder = input.required<RankType[]>();
+    rankInfo = input.required<RankInfoMap>();
+    memberStats = input.required<MemberStats>();
+    totalMembers = input.required<number>();
+    title = input.required<string>();
+    subtitle = input.required<string>();
 
     getRankInfo(rank: RankType) {
-        return this.rankInfo[rank];
+        return this.rankInfo()[rank];
     }
 }

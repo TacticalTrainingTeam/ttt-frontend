@@ -13,7 +13,7 @@ describe('ChronikTimelineComponent', () => {
 
         fixture = TestBed.createComponent(ChronikTimelineComponent);
         component = fixture.componentInstance;
-        component.timelineEvents = [
+        fixture.componentRef.setInput('timelineEvents', [
             {
                 id: 'test',
                 title: 'Test Event',
@@ -24,7 +24,7 @@ describe('ChronikTimelineComponent', () => {
                 details: ['detail'],
                 expanded: false,
             } as TimelineEvent,
-        ];
+        ]);
         fixture.detectChanges();
     });
 
@@ -33,7 +33,7 @@ describe('ChronikTimelineComponent', () => {
     });
 
     it('should toggle event details', () => {
-        component.toggleEventDetails(component.timelineEvents[0]);
-        expect(component.timelineEvents[0].expanded).toBeTrue();
+        component.toggleEventDetails(component.timelineEvents()[0]);
+        expect(component.timelineEvents()[0].expanded).toBeTrue();
     });
 });

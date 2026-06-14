@@ -12,12 +12,13 @@ describe('AufstellungLoadingStateComponent', () => {
 
         fixture = TestBed.createComponent(AufstellungLoadingStateComponent);
         component = fixture.componentInstance;
-        component.loadingMessages = {
+        fixture.componentRef.setInput('isLoading', false);
+        fixture.componentRef.setInput('loadingMessages', {
             LOADING: 'Loading...',
             ERROR_TITLE: 'Error',
             RETRY_TEXT: 'Retry',
             RETRY_ARIA: 'Retry loading data',
-        };
+        });
         fixture.detectChanges();
     });
 

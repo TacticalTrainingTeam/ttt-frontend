@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 
@@ -7,5 +7,6 @@ import { SectionHeaderComponent } from '../../../shared/components/section-heade
     standalone: true,
     imports: [CommonModule, SectionHeaderComponent],
     templateUrl: './right-sidebar.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RightSidebarComponent {}

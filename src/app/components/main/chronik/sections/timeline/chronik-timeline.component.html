@@ -2,7 +2,7 @@
     <ttt-section-header title="TTT-Timeline" subtitle="Meilensteine des Tactical Training Teams"></ttt-section-header>
 
     <div class="grid grid-cols-2 items-stretch gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        @for (event of timelineEvents; track event.id) {
+        @for (event of timelineEvents(); track event.id) {
             <div class="relative h-full">
                 <button
                     type="button"
@@ -55,10 +55,12 @@
                             <div>
                                 <h4 class="text-tttWhite mb-1 text-sm font-semibold tracking-wide uppercase">Weitere Details:</h4>
                                 <ul class="space-y-1">
-                                    <li *ngFor="let detail of event.details" class="text-tttGray-300 flex items-start gap-2 text-sm">
-                                        <i class="pi pi-angle-right text-tttRed mt-0.5 flex-shrink-0 text-sm"></i>
-                                        <span>{{ detail }}</span>
-                                    </li>
+                                    @for (detail of event.details; track detail) {
+                                        <li class="text-tttGray-300 flex items-start gap-2 text-sm">
+                                            <i class="pi pi-angle-right text-tttRed mt-0.5 flex-shrink-0 text-sm"></i>
+                                            <span>{{ detail }}</span>
+                                        </li>
+                                    }
                                 </ul>
                             </div>
                         }

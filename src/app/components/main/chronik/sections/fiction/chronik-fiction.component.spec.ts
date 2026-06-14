@@ -12,7 +12,7 @@ describe('ChronikFictionComponent', () => {
 
         fixture = TestBed.createComponent(ChronikFictionComponent);
         component = fixture.componentInstance;
-        component.fictionDocumentationLink = 'https://example.com';
+        fixture.componentRef.setInput('fictionDocumentationLink', 'https://example.com');
         fixture.detectChanges();
     });
 

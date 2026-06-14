@@ -14,7 +14,7 @@ describe('MedienLiveStreamsComponent', () => {
 
         fixture = TestBed.createComponent(MedienLiveStreamsComponent);
         component = fixture.componentInstance;
-        component.liveStreams$ = of([]);
+        fixture.componentRef.setInput('liveStreams$', of([]));
         fixture.detectChanges();
     });
 
