@@ -67,7 +67,6 @@ export class MedienComponent {
             cardClass: 'transition-transform duration-300 hover:scale-105',
             iconWrapperClass: 'bg-purple-500/20',
         },
-
     ];
 
     readonly socialPlatforms: SocialPlatformCard[] = [
