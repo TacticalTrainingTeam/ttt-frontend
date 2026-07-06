@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Output, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { HomeBannerSlide } from '../../../../../shared/types/home.types';
 
 @Component({
@@ -12,7 +12,7 @@ import { HomeBannerSlide } from '../../../../../shared/types/home.types';
 export class HomeHeroSliderComponent {
     bannerSlides = input.required<HomeBannerSlide[]>();
     currentImageIndex = input.required<number>();
-    @Output() readonly imageSelected = new EventEmitter<number>();
+    readonly imageSelected = output<number>();
 
     readonly currentSlide = computed<HomeBannerSlide | undefined>(
         () => this.bannerSlides()[this.currentImageIndex()] ?? this.bannerSlides()[0]
