@@ -2,19 +2,21 @@
 <div class="mb-8">
     <ttt-section-header title="Medien & Kanäle" subtitle="Unsere Videos, Podcasts und anderen Medien"></ttt-section-header>
 
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        @for (platform of mediaPlatforms(); track platform.id) {
-            <ttt-external-link-tile
-                class="block h-full"
-                [href]="platform.url"
-                [title]="platform.name"
-                [description]="platform.description"
-                [iconClass]="platform.iconClass"
-                [displayUrl]="platform.displayUrl"
-                [ariaLabel]="platform.ariaLabel"
-                [iconWrapperClass]="'flex h-12 w-12 items-center justify-center rounded-lg ' + platform.iconWrapperClass"
-                [cardClass]="'ttt-content-card group block text-left h-full ' + platform.cardClass"
-            ></ttt-external-link-tile>
-        }
+    <div class="flex justify-center">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 w-full md:w-fit">
+            @for (platform of mediaPlatforms(); track platform.id) {
+                <ttt-external-link-tile
+                    class="block h-full"
+                    [href]="platform.url"
+                    [title]="platform.name"
+                    [description]="platform.description"
+                    [iconClass]="platform.iconClass"
+                    [displayUrl]="platform.displayUrl"
+                    [ariaLabel]="platform.ariaLabel"
+                    [iconWrapperClass]="'flex h-12 w-12 items-center justify-center rounded-lg ' + platform.iconWrapperClass"
+                    [cardClass]="'ttt-content-card group block text-left h-full ' + platform.cardClass"
+                ></ttt-external-link-tile>
+            }
+        </div>
     </div>
 </div>

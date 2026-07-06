@@ -117,10 +117,6 @@
         @apply text-tttGray-300 space-y-4 leading-relaxed break-words;
     }
 
-    .ttt-content-text-compact {
-        @apply text-tttGray-300 space-y-2 break-words;
-    }
-
     .ttt-description-text {
         @apply text-tttGray-300 mx-auto max-w-3xl text-base leading-relaxed break-words md:text-lg;
     }
@@ -130,20 +126,12 @@
     }
 
     /* Special Text */
-    .ttt-small-text {
-        @apply text-base;
-    }
-
     .ttt-highlight-text {
         @apply text-tttWhite;
     }
 
     .ttt-accent-text {
         @apply text-tttRed;
-    }
-
-    .ttt-badge-text {
-        @apply text-tttWhite text-sm font-medium;
     }
 
     /* Links & Interactive */
@@ -175,10 +163,6 @@
 
     .ttt-stat-value {
         @apply text-2xl font-bold;
-    }
-
-    .ttt-badge {
-        @apply border-tttRed/30 bg-tttRed/10 text-tttWhite mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium backdrop-blur-sm;
     }
 
     .ttt-step-link {

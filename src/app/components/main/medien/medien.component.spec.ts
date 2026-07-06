@@ -33,7 +33,6 @@ describe('MedienComponent', () => {
         expect(component.externalLinks).toBeDefined();
         expect(component.externalLinks.youtube).toBe('https://www.youtube.com/@tacticalteamde');
         expect(component.externalLinks.twitch).toBe('https://www.twitch.tv/tacticaltrainingteam');
-        expect(component.externalLinks.kick).toBe('https://kick.com/tacticaltrainingteam');
         expect(component.externalLinks.x).toBe('https://x.com/TTT_ArmA');
         expect(component.externalLinks.mastodon).toBe('https://mastodon.social/@tacticaltrainingteam');
         expect(component.externalLinks.bluesky).toBe('https://bsky.app/profile/tacticalteam.bsky.social');
@@ -47,7 +46,7 @@ describe('MedienComponent', () => {
     });
 
     it('should expose media and social platform cards', () => {
-        expect(component.mediaPlatforms).toHaveSize(3);
+        expect(component.mediaPlatforms).toHaveSize(2);
         expect(component.socialPlatforms).toHaveSize(8);
 
         expect(component.mediaPlatforms[0].id).toBe('youtube');

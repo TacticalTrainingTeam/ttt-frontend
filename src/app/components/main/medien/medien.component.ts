@@ -32,7 +32,6 @@ export class MedienComponent {
     readonly externalLinks = {
         youtube: 'https://www.youtube.com/@tacticalteamde',
         twitch: 'https://www.twitch.tv/tacticaltrainingteam',
-        kick: 'https://kick.com/tacticaltrainingteam',
         x: 'https://x.com/TTT_ArmA',
         mastodon: 'https://mastodon.social/@tacticaltrainingteam',
         bluesky: 'https://bsky.app/profile/tacticalteam.bsky.social',
@@ -68,17 +67,7 @@ export class MedienComponent {
             cardClass: 'transition-transform duration-300 hover:scale-105',
             iconWrapperClass: 'bg-purple-500/20',
         },
-        {
-            id: 'kick',
-            name: 'Kick',
-            url: this.externalLinks.kick,
-            description: 'Alternative Streaming-Plattform für unsere Community',
-            displayUrl: 'kick.com/tacticaltrainingteam',
-            ariaLabel: 'Kick Kanal öffnen',
-            iconClass: 'pi pi-play text-2xl text-green-400',
-            cardClass: 'transition-transform duration-300 hover:scale-105',
-            iconWrapperClass: 'bg-green-500/20',
-        },
+
     ];
 
     readonly socialPlatforms: SocialPlatformCard[] = [
