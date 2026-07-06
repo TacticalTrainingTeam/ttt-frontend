@@ -22,22 +22,22 @@ export class HomeComponent implements OnInit {
     readonly bannerSlides: HomeBannerSlide[] = [
         {
             image: '/img/home-banner/home-banner1.webp',
-            title: 'TACTICAL TRAINING <span class="text-tttRed">TEAM</span>',
-            titleText: 'TACTICAL TRAINING TEAM',
+            title: 'TACTICAL TRAINING',
+            titleAccent: 'TEAM',
             subtitle:
                 'Als eine der größeren Arma-Gemeinschaften im deutschsprachigen Raum bieten wir dir das volle Paket: Von Ausbildung und Training bis hin zu Events und Kampagnen ist alles dabei.',
         },
         {
             image: '/img/home-banner/home-banner2.webp',
-            title: 'REALISTISCHES <span class="text-tttRed">MILSIM</span>',
-            titleText: 'REALISTISCHES MILSIM',
+            title: 'REALISTISCHES',
+            titleAccent: 'MILSIM',
             subtitle:
                 'Erlebe authentische militärische Simulation in Arma 3 und Arma Reforger mit taktischem Tiefgang und koordinierten Großoperationen.',
         },
         {
             image: '/img/home-banner/home-banner3.webp',
-            title: 'STARKE <span class="text-tttRed">COMMUNITY</span>',
-            titleText: 'STARKE COMMUNITY',
+            title: 'STARKE',
+            titleAccent: 'COMMUNITY',
             subtitle:
                 'Über 80 aktive Community-Mitglieder, regelmäßige Missionen und eine europaweite vernetzte MilSim-Community erwarten dich.',
         },

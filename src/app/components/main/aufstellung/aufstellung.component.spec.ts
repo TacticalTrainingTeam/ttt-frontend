@@ -62,7 +62,7 @@ describe('AufstellungComponent', () => {
     it('should load dummy members', () => {
         component.ngOnInit();
         expect(memberServiceSpy.getAllMembers).toHaveBeenCalled();
-        expect(component.members().length).toBe(3);
+        expect(component.members()).toHaveSize(3);
         expect(component.members().every((member) => member.isExpanded === false)).toBeTrue();
         expect(component.totalMembers()).toBe(3);
     });
@@ -71,12 +71,12 @@ describe('AufstellungComponent', () => {
         component.ngOnInit();
         const membersByRank = component.membersByRank();
 
-        expect(membersByRank.offizier.length).toBe(1);
-        expect(membersByRank.soldat.length).toBe(2);
-        expect(membersByRank.unteroffizier.length).toBe(0);
-        expect(membersByRank.veteran.length).toBe(0);
-        expect(membersByRank.rekrut.length).toBe(0);
-        expect(membersByRank.gast.length).toBe(0);
+        expect(membersByRank.offizier).toHaveSize(1);
+        expect(membersByRank.soldat).toHaveSize(2);
+        expect(membersByRank.unteroffizier).toHaveSize(0);
+        expect(membersByRank.veteran).toHaveSize(0);
+        expect(membersByRank.rekrut).toHaveSize(0);
+        expect(membersByRank.gast).toHaveSize(0);
     });
 
     it('should calculate member stats correctly', () => {
@@ -98,7 +98,7 @@ describe('AufstellungComponent', () => {
     });
 
     it('should expose rank metadata for all ranks', () => {
-        expect(component.rankOrder.length).toBe(6);
+        expect(component.rankOrder).toHaveSize(6);
         expect(component.rankInfo['offizier'].name).toBe('Offizier');
         expect(component.rankInfo['rekrut'].priority).toBe(5);
         expect(component.rankInfo['gast'].shortName).toBe('Gast');
@@ -111,7 +111,7 @@ describe('AufstellungComponent', () => {
 
         expect(component.isLoading()).toBeFalse();
         expect(component.loadingError()).toBe('Fehler beim Laden der Mitgliederdaten');
-        expect(component.members().length).toBe(0);
+        expect(component.members()).toHaveSize(0);
     });
 
     it('should retry loading on retryLoading call', () => {

@@ -15,15 +15,15 @@
             <div class="relative h-80 w-full">
                 <img
                     [src]="slide.image"
-                    alt="{{ slide.titleText }} - {{ slide.subtitle }}"
-                    title="{{ slide.titleText }}"
+                    alt="{{ slide.title }} {{ slide.titleAccent }} - {{ slide.subtitle }}"
+                    title="{{ slide.title }} {{ slide.titleAccent }}"
                     class="h-full w-full object-cover"
                 />
                 <div class="absolute inset-0 h-full w-full bg-black/60"></div>
                 <div class="absolute inset-0 z-10 flex h-full items-center">
                     <div class="ttt-hero-container">
-                        <h1 class="ttt-hero-title" [attr.aria-label]="slide.titleText || 'Tactical Training Team'">
-                            <span [innerHTML]="slide.title || 'Tactical Training Team'"></span>
+                        <h1 class="ttt-hero-title">
+                            {{ slide.title }} <span class="text-tttRed">{{ slide.titleAccent }}</span>
                         </h1>
                         <p class="ttt-hero-text">
                             {{ slide.subtitle }}

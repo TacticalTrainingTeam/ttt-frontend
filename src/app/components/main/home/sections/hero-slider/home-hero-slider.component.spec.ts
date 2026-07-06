@@ -13,13 +13,20 @@ describe('HomeHeroSliderComponent', () => {
         fixture = TestBed.createComponent(HomeHeroSliderComponent);
         component = fixture.componentInstance;
         fixture.componentRef.setInput('bannerSlides', [
-            { image: '/img/home-banner/home-banner1.webp', title: 'Title', titleText: 'Title', subtitle: 'Subtitle' },
-            { image: '/img/home-banner/home-banner2.webp', title: 'Title2', titleText: 'Title2', subtitle: 'Subtitle2' },
+            { image: '/img/home-banner/home-banner1.webp', title: 'Title', titleAccent: 'Accent', subtitle: 'Subtitle' },
+            { image: '/img/home-banner/home-banner2.webp', title: 'Title2', titleAccent: 'Accent2', subtitle: 'Subtitle2' },
         ]);
         fixture.detectChanges();
     });
 
     it('should create', () => {
         expect(component).toBeTruthy();
+    });
+
+    it('should render title, accent and subtitle of the active slide', () => {
+        const heading: HTMLElement | null = fixture.nativeElement.querySelector('h1');
+        expect(heading?.textContent).toContain('Title');
+        expect(heading?.querySelector('span.text-tttRed')?.textContent).toContain('Accent');
+        expect(fixture.nativeElement.textContent).toContain('Subtitle');
     });
 });

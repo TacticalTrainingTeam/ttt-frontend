@@ -1,7 +1,8 @@
 export interface HomeBannerSlide {
     image: string;
     title: string;
-    titleText: string;
+    /** Last part of the title, rendered in the TTT accent color */
+    titleAccent: string;
     subtitle: string;
 }
 

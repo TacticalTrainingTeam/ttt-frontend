@@ -47,8 +47,8 @@ describe('MedienComponent', () => {
     });
 
     it('should expose media and social platform cards', () => {
-        expect(component.mediaPlatforms.length).toBe(3);
-        expect(component.socialPlatforms.length).toBe(8);
+        expect(component.mediaPlatforms).toHaveSize(3);
+        expect(component.socialPlatforms).toHaveSize(8);
 
         expect(component.mediaPlatforms[0].id).toBe('youtube');
         expect(component.socialPlatforms.find((item) => item.id === 'github')?.handle).toBe('TacticalTrainingTeam');
