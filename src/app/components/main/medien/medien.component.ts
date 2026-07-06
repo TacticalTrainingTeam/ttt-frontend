@@ -54,7 +54,6 @@ export class MedienComponent {
             ariaLabel: 'YouTube Kanal öffnen',
             iconClass: 'pi pi-youtube text-2xl text-red-400',
             cardClass: 'ttt-card-interactive',
-            iconWrapperClass: 'bg-red-500/20',
         },
         {
             id: 'twitch',
@@ -65,7 +64,6 @@ export class MedienComponent {
             ariaLabel: 'Twitch Kanal öffnen',
             iconClass: 'pi pi-video text-2xl text-purple-400',
             cardClass: 'ttt-card-interactive',
-            iconWrapperClass: 'bg-purple-500/20',
         },
     ];
 
@@ -112,7 +110,7 @@ export class MedienComponent {
             url: this.externalLinks.tiktok,
             handle: '@tacticaltrainingteam',
             ariaLabel: 'Social Media öffnen: TikTok',
-            iconClass: 'pi pi-play text-xl text-black',
+            iconClass: 'pi pi-play text-xl text-tttWhite',
             cardClass: 'ttt-card-interactive',
         },
         {

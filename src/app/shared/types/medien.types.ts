@@ -20,7 +20,6 @@ export interface MediaPlatformCard {
     ariaLabel: string;
     iconClass: string;
     cardClass: string;
-    iconWrapperClass: string;
 }
 
 export interface SocialPlatformCard {

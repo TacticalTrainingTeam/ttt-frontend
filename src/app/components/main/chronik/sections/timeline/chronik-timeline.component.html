@@ -2,9 +2,9 @@
     <ttt-section-header title="TTT-Timeline" subtitle="Meilensteine des Tactical Training Teams"></ttt-section-header>
 
     <p-timeline [value]="timelineEvents()" align="alternate" styleClass="ttt-chronik-timeline">
-        <ng-template #marker let-event>
-            <span class="border-tttRed/50 bg-tttGray-800 flex h-8 w-8 items-center justify-center rounded-full border shadow-md">
-                <i class="pi text-sm" [ngClass]="[getEventTypeIcon(event.type), event.color]" aria-hidden="true"></i>
+        <ng-template #marker>
+            <span class="border-tttRed/50 bg-tttGray-800 flex h-4 w-4 items-center justify-center rounded-full border-2" aria-hidden="true">
+                <span class="bg-tttRed h-1.5 w-1.5 rounded-full"></span>
             </span>
         </ng-template>
 
@@ -16,7 +16,7 @@
             <div class="ttt-content-card mb-6 p-3 text-left" [ngClass]="{ 'border-tttRed/70': event.expanded }">
                 <div class="mb-1 flex flex-wrap items-center gap-2">
                     <h3 class="text-tttWhite text-base font-bold" [title]="event.title">{{ event.title }}</h3>
-                    <span class="text-xs font-medium" [ngClass]="event.color">{{ getEventTypeLabel(event.type) }}</span>
+                    <span class="text-tttGray-300 text-xs font-medium">{{ getEventTypeLabel(event.type) }}</span>
                 </div>
                 <p class="text-tttGray-300 mb-1 text-sm sm:hidden">{{ event.date }}</p>
                 <p class="text-tttGray-300 text-sm leading-snug">{{ event.description }}</p>

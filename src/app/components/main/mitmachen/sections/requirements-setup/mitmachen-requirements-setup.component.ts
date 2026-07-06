@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
+import { ExternalLinkTileComponent } from '../../../../../shared/components/external-link-tile/external-link-tile.component';
 
 @Component({
     selector: 'ttt-mitmachen-requirements-setup',
     standalone: true,
-    imports: [SectionHeaderComponent],
+    imports: [SectionHeaderComponent, ExternalLinkTileComponent],
     templateUrl: './mitmachen-requirements-setup.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

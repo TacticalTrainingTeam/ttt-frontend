@@ -27,14 +27,6 @@ export class ChronikComponent {
     readonly pageSubtitle = 'Geschichte des Tactical Training Teams';
     readonly fictionDocumentationLink = 'https://drive.google.com/file/d/1QpkevojoID6-HfPsp5GIW3OUmUjnfOSd/view';
 
-    // Private readonly properties
-    private readonly eventTypeConfig = {
-        anniversary: { color: 'text-tttWhite', label: 'Jubiläum' },
-        milestone: { color: 'text-blue-300', label: 'Meilenstein' },
-        system: { color: 'text-orange-300', label: 'System' },
-        default: { color: 'text-tttGray-300', label: 'Event' },
-    };
-
     // Public properties
     timelineEvents: TimelineEvent[] = [
         this.createTimelineEvent(
@@ -128,13 +120,11 @@ export class ChronikComponent {
         description: string,
         details: string[]
     ): TimelineEvent {
-        const cfg = this.eventTypeConfig[type as keyof typeof this.eventTypeConfig] ?? this.eventTypeConfig.default;
         return {
             id,
             title,
             date,
             type,
-            color: cfg.color,
             description,
             details,
             expanded: false,

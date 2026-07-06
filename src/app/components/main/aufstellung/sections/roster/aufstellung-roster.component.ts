@@ -91,23 +91,4 @@ export class AufstellungRosterComponent {
     getRankTagClasses(rank: RankType): string {
         return this.getRankColorClasses(rank).text;
     }
-
-    getAvatarBorderClasses(rank: RankType): Record<string, boolean> {
-        switch (rank) {
-            case 'offizier':
-                return { 'border-yellow-400/50': true };
-            case 'unteroffizier':
-                return { 'border-gray-400/50': true };
-            case 'veteran':
-                return { 'border-green-400/50': true };
-            case 'soldat':
-                return { 'border-blue-600/50': true };
-            case 'rekrut':
-                return { 'border-blue-300/50': true };
-            case 'gast':
-                return { 'border-gray-300/50': true };
-            default:
-                return { 'border-gray-400/50': true };
-        }
-    }
 }

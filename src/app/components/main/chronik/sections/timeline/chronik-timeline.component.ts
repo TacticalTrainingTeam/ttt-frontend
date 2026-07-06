@@ -17,10 +17,10 @@ export class ChronikTimelineComponent {
     timelineEvents = input.required<TimelineEvent[]>();
 
     private readonly eventTypeConfig = {
-        anniversary: { label: 'Jubiläum', icon: 'pi-star' },
-        milestone: { label: 'Meilenstein', icon: 'pi-flag' },
-        system: { label: 'System', icon: 'pi-cog' },
-        default: { label: 'Event', icon: 'pi-calendar' },
+        anniversary: { label: 'Jubiläum' },
+        milestone: { label: 'Meilenstein' },
+        system: { label: 'System' },
+        default: { label: 'Event' },
     } as const;
 
     toggleEventDetails(event: TimelineEvent): void {
@@ -37,10 +37,6 @@ export class ChronikTimelineComponent {
 
     getEventTypeLabel(type: string): string {
         return this.getEventTypeConfig(type).label;
-    }
-
-    getEventTypeIcon(type: string): string {
-        return this.getEventTypeConfig(type).icon;
     }
 
     private getEventTypeConfig(type: string) {

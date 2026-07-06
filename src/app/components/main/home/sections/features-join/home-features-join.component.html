@@ -5,14 +5,14 @@
             subtitle="Von Waffenkunde über Funken bis zu Taktik, Missionsbau und TvT. Wir bieten MilSim."
             containerClass="ttt-text-center mb-10"
             titleClass="ttt-section-title-large"
+            [showDivider]="true"
         ></ttt-section-header>
-        <div class="bg-tttRed mx-auto mb-4 h-1 w-20 rounded-full"></div>
 
         <div class="grid gap-6 md:grid-cols-2">
             <div class="ttt-content-card relative overflow-hidden">
                 <div class="relative">
                     <div class="mb-4 flex items-center gap-3">
-                        <div class="bg-tttRed flex h-10 w-10 items-center justify-center rounded-lg shadow-lg">
+                        <div class="ttt-icon-tile-accent">
                             <i class="pi pi-calendar"></i>
                         </div>
                         <h3 class="ttt-feature-title">Mindestens zwei Events pro Woche</h3>
@@ -25,7 +25,7 @@
             <div class="ttt-content-card relative overflow-hidden">
                 <div class="relative">
                     <div class="mb-4 flex items-center gap-3">
-                        <div class="bg-tttRed flex h-10 w-10 items-center justify-center rounded-lg shadow-lg">
+                        <div class="ttt-icon-tile-accent">
                             <i class="pi pi-graduation-cap"></i>
                         </div>
                         <h3 class="ttt-feature-title">Ausbildung & Training</h3>
@@ -39,7 +39,7 @@
             <div class="ttt-content-card relative overflow-hidden">
                 <div class="relative">
                     <div class="mb-4 flex items-center gap-3">
-                        <div class="bg-tttRed flex h-10 w-10 items-center justify-center rounded-lg shadow-lg">
+                        <div class="ttt-icon-tile-accent">
                             <i class="pi pi-users"></i>
                         </div>
                         <h3 class="ttt-feature-title">Für Einsteiger & Profis</h3>
@@ -52,7 +52,7 @@
             <div class="ttt-content-card relative overflow-hidden">
                 <div class="relative">
                     <div class="mb-4 flex items-center gap-3">
-                        <div class="bg-tttRed flex h-10 w-10 items-center justify-center rounded-lg shadow-lg">
+                        <div class="ttt-icon-tile-accent">
                             <i class="pi pi-shield"></i>
                         </div>
                         <h3 class="ttt-feature-title">Abwechslungsreiche Herausforderungen</h3>
@@ -76,9 +76,8 @@
                 containerClass=""
                 titleClass="ttt-section-title-large"
                 subtitleClass="ttt-description-text"
+                [showDivider]="true"
             ></ttt-section-header>
-
-            <div class="bg-tttRed mx-auto mb-4 h-1 w-20 rounded-full"></div>
         </div>
 
         <div class="grid gap-12 lg:grid-cols-12">
@@ -97,10 +96,8 @@
                         >
                             1
                         </div>
-                        <div class="border-tttGray-700/50 bg-tttGray-800/30 flex-1 rounded-lg border p-4 backdrop-blur-sm">
-                            <h4 class="text-tttWhite ttt-card-title mb-1 text-lg font-bold transition-colors duration-300">
-                                Discord beitreten
-                            </h4>
+                        <div class="border-tttGray-700/50 bg-tttGray-800/30 flex-1 rounded-lg border p-4">
+                            <h4 class="ttt-card-title">Discord beitreten</h4>
                             <p class="text-tttGray-300 mb-2 text-base leading-relaxed">
                                 Tritt unserem Discord-Server bei und stelle dich der Community vor
                             </p>
@@ -116,10 +113,8 @@
                         >
                             2
                         </div>
-                        <div class="border-tttGray-700/50 bg-tttGray-800/30 flex-1 rounded-lg border p-4 backdrop-blur-sm">
-                            <h4 class="text-tttWhite ttt-card-title mb-1 text-lg font-bold transition-colors duration-300">
-                                Arma3Sync Setup
-                            </h4>
+                        <div class="border-tttGray-700/50 bg-tttGray-800/30 flex-1 rounded-lg border p-4">
+                            <h4 class="ttt-card-title">Arma3Sync Setup</h4>
                             <p class="text-tttGray-300 mb-2 text-base leading-relaxed">
                                 Richte Arma3Sync für Arma 3 ein und lade die erforderlichen Mods herunter. Für Arma Reforger nicht nötig –
                                 Mods laden automatisch beim Serverbeitritt.
@@ -132,10 +127,8 @@
                         >
                             3
                         </div>
-                        <div class="border-tttGray-700/50 bg-tttGray-800/30 flex-1 rounded-lg border p-4 backdrop-blur-sm">
-                            <h4 class="text-tttWhite ttt-card-title mb-1 text-lg font-bold transition-colors duration-300">
-                                Einsteiger-Event oder Fast-Path
-                            </h4>
+                        <div class="border-tttGray-700/50 bg-tttGray-800/30 flex-1 rounded-lg border p-4">
+                            <h4 class="ttt-card-title">Einsteiger-Event oder Fast-Path</h4>
                             <p class="text-tttGray-300 mb-2 text-base leading-relaxed">
                                 Nimm an deinem ersten Event teil, melde dich bei &#64;Personal und lerne uns kennen
                             </p>
@@ -147,8 +140,8 @@
                         >
                             ✓
                         </div>
-                        <div class="border-tttGreen/30 bg-tttGreen/5 flex-1 rounded-lg border p-4 backdrop-blur-sm">
-                            <h4 class="text-tttWhite mb-1 text-lg font-bold transition-colors duration-300">Willkommen beim TTT!</h4>
+                        <div class="border-tttGreen/30 bg-tttGreen/5 flex-1 rounded-lg border p-4">
+                            <h4 class="ttt-card-title">Willkommen beim TTT!</h4>
                             <p class="text-tttGray-300 text-base leading-relaxed">
                                 Du bist jetzt Teil des TTT und kannst an allen Events teilnehmen
                             </p>
@@ -158,7 +151,7 @@
             </div>
 
             <div class="space-y-6 lg:col-span-5">
-                <div class="border-tttGray-700/50 bg-tttGray-800/30 rounded-xl border p-6 backdrop-blur-sm">
+                <div class="border-tttGray-700/50 bg-tttGray-800/30 rounded-xl border p-6">
                     <div class="mb-6">
                         <h3 class="ttt-step-title">Voraussetzungen</h3>
                         <p class="text-tttGray-300 text-base">Was du brauchst</p>
@@ -167,7 +160,7 @@
                     <div class="space-y-3">
                         <div class="border-tttGray-700/50 bg-tttGray-800/60 rounded-lg border p-3">
                             <div class="flex items-center gap-3">
-                                <div class="bg-tttRed/20 ring-tttRed/20 flex h-10 w-10 items-center justify-center rounded-lg ring-1">
+                                <div class="ttt-icon-tile">
                                     <i class="pi pi-id-card"></i>
                                 </div>
                                 <span class="ttt-req-text">Ab 18 Jahre</span>
@@ -175,7 +168,7 @@
                         </div>
                         <div class="border-tttGray-700/50 bg-tttGray-800/60 rounded-lg border p-3">
                             <div class="flex items-center gap-3">
-                                <div class="bg-tttRed/20 ring-tttRed/20 flex h-10 w-10 items-center justify-center rounded-lg ring-1">
+                                <div class="ttt-icon-tile">
                                     <i class="pi pi-microphone"></i>
                                 </div>
                                 <span class="ttt-req-text">Headset für TeamSpeak 3 & Discord</span>
@@ -183,7 +176,7 @@
                         </div>
                         <div class="border-tttGray-700/50 bg-tttGray-800/60 rounded-lg border p-3">
                             <div class="flex items-center gap-3">
-                                <div class="bg-tttRed/20 ring-tttRed/20 flex h-10 w-10 items-center justify-center rounded-lg ring-1">
+                                <div class="ttt-icon-tile">
                                     <i class="pi pi-download"></i>
                                 </div>
                                 <span class="ttt-req-text">Apex- & Contact-Expansion (Arma 3)</span>
@@ -191,7 +184,7 @@
                         </div>
                         <div class="border-tttGray-700/50 bg-tttGray-800/60 rounded-lg border p-3">
                             <div class="flex items-center gap-3">
-                                <div class="bg-tttRed/20 ring-tttRed/20 flex h-10 w-10 items-center justify-center rounded-lg ring-1">
+                                <div class="ttt-icon-tile">
                                     <i class="pi pi-check"></i>
                                 </div>
                                 <span class="ttt-req-text">Keine Erfahrung notwendig</span>
@@ -199,7 +192,7 @@
                         </div>
                         <div class="border-tttGray-700/50 bg-tttGray-800/60 rounded-lg border p-3">
                             <div class="flex items-center gap-3">
-                                <div class="bg-tttRed/20 ring-tttRed/20 flex h-10 w-10 items-center justify-center rounded-lg ring-1">
+                                <div class="ttt-icon-tile">
                                     <i class="pi pi-calendar"></i>
                                 </div>
                                 <span class="ttt-req-text">Spieltage: Dienstag & Freitag</span>
@@ -210,11 +203,11 @@
             </div>
         </div>
 
-        <div class="border-tttWhite/10 bg-tttGray-800 mt-12 rounded-xl border p-8 backdrop-blur-sm">
+        <div class="border-tttWhite/10 bg-tttGray-800 mt-12 rounded-xl border p-8">
             <div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-6">
                 @for (stat of communityStats(); track stat.label) {
                     <div
-                        class="border-tttWhite/10 bg-tttWhite/5 flex flex-col items-center justify-center rounded-lg border p-4 text-center backdrop-blur-sm"
+                        class="border-tttWhite/10 bg-tttWhite/5 flex flex-col items-center justify-center rounded-lg border p-4 text-center"
                     >
                         <div class="ttt-stat-value text-tttWhite">{{ stat.value }}</div>
                         <div class="text-tttGray-300 text-base">{{ stat.label }}</div>

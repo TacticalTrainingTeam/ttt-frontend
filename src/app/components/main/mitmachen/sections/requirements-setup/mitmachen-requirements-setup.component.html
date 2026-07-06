@@ -8,84 +8,98 @@
             titleClass="ttt-section-title-large"
         ></ttt-section-header>
 
-        <div class="ttt-content-card">
-            <!-- Spiel-Anforderungen -->
-            <div class="bg-tttGray-800 mb-6 rounded-lg p-4">
-                <h3 class="text-tttWhite mb-4 flex items-center gap-2 text-lg font-semibold">Spiel-Anforderungen</h3>
-                <div class="grid gap-4 sm:grid-cols-2">
-                    <div class="bg-tttBlack/30 flex items-center gap-3 rounded-lg p-3">
-                        <i class="pi pi-desktop text-tttRed text-lg"></i>
-                        <div>
-                            <p class="text-tttWhite text-base font-medium">Arma 3</p>
-                            <p class="text-tttGray-300 text-sm">Apex & Contact Expansion erforderlich</p>
-                        </div>
+        <!-- Spiel-Anforderungen -->
+        <div class="mb-6">
+            <h3 class="text-tttWhite mb-3 text-lg font-semibold">Spiel-Anforderungen</h3>
+            <div class="grid gap-3 sm:grid-cols-2">
+                <div class="border-tttGray-700 bg-tttGray-800 flex items-center gap-3 rounded-lg border p-3">
+                    <div class="ttt-icon-tile">
+                        <i class="pi pi-desktop text-sm"></i>
                     </div>
-                    <div class="bg-tttBlack/30 flex items-center gap-3 rounded-lg p-3">
-                        <i class="pi pi-play text-tttGreen text-lg"></i>
-                        <div>
-                            <p class="text-tttWhite text-base font-medium">Arma Reforger</p>
-                            <p class="text-tttGray-300 text-sm">Nur Base Game erforderlich</p>
-                        </div>
+                    <div>
+                        <h4 class="text-tttWhite text-base font-semibold">Arma 3</h4>
+                        <p class="text-tttGray-300 text-sm">Apex & Contact Expansion erforderlich</p>
+                    </div>
+                </div>
+                <div class="border-tttGray-700 bg-tttGray-800 flex items-center gap-3 rounded-lg border p-3">
+                    <div class="ttt-icon-tile">
+                        <i class="pi pi-play text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-tttWhite text-base font-semibold">Arma Reforger</h4>
+                        <p class="text-tttGray-300 text-sm">Nur Base Game erforderlich</p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Weitere Voraussetzungen -->
-            <div>
-                <h3 class="text-tttWhite mb-4 flex items-center gap-2 text-lg font-semibold">Weitere Voraussetzungen</h3>
-                <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                    <div class="bg-tttGray-800 rounded-lg p-4 text-center">
-                        <div class="bg-tttRed mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg">
-                            <i class="pi pi-id-card text-sm text-white"></i>
-                        </div>
-                        <h4 class="text-tttWhite mb-2 text-base font-semibold">Ab 18 Jahre</h4>
-                        <p class="text-tttGray-300 text-sm leading-relaxed">
-                            Wir sind der Meinung, dass Arma reife Persönlichkeiten brauchen, die die Geduld aufbringen, taktisch zu spielen.
+        <!-- Weitere Voraussetzungen -->
+        <div>
+            <h3 class="text-tttWhite mb-3 text-lg font-semibold">Weitere Voraussetzungen</h3>
+            <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="border-tttGray-700 bg-tttGray-800 flex items-start gap-3 rounded-lg border p-3">
+                    <div class="ttt-icon-tile">
+                        <i class="pi pi-id-card text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-tttWhite text-base font-semibold">Ab 18 Jahre</h4>
+                        <p class="text-tttGray-300 text-sm leading-snug">
+                            Arma braucht reife Persönlichkeiten mit der Geduld, taktisch zu spielen.
                         </p>
                     </div>
-                    <div class="bg-tttGray-800 rounded-lg p-4 text-center">
-                        <div class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-[#5865F2]">
-                            <i class="pi pi-microphone text-sm text-white"></i>
-                        </div>
-                        <h4 class="text-tttWhite mb-2 text-base font-semibold">Headset für TS3 & Discord</h4>
-                        <p class="text-tttGray-300 text-sm leading-relaxed">
-                            Für den Spielbetrieb und zur Kommunikation innerhalb der Community zwingend notwendig.
+                </div>
+                <div class="border-tttGray-700 bg-tttGray-800 flex items-start gap-3 rounded-lg border p-3">
+                    <div class="ttt-icon-tile">
+                        <i class="pi pi-microphone text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-tttWhite text-base font-semibold">Headset für TS3 & Discord</h4>
+                        <p class="text-tttGray-300 text-sm leading-snug">
+                            Für Spielbetrieb und Kommunikation in der Community zwingend notwendig.
                         </p>
                     </div>
-                    <div class="bg-tttGray-800 rounded-lg p-4 text-center">
-                        <div class="bg-tttGreen mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg">
-                            <i class="pi pi-shield text-sm text-white"></i>
-                        </div>
-                        <h4 class="text-tttWhite mb-2 text-base font-semibold">Disziplin während Events</h4>
-                        <p class="text-tttGray-300 text-sm leading-relaxed">
-                            Motivation die das taktische Spielen erfordert und die Geduld, den Feind auch mal nur zu beobachten.
+                </div>
+                <div class="border-tttGray-700 bg-tttGray-800 flex items-start gap-3 rounded-lg border p-3">
+                    <div class="ttt-icon-tile">
+                        <i class="pi pi-shield text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-tttWhite text-base font-semibold">Disziplin während Events</h4>
+                        <p class="text-tttGray-300 text-sm leading-snug">
+                            Motivation für taktisches Spiel und die Geduld, den Feind auch mal nur zu beobachten.
                         </p>
                     </div>
-                    <div class="bg-tttGray-800 rounded-lg p-4 text-center">
-                        <div class="bg-tttGray-600 mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg">
-                            <i class="pi pi-cog text-sm text-white"></i>
-                        </div>
-                        <h4 class="text-tttWhite mb-2 text-base font-semibold">Geeigneter Computer</h4>
-                        <p class="text-tttGray-300 text-sm leading-relaxed">
-                            PC der auch bei anspruchsvollen Missionen mit bis zu 50+ Spielern in beiden Arma-Titeln flüssig läuft.
+                </div>
+                <div class="border-tttGray-700 bg-tttGray-800 flex items-start gap-3 rounded-lg border p-3">
+                    <div class="ttt-icon-tile">
+                        <i class="pi pi-cog text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-tttWhite text-base font-semibold">Geeigneter Computer</h4>
+                        <p class="text-tttGray-300 text-sm leading-snug">
+                            PC, der Missionen mit 50+ Spielern in beiden Arma-Titeln flüssig darstellt.
                         </p>
                     </div>
-                    <div class="bg-tttGray-800 rounded-lg p-4 text-center">
-                        <div class="bg-tttGreen mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg">
-                            <i class="pi pi-book text-sm text-white"></i>
-                        </div>
-                        <h4 class="text-tttWhite mb-2 text-base font-semibold">Bereitschaft um Neues zu lernen</h4>
-                        <p class="text-tttGray-300 text-sm leading-relaxed">
-                            Sich innerhalb des Spiels in ein Team einzugliedern und sich an die Spielgewohnheiten des TTT anzupassen.
+                </div>
+                <div class="border-tttGray-700 bg-tttGray-800 flex items-start gap-3 rounded-lg border p-3">
+                    <div class="ttt-icon-tile">
+                        <i class="pi pi-book text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-tttWhite text-base font-semibold">Bereitschaft, Neues zu lernen</h4>
+                        <p class="text-tttGray-300 text-sm leading-snug">
+                            Sich ins Team eingliedern und an die Spielweise des TTT anpassen.
                         </p>
                     </div>
-                    <div class="bg-tttGray-800 rounded-lg p-4 text-center">
-                        <div class="bg-tttRed mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg">
-                            <i class="pi pi-clock text-sm text-white"></i>
-                        </div>
-                        <h4 class="text-tttWhite mb-2 text-base font-semibold">Zuverlässigkeit & Pünktlichkeit</h4>
-                        <p class="text-tttGray-300 text-sm leading-relaxed">
-                            Regelmäßige und pünktliche Teilnahme an Events. Bei Verhinderung rechtzeitige Abmeldung.
+                </div>
+                <div class="border-tttGray-700 bg-tttGray-800 flex items-start gap-3 rounded-lg border p-3">
+                    <div class="ttt-icon-tile">
+                        <i class="pi pi-clock text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-tttWhite text-base font-semibold">Zuverlässigkeit & Pünktlichkeit</h4>
+                        <p class="text-tttGray-300 text-sm leading-snug">
+                            Pünktliche Teilnahme an Events, bei Verhinderung rechtzeitig abmelden.
                         </p>
                     </div>
                 </div>
@@ -95,8 +109,14 @@
 </section>
 
 <!-- Arma3Sync und Tech-Check -->
-<section class="py-12">
-    <div class="ttt-page-container">
+<section class="relative overflow-hidden py-12">
+    <!-- Decorative background image with dark overlay -->
+    <div class="absolute inset-0" aria-hidden="true">
+        <img src="/img/mitmachen/mitmachen-arma3sync.webp" alt="" title="Arma3Sync" class="h-full w-full object-cover" loading="lazy" />
+        <div class="bg-tttBlack/90 absolute inset-0"></div>
+    </div>
+
+    <div class="ttt-page-container relative z-10">
         <ttt-section-header
             title="Arma3Sync und Tech-Check"
             subtitle="Für Arma 3 Events benötigst du Arma3Sync für Mods. Arma Reforger lädt Mods automatisch beim Serverbeitritt."
@@ -105,82 +125,55 @@
         ></ttt-section-header>
 
         <div class="mx-auto max-w-6xl">
-            <div class="border-tttRed/30 relative mb-8 overflow-hidden rounded-xl border-2">
-                <div class="absolute inset-0">
-                    <img src="/img/mitmachen/mitmachen-arma3sync.webp" alt="Arma3Sync Background" class="h-full w-full object-cover" />
-                    <div class="bg-tttBlack/85 absolute inset-0"></div>
+            <div class="ttt-content-card mb-8">
+                <div class="mb-6 flex items-start gap-4">
+                    <div class="ttt-icon-tile-accent">
+                        <i class="pi pi-download"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="ttt-feature-title mb-2">Arma3Sync - Nur für Arma 3</h3>
+                        <p class="text-tttGray-300 text-base leading-relaxed">
+                            Für Arma 3 Events musst du Modifikationen über Arma3Sync herunterladen. Bei Arma Reforger werden Mods
+                            automatisch beim Server-Beitritt geladen.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="relative z-10 p-6">
-                    <div class="mb-6 flex items-start gap-4">
-                        <div class="bg-tttRed flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg shadow-lg">
-                            <i class="pi pi-download text-lg text-white"></i>
-                        </div>
-                        <div class="flex-1">
-                            <div class="bg-tttBlack/80 border-tttRed/20 mb-6 rounded-lg border p-4 backdrop-blur-sm">
-                                <h3 class="ttt-feature-title text-tttWhite mb-2 drop-shadow-lg">Arma3Sync - Nur für Arma 3</h3>
-                                <p class="text-tttWhite mb-0 text-base leading-relaxed drop-shadow-md">
-                                    Für Arma 3 Events musst du Modifikationen über Arma3Sync herunterladen. Bei Arma Reforger werden Mods
-                                    automatisch beim Server-Beitritt geladen.
-                                </p>
-                            </div>
-
-                            <div class="grid gap-4 md:grid-cols-3">
-                                <div class="bg-tttBlack/60 border-tttRed/20 flex flex-col gap-3 rounded-lg border p-4 backdrop-blur-sm">
-                                    <div class="flex items-center gap-3">
-                                        <div class="bg-tttRed/30 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg">
-                                            <i class="pi pi-file-text text-tttRed text-sm"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="text-tttWhite text-base font-semibold">Schriftliche Anleitung</h4>
-                                            <p class="text-tttGray-300 text-sm">Detaillierte Wiki-Anleitung</p>
-                                        </div>
-                                    </div>
-                                    <a [href]="arma3SyncGuideUrl()" target="_blank" rel="noopener noreferrer" class="ttt-btn-primary">
-                                        <i class="pi pi-external-link text-xs"></i>
-                                        Anleitung öffnen
-                                    </a>
-                                </div>
-                                <div class="bg-tttBlack/60 border-tttRed/20 flex flex-col gap-3 rounded-lg border p-4 backdrop-blur-sm">
-                                    <div class="flex items-center gap-3">
-                                        <div class="bg-tttRed/30 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg">
-                                            <i class="pi pi-play text-tttRed text-sm"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="text-tttWhite text-base font-semibold">Video-Tutorial</h4>
-                                            <p class="text-tttGray-300 text-sm">Schritt-für-Schritt Video</p>
-                                        </div>
-                                    </div>
-                                    <a [href]="arma3SyncVideoUrl()" target="_blank" rel="noopener noreferrer" class="ttt-btn-primary">
-                                        <i class="pi pi-play text-xs"></i>
-                                        Video ansehen
-                                    </a>
-                                </div>
-                                <div class="bg-tttBlack/60 border-tttRed/20 flex flex-col gap-3 rounded-lg border p-4 backdrop-blur-sm">
-                                    <div class="flex items-center gap-3">
-                                        <div class="bg-tttRed/30 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg">
-                                            <i class="pi pi-lightbulb text-tttRed text-sm"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="text-tttWhite text-base font-semibold">Tipps & Tricks</h4>
-                                            <p class="text-tttGray-300 text-sm">Hilfreiche Video-Tipps</p>
-                                        </div>
-                                    </div>
-                                    <a [href]="arma3SyncTipsUrl()" target="_blank" rel="noopener noreferrer" class="ttt-btn-primary">
-                                        <i class="pi pi-lightbulb text-xs"></i>
-                                        Tipps ansehen
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="grid gap-4 md:grid-cols-3">
+                    <ttt-external-link-tile
+                        class="block h-full"
+                        [href]="arma3SyncGuideUrl()"
+                        title="Schriftliche Anleitung"
+                        description="Detaillierte Wiki-Anleitung"
+                        iconClass="pi pi-book"
+                        ariaLabel="Arma3Sync Anleitung öffnen"
+                        cardClass="ttt-content-card ttt-card-interactive block h-full text-left"
+                    ></ttt-external-link-tile>
+                    <ttt-external-link-tile
+                        class="block h-full"
+                        [href]="arma3SyncVideoUrl()"
+                        title="Video-Tutorial"
+                        description="Schritt-für-Schritt Video"
+                        iconClass="pi pi-play"
+                        ariaLabel="Arma3Sync Video-Tutorial öffnen"
+                        cardClass="ttt-content-card ttt-card-interactive block h-full text-left"
+                    ></ttt-external-link-tile>
+                    <ttt-external-link-tile
+                        class="block h-full"
+                        [href]="arma3SyncTipsUrl()"
+                        title="Tipps & Tricks"
+                        description="Hilfreiche Video-Tipps"
+                        iconClass="pi pi-lightbulb"
+                        ariaLabel="Arma3Sync Tipps ansehen"
+                        cardClass="ttt-content-card ttt-card-interactive block h-full text-left"
+                    ></ttt-external-link-tile>
                 </div>
             </div>
 
             <div class="ttt-content-card">
                 <div class="mb-4 flex items-start gap-4">
-                    <div class="bg-tttGreen flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg">
-                        <i class="pi pi-cog text-tttBlack text-lg"></i>
+                    <div class="ttt-icon-tile">
+                        <i class="pi pi-cog"></i>
                     </div>
                     <div class="flex-1">
                         <h3 class="ttt-feature-title mb-2">Tech-Check</h3>
@@ -194,13 +187,13 @@
                     <h4 class="text-tttWhite mb-3 text-base font-semibold">Wichtige Hinweise zum Tech-Check</h4>
                     <ul class="space-y-2">
                         <li class="flex items-start gap-2">
-                            <i class="pi pi-check text-tttGreen mt-1 text-xs"></i>
+                            <i class="pi pi-check text-tttRed mt-1 text-xs"></i>
                             <span class="text-tttGray-300 text-base"
                                 >Solltest du Fragen oder Probleme haben, stehen dir unsere Technikchecker zur Verfügung</span
                             >
                         </li>
                         <li class="flex items-start gap-2">
-                            <i class="pi pi-check text-tttGreen mt-1 text-xs"></i>
+                            <i class="pi pi-check text-tttRed mt-1 text-xs"></i>
                             <span class="text-tttGray-300 text-base"
                                 >Erkenne sie anhand des Hammer-Symbols im Discord oder TeamSpeak (ts3.tacticalteam.de)</span
                             >

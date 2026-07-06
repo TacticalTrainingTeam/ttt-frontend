@@ -6,7 +6,7 @@
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             @for (stream of liveStreams; track stream.id) {
                 <a
-                    class="ttt-content-card ttt-card-interactive group cursor-pointer"
+                    class="ttt-content-card ttt-card-interactive cursor-pointer"
                     [attr.aria-label]="'Live Stream öffnen: ' + stream.title"
                     [href]="stream.url"
                     target="_blank"
@@ -21,9 +21,7 @@
                         />
                         <div class="absolute inset-0 rounded-lg bg-black/40"></div>
                         <div class="absolute top-3 left-3">
-                            <span
-                                class="inline-flex items-center gap-1 rounded-full bg-red-500/90 px-2 py-1 text-xs font-medium text-white"
-                            >
+                            <span class="bg-tttRed/90 inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium text-white">
                                 <i class="pi pi-circle-fill animate-pulse"></i>
                                 LIVE
                             </span>
@@ -37,7 +35,7 @@
                     </div>
 
                     <div class="space-y-2">
-                        <h3 class="text-tttWhite line-clamp-2 text-lg font-bold transition-colors">
+                        <h3 class="text-tttWhite line-clamp-2 text-lg font-bold">
                             {{ stream.title }}
                         </h3>
                         <p class="text-tttGray-300 text-base">

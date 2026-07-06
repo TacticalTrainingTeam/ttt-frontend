@@ -6,4 +6,8 @@
     @if (subtitle()) {
         <p [ngClass]="subtitleClass()">{{ subtitle() }}</p>
     }
+
+    @if (showDivider()) {
+        <div class="ttt-section-divider mt-4" aria-hidden="true"></div>
+    }
 </div>

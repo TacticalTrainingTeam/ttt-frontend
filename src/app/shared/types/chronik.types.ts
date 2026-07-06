@@ -5,7 +5,6 @@ export interface TimelineEvent {
     title: string;
     date: string;
     type: TimelineEventType;
-    color: string;
     description: string;
     details: string[];
     expanded?: boolean;

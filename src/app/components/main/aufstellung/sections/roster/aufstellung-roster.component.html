@@ -24,7 +24,7 @@
                     <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
                         @for (member of membersByRank()[rank]; track member.id) {
                             <div
-                                class="group ttt-content-card ttt-card-interactive flex min-h-[140px] flex-col justify-between p-3 text-center"
+                                class="ttt-content-card ttt-card-interactive flex min-h-[140px] flex-col justify-between p-3 text-center"
                                 [ngClass]="{
                                     'cursor-pointer': hasExpandableContent(member),
                                     'border-tttRed/50': selectedMember() === member,
@@ -39,10 +39,7 @@
                                     @if (member.rank === "offizier") {
                                         <div class="relative mx-auto mb-2 flex justify-center">
                                             @if (member.avatar && member.avatar !== "") {
-                                                <div
-                                                    class="h-12 w-12 overflow-hidden rounded-full border-2"
-                                                    [ngClass]="getAvatarBorderClasses(member.rank)"
-                                                >
+                                                <div class="border-tttRed/50 h-12 w-12 overflow-hidden rounded-full border-2">
                                                     <img
                                                         [src]="member.avatar"
                                                         [alt]="member.name + ' Avatar'"
@@ -54,9 +51,9 @@
                                                 </div>
                                             } @else {
                                                 <div
-                                                    class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-yellow-400/50 bg-yellow-400/10"
+                                                    class="border-tttRed/50 bg-tttRed/10 flex h-12 w-12 items-center justify-center rounded-full border-2"
                                                 >
-                                                    <i class="pi pi-user text-lg text-yellow-400" aria-hidden="true"></i>
+                                                    <i class="pi pi-user text-tttRed-300 text-lg" aria-hidden="true"></i>
                                                 </div>
                                             }
                                         </div>
@@ -80,7 +77,7 @@
                                             [pTooltip]="member.medals.length + ' Medaille(n)'"
                                             tooltipPosition="top"
                                         >
-                                            <i class="pi pi-star-fill text-xs text-yellow-400" aria-hidden="true"></i>
+                                            <i class="pi pi-star-fill text-tttGray-300 text-xs" aria-hidden="true"></i>
                                         </span>
                                     }
                                     @if (member.campaignRibbons.length > 0) {
@@ -89,7 +86,7 @@
                                             [pTooltip]="member.campaignRibbons.length + ' Kampagne(n)'"
                                             tooltipPosition="top"
                                         >
-                                            <i class="pi pi-flag text-xs text-purple-400" aria-hidden="true"></i>
+                                            <i class="pi pi-flag text-tttGray-300 text-xs" aria-hidden="true"></i>
                                         </span>
                                     }
                                     @if (member.abteilungen.length > 0) {
@@ -98,7 +95,7 @@
                                             [pTooltip]="member.abteilungen.length + ' Abteilung(en)'"
                                             tooltipPosition="top"
                                         >
-                                            <i class="pi pi-briefcase text-xs text-blue-400" aria-hidden="true"></i>
+                                            <i class="pi pi-briefcase text-tttGray-300 text-xs" aria-hidden="true"></i>
                                         </span>
                                     }
                                 </div>
@@ -136,12 +133,12 @@
             <div class="flex items-center gap-3">
                 <div class="h-12 w-12 flex-shrink-0">
                     @if (member.avatar && member.avatar !== "") {
-                        <div class="h-12 w-12 overflow-hidden rounded-full border-2" [ngClass]="getAvatarBorderClasses(member.rank)">
+                        <div class="border-tttRed/50 h-12 w-12 overflow-hidden rounded-full border-2">
                             <img [src]="member.avatar" [alt]="member.name" [title]="member.name" class="h-full w-full object-cover" />
                         </div>
                     } @else {
-                        <div class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-yellow-400/50 bg-yellow-400/10">
-                            <i class="pi pi-user text-lg text-yellow-400" aria-hidden="true"></i>
+                        <div class="border-tttRed/50 bg-tttRed/10 flex h-12 w-12 items-center justify-center rounded-full border-2">
+                            <i class="pi pi-user text-tttRed-300 text-lg" aria-hidden="true"></i>
                         </div>
                     }
                 </div>

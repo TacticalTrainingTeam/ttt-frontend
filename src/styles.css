@@ -79,7 +79,7 @@
 
     /* Hero & Main Titles */
     .ttt-hero-title {
-        @apply text-tttWhite mb-4 text-3xl font-bold break-words drop-shadow-lg transition-all duration-500 md:text-4xl lg:text-5xl;
+        @apply text-tttWhite mb-4 text-3xl font-bold break-words drop-shadow-lg md:text-4xl lg:text-5xl;
     }
 
     .ttt-page-title {
@@ -105,12 +105,12 @@
     }
 
     .ttt-feature-title {
-        @apply text-tttWhite text-lg font-bold break-words transition-colors duration-300;
+        @apply text-tttWhite text-lg font-bold break-words;
     }
 
     /* Body Text */
     .ttt-hero-text {
-        @apply text-tttGray-100 mx-auto mb-6 max-w-2xl text-base leading-relaxed break-words drop-shadow-md transition-all duration-500 md:text-lg;
+        @apply text-tttGray-100 mx-auto mb-6 max-w-2xl text-base leading-relaxed break-words drop-shadow-md md:text-lg;
     }
 
     .ttt-content-text {
@@ -136,7 +136,7 @@
 
     /* Links & Interactive */
     .ttt-link {
-        @apply text-tttRed transition-colors;
+        @apply text-tttRed-300 hover:text-tttRed-200 underline underline-offset-2 transition-colors;
     }
 
     /* Layout Helpers */
@@ -158,7 +158,7 @@
     }
 
     .ttt-card-title {
-        @apply text-tttWhite mb-1 text-lg font-bold break-words transition-colors duration-300;
+        @apply text-tttWhite mb-1 text-lg font-bold break-words;
     }
 
     .ttt-stat-value {
@@ -201,6 +201,19 @@
     /* Hover treatment for clickable cards (replaces scale effects) */
     .ttt-card-interactive {
         @apply hover:border-tttGray-500 hover:bg-tttGray-700/70 transition-colors duration-200;
+    }
+
+    /* Icon container - one size, one shape; accent variant for primary emphasis */
+    .ttt-icon-tile {
+        @apply bg-tttGray-700 text-tttRed-300 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg;
+    }
+    .ttt-icon-tile-accent {
+        @apply bg-tttRed text-tttWhite flex h-10 w-10 shrink-0 items-center justify-center rounded-lg;
+    }
+
+    /* Red accent divider used below section headers */
+    .ttt-section-divider {
+        @apply bg-tttRed mx-auto mb-4 h-1 w-20 rounded-full;
     }
 }
 
