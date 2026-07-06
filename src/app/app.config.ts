@@ -3,7 +3,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'; // NOSONAR typescript:S1874 - required by PrimeNG, see https://github.com/primefaces/primeng/issues/18863
 import { providePrimeNG } from 'primeng/config';
 import { tttPrimeNgTheme } from './themes.config';
 import { securityInterceptor } from './core/interceptors/security.interceptor';
@@ -19,9 +19,10 @@ export const appConfig: ApplicationConfig = {
         provideZoneChangeDetection({ eventCoalescing: true }),
         provideRouter(routes, withComponentInputBinding(), withInMemoryScrolling({ scrollPositionRestoration: 'top' })),
         provideClientHydration(),
-        // Note: PrimeNG requires animations despite deprecation warning
+        // PrimeNG overlays (dialog, tooltip, menubar) still require the deprecated animations
+        // provider; removal is blocked until PrimeNG supports the new animate.enter/leave APIs.
         // See: https://github.com/primefaces/primeng/issues/18863
-        provideAnimationsAsync(),
+        provideAnimationsAsync(), // NOSONAR typescript:S1874
         providePrimeNG({
             theme: tttPrimeNgTheme,
         }),

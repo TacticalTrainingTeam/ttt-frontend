@@ -60,7 +60,7 @@
 
 /* TTT Standard Layout Components */
 @layer components {
-    /* Standard page container for legal pages (Impressum, Datenschutz) */
+    /* Standard page container for legal pages  */
     .ttt-page-container {
         @apply mx-auto max-w-6xl px-6 sm:px-8;
     }
@@ -75,7 +75,7 @@
         @apply border-tttGray-700 bg-tttGray-800 rounded-xl border p-6;
     }
 
-    /* TTT Typography System - Comprehensive Design System */
+    /* TTT Typography System */
 
     /* Hero & Main Titles */
     .ttt-hero-title {
@@ -198,12 +198,12 @@
         @apply px-6 py-3 text-base;
     }
 
-    /* Hover treatment for clickable cards (replaces scale effects) */
+    /* Hover treatment for clickable cards */
     .ttt-card-interactive {
         @apply hover:border-tttGray-500 hover:bg-tttGray-700/70 transition-colors duration-200;
     }
 
-    /* Icon container - one size, one shape; accent variant for primary emphasis */
+    /* Icon container */
     .ttt-icon-tile {
         @apply bg-tttGray-700 text-tttRed-300 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg;
     }
