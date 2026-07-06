@@ -50,10 +50,10 @@ export class HeaderComponent {
             rel: 'noopener noreferrer',
         },
         {
-            label: 'Medien',
-            icon: 'pi pi-images',
+            label: 'Aufstellung',
+            icon: 'pi pi-sitemap',
             styleClass: 'font-heading',
-            routerLink: ['/medien'],
+            routerLink: ['/aufstellung'],
         },
         {
             label: 'Über uns',
@@ -61,10 +61,10 @@ export class HeaderComponent {
             styleClass: 'font-heading',
             items: [
                 {
-                    label: 'Aufstellung',
-                    icon: 'pi pi-sitemap',
+                    label: 'Medien',
+                    icon: 'pi pi-images',
                     styleClass: 'font-heading',
-                    routerLink: ['/aufstellung'],
+                    routerLink: ['/medien'],
                 },
                 {
                     label: 'Chronik',
