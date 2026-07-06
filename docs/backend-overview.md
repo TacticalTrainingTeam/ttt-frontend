@@ -26,11 +26,21 @@ Central HTTP client wrapper with consistent request/response handling.
 
 Fallback: Dummy data if backend unavailable.
 
+### EventsService
+
+**Endpoint:**
+
+- `GET /events/upcoming?limit=:n` → `{ events: SlotbotEvent[] }`
+
+Fallback: Dummy data if backend unavailable.
+
 ### MedienService
 
 **Endpoint:**
 
 - `GET /twitch/streams` → `TwitchStream[]`
+
+Fallback: Dummy data if backend unavailable.
 
 ## Data Types
 

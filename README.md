@@ -5,21 +5,21 @@ Angular 20 application for Tactical Training Team website.
 ## Project Structure
 
 ```
-src/app/
-├── core/
-│   ├── services/        # Singleton services (API, events, medien, members)
-│   ├── guards/          # Route guards (security)
-│   └── interceptors/    # HTTP interceptors (security)
-├── shared/
-│   ├── components/      # Shared components (page-layout)
-│   ├── directives/      # Custom directives
-│   └── types/           # TypeScript interfaces
-├── components/
-│   ├── header/          # Navigation
-│   ├── footer/          # Footer
-│   ├── sidebar/         # Left and right sidebars
-│   └── main/            # Content pages
-└── environments/        # Environment configs (src/environments/)
+src/
+├── app/
+│   ├── core/
+│   │   ├── services/        # Singleton services (API, events, medien, members)
+│   │   └── interceptors/    # HTTP interceptors (security)
+│   ├── shared/
+│   │   ├── components/      # Reusable components (page-layout, section-header, external-link-tile)
+│   │   ├── directives/      # Custom directives
+│   │   └── types/           # TypeScript interfaces
+│   └── components/
+│       ├── header/          # Navigation
+│       ├── footer/          # Footer
+│       ├── sidebar/         # Left and right sidebars
+│       └── main/            # Content pages
+└── environments/            # Environment configs
 ```
 
 ## Getting Started

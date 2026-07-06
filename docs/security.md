@@ -17,19 +17,16 @@ Browser-side meta configuration in `src/index.html`:
 
 - `<meta name="referrer" content="strict-origin-when-cross-origin">`
 
-## Route Protection
+## Template Security
 
-**Guard:** `securityGuard` (`src/app/core/guards/security.guard.ts`)
-
-- Lightweight route guard placeholder (no client-side XSS pattern matching / rate limiting)
-- Application uses Angular's built-in template sanitization
+Application uses Angular's built-in template sanitization.
 
 ## HTTP Security
 
 **Interceptor:** `securityInterceptor` (`src/app/core/interceptors/security.interceptor.ts`)
 
 - Blocks insecure `http://` requests when app runs in HTTPS context
-- Security headers injection
+- Sets `Cache-Control: no-cache` headers on all requests
 
 ## ESLint Security Rules
 
