@@ -26,7 +26,7 @@ export interface AufstellungLoadingMessages {
     RETRY_ARIA: string;
 }
 
-export type Member = BackendMember & { isExpanded?: boolean };
+export type Member = BackendMember;
 
 export interface MembersByRank {
     [key: string]: Member[];

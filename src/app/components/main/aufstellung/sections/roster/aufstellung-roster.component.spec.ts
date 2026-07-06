@@ -1,7 +1,19 @@
-import { DOCUMENT } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PLATFORM_ID } from '@angular/core';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { AufstellungRosterComponent } from './aufstellung-roster.component';
+import { Member } from '../../../../../shared/types/aufstellung.types';
+
+const createMember = (overrides: Partial<Member> = {}): Member => ({
+    id: '1',
+    name: 'Testmember',
+    rank: 'soldat',
+    avatar: '',
+    memberSince: '2020-01-01',
+    medals: [],
+    campaignRibbons: [],
+    abteilungen: [],
+    ...overrides,
+});
 
 describe('AufstellungRosterComponent', () => {
     let component: AufstellungRosterComponent;
@@ -10,10 +22,7 @@ describe('AufstellungRosterComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [AufstellungRosterComponent],
-            providers: [
-                { provide: DOCUMENT, useValue: document },
-                { provide: PLATFORM_ID, useValue: 'browser' },
-            ],
+            providers: [provideNoopAnimations()],
         }).compileComponents();
 
         fixture = TestBed.createComponent(AufstellungRosterComponent);
@@ -36,5 +45,30 @@ describe('AufstellungRosterComponent', () => {
 
     it('should create', () => {
         expect(component).toBeTruthy();
+    });
+
+    it('should open the details dialog for a member with expandable content', () => {
+        const member = createMember({ medals: [{ id: 'm1', name: 'Medal', description: '', image: '' }] });
+
+        component.openMemberDetails(member);
+
+        expect(component.selectedMember()).toBe(member);
+    });
+
+    it('should not open the details dialog for a member without expandable content', () => {
+        const member = createMember();
+
+        component.openMemberDetails(member);
+
+        expect(component.selectedMember()).toBeNull();
+    });
+
+    it('should clear the selected member when the dialog is closed', () => {
+        const member = createMember({ medals: [{ id: 'm1', name: 'Medal', description: '', image: '' }] });
+        component.openMemberDetails(member);
+
+        component.onDetailsVisibleChange(false);
+
+        expect(component.selectedMember()).toBeNull();
     });
 });

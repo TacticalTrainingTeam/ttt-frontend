@@ -15,6 +15,6 @@ export class ExternalLinkTileComponent {
     iconClass = input.required<string>();
     displayUrl = input<string>();
     ariaLabel = input<string>();
-    cardClass = input('ttt-content-card group block text-left transition-transform duration-300 hover:scale-105');
+    cardClass = input('ttt-content-card ttt-card-interactive group block text-left');
     iconWrapperClass = input('bg-tttGray-700/50 flex h-12 w-12 items-center justify-center rounded-lg');
 }

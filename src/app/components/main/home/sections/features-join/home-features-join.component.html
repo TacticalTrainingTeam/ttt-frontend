@@ -67,20 +67,8 @@
     </div>
 </section>
 
-<section class="bg-tttGray-950 relative overflow-hidden py-20">
-    <div class="absolute inset-0 opacity-20">
-        <div class="bg-tttRed/15 absolute top-10 left-10 h-48 w-48 animate-pulse rounded-full blur-3xl"></div>
-        <div class="bg-tttGreen/10 absolute right-10 bottom-10 h-64 w-64 animate-pulse rounded-full blur-3xl [animation-delay:2s]"></div>
-        <div
-            class="bg-tttRed/5 absolute top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 animate-spin rounded-full blur-3xl [animation-duration:30s]"
-        ></div>
-    </div>
-
-    <div
-        class="absolute inset-0 [background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.4)_1px,transparent_0)] [background-size:50px_50px] opacity-5"
-    ></div>
-
-    <div class="ttt-page-container relative">
+<section class="bg-tttGray-950 border-tttGray-800 border-t py-20">
+    <div class="ttt-page-container">
         <div class="mb-12 text-center">
             <ttt-section-header
                 title="Bereit für das TTT?"
@@ -233,16 +221,9 @@
                     </div>
                 }
                 <div class="col-span-1 flex w-full flex-col gap-4 sm:col-span-3 sm:flex-row md:col-span-3">
-                    <a
-                        routerLink="/mitmachen"
-                        pButton
-                        size="large"
-                        class="bg-tttRed text-tttWhite inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 text-center text-sm font-semibold shadow-lg transition-transform duration-300 hover:scale-105"
-                    >
-                        <span class="flex w-full items-center justify-center gap-2 text-center text-balance break-words">
-                            <i class="pi pi-arrow-right text-sm"></i>
-                            <span class="text-balance break-words">JETZT DURCHSTARTEN</span>
-                        </span>
+                    <a routerLink="/mitmachen" pButton size="large" class="ttt-btn-primary w-full">
+                        <i class="pi pi-arrow-right text-sm"></i>
+                        Jetzt durchstarten
                     </a>
 
                     <a
@@ -251,12 +232,10 @@
                         rel="noopener noreferrer"
                         pButton
                         size="large"
-                        class="bg-tttWhite text-tttBlack inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 text-center text-sm font-semibold shadow-lg transition-transform duration-300 hover:scale-105"
+                        class="ttt-btn-light w-full"
                     >
-                        <span class="flex w-full items-center justify-center gap-2 text-center text-balance break-words">
-                            <i class="pi pi-book"></i>
-                            <span class="text-balance break-words">WIKI ENTDECKEN</span>
-                        </span>
+                        <i class="pi pi-book"></i>
+                        Wiki entdecken
                     </a>
                 </div>
             </div>

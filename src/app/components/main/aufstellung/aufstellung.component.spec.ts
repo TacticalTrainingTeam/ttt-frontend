@@ -63,7 +63,6 @@ describe('AufstellungComponent', () => {
         component.ngOnInit();
         expect(memberServiceSpy.getAllMembers).toHaveBeenCalled();
         expect(component.members()).toHaveSize(3);
-        expect(component.members().every((member) => member.isExpanded === false)).toBeTrue();
         expect(component.totalMembers()).toBe(3);
     });
 

@@ -6,7 +6,7 @@
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             @for (stream of liveStreams; track stream.id) {
                 <a
-                    class="ttt-content-card group cursor-pointer transition-transform duration-300 hover:scale-105"
+                    class="ttt-content-card ttt-card-interactive group cursor-pointer"
                     [attr.aria-label]="'Live Stream öffnen: ' + stream.title"
                     [href]="stream.url"
                     target="_blank"

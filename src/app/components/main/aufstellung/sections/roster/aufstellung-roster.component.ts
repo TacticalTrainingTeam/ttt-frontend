@@ -1,6 +1,6 @@
-import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, PLATFORM_ID, input } from '@angular/core';
-import { ButtonDirective } from 'primeng/button';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { Dialog } from 'primeng/dialog';
 import { Tooltip } from 'primeng/tooltip';
 import { ActivableDirective } from '../../../../../shared/directives/activable.directive';
 import { CampaignRibbon, RankType } from '../../../../../shared/types/member.types';
@@ -11,15 +11,12 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
 @Component({
     selector: 'ttt-aufstellung-roster',
     standalone: true,
-    imports: [CommonModule, ButtonDirective, Tooltip, ActivableDirective, SectionHeaderComponent],
+    imports: [CommonModule, Dialog, Tooltip, ActivableDirective, SectionHeaderComponent],
     templateUrl: './aufstellung-roster.component.html',
     styleUrl: './aufstellung-roster.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AufstellungRosterComponent {
-    private readonly document = inject(DOCUMENT);
-    private readonly platformId = inject(PLATFORM_ID);
-
     members = input.required<Member[]>();
     membersByRank = input.required<MembersByRank>();
     rankOrder = input.required<RankType[]>();
@@ -27,27 +24,18 @@ export class AufstellungRosterComponent {
     title = input.required<string>();
     subtitle = input.required<string>();
 
-    toggleMemberDetails(member: Member): void {
-        const isOpening = !member.isExpanded;
+    /** Member shown in the details dialog; null while the dialog is closed */
+    readonly selectedMember = signal<Member | null>(null);
 
-        if (isOpening) {
-            this.members().forEach((m) => {
-                if (m !== member) {
-                    m.isExpanded = false;
-                }
-            });
+    openMemberDetails(member: Member): void {
+        if (this.hasExpandableContent(member)) {
+            this.selectedMember.set(member);
         }
+    }
 
-        member.isExpanded = isOpening;
-
-        if (member.isExpanded && isPlatformBrowser(this.platformId)) {
-            setTimeout(() => {
-                const element = this.document.getElementById(`member-${member.id}`);
-                if (element) {
-                    const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80;
-                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-                }
-            }, AUFSTELLUNG_SECURITY.MIN_ACTION_INTERVAL);
+    onDetailsVisibleChange(visible: boolean): void {
+        if (!visible) {
+            this.selectedMember.set(null);
         }
     }
 

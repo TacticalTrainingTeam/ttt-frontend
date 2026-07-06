@@ -122,25 +122,12 @@
         </p>
 
         <div class="mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-                pButton
-                [href]="eventsUrl()"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-tttRed inline-flex items-center gap-2 rounded-xl border-0 bg-white px-8 py-4 text-lg font-bold shadow-lg transition-transform duration-300 hover:scale-105"
-            >
+            <a pButton [href]="eventsUrl()" target="_blank" rel="noopener noreferrer" class="ttt-btn-light ttt-btn-lg">
                 <i class="pi pi-calendar"></i>
                 Jetzt nachschauen
             </a>
 
-            <a
-                pButton
-                [outlined]="true"
-                [href]="discordUrl()"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 rounded-xl border-2 border-white bg-transparent px-8 py-4 text-lg font-bold text-white transition-transform duration-300 hover:scale-105"
-            >
+            <a pButton [outlined]="true" [href]="discordUrl()" target="_blank" rel="noopener noreferrer" class="ttt-btn-outline ttt-btn-lg">
                 <i class="pi pi-discord"></i>
                 Discord beitreten
             </a>

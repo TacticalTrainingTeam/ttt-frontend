@@ -185,8 +185,7 @@ export class AufstellungComponent implements OnInit {
         this.loadingError.set(null);
         this.memberService.getAllMembers().subscribe({
             next: (members: BackendMember[]) => {
-                // Add isExpanded property for UI state
-                this.members.set(members.map((m) => ({ ...m, isExpanded: false })));
+                this.members.set(members);
                 this.computeMemberData();
                 this.isLoading.set(false);
             },

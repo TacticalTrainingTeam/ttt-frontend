@@ -166,7 +166,7 @@
     }
 
     .ttt-step-link {
-        @apply text-tttRed inline-flex items-center gap-1 text-sm font-medium transition-transform duration-300 hover:scale-105;
+        @apply text-tttRed hover:text-tttRed-300 inline-flex items-center gap-1 text-sm font-medium transition-colors duration-200;
     }
 
     .ttt-req-text {
@@ -174,11 +174,33 @@
     }
 
     /* Central Button Styles */
+    .ttt-btn-primary,
+    .ttt-btn-secondary,
+    .ttt-btn-light,
+    .ttt-btn-outline {
+        @apply focus-visible:outline-tttRed-300 inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2;
+    }
     .ttt-btn-primary {
-        @apply bg-tttRed text-tttWhite inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold shadow-lg transition-transform duration-300 hover:scale-105;
+        @apply bg-tttRed text-tttWhite hover:bg-tttRed-600 active:bg-tttRed-700;
     }
     .ttt-btn-secondary {
-        @apply border-tttWhite/30 bg-tttWhite/10 text-tttWhite inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold transition-transform duration-300 hover:scale-105;
+        @apply border-tttWhite/30 bg-tttWhite/10 text-tttWhite hover:bg-tttWhite/20 border;
+    }
+    /* Light/outline variants for buttons on red sections */
+    .ttt-btn-light {
+        @apply bg-tttWhite text-tttRed hover:bg-tttRed-50;
+    }
+    .ttt-btn-outline {
+        @apply border-tttWhite text-tttWhite hover:bg-tttWhite/10 border-2 bg-transparent;
+    }
+    /* Size modifier for prominent CTAs */
+    .ttt-btn-lg {
+        @apply px-6 py-3 text-base;
+    }
+
+    /* Hover treatment for clickable cards (replaces scale effects) */
+    .ttt-card-interactive {
+        @apply hover:border-tttGray-500 hover:bg-tttGray-700/70 transition-colors duration-200;
     }
 }
 
