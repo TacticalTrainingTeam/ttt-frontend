@@ -51,6 +51,17 @@ export const tttPrimeNgTheme: ThemeType = {
             red: tttRedPalette,
             gray: tttGrayPalette,
         },
+        components: {
+            // Keep the loading spinner in the TTT accent color instead of the animated default colors
+            progressspinner: {
+                root: {
+                    colorOne: '{red.500}',
+                    colorTwo: '{red.500}',
+                    colorThree: '{red.500}',
+                    colorFour: '{red.500}',
+                },
+            },
+        },
         semantic: {
             primary: {
                 50: '{red.50}',

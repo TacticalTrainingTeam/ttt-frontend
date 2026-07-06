@@ -10,7 +10,8 @@
                             <img
                                 [src]="getRankInfo(rank).icon"
                                 [alt]="getRankInfo(rank).name + ' Abzeichen'"
-                                title="{{ getRankInfo(rank).name }}"
+                                [pTooltip]="getRankInfo(rank).name"
+                                tooltipPosition="top"
                                 class="h-6 w-6 object-contain"
                                 loading="lazy"
                             />
@@ -51,7 +52,8 @@
                                                         <img
                                                             [src]="member.avatar"
                                                             [alt]="member.name + ' Avatar'"
-                                                            title="{{ member.name }}"
+                                                            [pTooltip]="member.name"
+                                                            tooltipPosition="top"
                                                             class="h-full w-full object-cover"
                                                             loading="lazy"
                                                         />
@@ -74,7 +76,7 @@
                                         </h4>
                                         <span
                                             class="mb-1 block rounded px-1.5 py-0.5 text-xs font-medium"
-                                            [ngClass]="getRankBadgeClasses(member.rank)"
+                                            [ngClass]="getRankTagClasses(member.rank)"
                                         >
                                             {{ getRankInfo(member.rank).name }}
                                         </span>
@@ -84,7 +86,8 @@
                                         @if (member.medals.length > 0) {
                                             <span
                                                 class="flex h-5 w-5 items-center justify-center"
-                                                [title]="member.medals.length + ' Medaille(n)'"
+                                                [pTooltip]="member.medals.length + ' Medaille(n)'"
+                                                tooltipPosition="top"
                                             >
                                                 <i class="pi pi-star-fill text-xs text-yellow-400" aria-hidden="true"></i>
                                             </span>
@@ -92,7 +95,8 @@
                                         @if (member.campaignRibbons.length > 0) {
                                             <span
                                                 class="flex h-5 w-5 items-center justify-center"
-                                                [title]="member.campaignRibbons.length + ' Kampagne(n)'"
+                                                [pTooltip]="member.campaignRibbons.length + ' Kampagne(n)'"
+                                                tooltipPosition="top"
                                             >
                                                 <i class="pi pi-flag text-xs text-purple-400" aria-hidden="true"></i>
                                             </span>
@@ -100,7 +104,8 @@
                                         @if (member.abteilungen.length > 0) {
                                             <span
                                                 class="flex h-5 w-5 items-center justify-center"
-                                                [title]="member.abteilungen.length + ' Abteilung(en)'"
+                                                [pTooltip]="member.abteilungen.length + ' Abteilung(en)'"
+                                                tooltipPosition="top"
                                             >
                                                 <i class="pi pi-briefcase text-xs text-blue-400" aria-hidden="true"></i>
                                             </span>
@@ -138,7 +143,8 @@
                                                             <img
                                                                 [src]="member.avatar"
                                                                 [alt]="member.name"
-                                                                title="{{ member.name }}"
+                                                                [pTooltip]="member.name"
+                                                                tooltipPosition="top"
                                                                 class="h-full w-full object-cover"
                                                             />
                                                         </div>
@@ -155,7 +161,7 @@
                                                     <div class="flex items-center gap-2">
                                                         <span
                                                             class="rounded px-2 py-1 text-sm font-medium"
-                                                            [ngClass]="getRankBadgeExpandedClasses(member.rank)"
+                                                            [ngClass]="getRankTagClasses(member.rank)"
                                                         >
                                                             {{ getRankInfo(member.rank).name }}
                                                         </span>
@@ -165,6 +171,10 @@
                                                     </div>
                                                 </div>
                                                 <button
+                                                    pButton
+                                                    type="button"
+                                                    [rounded]="true"
+                                                    [text]="true"
                                                     (click)="toggleMemberDetails(member)"
                                                     class="bg-tttGray-800/50 flex h-8 w-8 items-center justify-center rounded-full"
                                                     aria-label="Details schliessen"
@@ -187,7 +197,8 @@
                                                                     <img
                                                                         [src]="medal.image"
                                                                         [alt]="medal.name"
-                                                                        title="{{ medal.name }}"
+                                                                        [pTooltip]="medal.name"
+                                                                        tooltipPosition="top"
                                                                         class="h-6 w-6 object-contain"
                                                                     />
                                                                     <div class="min-w-0 flex-1">
@@ -220,7 +231,8 @@
                                                                     <img
                                                                         [src]="ribbon.image"
                                                                         [alt]="ribbon.name"
-                                                                        title="{{ ribbon.name }}"
+                                                                        [pTooltip]="ribbon.name"
+                                                                        tooltipPosition="top"
                                                                         class="h-6 w-6 object-contain"
                                                                     />
                                                                     <div class="min-w-0 flex-1">
@@ -250,7 +262,8 @@
                                                                     <img
                                                                         [src]="abt.icon"
                                                                         [alt]="abt.name"
-                                                                        title="{{ abt.name }}"
+                                                                        [pTooltip]="abt.name"
+                                                                        tooltipPosition="top"
                                                                         class="h-6 w-6 object-contain"
                                                                     />
                                                                     <div class="min-w-0 flex-1">

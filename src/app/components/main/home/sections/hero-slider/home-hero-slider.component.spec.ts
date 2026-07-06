@@ -16,7 +16,6 @@ describe('HomeHeroSliderComponent', () => {
             { image: '/img/home-banner/home-banner1.webp', title: 'Title', titleText: 'Title', subtitle: 'Subtitle' },
             { image: '/img/home-banner/home-banner2.webp', title: 'Title2', titleText: 'Title2', subtitle: 'Subtitle2' },
         ]);
-        fixture.componentRef.setInput('currentImageIndex', 0);
         fixture.detectChanges();
     });
 

@@ -1,7 +1,7 @@
 @if (isLoading()) {
     <div class="flex min-h-96 items-center justify-center">
         <div class="text-center">
-            <div class="border-tttGray-300 border-t-tttRed mb-4 inline-block h-12 w-12 animate-spin rounded-full border-4"></div>
+            <p-progress-spinner styleClass="mb-4" strokeWidth="6" [style]="{ width: '3rem', height: '3rem' }" />
             <p class="text-tttWhite/70">{{ loadingMessages().LOADING }}</p>
         </div>
     </div>
@@ -10,15 +10,14 @@
 @if (loadingError() && !isLoading()) {
     <div class="flex min-h-96 items-center justify-center">
         <div class="text-center">
-            <div class="mb-4 flex justify-center">
-                <i class="pi pi-exclamation-triangle text-tttRed text-4xl" aria-hidden="true"></i>
+            <h2 class="text-tttWhite mb-4 text-xl font-bold">{{ loadingMessages().ERROR_TITLE }}</h2>
+            <p-message severity="error" icon="pi pi-exclamation-triangle" styleClass="mb-4">{{ loadingError() }}</p-message>
+            <div>
+                <button pButton type="button" (click)="onRetry()" class="ttt-btn-primary" [attr.aria-label]="loadingMessages().RETRY_ARIA">
+                    <i class="pi pi-refresh" aria-hidden="true"></i>
+                    <span>{{ loadingMessages().RETRY_TEXT }}</span>
+                </button>
             </div>
-            <h2 class="text-tttWhite mb-2 text-xl font-bold">{{ loadingMessages().ERROR_TITLE }}</h2>
-            <p class="text-tttWhite/70 mb-4">{{ loadingError() }}</p>
-            <button (click)="onRetry()" class="ttt-btn-primary" [attr.aria-label]="loadingMessages().RETRY_ARIA">
-                <i class="pi pi-refresh" aria-hidden="true"></i>
-                <span>{{ loadingMessages().RETRY_TEXT }}</span>
-            </button>
         </div>
     </div>
 }

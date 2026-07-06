@@ -1,5 +1,7 @@
 import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, PLATFORM_ID, input } from '@angular/core';
+import { ButtonDirective } from 'primeng/button';
+import { Tooltip } from 'primeng/tooltip';
 import { ActivableDirective } from '../../../../../shared/directives/activable.directive';
 import { CampaignRibbon, RankType } from '../../../../../shared/types/member.types';
 import { AUFSTELLUNG_SECURITY } from '../../aufstellung.shared';
@@ -9,7 +11,7 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
 @Component({
     selector: 'ttt-aufstellung-roster',
     standalone: true,
-    imports: [CommonModule, ActivableDirective, SectionHeaderComponent],
+    imports: [CommonModule, ButtonDirective, Tooltip, ActivableDirective, SectionHeaderComponent],
     templateUrl: './aufstellung-roster.component.html',
     styleUrl: './aufstellung-roster.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -98,16 +100,8 @@ export class AufstellungRosterComponent {
         }
     }
 
-    private getRankBadgeClassesBase(rank: RankType): string {
+    getRankTagClasses(rank: RankType): string {
         return this.getRankColorClasses(rank).text;
-    }
-
-    getRankBadgeClasses(rank: RankType): string {
-        return this.getRankBadgeClassesBase(rank);
-    }
-
-    getRankBadgeExpandedClasses(rank: RankType): string {
-        return this.getRankBadgeClassesBase(rank);
     }
 
     getAvatarBorderClasses(rank: RankType): Record<string, boolean> {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
 import { MemberService } from '../../../core/services/member.service';
 import { HomeFeaturesJoinComponent } from './sections/features-join/home-features-join.component';
 import { HomeHeroSliderComponent } from './sections/hero-slider/home-hero-slider.component';
@@ -14,7 +14,7 @@ import { HomeBannerSlide, HomeCommunityStat, HomeGalleryImage } from '../../../s
     styleUrl: './home.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
     // Services
     private readonly memberService = inject(MemberService);
 
@@ -83,64 +83,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         { value: '2013', label: 'Gegründet', color: 'text-tttGreen' },
         { value: '2', label: 'Events/Woche', color: 'text-tttGreen' },
     ]);
-    readonly currentImageIndex = signal(0);
-
-    // Private properties
-    private sliderInterval?: ReturnType<typeof setInterval>;
-    private readonly slideInterval = 8000;
-
     // Lifecycle hooks
     ngOnInit(): void {
-        this.startSlider();
         this.memberService.getMemberStats().subscribe((stats) => {
             const total = Object.values(stats).reduce((sum, n) => sum + n, 0);
             this.communityStats.update((current) => [{ ...current[0], value: total.toString() }, ...current.slice(1)]);
         });
-    }
-
-    ngOnDestroy(): void {
-        this.stopSlider();
-    }
-
-    nextImage(isAutoAdvance = false): void {
-        if (!isAutoAdvance) {
-            this.stopSlider();
-        }
-
-        this.currentImageIndex.update((index) => (index + 1) % this.bannerSlides.length);
-
-        if (!isAutoAdvance) {
-            this.startSlider();
-        }
-    }
-
-    previousImage(): void {
-        this.stopSlider();
-        this.currentImageIndex.update((index) => (index === 0 ? this.bannerSlides.length - 1 : index - 1));
-        this.startSlider();
-    }
-
-    goToImage(index: number): void {
-        if (index >= 0 && index < this.bannerSlides.length) {
-            this.stopSlider();
-            this.currentImageIndex.set(index);
-            this.startSlider();
-        }
-    }
-
-    private startSlider(): void {
-        this.stopSlider();
-        if (this.bannerSlides.length > 1) {
-            this.sliderInterval = setInterval(() => {
-                this.nextImage(true);
-            }, this.slideInterval);
-        }
-    }
-
-    private stopSlider(): void {
-        if (this.sliderInterval) {
-            clearInterval(this.sliderInterval);
-            this.sliderInterval = undefined;
-        }
     }
 }

@@ -1,72 +1,58 @@
 <div class="mb-8">
     <ttt-section-header title="TTT-Timeline" subtitle="Meilensteine des Tactical Training Teams"></ttt-section-header>
 
-    <div class="grid grid-cols-2 items-stretch gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        @for (event of timelineEvents(); track event.id) {
-            <div class="relative h-full">
-                <button
-                    type="button"
-                    class="group ttt-content-card relative flex h-full min-h-[110px] flex-col justify-between p-2 text-left shadow-md"
-                    [ngClass]="{
-                        'border-tttRed/70': event.expanded,
-                    }"
-                    (click)="toggleEventDetails(event)"
-                    [attr.aria-label]="'Details fuer ' + event.title + (event.expanded ? ' ausblenden' : ' anzeigen')"
-                    [attr.aria-expanded]="event.expanded"
-                >
-                    <div class="mb-1 min-w-0">
-                        <h3
-                            class="text-tttWhite max-w-[120px] truncate text-base font-bold transition-colors duration-200 md:max-w-[160px]"
-                            [title]="event.title"
-                        >
-                            {{ event.title }}
-                        </h3>
-                    </div>
-                    <div class="mb-1 flex min-w-0 flex-col items-center gap-1">
-                        <span class="max-w-[100px] truncate text-center text-sm font-medium" [ngClass]="event.color">
-                            {{ getEventTypeLabel(event.type) }}
-                        </span>
-                        <span class="text-tttGray-300 text-center text-sm" [title]="event.date">{{ event.date }}</span>
-                    </div>
-                    <div class="mb-1">
-                        <p class="text-tttGray-300 line-clamp-3 text-sm leading-snug">{{ event.description }}</p>
-                    </div>
-                    <div class="mt-1 flex justify-center">
+    <p-timeline [value]="timelineEvents()" align="alternate" styleClass="ttt-chronik-timeline">
+        <ng-template #marker let-event>
+            <span class="border-tttRed/50 bg-tttGray-800 flex h-8 w-8 items-center justify-center rounded-full border shadow-md">
+                <i class="pi text-sm" [ngClass]="[getEventTypeIcon(event.type), event.color]" aria-hidden="true"></i>
+            </span>
+        </ng-template>
+
+        <ng-template #opposite let-event>
+            <span class="text-tttGray-300 hidden text-sm sm:inline">{{ event.date }}</span>
+        </ng-template>
+
+        <ng-template #content let-event>
+            <div class="ttt-content-card mb-6 p-3 text-left" [ngClass]="{ 'border-tttRed/70': event.expanded }">
+                <div class="mb-1 flex flex-wrap items-center gap-2">
+                    <h3 class="text-tttWhite text-base font-bold" [title]="event.title">{{ event.title }}</h3>
+                    <span class="text-xs font-medium" [ngClass]="event.color">{{ getEventTypeLabel(event.type) }}</span>
+                </div>
+                <p class="text-tttGray-300 mb-1 text-sm sm:hidden">{{ event.date }}</p>
+                <p class="text-tttGray-300 text-sm leading-snug">{{ event.description }}</p>
+
+                @if (event.details && event.details.length > 0) {
+                    <button
+                        pButton
+                        type="button"
+                        [text]="true"
+                        size="small"
+                        class="text-tttRed mt-2 px-0"
+                        (click)="toggleEventDetails(event)"
+                        [attr.aria-label]="'Details fuer ' + event.title + (event.expanded ? ' ausblenden' : ' anzeigen')"
+                        [attr.aria-expanded]="event.expanded"
+                    >
                         <i
-                            class="pi text-tttGray-500 text-xs transition-transform duration-200"
+                            class="pi text-xs"
                             [class.pi-chevron-down]="!event.expanded"
                             [class.pi-chevron-up]="event.expanded"
                             aria-hidden="true"
                         ></i>
-                    </div>
-                </button>
+                        <span>Weitere Details</span>
+                    </button>
 
-                @if (event.expanded) {
-                    <div class="ttt-content-card border-tttRed/70 animate-fadeIn absolute right-0 left-0 z-10 mt-2 p-3 shadow-xl">
-                        <button
-                            (click)="toggleEventDetails(event)"
-                            class="bg-tttGray-800/70 absolute top-2 right-2 flex h-6 w-6 items-center justify-center rounded-full"
-                            tabindex="-1"
-                            aria-label="Details schliessen"
-                        >
-                            <i class="pi pi-times text-tttGray-300 text-sm" aria-hidden="true"></i>
-                        </button>
-                        @if (event.details && event.details.length > 0) {
-                            <div>
-                                <h4 class="text-tttWhite mb-1 text-sm font-semibold tracking-wide uppercase">Weitere Details:</h4>
-                                <ul class="space-y-1">
-                                    @for (detail of event.details; track detail) {
-                                        <li class="text-tttGray-300 flex items-start gap-2 text-sm">
-                                            <i class="pi pi-angle-right text-tttRed mt-0.5 flex-shrink-0 text-sm"></i>
-                                            <span>{{ detail }}</span>
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
-                        }
-                    </div>
+                    @if (event.expanded) {
+                        <ul class="mt-2 space-y-1">
+                            @for (detail of event.details; track detail) {
+                                <li class="text-tttGray-300 flex items-start gap-2 text-sm">
+                                    <i class="pi pi-angle-right text-tttRed mt-0.5 flex-shrink-0 text-sm" aria-hidden="true"></i>
+                                    <span>{{ detail }}</span>
+                                </li>
+                            }
+                        </ul>
+                    }
                 }
             </div>
-        }
-    </div>
+        </ng-template>
+    </p-timeline>
 </div>

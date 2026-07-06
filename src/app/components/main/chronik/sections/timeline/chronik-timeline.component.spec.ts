@@ -36,4 +36,11 @@ describe('ChronikTimelineComponent', () => {
         component.toggleEventDetails(component.timelineEvents()[0]);
         expect(component.timelineEvents()[0].expanded).toBeTrue();
     });
+
+    it('should render event content inside the timeline', () => {
+        const element: HTMLElement = fixture.nativeElement;
+        expect(element.textContent).toContain('Test Event');
+        expect(element.textContent).toContain('desc');
+        expect(element.textContent).toContain('Meilenstein');
+    });
 });
