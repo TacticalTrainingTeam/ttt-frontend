@@ -32,12 +32,6 @@
                         [attr.aria-label]="'Details für ' + event.title + (event.expanded ? ' ausblenden' : ' anzeigen')"
                         [attr.aria-expanded]="event.expanded"
                     >
-                        <i
-                            class="pi text-xs"
-                            [class.pi-chevron-down]="!event.expanded"
-                            [class.pi-chevron-up]="event.expanded"
-                            aria-hidden="true"
-                        ></i>
                         <span>Weitere Details</span>
                     </button>
 

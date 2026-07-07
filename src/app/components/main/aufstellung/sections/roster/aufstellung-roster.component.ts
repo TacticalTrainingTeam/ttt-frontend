@@ -52,11 +52,6 @@ export class AufstellungRosterComponent {
         });
     }
 
-    getMemberYear(dateString: string): string {
-        const date = new Date(dateString);
-        return date.getFullYear().toString();
-    }
-
     hasExpandableContent(member: Member): boolean {
         return member.medals.length > 0 || member.campaignRibbons.length > 0 || member.abteilungen.length > 0;
     }

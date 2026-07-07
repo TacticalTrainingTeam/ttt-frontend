@@ -10,6 +10,7 @@
                             <img
                                 [src]="getRankInfo(rank).icon"
                                 [alt]="getRankInfo(rank).name + ' Abzeichen'"
+                                [title]="getRankInfo(rank).name"
                                 [pTooltip]="getRankInfo(rank).name"
                                 tooltipPosition="top"
                                 class="h-6 w-6 object-contain"
@@ -21,10 +22,10 @@
                         <span class="text-tttWhite/70 text-base font-medium">{{ membersByRank()[rank].length }} Mitglieder</span>
                     </div>
 
-                    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
+                    <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7">
                         @for (member of membersByRank()[rank]; track member.id) {
                             <div
-                                class="ttt-content-card ttt-card-interactive flex min-h-[140px] flex-col justify-between p-3 text-center"
+                                class="ttt-content-card ttt-card-interactive flex flex-col justify-between p-2.5 text-center"
                                 [ngClass]="{
                                     'cursor-pointer': hasExpandableContent(member),
                                     'border-tttRed/50': selectedMember() === member,
@@ -43,6 +44,7 @@
                                                     <img
                                                         [src]="member.avatar"
                                                         [alt]="member.name + ' Avatar'"
+                                                        [title]="member.name"
                                                         [pTooltip]="member.name"
                                                         tooltipPosition="top"
                                                         class="h-full w-full object-cover"
@@ -100,13 +102,9 @@
                                     }
                                 </div>
 
-                                <p class="text-tttGray-500 text-xs">
-                                    {{ getMemberYear(member.memberSince) }}
-                                </p>
-
                                 @if (hasExpandableContent(member)) {
                                     <div class="mt-1 flex justify-center">
-                                        <i class="pi pi-chevron-down text-tttGray-500 text-xs" aria-hidden="true"></i>
+                                        <i class="pi pi-info-circle text-tttGray-500 text-xs" aria-hidden="true"></i>
                                     </div>
                                 }
                             </div>
