@@ -1,19 +1,25 @@
 <section class="bg-tttBlack relative overflow-hidden py-16">
     <div class="ttt-page-container">
-        <p-galleria
+        <p-carousel
             [value]="galleryImages()"
-            [showThumbnails]="false"
-            [showIndicators]="true"
+            [numVisible]="3"
+            [numScroll]="1"
             [circular]="true"
-            [autoPlay]="true"
-            [transitionInterval]="5000"
-            [containerStyle]="{ 'max-width': '100vw', margin: 'auto' }"
-            styleClass="w-full rounded-xl shadow-lg"
+            [autoplayInterval]="5000"
+            [responsiveOptions]="responsiveOptions"
         >
             <ng-template pTemplate="item" let-item>
-                <img [src]="item.itemImageSrc" alt="{{ item.alt }}" title="{{ item.alt }}" class="h-64 w-full rounded-xl object-cover" />
+                <div class="px-2">
+                    <img
+                        [src]="item.itemImageSrc"
+                        alt="{{ item.alt }}"
+                        title="{{ item.alt }}"
+                        class="aspect-video w-full rounded-xl object-cover"
+                        loading="lazy"
+                    />
+                </div>
             </ng-template>
-        </p-galleria>
+        </p-carousel>
         <div class="mt-8 text-center">
             <p class="ttt-constrained-text ttt-feature-description md:text-lg">
                 Einblicke aus unseren <span class="ttt-accent-text font-semibold">Events</span>
