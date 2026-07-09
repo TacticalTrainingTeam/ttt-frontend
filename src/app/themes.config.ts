@@ -52,13 +52,22 @@ export const tttPrimeNgTheme: ThemeType = {
             gray: tttGrayPalette,
         },
         components: {
-            // Keep the loading spinner in the TTT accent color instead of the animated default colors
             progressspinner: {
                 root: {
                     colorOne: '{red.500}',
                     colorTwo: '{red.500}',
                     colorThree: '{red.500}',
                     colorFour: '{red.500}',
+                },
+            },
+            galleria: {
+                indicatorButton: {
+                    width: '2rem',
+                    height: '0.5rem',
+                    borderRadius: '{content.border.radius}',
+                },
+                insetIndicatorList: {
+                    background: 'transparent',
                 },
             },
         },
