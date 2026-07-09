@@ -32,9 +32,13 @@ export class MedienService {
      * Get current Twitch livestreams with retry strategy
      */
     getTwitchStreams(): Observable<TwitchStream[]> {
+        if (environment.useDummyFallback) {
+            return of(this.getDummyTwitchStreams());
+        }
         return this.api.get<TwitchStream[]>(`${this.baseUrl}/twitch/streams`).pipe(
             retry({ count: 2, delay: 1000 }),
-            catchError(() => of(this.getDummyTwitchStreams()))
+            // Degrade to the empty state instead of showing fake live streams
+            catchError(() => of([]))
         );
     }
 }

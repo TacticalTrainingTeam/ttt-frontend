@@ -1,0 +1,153 @@
+@if (profile(); as user) {
+    <div class="grid gap-6 lg:grid-cols-5">
+        <!-- Identity card -->
+        <div class="ttt-content-card lg:col-span-3">
+            <div class="border-tttGray-700 mb-4 flex items-center gap-4 border-b pb-4">
+                <p-avatar
+                    [image]="user.avatar || undefined"
+                    [icon]="user.avatar ? undefined : 'pi pi-user'"
+                    shape="circle"
+                    size="xlarge"
+                    styleClass="border-2 border-tttRed/50 shrink-0"
+                />
+                <div class="min-w-0 flex-1">
+                    <h2 class="text-tttWhite truncate text-2xl font-bold">{{ user.name }}</h2>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <img
+                            [src]="rankInfo[user.rank].icon"
+                            [alt]="rankInfo[user.rank].name + ' Abzeichen'"
+                            [title]="rankInfo[user.rank].name"
+                            class="h-5 w-5 object-contain"
+                        />
+                        <p-tag [value]="rankInfo[user.rank].name" severity="secondary" />
+                        <span class="text-tttGray-300 text-sm">Mitglied seit {{ getFormattedMemberSince(user.memberSince) }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Abteilungen -->
+            <h3 class="text-tttWhite mb-2 text-sm font-semibold">Abteilungen</h3>
+            @if (user.abteilungen.length > 0) {
+                <div class="mb-4 space-y-2">
+                    @for (abt of user.abteilungen; track abt.id) {
+                        <div class="bg-tttGray-800/50 border-tttGray-600/30 flex items-center gap-2 rounded-lg border p-2">
+                            <img [src]="abt.icon" [alt]="abt.name" [title]="abt.name" class="h-6 w-6 object-contain" />
+                            <div class="min-w-0 flex-1">
+                                <p class="text-tttWhite text-sm font-medium break-words">{{ abt.name }}</p>
+                                <p class="text-tttGray-300 text-sm break-words">{{ abt.description }}</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            } @else {
+                <p class="text-tttGray-300 mb-4 text-sm">Keine Abteilung zugewiesen</p>
+            }
+
+            <!-- Auszeichnungen -->
+            <h3 class="text-tttWhite mb-2 text-sm font-semibold">Auszeichnungen</h3>
+            @if (user.medals.length > 0) {
+                <div class="mb-4 space-y-2">
+                    @for (medal of user.medals; track medal.id) {
+                        <div class="bg-tttGray-800/50 border-tttGray-600/30 flex items-center gap-2 rounded-lg border p-2">
+                            <img [src]="medal.image" [alt]="medal.name" [title]="medal.name" class="h-6 w-6 object-contain" />
+                            <div class="min-w-0 flex-1">
+                                <p class="text-tttWhite text-sm font-medium break-words">{{ medal.name }}</p>
+                                <p class="text-tttGray-300 text-sm break-words">{{ medal.description }}</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            } @else {
+                <p class="text-tttGray-300 mb-4 text-sm">Noch keine Auszeichnungen</p>
+            }
+
+            <!-- Kampagnen -->
+            <h3 class="text-tttWhite mb-2 text-sm font-semibold">Kampagnen-Teilnahmen</h3>
+            @if (user.campaignRibbons.length > 0) {
+                <div class="space-y-2">
+                    @for (ribbon of user.campaignRibbons; track ribbon.id) {
+                        <div class="bg-tttGray-800/50 border-tttGray-600/30 flex items-center gap-2 rounded-lg border p-2">
+                            <img [src]="ribbon.image" [alt]="ribbon.name" [title]="ribbon.name" class="h-6 w-6 object-contain" />
+                            <div class="min-w-0 flex-1">
+                                <p class="text-tttWhite text-sm font-medium break-words">{{ ribbon.campaign }}</p>
+                                <p class="text-tttGray-300 text-sm">{{ ribbon.year }}</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            } @else {
+                <p class="text-tttGray-300 text-sm">Noch keine Kampagnen-Teilnahmen</p>
+            }
+        </div>
+
+        <!-- Linked accounts card -->
+        <div class="ttt-content-card self-start lg:col-span-2">
+            <div class="border-tttGray-700 mb-4 flex items-center justify-between gap-2 border-b pb-4">
+                <h3 class="text-tttWhite text-lg font-bold">Verknüpfte Konten</h3>
+                @if (!editMode()) {
+                    <button pButton type="button" class="ttt-btn-secondary" (click)="startEdit()">Bearbeiten</button>
+                }
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label for="steamId" class="text-tttGray-300 mb-1 block text-sm font-medium">Steam-ID</label>
+                    @if (editMode()) {
+                        <input pInputText id="steamId" [(ngModel)]="draft.steamId" class="w-full" placeholder="z. B. 7656119..." />
+                    } @else {
+                        <p class="text-tttWhite text-base break-all">{{ user.platformIds.steamId || "—" }}</p>
+                    }
+                </div>
+                <div>
+                    <label for="xboxId" class="text-tttGray-300 mb-1 block text-sm font-medium">Xbox-ID</label>
+                    @if (editMode()) {
+                        <input pInputText id="xboxId" [(ngModel)]="draft.xboxId" class="w-full" placeholder="Gamertag" />
+                    } @else {
+                        <p class="text-tttWhite text-base break-all">{{ user.platformIds.xboxId || "—" }}</p>
+                    }
+                </div>
+                <div>
+                    <label for="playstationId" class="text-tttGray-300 mb-1 block text-sm font-medium">PlayStation-ID</label>
+                    @if (editMode()) {
+                        <input pInputText id="playstationId" [(ngModel)]="draft.playstationId" class="w-full" placeholder="Online-ID" />
+                    } @else {
+                        <p class="text-tttWhite text-base break-all">{{ user.platformIds.playstationId || "—" }}</p>
+                    }
+                </div>
+                <div>
+                    <label for="armaIngameName" class="text-tttGray-300 mb-1 block text-sm font-medium">Arma Ingame-Name</label>
+                    @if (editMode()) {
+                        <input pInputText id="armaIngameName" [(ngModel)]="draft.armaIngameName" class="w-full" placeholder="Ingame-Name" />
+                    } @else {
+                        <p class="text-tttWhite text-base break-all">{{ user.platformIds.armaIngameName || "—" }}</p>
+                    }
+                </div>
+                <div>
+                    <span class="text-tttGray-300 mb-1 flex items-center gap-1 text-sm font-medium">
+                        Discord-ID
+                        <i
+                            class="pi pi-lock text-tttGray-500 text-xs"
+                            pTooltip="Wird über den Login verwaltet"
+                            tooltipPosition="top"
+                            aria-hidden="true"
+                        ></i>
+                    </span>
+                    <p class="text-tttWhite text-base break-all">{{ user.platformIds.discordId }}</p>
+                </div>
+            </div>
+
+            @if (editMode()) {
+                <div class="border-tttGray-700 mt-4 flex justify-end gap-2 border-t pt-4">
+                    <button pButton type="button" class="ttt-btn-secondary" (click)="cancelEdit()">Abbrechen</button>
+                    <button pButton type="button" class="ttt-btn-primary" [disabled]="saving()" (click)="saveEdit()">
+                        {{ saving() ? "Speichern..." : "Speichern" }}
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+} @else {
+    <div class="flex min-h-48 items-center justify-center">
+        <p-progress-spinner strokeWidth="6" [style]="{ width: '2.5rem', height: '2.5rem' }" />
+    </div>
+}

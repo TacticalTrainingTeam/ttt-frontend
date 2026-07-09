@@ -1,0 +1,135 @@
+<!-- Visibility will be restricted via OIDC roles later (Personal, Offiziere) -->
+<div class="overflow-x-auto">
+    <p-table
+        #membersTable
+        [value]="rows()"
+        dataKey="id"
+        [globalFilterFields]="['name', 'rankLabel', 'abteilungenNames', 'armaName', 'steamId', 'discordId']"
+    >
+        <ng-template #caption>
+            <div class="flex justify-end">
+                <input
+                    pInputText
+                    type="text"
+                    class="w-full sm:w-64"
+                    placeholder="Suchen..."
+                    aria-label="Mitgliederliste durchsuchen"
+                    (input)="onGlobalFilter(membersTable, $event)"
+                />
+            </div>
+        </ng-template>
+        <ng-template #header>
+            <tr>
+                <th scope="col" pSortableColumn="name">Mitglied <p-sortIcon field="name" /></th>
+                <th scope="col" pSortableColumn="rankPriority">Rang <p-sortIcon field="rankPriority" /></th>
+                <th scope="col" pSortableColumn="abteilungenNames">Abteilungen <p-sortIcon field="abteilungenNames" /></th>
+                <th scope="col" pSortableColumn="armaName">Arma-Name <p-sortIcon field="armaName" /></th>
+                <th scope="col" pSortableColumn="steamId">Steam-ID <p-sortIcon field="steamId" /></th>
+                <th scope="col" pSortableColumn="discordId">Discord-ID <p-sortIcon field="discordId" /></th>
+                <th scope="col"><span class="sr-only">Aktionen</span></th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-member>
+            <tr>
+                <td>
+                    <div class="flex items-center gap-2">
+                        <p-avatar
+                            [image]="member.avatar || undefined"
+                            [icon]="member.avatar ? undefined : 'pi pi-user'"
+                            shape="circle"
+                            styleClass="shrink-0"
+                        />
+                        <span class="text-tttWhite font-medium">{{ member.name }}</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="flex items-center gap-2">
+                        <img
+                            [src]="getRankLabel(member.rank).icon"
+                            [alt]="getRankLabel(member.rank).name + ' Abzeichen'"
+                            [title]="getRankLabel(member.rank).name"
+                            class="h-5 w-5 object-contain"
+                        />
+                        <p-tag [value]="getRankLabel(member.rank).name" severity="secondary" />
+                    </div>
+                </td>
+                <td>
+                    @if (member.abteilungen.length > 0) {
+                        <div class="flex items-center gap-1">
+                            @for (abt of member.abteilungen; track abt.id) {
+                                <img
+                                    [src]="abt.icon"
+                                    [alt]="abt.name"
+                                    [title]="abt.name"
+                                    [pTooltip]="abt.name"
+                                    tooltipPosition="top"
+                                    class="h-6 w-6 object-contain"
+                                />
+                            }
+                        </div>
+                    } @else {
+                        <span class="text-tttGray-400">—</span>
+                    }
+                </td>
+                <td>{{ member.platformIds.armaIngameName || "—" }}</td>
+                <td class="break-all">{{ member.platformIds.steamId || "—" }}</td>
+                <td>{{ member.platformIds.discordId }}</td>
+                <td class="text-right">
+                    <button pButton type="button" class="ttt-btn-secondary" (click)="openEdit(member)">Bearbeiten</button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<!-- Edit dialog -->
+<p-dialog
+    [visible]="selectedMember() !== null"
+    (visibleChange)="onEditVisibleChange($event)"
+    [modal]="true"
+    [dismissableMask]="true"
+    [draggable]="false"
+    [resizable]="false"
+    [style]="{ width: '28rem', 'max-width': '92vw' }"
+    [header]="'Mitglied bearbeiten: ' + (selectedMember()?.name ?? '')"
+>
+    @if (selectedMember(); as member) {
+        <div class="space-y-4">
+            <div>
+                <label for="editSteamId" class="text-tttGray-300 mb-1 block text-sm font-medium">Steam-ID</label>
+                <input pInputText id="editSteamId" [(ngModel)]="draft.steamId" class="w-full" />
+            </div>
+            <div>
+                <label for="editXboxId" class="text-tttGray-300 mb-1 block text-sm font-medium">Xbox-ID</label>
+                <input pInputText id="editXboxId" [(ngModel)]="draft.xboxId" class="w-full" />
+            </div>
+            <div>
+                <label for="editPlaystationId" class="text-tttGray-300 mb-1 block text-sm font-medium">PlayStation-ID</label>
+                <input pInputText id="editPlaystationId" [(ngModel)]="draft.playstationId" class="w-full" />
+            </div>
+            <div>
+                <label for="editArmaIngameName" class="text-tttGray-300 mb-1 block text-sm font-medium">Arma Ingame-Name</label>
+                <input pInputText id="editArmaIngameName" [(ngModel)]="draft.armaIngameName" class="w-full" />
+            </div>
+            <div>
+                <span class="text-tttGray-300 mb-1 flex items-center gap-1 text-sm font-medium">
+                    Discord-ID
+                    <i
+                        class="pi pi-lock text-tttGray-500 text-xs"
+                        pTooltip="Wird über den Login verwaltet"
+                        tooltipPosition="top"
+                        aria-hidden="true"
+                    ></i>
+                </span>
+                <p class="text-tttWhite text-base break-all">{{ member.platformIds.discordId }}</p>
+            </div>
+        </div>
+
+        <div class="border-tttGray-700 mt-6 flex justify-end gap-2 border-t pt-4">
+            <button pButton type="button" class="ttt-btn-secondary" (click)="onEditVisibleChange(false)">Abbrechen</button>
+            <button pButton type="button" class="ttt-btn-primary" [disabled]="saving()" (click)="saveEdit()">
+                {{ saving() ? "Speichern..." : "Speichern" }}
+            </button>
+        </div>
+    }
+</p-dialog>

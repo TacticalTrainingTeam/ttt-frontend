@@ -1,0 +1,12 @@
+<ttt-page-layout [pageTitle]="pageTitle" [pageSubtitle]="pageSubtitle">
+    <!-- Sub navigation -->
+    <p-tabs [value]="activeTab()" class="mb-8">
+        <p-tablist>
+            @for (tab of tabs(); track tab.route) {
+                <p-tab [value]="tab.route" [routerLink]="tab.route">{{ tab.label }}</p-tab>
+            }
+        </p-tablist>
+    </p-tabs>
+
+    <router-outlet></router-outlet>
+</ttt-page-layout>

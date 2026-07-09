@@ -50,11 +50,15 @@ export class EventsService {
      * Get upcoming events with retry strategy
      */
     getUpcomingEvents(limit = 3): Observable<SlotbotEvent[]> {
+        if (environment.useDummyFallback) {
+            return of(this.getDummyEvents());
+        }
         const url = `${this.baseUrl}/events/upcoming?limit=${limit}`;
         return this.api.get<{ events: SlotbotEvent[] }>(url).pipe(
             retry({ count: 2, delay: 1000 }),
             map((res) => res?.events ?? []),
-            catchError(() => of(this.getDummyEvents()))
+            // Degrade to the sidebar empty state on backend errors
+            catchError(() => of([]))
         );
     }
 }

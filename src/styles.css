@@ -196,6 +196,10 @@
     }
 }
 
+    .p-avatar img {
+        object-fit: cover;
+    }
+
 /* PrimeNG timeline (Chronik): collapse the alternate layout to a single column on small screens */
 @media (max-width: 40rem) {
     .ttt-chronik-timeline .p-timeline-event {

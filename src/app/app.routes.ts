@@ -43,6 +43,10 @@ export const routes: Routes = [
         loadComponent: () => import('./components/main/aufstellung/aufstellung.component').then((m) => m.AufstellungComponent),
         title: 'Aufstellung & Mitglieder | Tactical Training Team',
     },
+    {
+        path: 'intern',
+        loadChildren: () => import('./components/main/intern/intern.routes').then((m) => m.INTERN_ROUTES),
+    },
     // Wildcard route - redirect unknown routes to home
     {
         path: '**',
