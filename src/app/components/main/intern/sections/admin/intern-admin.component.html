@@ -1,0 +1,191 @@
+<p-confirmdialog [style]="{ width: '26rem', 'max-width': '92vw' }" />
+
+<div class="space-y-8">
+    <!-- Auszeichnungen -->
+    <div class="overflow-x-auto">
+        <p-table [value]="medals()" dataKey="id">
+            <ng-template #caption>
+                <div class="flex items-center justify-between gap-2">
+                    <h3 class="text-tttWhite text-lg font-bold">Auszeichnungen</h3>
+                    <button pButton type="button" class="ttt-btn-primary" (click)="openDialog('medal')">Neu</button>
+                </div>
+            </ng-template>
+            <ng-template #header>
+                <tr>
+                    <th scope="col">Bild</th>
+                    <th scope="col" pSortableColumn="name">Name <p-sortIcon field="name" /></th>
+                    <th scope="col" pSortableColumn="description">Beschreibung <p-sortIcon field="description" /></th>
+                    <th scope="col"><span class="sr-only">Aktionen</span></th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-medal>
+                <tr>
+                    <td><img [src]="medal.image" [alt]="medal.name" [title]="medal.name" class="h-6 w-6 object-contain" /></td>
+                    <td class="text-tttWhite font-medium">{{ medal.name }}</td>
+                    <td>{{ medal.description }}</td>
+                    <td class="text-right">
+                        <div class="flex justify-end gap-2">
+                            <button pButton type="button" class="ttt-btn-secondary" (click)="openEditMedal(medal)">Bearbeiten</button>
+                            <button
+                                pButton
+                                type="button"
+                                severity="danger"
+                                [text]="true"
+                                [rounded]="true"
+                                [attr.aria-label]="'Auszeichnung ' + medal.name + ' entfernen'"
+                                (click)="confirmDeleteMedal(medal)"
+                            >
+                                <i class="pi pi-trash" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template #emptymessage>
+                <tr>
+                    <td colspan="4">Noch keine Auszeichnungen angelegt</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+    <!-- Kampagnen -->
+    <div class="overflow-x-auto">
+        <p-table [value]="ribbons()" dataKey="id">
+            <ng-template #caption>
+                <div class="flex items-center justify-between gap-2">
+                    <h3 class="text-tttWhite text-lg font-bold">Kampagnen</h3>
+                    <button pButton type="button" class="ttt-btn-primary" (click)="openDialog('ribbon')">Neu</button>
+                </div>
+            </ng-template>
+            <ng-template #header>
+                <tr>
+                    <th scope="col">Bild</th>
+                    <th scope="col" pSortableColumn="campaign">Kampagne <p-sortIcon field="campaign" /></th>
+                    <th scope="col" pSortableColumn="year">Jahr <p-sortIcon field="year" /></th>
+                    <th scope="col"><span class="sr-only">Aktionen</span></th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-ribbon>
+                <tr>
+                    <td><img [src]="ribbon.image" [alt]="ribbon.campaign" [title]="ribbon.campaign" class="h-6 w-6 object-contain" /></td>
+                    <td class="text-tttWhite font-medium">{{ ribbon.campaign }}</td>
+                    <td>{{ ribbon.year }}</td>
+                    <td class="text-right">
+                        <div class="flex justify-end gap-2">
+                            <button pButton type="button" class="ttt-btn-secondary" (click)="openEditRibbon(ribbon)">Bearbeiten</button>
+                            <button
+                                pButton
+                                type="button"
+                                severity="danger"
+                                [text]="true"
+                                [rounded]="true"
+                                [attr.aria-label]="'Kampagne ' + ribbon.campaign + ' entfernen'"
+                                (click)="confirmDeleteRibbon(ribbon)"
+                            >
+                                <i class="pi pi-trash" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template #emptymessage>
+                <tr>
+                    <td colspan="4">Noch keine Kampagnen angelegt</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<!-- Create: Auszeichnung -->
+<p-dialog
+    [visible]="activeDialog() === 'medal'"
+    (visibleChange)="onDialogVisibleChange($event)"
+    [modal]="true"
+    [dismissableMask]="true"
+    [draggable]="false"
+    [resizable]="false"
+    [style]="{ width: '28rem', 'max-width': '92vw' }"
+    [header]="editingMedalId() ? 'Auszeichnung bearbeiten' : 'Neue Auszeichnung'"
+>
+    <div class="space-y-4">
+        <div>
+            <label for="medalName" class="text-tttGray-300 mb-1 block text-sm font-medium">Name</label>
+            <input pInputText id="medalName" [(ngModel)]="medalDraft.name" class="w-full" />
+        </div>
+        <div>
+            <label for="medalDescription" class="text-tttGray-300 mb-1 block text-sm font-medium">Beschreibung</label>
+            <input pInputText id="medalDescription" [(ngModel)]="medalDraft.description" class="w-full" />
+        </div>
+        <div>
+            <span class="text-tttGray-300 mb-1 block text-sm font-medium">Bild</span>
+            <div class="flex items-center gap-3">
+                @if (medalDraft.image) {
+                    <img [src]="medalDraft.image" alt="Vorschau" title="Vorschau" class="h-8 w-8 shrink-0 object-contain" />
+                }
+                <p-fileupload
+                    mode="basic"
+                    accept="image/*"
+                    [auto]="true"
+                    [customUpload]="true"
+                    [disabled]="uploading()"
+                    [chooseLabel]="uploading() ? 'Hochladen...' : 'Bild hochladen'"
+                    (uploadHandler)="onImageUpload($event, 'medal')"
+                />
+            </div>
+        </div>
+    </div>
+    <div class="border-tttGray-700 mt-6 flex justify-end gap-2 border-t pt-4">
+        <button pButton type="button" class="ttt-btn-secondary" (click)="onDialogVisibleChange(false)">Abbrechen</button>
+        <button pButton type="button" class="ttt-btn-primary" [disabled]="saving() || !medalDraft.name" (click)="saveMedal()">
+            {{ saving() ? "Speichern..." : "Speichern" }}
+        </button>
+    </div>
+</p-dialog>
+
+<!-- Create: Kampagne -->
+<p-dialog
+    [visible]="activeDialog() === 'ribbon'"
+    (visibleChange)="onDialogVisibleChange($event)"
+    [modal]="true"
+    [dismissableMask]="true"
+    [draggable]="false"
+    [resizable]="false"
+    [style]="{ width: '28rem', 'max-width': '92vw' }"
+    [header]="editingRibbonId() ? 'Kampagne bearbeiten' : 'Neue Kampagne'"
+>
+    <div class="space-y-4">
+        <div>
+            <label for="ribbonCampaign" class="text-tttGray-300 mb-1 block text-sm font-medium">Name</label>
+            <input pInputText id="ribbonCampaign" [(ngModel)]="ribbonDraft.campaign" class="w-full" placeholder="z. B. Aspis" />
+        </div>
+        <div>
+            <label for="ribbonYear" class="text-tttGray-300 mb-1 block text-sm font-medium">Jahr</label>
+            <input pInputText id="ribbonYear" [(ngModel)]="ribbonDraft.year" class="w-full" placeholder="z. B. 2025" />
+        </div>
+        <div>
+            <span class="text-tttGray-300 mb-1 block text-sm font-medium">Bild</span>
+            <div class="flex items-center gap-3">
+                @if (ribbonDraft.image) {
+                    <img [src]="ribbonDraft.image" alt="Vorschau" title="Vorschau" class="h-8 w-8 shrink-0 object-contain" />
+                }
+                <p-fileupload
+                    mode="basic"
+                    accept="image/*"
+                    [auto]="true"
+                    [customUpload]="true"
+                    [disabled]="uploading()"
+                    [chooseLabel]="uploading() ? 'Hochladen...' : 'Bild hochladen'"
+                    (uploadHandler)="onImageUpload($event, 'ribbon')"
+                />
+            </div>
+        </div>
+    </div>
+    <div class="border-tttGray-700 mt-6 flex justify-end gap-2 border-t pt-4">
+        <button pButton type="button" class="ttt-btn-secondary" (click)="onDialogVisibleChange(false)">Abbrechen</button>
+        <button pButton type="button" class="ttt-btn-primary" [disabled]="saving() || !ribbonDraft.campaign" (click)="saveRibbon()">
+            {{ saving() ? "Speichern..." : "Speichern" }}
+        </button>
+    </div>
+</p-dialog>

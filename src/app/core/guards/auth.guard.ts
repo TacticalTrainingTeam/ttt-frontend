@@ -9,9 +9,16 @@ export const authGuard: CanActivateFn = () => {
     return auth.isAuthenticated() ? true : router.createUrlTree(['/']);
 };
 
-/** Restricts member management to Personal, Offiziere and Admins */
+/** Restricts member management to users with the MANAGE_MEMBERS permission */
 export const memberAdminGuard: CanActivateFn = () => {
     const auth = inject(AuthService);
     const router = inject(Router);
     return auth.canManageMembers() ? true : router.createUrlTree(['/intern']);
+};
+
+/** Restricts catalog administration to users with the MANAGE_CATALOG permission */
+export const catalogAdminGuard: CanActivateFn = () => {
+    const auth = inject(AuthService);
+    const router = inject(Router);
+    return auth.canManageCatalog() ? true : router.createUrlTree(['/intern']);
 };

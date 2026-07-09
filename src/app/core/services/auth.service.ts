@@ -2,11 +2,8 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { ApiService } from './api.service';
-import { AuthUser, UserRole } from '../../shared/types/auth.types';
+import { AuthUser } from '../../shared/types/auth.types';
 import { environment } from '../../../environments/environment';
-
-/** Roles allowed to manage other members */
-const MEMBER_ADMIN_ROLES: UserRole[] = ['PERSONAL', 'OFFIZIER', 'ADMIN'];
 
 /** sessionStorage key that keeps the dev login across reloads */
 const DEV_LOGIN_STORAGE_KEY = 'ttt-dev-login';
@@ -17,7 +14,7 @@ const DEV_AUTH_USER: AuthUser = {
     name: 'Menom',
     avatar: '/img/aufstellung/offizier-kopf.webp',
     discordId: 'menom#0001',
-    roles: ['MEMBER', 'PERSONAL'],
+    permissions: ['MANAGE_MEMBERS', 'MANAGE_CATALOG'],
 };
 
 /**
@@ -34,10 +31,8 @@ export class AuthService {
 
     readonly currentUser = this.currentUserSignal.asReadonly();
     readonly isAuthenticated = computed(() => this.currentUserSignal() !== null);
-    readonly canManageMembers = computed(() => {
-        const user = this.currentUserSignal();
-        return user !== null && user.roles.some((role) => MEMBER_ADMIN_ROLES.includes(role));
-    });
+    readonly canManageMembers = computed(() => this.currentUserSignal()?.permissions.includes('MANAGE_MEMBERS') ?? false);
+    readonly canManageCatalog = computed(() => this.currentUserSignal()?.permissions.includes('MANAGE_CATALOG') ?? false);
 
     constructor() {
         this.restoreSession();
@@ -64,10 +59,6 @@ export class AuthService {
         }
         // Spring Security logout endpoint invalidates the session cookie; the backend must redirect to /
         globalThis.location.assign('/logout');
-    }
-
-    hasRole(role: UserRole): boolean {
-        return this.currentUserSignal()?.roles.includes(role) ?? false;
     }
 
     /** Restores the session on app start (dev login or backend session cookie) */

@@ -1,4 +1,4 @@
-import { Member, Medal, CampaignRibbon, Abteilung, RankType, MemberResponse, MemberStatsResponse } from '../../shared/types/member.types';
+import { Member, RankType, MemberResponse, MemberStatsResponse } from '../../shared/types/member.types';
 
 import { Injectable, inject } from '@angular/core';
 import { Observable, of } from 'rxjs';
@@ -71,7 +71,6 @@ export class MemberService {
                 campaignRibbons: [
                     {
                         id: 'ribbon-1',
-                        name: 'Aspis Kampagne',
                         image: '/img/aufstellung/ribbons/ttt_veteran-kampagne-aspis.png',
                         campaign: 'Operation Aspis',
                         year: '2020',
@@ -109,21 +108,18 @@ export class MemberService {
                 campaignRibbons: [
                     {
                         id: 'ribbon-2',
-                        name: 'Aspis Kampagne',
                         image: '/img/aufstellung/ribbons/ttt_veteran-kampagne-aspis.png',
                         campaign: 'Operation Aspis',
                         year: '2020',
                     },
                     {
                         id: 'ribbon-3',
-                        name: 'Beth Nahrin Kampagne',
                         image: '/img/aufstellung/ribbons/ttt_veteran-kampagne-beth-nahrin.png',
                         campaign: 'Operation Beth Nahrin',
                         year: '2021',
                     },
                     {
                         id: 'ribbon-4',
-                        name: 'Paradiso Kampagne',
                         image: '/img/aufstellung/ribbons/ttt_veteran-kampagne-paradiso.png',
                         campaign: 'Operation Paradiso',
                         year: '2023',
@@ -193,61 +189,5 @@ export class MemberService {
             fallbackStats,
             { timeout: 5000, retries: 2, retryDelay: 1000 }
         );
-    }
-
-    // --- Reserved endpoints below: defined for the backend contract, not used by the UI yet ---
-
-    /**
-     * Get member by ID with full details
-     * @param memberId - The unique member ID
-     * @returns Observable<Member>
-     */
-    getMemberById(memberId: string): Observable<Member> {
-        return this.api.get<Member>(`${this.baseUrl}/members/${memberId}`);
-    }
-
-    /**
-     * Get members by rank
-     * @param rank - The rank to filter by
-     * @returns Observable<Member[]>
-     */
-    getMembersByRank(rank: RankType): Observable<Member[]> {
-        return this.api
-            .get<MemberResponse>(`${this.baseUrl}/members`, { params: { rank } })
-            .pipe(map((response: MemberResponse) => response.members));
-    }
-
-    /**
-     * Update member information (for admin users)
-     * @param memberId - The unique member ID
-     * @param updates - Partial member data to update
-     * @returns Observable<Member>
-     */
-    updateMember(memberId: string, updates: Partial<Member>): Observable<Member> {
-        return this.api.patch<Member>(`${this.baseUrl}/members/${memberId}`, updates);
-    }
-
-    /**
-     * Get available medals
-     * @returns Observable<Medal[]>
-     */
-    getAvailableMedals(): Observable<Medal[]> {
-        return this.api.get<Medal[]>(`${this.baseUrl}/medals`);
-    }
-
-    /**
-     * Get available campaign ribbons
-     * @returns Observable<CampaignRibbon[]>
-     */
-    getAvailableCampaignRibbons(): Observable<CampaignRibbon[]> {
-        return this.api.get<CampaignRibbon[]>(`${this.baseUrl}/campaign-ribbons`);
-    }
-
-    /**
-     * Get available departments (Abteilungen)
-     * @returns Observable<Abteilung[]>
-     */
-    getAvailableAbteilungen(): Observable<Abteilung[]> {
-        return this.api.get<Abteilung[]>(`${this.baseUrl}/abteilungen`);
     }
 }

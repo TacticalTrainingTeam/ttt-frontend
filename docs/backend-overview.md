@@ -34,27 +34,29 @@ interface AuthUser {
     name: string;
     avatar: string;
     discordId: string;
-    roles: UserRole[]; // 'MEMBER' | 'PERSONAL' | 'OFFIZIER' | 'ADMIN'
+    permissions: Permission[]; // currently: 'MANAGE_MEMBERS' | 'MANAGE_CATALOG'
 }
 ```
 
-Roles are expected as claims in the Authentik token (e.g. mapped from Authentik groups);
-the backend translates them into the `roles` array of `/auth/me`. The `discordId` claim
-comes from the federated Discord login through Authentik.
+**The frontend is role-agnostic.** It only knows the permissions it acts on
+(`src/app/shared/types/auth.types.ts`). The mapping
+Authentik groups -> roles (Personal, Offizier, Admin, ...) -> permissions lives entirely
+in the backend; new roles never require a frontend change as long as they map to existing
+permissions. The `discordId` claim comes from the federated Discord login through Authentik.
 
-The frontend hides UI based on roles (route guards, members tab) — that is convenience only.
-**Access control must be enforced by the backend on every endpoint.**
+The frontend hides UI based on permissions (route guards, members tab) — that is convenience
+only. **Access control must be enforced by the backend on every endpoint.**
 
 ## Kaserne / intern area (InternService)
 
-| Endpoint                                         | Response        | Authorization                 |
-| ------------------------------------------------ | --------------- | ----------------------------- |
-| `GET /api/v1/intern/profile`                     | `UserProfile`   | authenticated                 |
-| `PATCH /api/v1/intern/profile/platform-ids`      | `UserProfile`   | authenticated                 |
-| `GET /api/v1/intern/members`                     | `UserProfile[]` | `PERSONAL`/`OFFIZIER`/`ADMIN` |
-| `PATCH /api/v1/intern/members/{id}/platform-ids` | `UserProfile`   | `PERSONAL`/`OFFIZIER`/`ADMIN` |
+| Endpoint                                    | Response        | Authorization    |
+| ------------------------------------------- | --------------- | ---------------- |
+| `GET /api/v1/intern/profile`                | `UserProfile`   | authenticated    |
+| `PATCH /api/v1/intern/profile/platform-ids` | `UserProfile`   | authenticated    |
+| `GET /api/v1/intern/members`                | `UserProfile[]` | `MANAGE_MEMBERS` |
+| `PATCH /api/v1/intern/members/{id}`         | `UserProfile`   | `MANAGE_MEMBERS` |
 
-PATCH body (both endpoints):
+Body `PATCH /intern/profile/platform-ids` (own profile, platform ids only):
 
 ```typescript
 {
@@ -65,29 +67,59 @@ PATCH body (both endpoints):
 }
 ```
 
-**Important:** `discordId` is **not** part of the PATCH body — it comes from the OIDC login and
+Body `PATCH /intern/members/{id}` (member managers; platform ids + medal assignment):
+
+```typescript
+{
+    platformIds: { steamId: string; xboxId: string; playstationId: string; armaIngameName: string };
+    medalIds: string[];
+}
+```
+
+The medal assignment dropdown uses the medal catalog from the catalog administration
+section below (`GET /medals`).
+
+**Important:** `discordId` is **not** part of any PATCH body — it comes from the OIDC login and
 must never be changeable through these endpoints. The frontend does not send it; the backend
 must additionally ignore/reject it.
 
 **`UserProfile`** = `Member` + `platformIds` (`src/app/shared/types/intern.types.ts`).
 
+## Catalog administration (CatalogService)
+
+Admins maintain the dynamic catalogs (medals, campaign ribbons) on the Kaserne admin page.
+Create/update bodies (`POST`/`PUT`) are the entity without `id`. Images are uploaded first
+via `POST /api/v1/assets` (multipart/form-data, field `file`) which responds with
+`{ url: string }`; the returned URL is then sent as the `image` value. In dummy mode the
+frontend uses session-local object URLs instead. **Abteilungen are not managed here**: they live in Discord/Authentik
+and reach the frontend as member data through the backend.
+
+| Endpoint                               | Response           | Authorization                        |
+| -------------------------------------- | ------------------ | ------------------------------------ |
+| `GET /api/v1/medals`                   | `Medal[]`          | `MANAGE_MEMBERS` or `MANAGE_CATALOG` |
+| `POST /api/v1/medals`                  | `Medal`            | `MANAGE_CATALOG`                     |
+| `DELETE /api/v1/medals/{id}`           | `204`              | `MANAGE_CATALOG`                     |
+| `GET /api/v1/campaign-ribbons`         | `CampaignRibbon[]` | `MANAGE_CATALOG`                     |
+| `POST /api/v1/campaign-ribbons`        | `CampaignRibbon`   | `MANAGE_CATALOG`                     |
+| `DELETE /api/v1/campaign-ribbons/{id}` | `204`              | `MANAGE_CATALOG`                     |
+| `GET /api/v1/abteilungen`              | `Abteilung[]`      | `MANAGE_CATALOG`                     |
+| `POST /api/v1/abteilungen`             | `Abteilung`        | `MANAGE_CATALOG`                     |
+| `DELETE /api/v1/abteilungen/{id}`      | `204`              | `MANAGE_CATALOG`                     |
+
+Deleting a catalog entry that is still assigned to members is a backend decision
+(reject with `409` or cascade) — the frontend currently assumes reject.
+
 ## Aufstellung (MemberService)
 
-| Endpoint                          | Response                                             |
-| --------------------------------- | ---------------------------------------------------- |
-| `GET /api/v1/members`             | `MemberResponse` (`{ members, total, lastUpdated }`) |
-| `GET /api/v1/members/stats`       | `MemberStatsResponse`                                |
-| `GET /api/v1/members/{id}`        | `Member`                                             |
-| `GET /api/v1/members?rank={rank}` | `MemberResponse`                                     |
-| `PATCH /api/v1/members/{id}`      | `Member` (admin)                                     |
-| `GET /api/v1/medals`              | `Medal[]`                                            |
-| `GET /api/v1/campaign-ribbons`    | `CampaignRibbon[]`                                   |
-| `GET /api/v1/abteilungen`         | `Abteilung[]`                                        |
+| Endpoint                    | Response                                             |
+| --------------------------- | ---------------------------------------------------- |
+| `GET /api/v1/members`       | `MemberResponse` (`{ members, total, lastUpdated }`) |
+| `GET /api/v1/members/stats` | `MemberStatsResponse`                                |
 
 Types: `src/app/shared/types/member.types.ts` (`Member`, `Medal`, `CampaignRibbon`, `Abteilung`, `RankType`).
 
-Currently used by the UI: `GET /members` (Aufstellung) and `GET /members/stats` (Home community stats).
-The remaining endpoints are reserved contract definitions and not called by the UI yet.
+`GET /members` feeds the Aufstellung page, `GET /members/stats` the Home community stats.
+Member management runs through the intern endpoints above.
 
 ## Events (EventsService)
 
@@ -104,6 +136,14 @@ Type: `src/app/shared/types/events.types.ts`. On backend errors the sidebar show
 | `GET /api/v1/twitch/streams` | `TwitchStream[]` |
 
 Type: `src/app/shared/types/medien.types.ts`. On backend errors the page shows "Keine Livestreams".
+
+## Images / assets
+
+All member-related images are delivered by the backend as URLs in the API responses
+(`avatar`, `Medal.image`, `CampaignRibbon.image`, `Abteilung.icon`) — e.g. backend-served
+files or a CDN. The frontend only hosts static site imagery (logos, banners, rank badge
+icons as part of the design system). The dummy data currently points at frontend assets
+under `/img/aufstellung/` — those references disappear with the dummies at go-live.
 
 ## Error behavior (expected from the backend)
 
@@ -134,6 +174,8 @@ Once the backend runs stable, delete the dummy branches entirely (search for `us
       all `useDummyFallback` branches.
 - [ ] `MemberService`: `getDummyMembers()`, `createBasicMember()`, the short-circuit in
       `handleApiCall()`, `fallbackStats` in `getMemberStats()`.
+- [ ] `CatalogService`: both dummy catalogs (medals, campaign ribbons), the `getMedalsByIds()`
+      helper, the object-URL branch in `uploadImage()`, all `useDummyFallback` branches.
 - [ ] `EventsService`: `getDummyEvents()` + short-circuit.
 - [ ] `MedienService`: `getDummyTwitchStreams()` + short-circuit.
 - [ ] Delete the `useDummyFallback` flag from both environment files.
@@ -156,4 +198,7 @@ Once the backend runs stable, delete the dummy branches entirely (search for `us
       the placeholder avatars (`/img/aufstellung/offizier-kopf.webp`) disappear with the dummies.
 - [ ] Decide whether `GET /members/stats` is still needed (the Aufstellung currently computes
       stats client-side from the member list).
+- [ ] Remove member-data images from `public/img/aufstellung/` (medals, ribbons, group icons,
+      placeholder avatars) once the backend serves them — keep the rank badge icons
+      (static design-system assets referenced by `shared/constants/rank-display.ts`).
 - [ ] `docs/backend-overview.md` (this file): delete the go-live section once completed.

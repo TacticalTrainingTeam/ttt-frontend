@@ -1,5 +1,8 @@
-/** Roles provided by the backend via OIDC claims */
-export type UserRole = 'MEMBER' | 'PERSONAL' | 'OFFIZIER' | 'ADMIN';
+/**
+ * Permissions the UI acts on. The backend maps Authentik groups/roles
+ * (Personal, Offizier, Admin, ...) to these - the frontend never sees role names.
+ */
+export type Permission = 'MANAGE_MEMBERS' | 'MANAGE_CATALOG';
 
 /** Authenticated user as returned by GET /api/v1/auth/me */
 export interface AuthUser {
@@ -7,5 +10,5 @@ export interface AuthUser {
     name: string;
     avatar: string;
     discordId: string;
-    roles: UserRole[];
+    permissions: Permission[];
 }

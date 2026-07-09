@@ -1,11 +1,18 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from './api.service';
+import { CatalogService } from './catalog.service';
 import { PlatformIds, UserProfile } from '../../shared/types/intern.types';
 import { environment } from '../../../environments/environment';
 
 /** Platform ids the user may change; discordId is managed by the OIDC login */
 export type EditablePlatformIds = Omit<PlatformIds, 'discordId'>;
+
+/** Member update issued by member managers (platform ids + medal assignment) */
+export interface UpdateMemberRequest {
+    platformIds: EditablePlatformIds;
+    medalIds: string[];
+}
 
 /**
  * Profile and member management endpoints of the intern area.
@@ -16,6 +23,7 @@ export type EditablePlatformIds = Omit<PlatformIds, 'discordId'>;
 export class InternService {
     private readonly baseUrl = `${environment.apiBaseUrl}/intern`;
     private readonly api = inject(ApiService);
+    private readonly catalog = inject(CatalogService);
 
     /** Local state for the dummy mode so edits survive navigation */
     private dummyMembers: UserProfile[] = this.createDummyMembers();
@@ -41,16 +49,22 @@ export class InternService {
         return this.api.get<UserProfile[]>(`${this.baseUrl}/members`);
     }
 
-    updateMemberPlatformIds(memberId: string, platformIds: EditablePlatformIds): Observable<UserProfile> {
+    updateMember(memberId: string, request: UpdateMemberRequest): Observable<UserProfile> {
         if (environment.useDummyFallback) {
-            return of(this.updateDummyMember(memberId, platformIds));
+            return of(this.updateDummyMember(memberId, request.platformIds, request.medalIds));
         }
-        return this.api.patch<UserProfile>(`${this.baseUrl}/members/${memberId}/platform-ids`, platformIds);
+        return this.api.patch<UserProfile>(`${this.baseUrl}/members/${memberId}`, request);
     }
 
-    private updateDummyMember(memberId: string, platformIds: EditablePlatformIds): UserProfile {
+    private updateDummyMember(memberId: string, platformIds: EditablePlatformIds, medalIds?: string[]): UserProfile {
         this.dummyMembers = this.dummyMembers.map((member) =>
-            member.id === memberId ? { ...member, platformIds: { ...platformIds, discordId: member.platformIds.discordId } } : member
+            member.id === memberId
+                ? {
+                      ...member,
+                      platformIds: { ...platformIds, discordId: member.platformIds.discordId },
+                      medals: medalIds ? this.catalog.getMedalsByIds(medalIds) : member.medals,
+                  }
+                : member
         );
         const updated = this.dummyMembers.find((member) => member.id === memberId);
         if (!updated) {
@@ -84,14 +98,12 @@ export class InternService {
                 campaignRibbons: [
                     {
                         id: 'ribbon-1',
-                        name: 'Kampagne Aspis',
                         image: '/img/aufstellung/ribbons/ttt_veteran-kampagne-aspis.png',
                         campaign: 'Aspis',
                         year: '2022',
                     },
                     {
                         id: 'ribbon-2',
-                        name: 'Kampagne Paradiso',
                         image: '/img/aufstellung/ribbons/ttt_veteran-kampagne-paradiso.png',
                         campaign: 'Paradiso',
                         year: '2023',

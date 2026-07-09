@@ -5,6 +5,11 @@
         [value]="rows()"
         dataKey="id"
         [globalFilterFields]="['name', 'rankLabel', 'abteilungenNames', 'armaName', 'steamId', 'discordId']"
+        [paginator]="true"
+        [rows]="25"
+        [rowsPerPageOptions]="[10, 25, 50, 100]"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="{first}–{last} von {totalRecords} Mitgliedern"
     >
         <ng-template #caption>
             <div class="flex justify-end">
@@ -110,6 +115,21 @@
             <div>
                 <label for="editArmaIngameName" class="text-tttGray-300 mb-1 block text-sm font-medium">Arma Ingame-Name</label>
                 <input pInputText id="editArmaIngameName" [(ngModel)]="draft.armaIngameName" class="w-full" />
+            </div>
+            <div>
+                <label for="editMedals" class="text-tttGray-300 mb-1 block text-sm font-medium">Auszeichnungen</label>
+                <p-multiselect
+                    inputId="editMedals"
+                    [options]="medalCatalog()"
+                    optionLabel="name"
+                    optionValue="id"
+                    [(ngModel)]="draftMedalIds"
+                    placeholder="Auszeichnungen zuordnen"
+                    display="chip"
+                    [showClear]="true"
+                    appendTo="body"
+                    styleClass="w-full"
+                />
             </div>
             <div>
                 <span class="text-tttGray-300 mb-1 flex items-center gap-1 text-sm font-medium">

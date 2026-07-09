@@ -6,11 +6,13 @@ import { ButtonDirective } from 'primeng/button';
 import { Tag } from 'primeng/tag';
 import { Dialog } from 'primeng/dialog';
 import { InputText } from 'primeng/inputtext';
+import { MultiSelect } from 'primeng/multiselect';
 import { Table, TableModule } from 'primeng/table';
 import { Tooltip } from 'primeng/tooltip';
+import { CatalogService } from '../../../../../core/services/catalog.service';
 import { InternService } from '../../../../../core/services/intern.service';
 import { PlatformIds, UserProfile } from '../../../../../shared/types/intern.types';
-import { RankType } from '../../../../../shared/types/member.types';
+import { Medal, RankType } from '../../../../../shared/types/member.types';
 import { RANK_INFO } from '../../../../../shared/constants/rank-display';
 import { RankInfo } from '../../../../../shared/types/aufstellung.types';
 
@@ -27,14 +29,16 @@ export interface MemberRow extends UserProfile {
 @Component({
     selector: 'ttt-intern-members',
     standalone: true,
-    imports: [CommonModule, FormsModule, Avatar, ButtonDirective, Dialog, InputText, TableModule, Tag, Tooltip],
+    imports: [CommonModule, FormsModule, Avatar, ButtonDirective, Dialog, InputText, MultiSelect, TableModule, Tag, Tooltip],
     templateUrl: './intern-members.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InternMembersComponent implements OnInit {
     private readonly internService = inject(InternService);
+    private readonly catalogService = inject(CatalogService);
 
     readonly members = signal<UserProfile[]>([]);
+    readonly medalCatalog = signal<Medal[]>([]);
     readonly selectedMember = signal<UserProfile | null>(null);
     readonly saving = signal(false);
 
@@ -50,11 +54,13 @@ export class InternMembersComponent implements OnInit {
         }))
     );
 
-    /** Draft copy while editing; discarded when the dialog closes without saving */
+    /** Draft copies while editing; discarded when the dialog closes without saving */
     draft: PlatformIds = { steamId: '', xboxId: '', playstationId: '', armaIngameName: '', discordId: '' };
+    draftMedalIds: string[] = [];
 
     ngOnInit(): void {
         this.internService.getMembers().subscribe((members) => this.members.set(members));
+        this.catalogService.getMedals().subscribe((medals) => this.medalCatalog.set(medals));
     }
 
     /** Typed accessor for the untyped p-table template context */
@@ -68,6 +74,7 @@ export class InternMembersComponent implements OnInit {
 
     openEdit(member: UserProfile): void {
         this.draft = { ...member.platformIds };
+        this.draftMedalIds = member.medals.map((medal) => medal.id);
         this.selectedMember.set(member);
     }
 
@@ -89,7 +96,7 @@ export class InternMembersComponent implements OnInit {
             armaIngameName: this.draft.armaIngameName,
         };
         this.saving.set(true);
-        this.internService.updateMemberPlatformIds(selected.id, editableIds).subscribe({
+        this.internService.updateMember(selected.id, { platformIds: editableIds, medalIds: this.draftMedalIds }).subscribe({
             next: (updated) => {
                 this.members.update((members) => members.map((member) => (member.id === updated.id ? updated : member)));
                 this.saving.set(false);

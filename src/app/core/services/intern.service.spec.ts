@@ -36,12 +36,16 @@ describe('InternService (dummy mode)', () => {
             });
     });
 
-    it('should update a member by id', (done) => {
+    it('should update a member including medal assignment', (done) => {
         service
-            .updateMemberPlatformIds('member-4', { steamId: '', xboxId: 'ReimchenX', playstationId: '', armaIngameName: 'Reimchen' })
+            .updateMember('member-4', {
+                platformIds: { steamId: '', xboxId: 'ReimchenX', playstationId: '', armaIngameName: 'Reimchen' },
+                medalIds: ['medal-1'],
+            })
             .subscribe((member) => {
                 expect(member.id).toBe('member-4');
                 expect(member.platformIds.xboxId).toBe('ReimchenX');
+                expect(member.medals.map((medal) => medal.id)).toEqual(['medal-1']);
                 done();
             });
     });

@@ -67,7 +67,7 @@
                 <div class="space-y-2">
                     @for (ribbon of user.campaignRibbons; track ribbon.id) {
                         <div class="bg-tttGray-800/50 border-tttGray-600/30 flex items-center gap-2 rounded-lg border p-2">
-                            <img [src]="ribbon.image" [alt]="ribbon.name" [title]="ribbon.name" class="h-6 w-6 object-contain" />
+                            <img [src]="ribbon.image" [alt]="ribbon.campaign" [title]="ribbon.campaign" class="h-6 w-6 object-contain" />
                             <div class="min-w-0 flex-1">
                                 <p class="text-tttWhite text-sm font-medium break-words">{{ ribbon.campaign }}</p>
                                 <p class="text-tttGray-300 text-sm">{{ ribbon.year }}</p>

@@ -22,7 +22,6 @@ export interface Medal {
 
 export interface CampaignRibbon {
     id: string;
-    name: string;
     image: string;
     campaign: string;
     year: string;

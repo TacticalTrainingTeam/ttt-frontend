@@ -31,7 +31,7 @@ describe('AuthService (dummy mode)', () => {
 
         expect(service.isAuthenticated()).toBeTrue();
         expect(service.currentUser()?.name).toBe('Menom');
-        expect(service.hasRole('MEMBER')).toBeTrue();
+        expect(service.currentUser()?.permissions).toContain('MANAGE_MEMBERS');
         expect(service.canManageMembers()).toBeTrue();
         expect(sessionStorage.getItem('ttt-dev-login')).toBe('1');
         expect(routerSpy.navigate).toHaveBeenCalledWith(['/intern']);

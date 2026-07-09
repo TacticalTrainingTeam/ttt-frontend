@@ -20,11 +20,14 @@ export class InternComponent {
     readonly pageTitle = 'Kaserne';
     readonly pageSubtitle = 'Der interne Bereich des Tactical Training Teams';
 
-    /** Member management is only offered to authorized roles */
+    /** Management tabs are only offered to authorized users */
     readonly tabs = computed(() => {
         const tabs = [{ route: '/intern', label: 'Mein Profil' }];
         if (this.auth.canManageMembers()) {
             tabs.push({ route: '/intern/mitglieder', label: 'Mitglieder' });
+        }
+        if (this.auth.canManageCatalog()) {
+            tabs.push({ route: '/intern/admin', label: 'Admin' });
         }
         return tabs;
     });
