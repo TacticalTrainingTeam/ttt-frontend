@@ -24,9 +24,15 @@ describe('HomeHeroSliderComponent', () => {
     });
 
     it('should render title, accent and subtitle of the active slide', () => {
-        const heading: HTMLElement | null = fixture.nativeElement.querySelector('h1');
+        const heading: HTMLElement | null = fixture.nativeElement.querySelector('h2.ttt-hero-title');
         expect(heading?.textContent).toContain('Title');
         expect(heading?.querySelector('span.text-tttRed')?.textContent).toContain('Accent');
         expect(fixture.nativeElement.textContent).toContain('Subtitle');
+    });
+
+    it('should render a single sr-only h1 with the site heading', () => {
+        const headings: NodeListOf<HTMLElement> = fixture.nativeElement.querySelectorAll('h1');
+        expect(headings).toHaveSize(1);
+        expect(headings[0].textContent).toContain('Tactical Training Team');
     });
 });
