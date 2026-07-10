@@ -28,7 +28,7 @@ describe('AufstellungComponent', () => {
             memberSince: '2021-01-01',
             medals: [],
             campaignRibbons: [],
-            abteilungen: [],
+            abteilungen: [{ id: 'missionsbau', name: 'Missionsbau', icon: '', description: '' }],
         },
         {
             id: 'member-3',
@@ -101,6 +101,35 @@ describe('AufstellungComponent', () => {
         expect(component.rankInfo['offizier'].name).toBe('Offizier');
         expect(component.rankInfo['rekrut'].priority).toBe(5);
         expect(component.rankInfo['gast'].shortName).toBe('Gast');
+    });
+
+    it('should derive abteilung options from the loaded members', () => {
+        component.ngOnInit();
+
+        expect(component.abteilungOptions()).toHaveSize(1);
+        expect(component.abteilungOptions()[0].name).toBe('Missionsbau');
+    });
+
+    it('should filter the roster by abteilung while keeping overview stats global', () => {
+        component.ngOnInit();
+
+        component.selectedAbteilungId.set('missionsbau');
+
+        expect(component.membersByRank().soldat).toHaveSize(1);
+        expect(component.membersByRank().soldat[0].name).toBe('Bravo');
+        expect(component.membersByRank().offizier).toHaveSize(0);
+        expect(component.memberStats().soldat).toBe(2);
+        expect(component.totalMembers()).toBe(3);
+    });
+
+    it('should show all members again when the filter is cleared', () => {
+        component.ngOnInit();
+        component.selectedAbteilungId.set('missionsbau');
+
+        component.selectedAbteilungId.set(null);
+
+        expect(component.membersByRank().soldat).toHaveSize(2);
+        expect(component.membersByRank().offizier).toHaveSize(1);
     });
 
     it('should handle loading errors', () => {

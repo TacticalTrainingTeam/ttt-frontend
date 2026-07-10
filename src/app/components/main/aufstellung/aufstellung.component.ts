@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Select } from 'primeng/select';
 import { PageLayoutComponent } from '../../../shared/components/page-layout/page-layout.component';
-import { Member as BackendMember, RankType } from '../../../shared/types/member.types';
+import { Abteilung, Member as BackendMember, RankType } from '../../../shared/types/member.types';
 import { MemberService } from '../../../core/services/member.service';
 import {
     AufstellungLoadingMessages,
@@ -77,6 +79,8 @@ const AUFSTELLUNG_CONFIG = {
     standalone: true,
     imports: [
         CommonModule,
+        FormsModule,
+        Select,
         PageLayoutComponent,
         AufstellungLoadingStateComponent,
         AufstellungOverviewComponent,
@@ -148,23 +152,52 @@ export class AufstellungComponent implements OnInit {
     readonly rankOrder: RankType[] = ['offizier', 'unteroffizier', 'veteran', 'soldat', 'rekrut', 'gast'] as const;
 
     readonly members = signal<Member[]>([]);
-    readonly membersByRank = signal<MembersByRank>({
-        offizier: [],
-        unteroffizier: [],
-        veteran: [],
-        soldat: [],
-        rekrut: [],
-        gast: [],
+
+    /** Selected Abteilung id; null shows all members */
+    readonly selectedAbteilungId = signal<string | null>(null);
+
+    /** Unique Abteilungen derived from the loaded members */
+    readonly abteilungOptions = computed<Abteilung[]>(() => {
+        const unique = new Map<string, Abteilung>();
+        for (const member of this.members()) {
+            for (const abteilung of member.abteilungen) {
+                unique.set(abteilung.id, abteilung);
+            }
+        }
+        return [...unique.values()].sort((a, b) => a.name.localeCompare(b.name));
     });
-    readonly memberStats = signal<MemberStats>({
-        offizier: 0,
-        unteroffizier: 0,
-        veteran: 0,
-        soldat: 0,
-        rekrut: 0,
-        gast: 0,
+
+    private readonly filteredMembers = computed<Member[]>(() => {
+        const abteilungId = this.selectedAbteilungId();
+        const members = this.members();
+        if (!abteilungId) {
+            return members;
+        }
+        return members.filter((member) => member.abteilungen.some((abteilung) => abteilung.id === abteilungId));
     });
-    readonly totalMembers = signal(0);
+
+    /** Roster grouping honors the Abteilung filter */
+    readonly membersByRank = computed<MembersByRank>(() => {
+        const byRank = this.createEmptyRankRecord<Member[]>(() => []);
+        for (const member of this.filteredMembers()) {
+            byRank[member.rank].push(member);
+        }
+        for (const rank of this.rankOrder) {
+            byRank[rank].sort((a, b) => a.name.localeCompare(b.name));
+        }
+        return byRank;
+    });
+
+    /** Overview stats always show the full roster, independent of the filter */
+    readonly memberStats = computed<MemberStats>(() => {
+        const stats = this.createEmptyRankRecord<number>(() => 0);
+        for (const member of this.members()) {
+            stats[member.rank]++;
+        }
+        return stats;
+    });
+
+    readonly totalMembers = computed(() => this.members().length);
 
     private createEmptyRankRecord<T>(factory: () => T): Record<RankType, T> {
         return this.rankOrder.reduce(
@@ -186,7 +219,6 @@ export class AufstellungComponent implements OnInit {
         this.memberService.getAllMembers().subscribe({
             next: (members: BackendMember[]) => {
                 this.members.set(members);
-                this.computeMemberData();
                 this.isLoading.set(false);
             },
             error: () => {
@@ -194,23 +226,5 @@ export class AufstellungComponent implements OnInit {
                 this.isLoading.set(false);
             },
         });
-    }
-
-    private computeMemberData(): void {
-        const membersByRank = this.createEmptyRankRecord<Member[]>(() => []);
-        const memberStats = this.createEmptyRankRecord<number>(() => 0);
-
-        const members = this.members();
-        for (const member of members) {
-            membersByRank[member.rank].push(member);
-            memberStats[member.rank]++;
-        }
-        for (const rank of Object.keys(membersByRank)) {
-            membersByRank[rank as RankType].sort((a, b) => a.name.localeCompare(b.name));
-        }
-
-        this.membersByRank.set(membersByRank);
-        this.memberStats.set(memberStats);
-        this.totalMembers.set(members.length);
     }
 }

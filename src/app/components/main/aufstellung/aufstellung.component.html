@@ -18,6 +18,21 @@
                 [subtitle]="sections.OVERVIEW.SUBTITLE"
             ></ttt-aufstellung-overview>
 
+            <!-- Abteilung filter for the roster below -->
+            <div class="mb-4 flex justify-end">
+                <p-select
+                    [options]="abteilungOptions()"
+                    optionLabel="name"
+                    optionValue="id"
+                    [ngModel]="selectedAbteilungId()"
+                    (ngModelChange)="selectedAbteilungId.set($event)"
+                    [showClear]="true"
+                    placeholder="Nach Abteilung filtern"
+                    ariaLabel="Roster nach Abteilung filtern"
+                    styleClass="w-64"
+                />
+            </div>
+
             <ttt-aufstellung-roster
                 [membersByRank]="membersByRank()"
                 [rankOrder]="rankOrder"
