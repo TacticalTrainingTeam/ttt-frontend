@@ -1,7 +1,7 @@
 import { Member, Medal, CampaignRibbon, Abteilung, RankType, MemberResponse, MemberStatsResponse } from '../../shared/types/member.types';
 
 import { Injectable, inject } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { map, catchError, timeout, retry } from 'rxjs/operators';
 import { ApiService } from './api.service';
 import { environment } from '../../../environments/environment';
@@ -31,7 +31,8 @@ export class MemberService {
             timeout(timeoutMs),
             retry({ count: retries, delay: retryDelay }),
             map(mapFn),
-            catchError(() => of(fallbackValue))
+            // With the fallback disabled, errors propagate to the caller's error UI
+            catchError((error) => (environment.useDummyFallback ? of(fallbackValue) : throwError(() => error)))
         );
     }
 
