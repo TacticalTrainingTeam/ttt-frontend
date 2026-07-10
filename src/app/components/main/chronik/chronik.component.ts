@@ -109,6 +109,18 @@ export class ChronikComponent {
                 'Hunderte ausgebildete Community-Mitglieder',
             ]
         ),
+        this.createTimelineEvent(
+            'reforger',
+            'OP Reforger',
+            'September 2024',
+            'milestone',
+            'Arma Reforger wird neben Arma 3 Teil des TTT-Spielbetriebs',
+            [
+                'Erste Events und Trainings in Arma Reforger',
+                'Paralleler Spielbetrieb in beiden Arma-Titeln',
+                'Vorbereitung auf die Zukunft der Arma-Reihe',
+            ]
+        ),
     ];
 
     // Private methods
