@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ButtonDirective } from 'primeng/button';
+import { TTT_LINKS } from '../../../../../shared/constants/external-links';
 
 @Component({
     selector: 'ttt-chronik-cta',
@@ -10,4 +11,6 @@ import { ButtonDirective } from 'primeng/button';
     styleUrl: './chronik-cta.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChronikCtaComponent {}
+export class ChronikCtaComponent {
+    readonly discordUrl = TTT_LINKS.discord;
+}

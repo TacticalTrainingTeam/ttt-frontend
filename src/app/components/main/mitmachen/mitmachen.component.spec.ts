@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MitmachenComponent } from './mitmachen.component';
+import { TTT_LINKS } from '../../../shared/constants/external-links';
 
 describe('MitmachenComponent', () => {
     let component: MitmachenComponent;
@@ -20,9 +21,9 @@ describe('MitmachenComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should expose external links', () => {
-        expect(component.externalLinks.discord).toBe('https://discord.tacticalteam.de');
-        expect(component.externalLinks.events).toBe('https://events.tacticalteam.de/events/');
-        expect(component.externalLinks.arma3SyncGuide).toContain('wiki.tacticalteam.de');
+    it('should expose the shared link registry', () => {
+        expect(component.externalLinks).toBe(TTT_LINKS);
+        expect(component.externalLinks.discord).toContain('discord.tacticalteam.de');
+        expect(component.externalLinks.wikiArma3Sync).toContain('wiki.tacticalteam.de');
     });
 });

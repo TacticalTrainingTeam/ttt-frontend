@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { Menubar } from 'primeng/menubar';
 import { ButtonDirective } from 'primeng/button';
+import { TTT_LINKS } from '../../shared/constants/external-links';
 
 @Component({
     selector: 'ttt-header',
@@ -23,7 +24,7 @@ export class HeaderComponent {
             label: 'Events',
             icon: 'pi pi-calendar',
             styleClass: 'font-heading',
-            url: 'https://events.tacticalteam.de',
+            url: TTT_LINKS.events,
             target: '_blank',
             rel: 'noopener noreferrer',
         },
@@ -31,7 +32,7 @@ export class HeaderComponent {
             label: 'Discord',
             icon: 'pi pi-discord',
             styleClass: 'font-heading',
-            url: 'https://discord.tacticalteam.de',
+            url: TTT_LINKS.discord,
             target: '_blank',
             rel: 'noopener noreferrer',
         },
@@ -39,13 +40,13 @@ export class HeaderComponent {
             label: 'TS3',
             icon: 'pi pi-microphone',
             styleClass: 'font-heading',
-            url: 'ts3server://ts3.tacticalteam.de',
+            url: TTT_LINKS.teamspeak,
         },
         {
             label: 'Wiki',
             icon: 'pi pi-book',
             styleClass: 'font-heading',
-            url: 'https://wiki.tacticalteam.de',
+            url: TTT_LINKS.wiki,
             target: '_blank',
             rel: 'noopener noreferrer',
         },
@@ -76,7 +77,7 @@ export class HeaderComponent {
                     label: 'Event-Replay',
                     icon: 'pi pi-play',
                     styleClass: 'font-heading',
-                    url: 'https://replay.tacticalteam.de',
+                    url: TTT_LINKS.replay,
                     target: '_blank',
                     rel: 'noopener noreferrer',
                 },
@@ -84,7 +85,7 @@ export class HeaderComponent {
                     label: 'Shop',
                     icon: 'pi pi-shopping-bag',
                     styleClass: 'font-heading',
-                    url: 'https://tacticalteam.myspreadshop.de',
+                    url: TTT_LINKS.shop,
                     target: '_blank',
                     rel: 'noopener noreferrer',
                 },

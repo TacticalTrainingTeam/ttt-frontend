@@ -14,7 +14,7 @@
                 <div class="mb-4 flex items-center gap-2">
                     <span class="text-tttGray-300 mr-2 text-sm font-medium">Folge uns:</span>
                     <a
-                        href="https://discord.tacticalteam.de"
+                        [href]="links.discord"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Discord"
@@ -23,7 +23,7 @@
                         <i class="pi pi-discord text-sm" aria-hidden="true"></i>
                     </a>
                     <a
-                        href="https://www.youtube.com/c/TacticalteamDe"
+                        [href]="socialLinks.youtube"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="YouTube"
@@ -32,7 +32,7 @@
                         <i class="pi pi-youtube text-sm" aria-hidden="true"></i>
                     </a>
                     <a
-                        href="https://x.com/TTT_ArmA"
+                        [href]="socialLinks.x"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="X (Twitter)"
@@ -41,7 +41,7 @@
                         <i class="pi pi-twitter text-sm" aria-hidden="true"></i>
                     </a>
                     <a
-                        href="https://mastodon.social/@tacticaltrainingteam"
+                        [href]="socialLinks.mastodon"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Mastodon"
@@ -57,7 +57,7 @@
                 <h4 class="text-tttWhite mb-3 text-sm font-semibold tracking-wide uppercase">Links</h4>
                 <div class="space-y-2">
                     <a
-                        href="https://wiki.tacticalteam.de/"
+                        [href]="links.wiki"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="text-tttGray-300 hover:text-tttWhite block text-sm transition-colors"
@@ -65,7 +65,7 @@
                         Wiki
                     </a>
                     <a
-                        href="https://events.tacticalteam.de/events"
+                        [href]="links.eventsCalendar"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="text-tttGray-300 hover:text-tttWhite block text-sm transition-colors"
@@ -73,7 +73,7 @@
                         Slottung
                     </a>
                     <a
-                        href="https://replay.tacticalteam.de"
+                        [href]="links.replay"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="text-tttGray-300 hover:text-tttWhite block text-sm transition-colors"
@@ -129,7 +129,7 @@
                 <!-- Contact Methods - compact -->
                 <div class="mb-4 space-y-2">
                     <a
-                        href="https://discord.tacticalteam.de"
+                        [href]="links.discord"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="text-tttGray-300 hover:text-tttWhite flex items-center text-sm transition-colors"
@@ -137,10 +137,7 @@
                         <i class="pi pi-discord text-tttGray-500 mr-2"></i>
                         Discord Server
                     </a>
-                    <a
-                        href="ts3server://ts3.tacticalteam.de"
-                        class="text-tttGray-300 hover:text-tttWhite flex items-center text-sm transition-colors"
-                    >
+                    <a [href]="links.teamspeak" class="text-tttGray-300 hover:text-tttWhite flex items-center text-sm transition-colors">
                         <i class="pi pi-microphone text-tttGray-500 mr-2"></i>
                         TeamSpeak 3
                     </a>

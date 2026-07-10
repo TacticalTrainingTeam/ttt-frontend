@@ -4,6 +4,7 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideRouter } from '@angular/router';
 import { MedienComponent } from './medien.component';
 import { MedienService } from '../../../core/services/medien.service';
+import { TTT_LINKS, TTT_SOCIAL_LINKS } from '../../../shared/constants/external-links';
 
 describe('MedienComponent', () => {
     let component: MedienComponent;
@@ -29,20 +30,11 @@ describe('MedienComponent', () => {
         expect(component.pageTitle).toBe('Medien');
     });
 
-    it('should have external links configured', () => {
-        expect(component.externalLinks).toBeDefined();
-        expect(component.externalLinks.youtube).toBe('https://www.youtube.com/@tacticalteamde');
-        expect(component.externalLinks.twitch).toBe('https://www.twitch.tv/tacticaltrainingteam');
-        expect(component.externalLinks.x).toBe('https://x.com/TTT_ArmA');
-        expect(component.externalLinks.mastodon).toBe('https://mastodon.social/@tacticaltrainingteam');
-        expect(component.externalLinks.bluesky).toBe('https://bsky.app/profile/tacticalteam.bsky.social');
-        expect(component.externalLinks.instagram).toBe('https://www.instagram.com/tacticaltrainingteam/');
-        expect(component.externalLinks.tiktok).toBe('https://www.tiktok.com/@tacticaltrainingteam');
-        expect(component.externalLinks.steam).toBe('https://steamcommunity.com/groups/tacticaltrainingteam');
-        expect(component.externalLinks.reddit).toBe('https://www.reddit.com/user/tacticaltrainingteam/');
-        expect(component.externalLinks.github).toBe('https://github.com/orgs/TacticalTrainingTeam/');
-        expect(component.externalLinks.wiki).toBe('https://wiki.tacticalteam.de/de/TTT-PR/Corporate-Identity');
-        expect(component.externalLinks.files).toBe('https://files.tacticalteam.de/s/36FWSHsGNwaXLHg');
+    it('should source platform urls from the shared link registry', () => {
+        expect(component.socialLinks).toBe(TTT_SOCIAL_LINKS);
+        expect(component.corporateDesignWikiUrl).toBe(TTT_LINKS.wikiCorporateDesign);
+        expect(component.mediaPlatforms[0].url).toBe(TTT_SOCIAL_LINKS.youtube);
+        expect(component.socialPlatforms.every((platform) => platform.url.startsWith('https://'))).toBeTrue();
     });
 
     it('should expose media and social platform cards', () => {
