@@ -13,7 +13,7 @@
         </ng-template>
 
         <ng-template #content let-event>
-            <div class="ttt-content-card mb-6 p-3 text-left" [ngClass]="{ 'border-tttRed/70': event.expanded }">
+            <div class="ttt-content-card mb-6 p-3 text-left" [ngClass]="{ 'border-tttRed/50': event.expanded }">
                 <div class="mb-1 flex flex-wrap items-center gap-2">
                     <h3 class="text-tttWhite text-base font-bold" [title]="event.title">{{ event.title }}</h3>
                     <span class="text-tttGray-300 text-xs font-medium">{{ getEventTypeLabel(event.type) }}</span>
@@ -32,7 +32,7 @@
                         [attr.aria-label]="'Details für ' + event.title + (event.expanded ? ' ausblenden' : ' anzeigen')"
                         [attr.aria-expanded]="event.expanded"
                     >
-                        <span>Weitere Details</span>
+                        <span>{{ event.expanded ? "Details ausblenden" : "Weitere Details" }}</span>
                     </button>
 
                     @if (event.expanded) {
