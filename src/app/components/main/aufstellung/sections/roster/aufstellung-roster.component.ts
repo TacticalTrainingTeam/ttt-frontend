@@ -17,7 +17,6 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AufstellungRosterComponent {
-    members = input.required<Member[]>();
     membersByRank = input.required<MembersByRank>();
     rankOrder = input.required<RankType[]>();
     rankInfo = input.required<RankInfoMap>();

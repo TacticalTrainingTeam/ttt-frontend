@@ -37,7 +37,6 @@ describe('AufstellungRosterComponent', () => {
             gast: { name: 'Gast', shortName: 'Gast', icon: '', color: 'text-gray-300', priority: 6 },
         });
         fixture.componentRef.setInput('membersByRank', { offizier: [], unteroffizier: [], veteran: [], soldat: [], rekrut: [], gast: [] });
-        fixture.componentRef.setInput('members', []);
         fixture.componentRef.setInput('title', 'Personalaufstellung');
         fixture.componentRef.setInput('subtitle', 'Unsere Mitglieder');
         fixture.detectChanges();
