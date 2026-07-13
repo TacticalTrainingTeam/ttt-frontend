@@ -1,18 +1,39 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { Avatar } from 'primeng/avatar';
+import { Menu } from 'primeng/menu';
 import { Menubar } from 'primeng/menubar';
 import { ButtonDirective } from 'primeng/button';
+import { Tooltip } from 'primeng/tooltip';
+import { AuthService } from '../../core/services/auth.service';
 import { TTT_LINKS } from '../../shared/constants/external-links';
 
 @Component({
     selector: 'ttt-header',
     standalone: true,
-    imports: [RouterLink, Menubar, ButtonDirective],
+    imports: [RouterLink, Avatar, Menu, Menubar, ButtonDirective, Tooltip],
     templateUrl: './header.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
+    readonly auth = inject(AuthService);
+
+    readonly userMenuItems: MenuItem[] = [
+        {
+            label: 'Kaserne',
+            icon: 'pi pi-building',
+            styleClass: 'font-heading',
+            routerLink: ['/intern'],
+        },
+        {
+            label: 'Abmelden',
+            icon: 'pi pi-sign-out',
+            styleClass: 'font-heading',
+            command: () => this.auth.logout(),
+        },
+    ];
+
     readonly items: MenuItem[] = [
         {
             label: 'Home',
@@ -88,12 +109,6 @@ export class HeaderComponent {
                     url: TTT_LINKS.shop,
                     target: '_blank',
                     rel: 'noopener noreferrer',
-                },
-                {
-                    label: 'Intern',
-                    icon: 'pi pi-user',
-                    styleClass: 'font-heading',
-                    routerLink: ['/intern'],
                 },
             ],
         },

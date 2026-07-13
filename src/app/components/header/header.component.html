@@ -7,7 +7,46 @@
                 </a>
             </ng-template>
             <ng-template #end>
-                <a routerLink="/mitmachen" pButton size="large" class="ttt-btn-primary font-heading font-bold"> Mitmachen </a>
+                <div class="flex items-center gap-3">
+                    <a
+                        routerLink="/mitmachen"
+                        pButton
+                        class="ttt-btn-primary font-heading px-3 py-1.5 text-xs font-bold sm:px-4 sm:py-2 sm:text-sm"
+                    >
+                        Mitmachen
+                    </a>
+
+                    @if (auth.isAuthenticated()) {
+                        <p-menu #userMenu [model]="userMenuItems" [popup]="true" appendTo="body" />
+                        <button
+                            type="button"
+                            class="focus-visible:outline-tttRed-300 flex items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2"
+                            (click)="userMenu.toggle($event)"
+                            aria-label="Benutzermenü öffnen"
+                            [pTooltip]="auth.currentUser()?.name"
+                            tooltipPosition="bottom"
+                        >
+                            <p-avatar
+                                [image]="auth.currentUser()?.avatar || undefined"
+                                [icon]="auth.currentUser()?.avatar ? undefined : 'pi pi-user'"
+                                shape="circle"
+                                styleClass="border-2 border-tttRed/50 cursor-pointer"
+                            />
+                        </button>
+                    } @else {
+                        <button
+                            pButton
+                            type="button"
+                            class="ttt-btn-secondary px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm"
+                            (click)="auth.login()"
+                            aria-label="Anmelden"
+                            pTooltip="Anmelden"
+                            tooltipPosition="bottom"
+                        >
+                            <i class="pi pi-sign-in" aria-hidden="true"></i>
+                        </button>
+                    }
+                </div>
             </ng-template>
         </p-menubar>
     </div>

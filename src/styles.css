@@ -196,6 +196,20 @@
     }
 }
 
+.p-avatar img {
+    object-fit: cover;
+}
+
+/* PrimeNG menubar (mobile): logo left, action group right, burger outermost */
+.p-menubar-mobile .p-menubar-end {
+    margin-left: auto;
+    order: 2;
+}
+
+.p-menubar-mobile .p-menubar-button {
+    order: 3;
+}
+
 /* PrimeNG timeline (Chronik): collapse the alternate layout to a single column on small screens */
 @media (max-width: 40rem) {
     .ttt-chronik-timeline .p-timeline-event {
