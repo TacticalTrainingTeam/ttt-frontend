@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ConfirmationService } from 'primeng/api';
 import { ButtonDirective } from 'primeng/button';
@@ -17,7 +16,7 @@ type CatalogDialog = 'medal' | 'ribbon' | null;
 @Component({
     selector: 'ttt-intern-admin',
     standalone: true,
-    imports: [CommonModule, FormsModule, ButtonDirective, ConfirmDialog, Dialog, FileUpload, InputText, TableModule],
+    imports: [FormsModule, ButtonDirective, ConfirmDialog, Dialog, FileUpload, InputText, TableModule],
     providers: [ConfirmationService],
     templateUrl: './intern-admin.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,7 +36,7 @@ export class InternAdminComponent implements OnInit {
     readonly editingRibbonId = signal<string | null>(null);
     readonly uploading = signal(false);
 
-    /** Drafts for the create dialogs; image/icon are URLs, uploads follow with the backend */
+    /** Drafts for the dialogs; image urls come from uploadImage() */
     medalDraft = { name: '', description: '', image: '' };
     ribbonDraft = { campaign: '', year: '', image: '' };
 

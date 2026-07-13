@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Avatar } from 'primeng/avatar';
 import { ButtonDirective } from 'primeng/button';
@@ -14,7 +13,7 @@ import { RANK_INFO } from '../../../../../shared/constants/rank-display';
 @Component({
     selector: 'ttt-intern-profile',
     standalone: true,
-    imports: [CommonModule, FormsModule, Avatar, ButtonDirective, InputText, ProgressSpinner, Tag, Tooltip],
+    imports: [FormsModule, Avatar, ButtonDirective, InputText, ProgressSpinner, Tag, Tooltip],
     templateUrl: './intern-profile.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit, computed, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Avatar } from 'primeng/avatar';
 import { ButtonDirective } from 'primeng/button';
@@ -29,7 +28,7 @@ export interface MemberRow extends UserProfile {
 @Component({
     selector: 'ttt-intern-members',
     standalone: true,
-    imports: [CommonModule, FormsModule, Avatar, ButtonDirective, Dialog, InputText, MultiSelect, TableModule, Tag, Tooltip],
+    imports: [FormsModule, Avatar, ButtonDirective, Dialog, InputText, MultiSelect, TableModule, Tag, Tooltip],
     templateUrl: './intern-members.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
