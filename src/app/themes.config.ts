@@ -28,7 +28,7 @@ export const tttGrayPalette = {
     50: '#f5f5f5',
     100: '#d1d1d1',
     200: '#adadac',
-    300: '#898987',
+    300: '#9a9a98',
     400: '#646463',
     500: tttGray,
     600: '#363635',

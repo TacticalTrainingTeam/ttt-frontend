@@ -27,7 +27,7 @@
                         type="button"
                         [text]="true"
                         size="small"
-                        class="text-tttRed mt-2 px-0"
+                        class="text-tttRed-200 mt-2 px-0"
                         (click)="toggleEventDetails(event)"
                         [attr.aria-label]="'Details für ' + event.title + (event.expanded ? ' ausblenden' : ' anzeigen')"
                         [attr.aria-expanded]="event.expanded"
@@ -39,7 +39,7 @@
                         <!-- *ngFor instead of @for: static HTML linters reject @for text nodes as direct <ul> children -->
                         <ul class="mt-2 space-y-1">
                             <li *ngFor="let detail of event.details" class="text-tttGray-300 flex items-start gap-2 text-sm">
-                                <i class="pi pi-angle-right text-tttRed mt-0.5 flex-shrink-0 text-sm" aria-hidden="true"></i>
+                                <i class="pi pi-angle-right text-tttRed-300 mt-0.5 flex-shrink-0 text-sm" aria-hidden="true"></i>
                                 <span>{{ detail }}</span>
                             </li>
                         </ul>
