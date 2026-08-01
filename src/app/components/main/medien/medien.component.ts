@@ -1,8 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Observable, of } from 'rxjs';
 import { PageLayoutComponent } from '../../../shared/components/page-layout/page-layout.component';
-import { MediaPlatformCard, SocialPlatformCard } from '../../../shared/types/medien.types';
-import { MedienService } from '../../../core/services/medien.service';
+import { MediaPlatformCard, SocialPlatformCard, TwitchStream } from '../../../shared/types/medien.types';
+// Temporaer deaktiviert bis die Twitch-API live ist
+// import { inject } from '@angular/core';
+// import { MedienService } from '../../../core/services/medien.service';
 import { TTT_LINKS, TTT_SOCIAL_LINKS } from '../../../shared/constants/external-links';
 import { MedienLiveStreamsComponent } from './sections/live-streams/medien-live-streams.component';
 import { MedienMediaPlatformsComponent } from './sections/media-platforms/medien-media-platforms.component';
@@ -24,11 +27,14 @@ import { MedienCorporateCtaComponent } from './sections/corporate-cta/medien-cor
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MedienComponent {
-    private readonly medienService = inject(MedienService);
+    // Temporaer deaktiviert bis die Twitch-API live ist
+    // private readonly medienService = inject(MedienService);
 
     readonly pageTitle = 'Medien';
     readonly pageSubtitle = 'Streams, Videos und Community-Kanäle des Tactical Training Teams';
-    readonly liveStreams$ = this.medienService.getTwitchStreams();
+    // Temporaer deaktiviert bis die Twitch-API live ist - zeigt solange den Leerzustand
+    // readonly liveStreams$ = this.medienService.getTwitchStreams();
+    readonly liveStreams$: Observable<TwitchStream[]> = of([]);
 
     readonly socialLinks = TTT_SOCIAL_LINKS;
     readonly corporateDesignWikiUrl = TTT_LINKS.wikiCorporateDesign;

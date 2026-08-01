@@ -11,30 +11,13 @@ export class MedienService {
     private readonly api = inject(ApiService);
 
     /**
-     * Get dummy Twitch streams for fallback
-     */
-    private getDummyTwitchStreams(): TwitchStream[] {
-        return [
-            {
-                id: '1',
-                userName: 'TacticalTrainingTeam',
-                title: 'Arma 3 ♦ Blood and Sand [Coop] ♦ Kamera EinStein',
-                viewerCount: 42,
-                startedAt: new Date().toISOString(),
-                thumbnailUrl: '/img/home-banner/home-banner1.webp',
-                isLive: true,
-                url: 'https://twitch.tv/tacticaltrainingteam',
-            },
-        ];
-    }
-
-    /**
      * Get current Twitch livestreams with retry strategy
      */
     getTwitchStreams(): Observable<TwitchStream[]> {
         return this.api.get<TwitchStream[]>(`${this.baseUrl}/twitch/streams`).pipe(
             retry({ count: 2, delay: 1000 }),
-            catchError(() => of(this.getDummyTwitchStreams()))
+            // Degrade to the empty state instead of showing stale streams
+            catchError(() => of([]))
         );
     }
 }

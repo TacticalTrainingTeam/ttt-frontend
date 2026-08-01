@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
-import { MemberService } from '../../../core/services/member.service';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+// Temporaer deaktiviert bis die Member-API live ist
+// import { OnInit, inject } from '@angular/core';
+// import { MemberService } from '../../../core/services/member.service';
 import { HomeFeaturesJoinComponent } from './sections/features-join/home-features-join.component';
 import { HomeHeroSliderComponent } from './sections/hero-slider/home-hero-slider.component';
 import { HomeGalleryComponent } from './sections/gallery/home-gallery.component';
@@ -14,9 +16,9 @@ import { HomeBannerSlide, HomeCommunityStat, HomeGalleryImage } from '../../../s
     styleUrl: './home.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent implements OnInit {
-    // Services
-    private readonly memberService = inject(MemberService);
+export class HomeComponent {
+    // Temporaer deaktiviert bis die Member-API live ist
+    // private readonly memberService = inject(MemberService);
 
     // Public readonly properties
     readonly bannerSlides: HomeBannerSlide[] = [
@@ -83,11 +85,14 @@ export class HomeComponent implements OnInit {
         { value: '2013', label: 'Gegründet', color: 'text-tttGreen' },
         { value: '2', label: 'Events/Woche', color: 'text-tttGreen' },
     ]);
-    // Lifecycle hooks
-    ngOnInit(): void {
-        this.memberService.getMemberStats().subscribe((stats) => {
-            const total = Object.values(stats).reduce((sum, n) => sum + n, 0);
-            this.communityStats.update((current) => [{ ...current[0], value: total.toString() }, ...current.slice(1)]);
-        });
-    }
+    // Temporaer deaktiviert bis die Member-API live ist - zeigt solange die statischen Kennzahlen
+    // ngOnInit(): void {
+    //     this.memberService.getMemberStats().subscribe({
+    //         next: (stats) => {
+    //             const total = Object.values(stats).reduce((sum, n) => sum + n, 0);
+    //             this.communityStats.update((current) => [{ ...current[0], value: total.toString() }, ...current.slice(1)]);
+    //         },
+    //         error: () => undefined,
+    //     });
+    // }
 }
