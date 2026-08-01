@@ -1,5 +1,6 @@
 <nav class="bg-tttGray-900 border-tttGray-800 relative z-10 border-r md:w-64">
     <div class="p-6">
+        <!-- Temporaer deaktiviert bis die Events-API live ist
         <div class="hidden md:block">
             <ttt-section-header
                 title="Nächste Events"
@@ -8,7 +9,6 @@
             ></ttt-section-header>
         </div>
         <div class="space-y-3">
-            <!-- Upcoming events (ohne Widget-Box) -->
             <div class="flex flex-row gap-2 overflow-x-auto md:flex-col md:gap-0 md:overflow-visible">
                 @for (ev of events$ | async; track ev.id) {
                     <div class="max-w-[14rem] min-w-[12rem] flex-shrink-0 md:mb-2 md:max-w-none md:min-w-0 md:flex-shrink">
@@ -27,7 +27,6 @@
                                     {{ ev.date | date: "dd.MM.yyyy" }} • {{ ev.startTime }} • {{ ev.durationHours }} h
                                 </div>
                             </div>
-                            <!-- Tooltip bleibt erhalten -->
                             <div
                                 role="tooltip"
                                 [id]="'evt-' + ev.id"
@@ -50,5 +49,6 @@
                 }
             </div>
         </div>
+        -->
     </div>
 </nav>

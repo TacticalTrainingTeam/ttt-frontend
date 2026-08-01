@@ -51,22 +51,23 @@ export class HeaderComponent {
             rel: 'noopener noreferrer',
         },
         {
-            label: 'Aufstellung',
-            icon: 'pi pi-sitemap',
+            label: 'Medien',
+            icon: 'pi pi-images',
             styleClass: 'font-heading',
-            routerLink: ['/aufstellung'],
+            routerLink: ['/medien'],
         },
+        // Temporaer deaktiviert bis die Member-API live ist
+        // {
+        //     label: 'Aufstellung',
+        //     icon: 'pi pi-sitemap',
+        //     styleClass: 'font-heading',
+        //     routerLink: ['/aufstellung'],
+        // },
         {
             label: 'Über uns',
             icon: 'pi pi-info-circle',
             styleClass: 'font-heading',
             items: [
-                {
-                    label: 'Medien',
-                    icon: 'pi pi-images',
-                    styleClass: 'font-heading',
-                    routerLink: ['/medien'],
-                },
                 {
                     label: 'Chronik',
                     icon: 'pi pi-history',
@@ -88,12 +89,6 @@ export class HeaderComponent {
                     url: TTT_LINKS.shop,
                     target: '_blank',
                     rel: 'noopener noreferrer',
-                },
-                {
-                    label: 'Intern',
-                    icon: 'pi pi-user',
-                    styleClass: 'font-heading',
-                    routerLink: ['/intern'],
                 },
             ],
         },
