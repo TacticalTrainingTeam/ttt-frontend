@@ -13,7 +13,7 @@ export class SectionHeaderComponent {
     subtitle = input<string>();
 
     containerClass = input('ttt-text-center mb-6');
-    titleClass = input('ttt-section-title mb-2 flex items-center justify-center gap-3');
+    titleClass = input('ttt-section-title mx-auto mb-2 flex items-center justify-center gap-3');
     subtitleClass = input('ttt-description-text');
     showDivider = input(false);
 }

@@ -19,6 +19,7 @@
     --color-tttRed-0: var(--color-tttWhite);
     --color-tttRed-50: #faf3f4;
     --color-tttRed-100: #e8c5cc;
+    --color-tttRed-150: #e0afb8;
     --color-tttRed-200: #d798a4;
     --color-tttRed-300: #c56a7c;
     --color-tttRed-400: #b33d53;
@@ -84,7 +85,7 @@
 
     /* Section Titles */
     .ttt-section-title {
-        @apply text-tttRed mb-4 text-xl font-bold break-words;
+        @apply bg-tttRed text-tttWhite mb-4 w-fit max-w-full px-3 py-1.5 text-xl font-bold break-words;
     }
 
     .ttt-section-title-large {
@@ -118,12 +119,12 @@
     }
 
     .ttt-accent-text {
-        @apply text-tttRed;
+        @apply text-tttRed-300;
     }
 
     /* Links & Interactive */
     .ttt-link {
-        @apply text-tttRed-300 hover:text-tttRed-200 underline underline-offset-2 transition-colors;
+        @apply text-tttRed-150 hover:text-tttRed-100 underline underline-offset-2 transition-colors;
     }
 
     /* Layout Helpers */
