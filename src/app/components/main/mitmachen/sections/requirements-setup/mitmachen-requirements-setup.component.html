@@ -11,8 +11,9 @@
         <!-- Spiel-Anforderungen -->
         <div class="mb-6">
             <h3 class="ttt-subsection-title mb-3">Spiel-Anforderungen</h3>
-            <div class="grid gap-3 sm:grid-cols-2">
-                <div class="border-tttGray-700 bg-tttGray-800 flex items-center gap-3 rounded-lg border p-3">
+            <p class="text-tttGray-300 mb-3 text-sm">Eines der beiden Spiele genügt - du brauchst nicht beide.</p>
+            <div class="flex flex-col gap-3 sm:flex-row">
+                <div class="border-tttGray-700 bg-tttGray-800 flex flex-1 items-center gap-3 rounded-lg border p-3">
                     <div class="ttt-icon-tile">
                         <i class="pi pi-desktop text-sm"></i>
                     </div>
@@ -21,7 +22,14 @@
                         <p class="text-tttGray-300 text-sm">Apex & Contact Expansion erforderlich</p>
                     </div>
                 </div>
-                <div class="border-tttGray-700 bg-tttGray-800 flex items-center gap-3 rounded-lg border p-3">
+
+                <div class="flex items-center justify-center gap-3 sm:flex-col">
+                    <span class="bg-tttGray-700 h-px flex-1 sm:h-auto sm:w-px" aria-hidden="true"></span>
+                    <span class="text-tttGray-300 text-xs font-bold">ODER</span>
+                    <span class="bg-tttGray-700 h-px flex-1 sm:h-auto sm:w-px" aria-hidden="true"></span>
+                </div>
+
+                <div class="border-tttGray-700 bg-tttGray-800 flex flex-1 items-center gap-3 rounded-lg border p-3">
                     <div class="ttt-icon-tile">
                         <i class="pi pi-play text-sm"></i>
                     </div>
@@ -116,7 +124,7 @@
         <div class="bg-tttBlack/90 absolute inset-0"></div>
     </div>
 
-    <div class="ttt-page-container relative z-10">
+    <div class="ttt-page-container relative">
         <ttt-section-header
             title="Arma3Sync und Tech-Check"
             subtitle="Für Arma 3 Events benötigst du Arma3Sync für Mods. Arma Reforger lädt Mods automatisch beim Serverbeitritt."

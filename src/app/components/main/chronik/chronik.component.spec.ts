@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 
 import { ChronikComponent } from './chronik.component';
+import { TTT_LINKS } from '../../../shared/constants/external-links';
 
 describe('ChronikComponent', () => {
     let component: ChronikComponent;
@@ -27,7 +28,7 @@ describe('ChronikComponent', () => {
         expect(Array.isArray(component.timelineEvents)).toBe(true);
     });
 
-    it('should expose documentation link', () => {
-        expect(component.fictionDocumentationLink).toContain('drive.google.com');
+    it('should expose documentation link from the shared registry', () => {
+        expect(component.fictionDocumentationLink).toBe(TTT_LINKS.fictionDocumentation);
     });
 });

@@ -6,6 +6,7 @@ import { ChronikOriginComponent } from './sections/origin/chronik-origin.compone
 import { ChronikTimelineComponent } from './sections/timeline/chronik-timeline.component';
 import { ChronikFictionComponent } from './sections/fiction/chronik-fiction.component';
 import { ChronikCtaComponent } from './sections/cta/chronik-cta.component';
+import { TTT_LINKS } from '../../../shared/constants/external-links';
 
 @Component({
     selector: 'ttt-chronik',
@@ -25,7 +26,7 @@ export class ChronikComponent {
     // Public readonly properties
     readonly pageTitle = 'Chronik';
     readonly pageSubtitle = 'Geschichte des Tactical Training Teams';
-    readonly fictionDocumentationLink = 'https://drive.google.com/file/d/1QpkevojoID6-HfPsp5GIW3OUmUjnfOSd/view';
+    readonly fictionDocumentationLink = TTT_LINKS.fictionDocumentation;
 
     // Public properties
     timelineEvents: TimelineEvent[] = [

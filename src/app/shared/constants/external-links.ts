@@ -11,6 +11,7 @@ export const TTT_LINKS = {
     shop: 'https://tacticalteam.myspreadshop.de',
     wikiCorporateDesign: 'https://wiki.tacticalteam.de/de/TTT-PR/Corporate-Identity',
     wikiArma3Sync: 'https://wiki.tacticalteam.de/Technik/ArmA3Sync',
+    fictionDocumentation: 'https://files.tacticalteam.de/s/qYyDrxxCXTbAx9j',
     arma3SyncVideo: 'https://www.youtube.com/watch?v=lJ2DYk7SMPY',
     arma3SyncTips: 'https://www.youtube.com/watch?v=mFCTQJLqQNY',
 } as const;
