@@ -2,7 +2,6 @@
 @import "tailwindcss";
 @plugin "tailwindcss-primeui";
 
-/* Tailwind v4: define design tokens with @theme to preserve the custom theme */
 @theme {
     /* Fonts */
     --font-sans: Ubuntu, ui-sans-serif, system-ui, sans-serif;
@@ -47,7 +46,6 @@
     --color-tttGray-950: #101010;
 }
 
-/* Global heading font rule */
 @layer base {
     h1,
     h2,
@@ -59,49 +57,49 @@
     }
 }
 
-/* TTT Standard Layout Components */
 @layer components {
-    /* Standard page container for legal pages  */
     .ttt-page-container {
         @apply mx-auto max-w-6xl px-6 sm:px-8;
     }
 
-    /* Compact container for hero sections */
     .ttt-hero-container {
         @apply mx-auto max-w-4xl px-6 text-center sm:px-8;
     }
 
-    /* Standard content card/section styling */
     .ttt-content-card {
         @apply border-tttGray-700 bg-tttGray-800 rounded-xl border p-6;
     }
 
-    /* TTT Typography System */
-
-    /* Hero & Main Titles */
+    /* Heading scale, largest first. Margins belong in the layout, not here. */
     .ttt-hero-title {
-        @apply text-tttWhite mb-4 text-3xl font-bold break-words drop-shadow-lg md:text-4xl lg:text-5xl;
+        @apply text-tttWhite text-3xl font-bold break-words drop-shadow-lg md:text-4xl lg:text-5xl;
     }
 
-    /* Section Titles */
+    /* clone: keeps padding intact when the accent wraps */
+    .ttt-hero-accent {
+        @apply bg-tttRed text-tttWhite box-decoration-clone px-3 py-1;
+    }
+
     .ttt-section-title {
-        @apply bg-tttRed text-tttWhite mb-4 w-fit max-w-full px-3 py-1.5 text-xl font-bold break-words;
+        @apply text-tttWhite text-3xl font-bold break-words md:text-4xl;
     }
 
-    .ttt-section-title-large {
-        @apply text-tttWhite mb-4 text-3xl font-bold break-words md:text-4xl;
+    .ttt-section-badge {
+        @apply bg-tttRed text-tttWhite w-fit max-w-full px-3 py-1.5 text-xl font-bold break-words;
     }
 
-    /* Subsection Titles */
     .ttt-subsection-title {
-        @apply text-tttWhite mb-2 font-semibold break-words;
+        @apply text-tttWhite text-2xl font-bold break-words;
     }
 
-    .ttt-feature-title {
+    .ttt-card-title {
         @apply text-tttWhite text-lg font-bold break-words;
     }
 
-    /* Body Text */
+    .ttt-label {
+        @apply text-tttWhite text-base font-semibold break-words;
+    }
+
     .ttt-hero-text {
         @apply text-tttGray-100 mx-auto mb-6 max-w-2xl text-base leading-relaxed break-words drop-shadow-md md:text-lg;
     }
@@ -122,27 +120,16 @@
         @apply text-tttRed-300;
     }
 
-    /* Links & Interactive */
     .ttt-link {
         @apply text-tttRed-150 hover:text-tttRed-100 underline underline-offset-2 transition-colors;
     }
 
-    /* Layout Helpers */
     .ttt-text-center {
         @apply text-center;
     }
 
     .ttt-constrained-text {
         @apply mx-auto max-w-2xl;
-    }
-
-    /* Specialized Typography */
-    .ttt-step-title {
-        @apply text-tttWhite mb-3 text-2xl font-bold break-words;
-    }
-
-    .ttt-card-title {
-        @apply text-tttWhite mb-1 text-lg font-bold break-words;
     }
 
     .ttt-stat-value {
@@ -153,7 +140,6 @@
         @apply text-tttWhite flex-1 text-base font-semibold;
     }
 
-    /* Central Button Styles */
     .ttt-btn-primary,
     .ttt-btn-secondary,
     .ttt-btn-light,
@@ -166,24 +152,20 @@
     .ttt-btn-secondary {
         @apply border-tttWhite/30 bg-tttWhite/10 text-tttWhite hover:bg-tttWhite/20 border;
     }
-    /* Light/outline variants for buttons on red sections */
     .ttt-btn-light {
         @apply bg-tttWhite text-tttRed hover:bg-tttRed-50;
     }
     .ttt-btn-outline {
         @apply border-tttWhite text-tttWhite hover:bg-tttWhite/10 border-2 bg-transparent;
     }
-    /* Size modifier for prominent CTAs */
     .ttt-btn-lg {
         @apply px-6 py-3 text-base;
     }
 
-    /* Hover treatment for clickable cards */
     .ttt-card-interactive {
         @apply hover:border-tttGray-500 hover:bg-tttGray-700/70 transition-colors duration-200;
     }
 
-    /* Icon container */
     .ttt-icon-tile {
         @apply bg-tttGray-700 text-tttRed-300 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg;
     }
@@ -191,13 +173,12 @@
         @apply bg-tttRed text-tttWhite flex h-10 w-10 shrink-0 items-center justify-center rounded-lg;
     }
 
-    /* Red accent divider used below section headers */
     .ttt-section-divider {
         @apply bg-tttRed mx-auto mb-4 h-1 w-20 rounded-full;
     }
 }
 
-/* PrimeNG timeline (Chronik): collapse the alternate layout to a single column on small screens */
+/* PrimeNG timeline: single column on small screens */
 @media (max-width: 40rem) {
     .ttt-chronik-timeline .p-timeline-event {
         flex-direction: row !important;

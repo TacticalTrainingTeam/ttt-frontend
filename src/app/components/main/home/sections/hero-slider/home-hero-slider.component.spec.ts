@@ -26,7 +26,7 @@ describe('HomeHeroSliderComponent', () => {
     it('should render title, accent and subtitle of the active slide', () => {
         const heading: HTMLElement | null = fixture.nativeElement.querySelector('h2.ttt-hero-title');
         expect(heading?.textContent).toContain('Title');
-        expect(heading?.querySelector('span.text-tttRed')?.textContent).toContain('Accent');
+        expect(heading?.querySelector('span.ttt-hero-accent')?.textContent).toContain('Accent');
         expect(fixture.nativeElement.textContent).toContain('Subtitle');
     });
 
