@@ -1,0 +1,48 @@
+<section class="bg-tttGray-950 border-tttGray-800 border-t py-20">
+    <div class="ttt-page-container">
+        <ttt-section-header
+            title="Was wir spielen"
+            subtitle="Vom Schützen über den Panzerkommandanten bis zum Piloten."
+            containerClass="ttt-text-center mb-10"
+            titleClass="ttt-section-title mb-4"
+            [showDivider]="true"
+        ></ttt-section-header>
+
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-4">
+            @for (branch of branches(); track branch.id) {
+                <div class="ttt-content-card flex flex-col items-center text-center">
+                    <img [src]="branch.icon" alt="" class="mb-3 h-20 w-auto" loading="lazy" />
+                    <h3 class="ttt-card-title mb-2 hyphens-auto">{{ branch.name }}</h3>
+                    <p class="text-tttGray-300 text-sm leading-relaxed">{{ branch.description }}</p>
+                </div>
+            }
+        </div>
+
+        <div class="border-tttWhite/10 bg-tttGray-800 mt-12 rounded-xl border p-8">
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-6">
+                @for (stat of communityStats(); track stat.label) {
+                    <div
+                        class="border-tttWhite/10 bg-tttWhite/5 flex flex-col items-center justify-center rounded-lg border p-4 text-center"
+                    >
+                        <div class="ttt-stat-value text-tttWhite">{{ stat.value }}</div>
+                        <div class="text-tttGray-300 text-base">{{ stat.label }}</div>
+                    </div>
+                }
+                <div class="col-span-1 flex w-full flex-col gap-4 sm:col-span-3 sm:flex-row md:col-span-3">
+                    <a routerLink="/mitmachen" pButton size="large" class="ttt-btn-primary ttt-btn-lg w-full"> Jetzt durchstarten </a>
+
+                    <a
+                        [href]="links.wiki"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        pButton
+                        size="large"
+                        class="ttt-btn-light ttt-btn-lg w-full"
+                    >
+                        Wiki entdecken
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

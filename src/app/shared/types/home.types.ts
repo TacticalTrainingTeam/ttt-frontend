@@ -16,3 +16,10 @@ export interface HomeCommunityStat {
     label: string;
     color: string;
 }
+
+export interface HomeBranch {
+    id: string;
+    name: string;
+    icon: string;
+    description: string;
+}

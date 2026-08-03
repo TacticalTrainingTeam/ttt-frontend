@@ -140,10 +140,6 @@
         @apply text-2xl font-bold;
     }
 
-    .ttt-req-text {
-        @apply text-tttWhite flex-1 text-base font-semibold;
-    }
-
     .ttt-btn-primary,
     .ttt-btn-secondary,
     .ttt-btn-light,

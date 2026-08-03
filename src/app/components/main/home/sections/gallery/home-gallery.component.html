@@ -1,10 +1,12 @@
 <section class="bg-tttBlack relative overflow-hidden py-16">
     <div class="ttt-page-container">
         <p-carousel
+            class="-mx-2"
             [value]="galleryImages()"
             [numVisible]="3"
             [numScroll]="1"
             [circular]="true"
+            [showNavigators]="false"
             [autoplayInterval]="5000"
             [responsiveOptions]="responsiveOptions"
         >

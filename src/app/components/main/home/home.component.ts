@@ -4,14 +4,15 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 // import { MemberService } from '../../../core/services/member.service';
 import { HomeFeaturesJoinComponent } from './sections/features-join/home-features-join.component';
 import { HomeHeroSliderComponent } from './sections/hero-slider/home-hero-slider.component';
+import { HomeBranchesComponent } from './sections/branches/home-branches.component';
 import { HomeGalleryComponent } from './sections/gallery/home-gallery.component';
 import { HomeOrbatComponent } from './sections/orbat/home-orbat.component';
-import { HomeBannerSlide, HomeCommunityStat, HomeGalleryImage } from '../../../shared/types/home.types';
+import { HomeBannerSlide, HomeBranch, HomeCommunityStat, HomeGalleryImage } from '../../../shared/types/home.types';
 
 @Component({
     selector: 'ttt-home',
     standalone: true,
-    imports: [HomeHeroSliderComponent, HomeFeaturesJoinComponent, HomeGalleryComponent, HomeOrbatComponent],
+    imports: [HomeHeroSliderComponent, HomeFeaturesJoinComponent, HomeBranchesComponent, HomeGalleryComponent, HomeOrbatComponent],
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -80,6 +81,39 @@ export class HomeComponent {
     ];
 
     // Public mutable state
+    readonly branches: HomeBranch[] = [
+        {
+            id: 'infanterie',
+            name: 'Infanterie',
+            icon: '/img/truppengattungen/icon-infanterie.webp',
+            description: 'Aufklärung, Angriff, Häuserkampf und Sanitätsdienst im Trupp.',
+        },
+        {
+            id: 'gepanzerte-kraefte',
+            name: 'Gepanzerte Kräfte',
+            icon: '/img/truppengattungen/icon-gepanzertekraefte.webp',
+            description: 'Kampf- und Schützenpanzer im Verbund.',
+        },
+        {
+            id: 'luftstreitkraefte',
+            name: 'Luftstreitkräfte',
+            icon: '/img/truppengattungen/icon-luftstreitkraefte.webp',
+            description: 'Transport, Aufklärung und Luftnahunterstützung.',
+        },
+        {
+            id: 'kampfunterstuetzung',
+            name: 'Kampfunterstützungskräfte',
+            icon: '/img/truppengattungen/icon-kampfunterstuetzungskraefte.webp',
+            description: 'Artillerie, Mörser, Pioniere und JTAC.',
+        },
+        {
+            id: 'nachschubkraefte',
+            name: 'Nachschubkräfte',
+            icon: '/img/truppengattungen/icon-nachschubkraefte.webp',
+            description: 'Munition, Treibstoff und Material an die Front.',
+        },
+    ];
+
     readonly communityStats = signal<HomeCommunityStat[]>([
         { value: '80+', label: 'Mitglieder', color: 'text-tttGreen' },
         { value: '2013', label: 'Gegründet', color: 'text-tttGreen' },
