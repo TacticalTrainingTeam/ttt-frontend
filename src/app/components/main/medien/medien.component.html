@@ -1,7 +1,6 @@
 <!-- Media & Social Media page -->
 <ttt-page-layout [pageTitle]="pageTitle" [pageSubtitle]="pageSubtitle">
-    <ttt-medien-live-streams [liveStreams$]="liveStreams$"></ttt-medien-live-streams>
-    <ttt-medien-media-platforms [mediaPlatforms]="mediaPlatforms"></ttt-medien-media-platforms>
+    <ttt-medien-channels [mediaPlatforms]="mediaPlatforms" [liveStreams$]="liveStreams$"></ttt-medien-channels>
     <ttt-medien-social-platforms [socialPlatforms]="socialPlatforms"></ttt-medien-social-platforms>
     <ttt-medien-corporate-cta [wikiUrl]="corporateDesignWikiUrl"></ttt-medien-corporate-cta>
 </ttt-page-layout>

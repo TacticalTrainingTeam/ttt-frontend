@@ -1,6 +1,20 @@
-<!-- Live Streams Section -->
 <div class="mb-8">
-    <ttt-section-header title="Livestreams" subtitle="Aktuelle Live-Übertragungen unserer Community"></ttt-section-header>
+    <ttt-section-header title="Kanäle & Streams" subtitle="Unsere Videos auf YouTube und Twitch"></ttt-section-header>
+
+    <div class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+        @for (platform of mediaPlatforms(); track platform.id) {
+            <ttt-external-link-tile
+                class="block h-full"
+                [href]="platform.url"
+                [title]="platform.name"
+                [description]="platform.description"
+                [iconClass]="platform.iconClass"
+                [displayUrl]="platform.displayUrl"
+                [ariaLabel]="platform.ariaLabel"
+                [cardClass]="'ttt-content-card block text-left h-full ' + platform.cardClass"
+            ></ttt-external-link-tile>
+        }
+    </div>
 
     @if (liveStreams$() | async; as liveStreams) {
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -49,12 +63,9 @@
     }
 
     @if ((liveStreams$() | async)?.length === 0) {
-        <div class="py-12 text-center">
-            <div class="mb-4">
-                <i class="pi pi-video text-tttGray-600 text-4xl"></i>
-            </div>
-            <h3 class="ttt-card-title mb-1">Keine Livestreams</h3>
-            <p class="text-tttGray-300">Derzeit sind keine Live-Übertragungen aktiv.</p>
+        <div class="border-tttGray-700 text-tttGray-300 flex items-center justify-center gap-3 rounded-lg border border-dashed p-4">
+            <i class="pi pi-video text-tttGray-400" aria-hidden="true"></i>
+            <span class="text-sm">Derzeit sind keine Live-Übertragungen aktiv.</span>
         </div>
     }
 </div>

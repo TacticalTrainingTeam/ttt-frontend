@@ -7,22 +7,14 @@ import { MediaPlatformCard, SocialPlatformCard, TwitchStream } from '../../../sh
 // import { inject } from '@angular/core';
 // import { MedienService } from '../../../core/services/medien.service';
 import { TTT_LINKS, TTT_SOCIAL_LINKS } from '../../../shared/constants/external-links';
-import { MedienLiveStreamsComponent } from './sections/live-streams/medien-live-streams.component';
-import { MedienMediaPlatformsComponent } from './sections/media-platforms/medien-media-platforms.component';
+import { MedienChannelsComponent } from './sections/channels/medien-channels.component';
 import { MedienSocialPlatformsComponent } from './sections/social-platforms/medien-social-platforms.component';
 import { MedienCorporateCtaComponent } from './sections/corporate-cta/medien-corporate-cta.component';
 
 @Component({
     selector: 'ttt-medien',
     standalone: true,
-    imports: [
-        CommonModule,
-        PageLayoutComponent,
-        MedienLiveStreamsComponent,
-        MedienMediaPlatformsComponent,
-        MedienSocialPlatformsComponent,
-        MedienCorporateCtaComponent,
-    ],
+    imports: [CommonModule, PageLayoutComponent, MedienChannelsComponent, MedienSocialPlatformsComponent, MedienCorporateCtaComponent],
     templateUrl: './medien.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

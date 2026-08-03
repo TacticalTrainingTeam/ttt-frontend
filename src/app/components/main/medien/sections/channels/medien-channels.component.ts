@@ -1,16 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { MediaPlatformCard } from '../../../../../shared/types/medien.types';
+import { Observable } from 'rxjs';
+import { MediaPlatformCard, TwitchStream } from '../../../../../shared/types/medien.types';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
 import { ExternalLinkTileComponent } from '../../../../../shared/components/external-link-tile/external-link-tile.component';
 
 @Component({
-    selector: 'ttt-medien-media-platforms',
+    selector: 'ttt-medien-channels',
     standalone: true,
     imports: [CommonModule, SectionHeaderComponent, ExternalLinkTileComponent],
-    templateUrl: './medien-media-platforms.component.html',
+    templateUrl: './medien-channels.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MedienMediaPlatformsComponent {
+export class MedienChannelsComponent {
     mediaPlatforms = input.required<MediaPlatformCard[]>();
+    liveStreams$ = input.required<Observable<TwitchStream[]>>();
 }
