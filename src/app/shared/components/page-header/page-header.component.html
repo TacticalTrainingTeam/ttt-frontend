@@ -1,0 +1,22 @@
+<header>
+    @if (heroImage(); as image) {
+        <div class="relative h-40 w-full md:h-56 lg:h-64">
+            <img [src]="image" alt="" fetchpriority="high" class="h-full w-full object-cover" />
+            <div class="bg-tttBlack/30 absolute inset-0"></div>
+        </div>
+    }
+
+    <div [class]="boxClass()">
+        <div class="mx-auto max-w-2xl overflow-hidden rounded-xl text-center">
+            <div class="bg-tttRed px-6 py-4">
+                <h1 class="ttt-section-title">{{ pageTitle() }}</h1>
+            </div>
+
+            @if (pageSubtitle(); as subtitle) {
+                <div class="bg-tttGray-800 px-6 py-4">
+                    <p class="text-tttGray-300 text-base leading-relaxed">{{ subtitle }}</p>
+                </div>
+            }
+        </div>
+    </div>
+</header>

@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { PageLayoutComponent } from '../../../shared/components/page-layout/page-layout.component';
 import { TimelineEvent, TimelineEventType } from '../../../shared/types/chronik.types';
 import { ChronikOriginComponent } from './sections/origin/chronik-origin.component';
@@ -11,20 +10,14 @@ import { TTT_LINKS } from '../../../shared/constants/external-links';
 @Component({
     selector: 'ttt-chronik',
     standalone: true,
-    imports: [
-        CommonModule,
-        PageLayoutComponent,
-        ChronikOriginComponent,
-        ChronikTimelineComponent,
-        ChronikFictionComponent,
-        ChronikCtaComponent,
-    ],
+    imports: [PageLayoutComponent, ChronikOriginComponent, ChronikTimelineComponent, ChronikFictionComponent, ChronikCtaComponent],
     templateUrl: './chronik.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChronikComponent {
     // Public readonly properties
     readonly pageTitle = 'Chronik';
+    readonly heroImage = '/img/home-banner/home-banner5.webp';
     readonly pageSubtitle = 'Geschichte des Tactical Training Teams';
     readonly fictionDocumentationLink = TTT_LINKS.fictionDocumentation;
 

@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Select } from 'primeng/select';
 import { PageLayoutComponent } from '../../../shared/components/page-layout/page-layout.component';
@@ -78,7 +77,6 @@ const AUFSTELLUNG_CONFIG = {
     selector: 'ttt-aufstellung',
     standalone: true,
     imports: [
-        CommonModule,
         FormsModule,
         Select,
         PageLayoutComponent,
@@ -93,6 +91,7 @@ export class AufstellungComponent implements OnInit {
     private readonly memberService = inject(MemberService);
 
     readonly pageTitle = AUFSTELLUNG_CONFIG.PAGE_TITLE;
+    readonly heroImage = '/img/home-banner/home-banner4.webp';
     readonly pageSubtitle = AUFSTELLUNG_CONFIG.PAGE_SUBTITLE;
     readonly sections: AufstellungSections = AUFSTELLUNG_CONFIG.SECTIONS;
     readonly loadingMessages: AufstellungLoadingMessages = AUFSTELLUNG_CONFIG.LOADING_MESSAGES;

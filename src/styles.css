@@ -178,6 +178,10 @@
     }
 }
 
+.ttt-header-menubar.p-menubar-mobile .p-menubar-button {
+    order: 1;
+}
+
 /* PrimeNG timeline: single column on small screens */
 @media (max-width: 40rem) {
     .ttt-chronik-timeline .p-timeline-event {
