@@ -70,6 +70,10 @@
         @apply border-tttGray-700 bg-tttGray-800 rounded-xl border p-6;
     }
 
+    .ttt-content-tile {
+        @apply border-tttGray-700 bg-tttGray-800 rounded-lg border p-3;
+    }
+
     /* Heading scale, largest first. Margins belong in the layout, not here. */
     .ttt-hero-title {
         @apply text-tttWhite text-3xl font-bold break-words drop-shadow-lg md:text-4xl lg:text-5xl;

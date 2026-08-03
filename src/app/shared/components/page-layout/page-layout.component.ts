@@ -5,6 +5,7 @@ import { PageHeaderComponent } from '../page-header/page-header.component';
     selector: 'ttt-page-layout',
     standalone: true,
     imports: [PageHeaderComponent],
+    styleUrl: './page-layout.component.css',
     templateUrl: './page-layout.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

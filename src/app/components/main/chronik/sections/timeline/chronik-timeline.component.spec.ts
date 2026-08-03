@@ -40,6 +40,5 @@ describe('ChronikTimelineComponent', () => {
         const element: HTMLElement = fixture.nativeElement;
         expect(element.textContent).toContain('Test Event');
         expect(element.textContent).toContain('desc');
-        expect(element.textContent).toContain('Meilenstein');
     });
 });

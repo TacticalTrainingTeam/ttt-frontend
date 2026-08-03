@@ -16,13 +16,6 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
 export class ChronikTimelineComponent {
     timelineEvents = input.required<TimelineEvent[]>();
 
-    private readonly eventTypeConfig = {
-        anniversary: { label: 'Jubiläum' },
-        milestone: { label: 'Meilenstein' },
-        system: { label: 'System' },
-        default: { label: 'Event' },
-    } as const;
-
     toggleEventDetails(event: TimelineEvent): void {
         if (event.expanded) {
             event.expanded = false;
@@ -33,13 +26,5 @@ export class ChronikTimelineComponent {
             e.expanded = false;
         }
         event.expanded = true;
-    }
-
-    getEventTypeLabel(type: string): string {
-        return this.getEventTypeConfig(type).label;
-    }
-
-    private getEventTypeConfig(type: string) {
-        return this.eventTypeConfig[type as keyof typeof this.eventTypeConfig] ?? this.eventTypeConfig.default;
     }
 }
