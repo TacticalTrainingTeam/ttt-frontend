@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { ButtonDirective } from 'primeng/button';
 import { Message } from 'primeng/message';
@@ -8,7 +7,7 @@ import { AufstellungLoadingMessages } from '../../../../../shared/types/aufstell
 @Component({
     selector: 'ttt-aufstellung-loading-state',
     standalone: true,
-    imports: [CommonModule, ButtonDirective, Message, ProgressSpinner],
+    imports: [ButtonDirective, Message, ProgressSpinner],
     templateUrl: './aufstellung-loading-state.component.html',
     styleUrl: './aufstellung-loading-state.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,

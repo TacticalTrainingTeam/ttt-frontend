@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { PageLayoutComponent } from '../../../shared/components/page-layout/page-layout.component';
 
 @Component({
     selector: 'ttt-datenschutz-social-media',
     standalone: true,
-    imports: [CommonModule, RouterModule, PageLayoutComponent],
+    imports: [RouterModule, PageLayoutComponent],
     templateUrl: './datenschutz-social-media.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

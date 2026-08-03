@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TTT_LINKS, TTT_SOCIAL_LINKS } from '../../shared/constants/external-links';
 
 @Component({
     selector: 'ttt-footer',
     standalone: true,
-    imports: [CommonModule, RouterLink],
+    imports: [RouterLink],
     templateUrl: './footer.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

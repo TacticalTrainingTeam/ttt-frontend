@@ -35,10 +35,12 @@
                     @if (event.expanded) {
                         <!-- *ngFor instead of @for: static HTML linters reject @for text nodes as direct <ul> children -->
                         <ul class="mt-2 space-y-1">
-                            <li *ngFor="let detail of event.details" class="text-tttGray-300 flex items-start gap-2 text-sm">
-                                <i class="pi pi-angle-right text-tttRed-300 mt-0.5 flex-shrink-0 text-sm" aria-hidden="true"></i>
-                                <span>{{ detail }}</span>
-                            </li>
+                            @for (detail of event.details; track detail) {
+                                <li class="text-tttGray-300 flex items-start gap-2 text-sm">
+                                    <i class="pi pi-angle-right text-tttRed-300 mt-0.5 flex-shrink-0 text-sm" aria-hidden="true"></i>
+                                    <span>{{ detail }}</span>
+                                </li>
+                            }
                         </ul>
                     }
                 }
