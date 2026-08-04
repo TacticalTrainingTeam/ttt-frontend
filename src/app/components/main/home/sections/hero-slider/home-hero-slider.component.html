@@ -12,7 +12,7 @@
         [containerStyle]="{ width: '100%' }"
         styleClass="w-full"
     >
-        <ng-template pTemplate="item" let-slide>
+        <ng-template #item let-slide>
             <div class="relative h-80 w-full">
                 <img
                     [src]="slide.image"
