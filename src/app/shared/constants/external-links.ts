@@ -19,7 +19,7 @@ export const TTT_LINKS = {
 export const TTT_SOCIAL_LINKS = {
     youtube: 'https://www.youtube.com/@tacticalteamde',
     twitch: 'https://www.twitch.tv/tacticaltrainingteam',
-    x: 'https://x.com/TTT_ArmA',
+    x: 'https://x.com/TTT_Arma',
     mastodon: 'https://mastodon.social/@tacticaltrainingteam',
     bluesky: 'https://bsky.app/profile/tacticalteam.bsky.social',
     instagram: 'https://www.instagram.com/tacticaltrainingteam',

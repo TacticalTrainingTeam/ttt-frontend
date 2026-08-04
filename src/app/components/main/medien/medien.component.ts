@@ -59,7 +59,7 @@ export class MedienComponent {
             id: 'x',
             name: 'X (Twitter)',
             url: this.socialLinks.x,
-            handle: '@TTT_ArmA',
+            handle: '@TTT_Arma',
             ariaLabel: 'Social Media öffnen: X (Twitter)',
             iconClass: 'pi pi-twitter text-xl text-blue-400',
             cardClass: 'ttt-card-interactive',
