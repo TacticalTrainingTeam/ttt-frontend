@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { ButtonDirective } from 'primeng/button';
+import { ButtonDirective } from '@openng/optimus-ui/button';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
 
 @Component({

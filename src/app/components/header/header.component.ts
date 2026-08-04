@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { MenuItem } from 'primeng/api';
-import { Menubar } from 'primeng/menubar';
-import { ButtonDirective } from 'primeng/button';
+import { MenuItem } from '@openng/optimus-ui/api';
+import { Menubar } from '@openng/optimus-ui/menubar';
+import { ButtonDirective } from '@openng/optimus-ui/button';
 import { TTT_LINKS } from '../../shared/constants/external-links';
 
 @Component({

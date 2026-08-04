@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { GalleriaModule } from 'primeng/galleria';
+import { GalleriaModule } from '@openng/optimus-ui/galleria';
 import { HomeBannerSlide } from '../../../../../shared/types/home.types';
 
 @Component({

@@ -1,6 +1,6 @@
-import { ThemeType } from 'primeng/config';
-import { definePreset } from '@primeuix/themes';
-import Aura from '@primeuix/themes/aura';
+import { ThemeType } from '@openng/optimus-ui/config';
+import { definePreset } from '@openng/optimus-ui-themes';
+import Aura from '@openng/optimus-ui-themes/aura';
 
 export const tttRed = '#a10f2b';
 export const tttGray = '#40403e';
@@ -38,12 +38,12 @@ export const tttGrayPalette = {
     950: '#101010',
 };
 
-export const tttPrimeNgTheme: ThemeType = {
+export const tttOptimusTheme: ThemeType = {
     options: {
         darkModeSelector: '.dark',
         cssLayer: {
-            name: 'primeng',
-            order: 'theme, base, primeng',
+            name: 'optimus',
+            order: 'theme, base, optimus',
         },
     },
     preset: definePreset(Aura, {

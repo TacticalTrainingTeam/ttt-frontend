@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ButtonDirective } from 'primeng/button';
+import { ButtonDirective } from '@openng/optimus-ui/button';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
 import { ExternalLinkTileComponent } from '../../../../../shared/components/external-link-tile/external-link-tile.component';
 

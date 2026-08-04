@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
-import { Dialog } from 'primeng/dialog';
-import { Tooltip } from 'primeng/tooltip';
+import { Dialog } from '@openng/optimus-ui/dialog';
+import { Tooltip } from '@openng/optimus-ui/tooltip';
 import { ActivableDirective } from '../../../../../shared/directives/activable.directive';
 import { CampaignRibbon, RankType } from '../../../../../shared/types/member.types';
 import { AUFSTELLUNG_SECURITY } from '../../aufstellung.shared';

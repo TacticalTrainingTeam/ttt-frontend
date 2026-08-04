@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-import { ButtonDirective } from 'primeng/button';
-import { Message } from 'primeng/message';
-import { ProgressSpinner } from 'primeng/progressspinner';
+import { ButtonDirective } from '@openng/optimus-ui/button';
+import { Message } from '@openng/optimus-ui/message';
+import { ProgressSpinner } from '@openng/optimus-ui/progressspinner';
 import { AufstellungLoadingMessages } from '../../../../../shared/types/aufstellung.types';
 
 @Component({

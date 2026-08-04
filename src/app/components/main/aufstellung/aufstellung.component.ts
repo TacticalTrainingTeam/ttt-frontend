@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Select } from 'primeng/select';
+import { Select } from '@openng/optimus-ui/select';
 import { PageLayoutComponent } from '../../../shared/components/page-layout/page-layout.component';
 import { Abteilung, Member as BackendMember, RankType } from '../../../shared/types/member.types';
 import { MemberService } from '../../../core/services/member.service';

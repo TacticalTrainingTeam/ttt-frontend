@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ScrollTop } from 'primeng/scrolltop';
+import { ScrollTop } from '@openng/optimus-ui/scrolltop';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LeftSidebarComponent } from './components/sidebar/left-sidebar/left-sidebar.component';

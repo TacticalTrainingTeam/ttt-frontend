@@ -45,8 +45,8 @@ pnpm prettier       # Format code
 
 ## Tech Stack
 
-- Angular 20
-- PrimeNG 20 with @primeuix/themes
+- Angular 21
+- Optimus UI
 - TailwindCSS 4
 - RxJS 7
 - TypeScript 5

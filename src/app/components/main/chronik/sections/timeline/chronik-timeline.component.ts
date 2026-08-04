@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { ButtonDirective } from 'primeng/button';
-import { Timeline } from 'primeng/timeline';
+import { ButtonDirective } from '@openng/optimus-ui/button';
+import { Timeline } from '@openng/optimus-ui/timeline';
 import { TimelineEvent } from '../../../../../shared/types/chronik.types';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
 

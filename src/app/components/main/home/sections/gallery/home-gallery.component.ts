@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { CarouselModule } from 'primeng/carousel';
+import { CarouselModule } from '@openng/optimus-ui/carousel';
 import { HomeGalleryImage } from '../../../../../shared/types/home.types';
 
 @Component({

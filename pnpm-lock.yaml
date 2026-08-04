@@ -29,15 +29,15 @@ importers:
       '@angular/router':
         specifier: 21.2.19
         version: 21.2.19(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(@angular/platform-browser@21.2.19(@angular/animations@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(rxjs@7.8.2)
-      '@primeuix/themes':
-        specifier: 2.0.2
-        version: 2.0.2
-      primeicons:
-        specifier: 7.0.0
-        version: 7.0.0
-      primeng:
-        specifier: 21.1.9
-        version: 21.1.9(08439a90c290d37f3a307dc7101a9872)
+      '@openng/icons':
+        specifier: 1.0.0
+        version: 1.0.0
+      '@openng/optimus-ui':
+        specifier: 1.0.0
+        version: 1.0.0(08439a90c290d37f3a307dc7101a9872)
+      '@openng/optimus-ui-themes':
+        specifier: 1.0.0
+        version: 1.0.0
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
@@ -57,6 +57,9 @@ importers:
       '@eslint/js':
         specifier: 10.0.1
         version: 10.0.1(eslint@10.8.0(jiti@2.7.0))
+      '@openng/optimus-ui-tailwindcss':
+        specifier: 1.0.0
+        version: 1.0.0(tailwindcss@4.3.3)
       '@tailwindcss/postcss':
         specifier: 4.3.3
         version: 4.3.3
@@ -90,9 +93,6 @@ importers:
       tailwindcss:
         specifier: 4.3.3
         version: 4.3.3
-      tailwindcss-primeui:
-        specifier: 0.6.1
-        version: 0.6.1(tailwindcss@4.3.3)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -1147,6 +1147,43 @@ packages:
     resolution: {integrity: sha512-mGUWr1uMnf0le2TwfOZY4SFxZGXGfm4Jtay/nwAa2FLNAKXUoUwaGwBMNH36UHPtinWfTSJ3nqFQr0091CxVGg==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
+  '@openng/icons@1.0.0':
+    resolution: {integrity: sha512-BdTSHu74S3WRfbmfoT2WfmvaM3Ei32K3WiZBJTw7nVTlCvQbpCNsBqzrD5rAe4nb5IoTPjeuRb5WTG2gzrTQtw==}
+
+  '@openng/optimus-ui-motion@1.0.0':
+    resolution: {integrity: sha512-eA/J3Cy6KXQ/imnWcM2VGjSur6m7+foqcMn6bvMwsZixdl7kXcrcKxOpWIw+ANQhL/XEnNWId65gf17xS9+5Sg==}
+    engines: {node: '>=12.11.0'}
+
+  '@openng/optimus-ui-styled@1.0.0':
+    resolution: {integrity: sha512-Us+p+/J8zAfGjPBHY/cJkwi28Ep5eW4XptPHwPTdVxQwhfl8OVa00D2hFr5lkxyNlxnJHVxdJmTptn9UPS0JMQ==}
+    engines: {node: '>=12.11.0'}
+
+  '@openng/optimus-ui-styles@1.0.0':
+    resolution: {integrity: sha512-fl6im44EhBdjB8996OmU0pdCvSJHzglUxjeGWKIkNr4MHV1yeO2kSlBE3LThI7YtjE572Juavuc3lnnTtJti9A==}
+
+  '@openng/optimus-ui-tailwindcss@1.0.0':
+    resolution: {integrity: sha512-fEiuXvJpL1cSMQhu4HD71JRT0owqPmWnkYqWq19WrT+uXEYSvdf4v/Nqpn8OPvVRaLOal02Tw3bh+UwEDb3hwQ==}
+    peerDependencies:
+      tailwindcss: '>=3.1.0'
+
+  '@openng/optimus-ui-themes@1.0.0':
+    resolution: {integrity: sha512-nZo2bTgtcycGeBHYDnUmjnRv+wZ1RNnmla9H4gsRwEZ57CE9JoJlEjhzor8sAY/BAKXY5Q/g+1EKe1sCEEP7Ug==}
+
+  '@openng/optimus-ui-utils@1.0.0':
+    resolution: {integrity: sha512-+Dw2M1A+BfcQ27GTUhEft/kxPwx0vgUZotrpMH0YF+ZOJPEacDZH9XzN+1UzlYkTij65M1dvjYbyIiBqYEI3fA==}
+    engines: {node: '>=12.11.0'}
+
+  '@openng/optimus-ui@1.0.0':
+    resolution: {integrity: sha512-WbPNTcU7kUjNgKG3eqFH8IwLq9c10iQmCDMeLqjAssj46xDMdJwHySIEUppWCHGI8S2bEktJMd4HWs88+COCSw==}
+    peerDependencies:
+      '@angular/cdk': ^21.0.0
+      '@angular/common': ^21.0.0
+      '@angular/core': ^21.0.0
+      '@angular/forms': ^21.0.0
+      '@angular/platform-browser': ^21.0.0
+      '@angular/router': ^21.0.0
+      rxjs: ^6.0.0 || ^7.8.1
+
   '@oxc-project/types@0.113.0':
     resolution: {integrity: sha512-Tp3XmgxwNQ9pEN9vxgJBAqdRamHibi76iowQ38O2I4PMpcvNRQNVsU2n1x1nv9yh0XoTrGFzf7cZSGxmixxrhA==}
 
@@ -1241,28 +1278,6 @@ packages:
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
-
-  '@primeuix/motion@0.0.10':
-    resolution: {integrity: sha512-PsZwOPq79Scp7/ionshRcQ5xKVf9+zuLcyY5mf6onK8chHT5C9JGphmcIZ4CzcqxuGEpsm8AIbTGy+zS3RtzLA==}
-    engines: {node: '>=12.11.0'}
-
-  '@primeuix/styled@0.7.4':
-    resolution: {integrity: sha512-QSO/NpOQg8e9BONWRBx9y8VGMCMYz0J/uKfNJEya/RGEu7ARx0oYW0ugI1N3/KB1AAvyGxzKBzGImbwg0KUiOQ==}
-    engines: {node: '>=12.11.0'}
-
-  '@primeuix/styles@2.0.3':
-    resolution: {integrity: sha512-2ykAB6BaHzR/6TwF8ShpJTsZrid6cVIEBVlookSdvOdmlWuevGu5vWOScgIwqWwlZcvkFYAGR/SUV3OHCTBMdw==}
-
-  '@primeuix/themes@2.0.2':
-    resolution: {integrity: sha512-prwQvA3tDGBz8yWSUenaJUttEMCEvPvxwOfFhDPmSe1vwsfVKL2Nmh5eZvtPFQnxmIOPsHZS7zc0/L3CzJ83Eg==}
-
-  '@primeuix/utils@0.6.4':
-    resolution: {integrity: sha512-pZ5f+vj7wSzRhC7KoEQRU5fvYAe+RP9+m39CTscZ3UywCD1Y2o6Fe1rRgklMPSkzUcty2jzkA0zMYkiJBD1hgg==}
-    engines: {node: '>=12.11.0'}
-
-  '@primeuix/utils@0.7.2':
-    resolution: {integrity: sha512-pmEbSfP0Phf9W9RweiM66zXnkn73ZeKyYINElbX3uZ2+stzzaba2svLAl3B1pHVcRw5t43O0VciaGe4ye2EXKw==}
-    engines: {node: '>=12.11.0'}
 
   '@rolldown/binding-android-arm64@1.0.0-rc.4':
     resolution: {integrity: sha512-vRq9f4NzvbdZavhQbjkJBx7rRebDKYR9zHfO/Wg486+I7bSecdUapzCm5cyXoK+LHokTxgSq7A5baAXUZkIz0w==}
@@ -3239,20 +3254,6 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  primeicons@7.0.0:
-    resolution: {integrity: sha512-jK3Et9UzwzTsd6tzl2RmwrVY/b8raJ3QZLzoDACj+oTJ0oX7L9Hy+XnVwgo4QVKlKpnP/Ur13SXV/pVh4LzaDw==}
-
-  primeng@21.1.9:
-    resolution: {integrity: sha512-Z76PtF08X0PNSTCNMobao8Qm71vC56mtZSdUtX/gsn4+q4x0NbUUtkeK1pc33a+kxVm2zkmOwzUIEGmb9VdoIA==}
-    peerDependencies:
-      '@angular/cdk': ^21.0.0
-      '@angular/common': ^21.0.0
-      '@angular/core': ^21.0.7
-      '@angular/forms': ^21.0.0
-      '@angular/platform-browser': ^21.0.0
-      '@angular/router': ^21.0.0
-      rxjs: ^6.0.0 || ^7.8.1
-
   proc-log@5.0.0:
     resolution: {integrity: sha512-Azwzvl90HaF0aCz1JrDdXQykFakSSNPaPoiZ9fm5qJIMHioDZEi7OAdRwSm6rSoPtY3Qutnm3L7ogmg3dc+wbQ==}
     engines: {node: ^18.17.0 || >=20.5.0}
@@ -3566,11 +3567,6 @@ packages:
 
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
-
-  tailwindcss-primeui@0.6.1:
-    resolution: {integrity: sha512-T69Rylcrmnt8zy9ik+qZvsLuRIrS9/k6rYJSIgZ1trnbEzGDDQSCIdmfyZknevqiHwpSJHSmQ9XT2C+S/hJY4A==}
-    peerDependencies:
-      tailwindcss: '>=3.1.0'
 
   tailwindcss@4.3.3:
     resolution: {integrity: sha512-gOhV3P7ufE62QDGg1zVaTgCR+EtPv92k2nIhVcVKcLmxT1sUBsQGhnZj175j+MqRt4zLF7ic+sCYjfhxMxj7YQ==}
@@ -4973,6 +4969,45 @@ snapshots:
       node-gyp: 12.4.0
       proc-log: 6.1.0
 
+  '@openng/icons@1.0.0': {}
+
+  '@openng/optimus-ui-motion@1.0.0':
+    dependencies:
+      '@openng/optimus-ui-utils': 1.0.0
+
+  '@openng/optimus-ui-styled@1.0.0':
+    dependencies:
+      '@openng/optimus-ui-utils': 1.0.0
+
+  '@openng/optimus-ui-styles@1.0.0':
+    dependencies:
+      '@openng/optimus-ui-styled': 1.0.0
+
+  '@openng/optimus-ui-tailwindcss@1.0.0(tailwindcss@4.3.3)':
+    dependencies:
+      tailwindcss: 4.3.3
+
+  '@openng/optimus-ui-themes@1.0.0':
+    dependencies:
+      '@openng/optimus-ui-styled': 1.0.0
+
+  '@openng/optimus-ui-utils@1.0.0': {}
+
+  '@openng/optimus-ui@1.0.0(08439a90c290d37f3a307dc7101a9872)':
+    dependencies:
+      '@angular/cdk': 21.2.14(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(@angular/platform-browser@21.2.19(@angular/animations@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(rxjs@7.8.2)
+      '@angular/common': 21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2)
+      '@angular/core': 21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)
+      '@angular/forms': 21.2.19(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(@angular/platform-browser@21.2.19(@angular/animations@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(rxjs@7.8.2)
+      '@angular/platform-browser': 21.2.19(@angular/animations@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))
+      '@angular/router': 21.2.19(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(@angular/platform-browser@21.2.19(@angular/animations@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(rxjs@7.8.2)
+      '@openng/optimus-ui-motion': 1.0.0
+      '@openng/optimus-ui-styled': 1.0.0
+      '@openng/optimus-ui-styles': 1.0.0
+      '@openng/optimus-ui-utils': 1.0.0
+      rxjs: 7.8.2
+      tslib: 2.8.1
+
   '@oxc-project/types@0.113.0': {}
 
   '@parcel/watcher-android-arm64@2.5.0':
@@ -5038,26 +5073,6 @@ snapshots:
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
-
-  '@primeuix/motion@0.0.10':
-    dependencies:
-      '@primeuix/utils': 0.6.4
-
-  '@primeuix/styled@0.7.4':
-    dependencies:
-      '@primeuix/utils': 0.6.4
-
-  '@primeuix/styles@2.0.3':
-    dependencies:
-      '@primeuix/styled': 0.7.4
-
-  '@primeuix/themes@2.0.2':
-    dependencies:
-      '@primeuix/styled': 0.7.4
-
-  '@primeuix/utils@0.6.4': {}
-
-  '@primeuix/utils@0.7.2': {}
 
   '@rolldown/binding-android-arm64@1.0.0-rc.4':
     optional: true
@@ -7124,23 +7139,6 @@ snapshots:
 
   prettier@3.9.6: {}
 
-  primeicons@7.0.0: {}
-
-  primeng@21.1.9(08439a90c290d37f3a307dc7101a9872):
-    dependencies:
-      '@angular/cdk': 21.2.14(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(@angular/platform-browser@21.2.19(@angular/animations@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(rxjs@7.8.2)
-      '@angular/common': 21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2)
-      '@angular/core': 21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)
-      '@angular/forms': 21.2.19(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(@angular/platform-browser@21.2.19(@angular/animations@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(rxjs@7.8.2)
-      '@angular/platform-browser': 21.2.19(@angular/animations@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))
-      '@angular/router': 21.2.19(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(@angular/platform-browser@21.2.19(@angular/animations@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)))(rxjs@7.8.2)
-      '@primeuix/motion': 0.0.10
-      '@primeuix/styled': 0.7.4
-      '@primeuix/styles': 2.0.3
-      '@primeuix/utils': 0.7.2
-      rxjs: 7.8.2
-      tslib: 2.8.1
-
   proc-log@5.0.0: {}
 
   proc-log@6.1.0: {}
@@ -7545,10 +7543,6 @@ snapshots:
   strip-json-comments@3.1.1: {}
 
   symbol-tree@3.2.4: {}
-
-  tailwindcss-primeui@0.6.1(tailwindcss@4.3.3):
-    dependencies:
-      tailwindcss: 4.3.3
 
   tailwindcss@4.3.3: {}
 
