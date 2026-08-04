@@ -86,7 +86,7 @@ export class HomeComponent {
             id: 'infanterie',
             name: 'Infanterie',
             icon: '/img/truppengattungen/icon-infanterie.webp',
-            description: 'Aufklärung, Angriff, Häuserkampf und Sanitätsdienst im Trupp.',
+            description: 'Aufklärung, Angriff und Häuserkampf im Trupp.',
         },
         {
             id: 'gepanzerte-kraefte',
@@ -110,7 +110,7 @@ export class HomeComponent {
             id: 'nachschubkraefte',
             name: 'Nachschubkräfte',
             icon: '/img/truppengattungen/icon-nachschubkraefte.webp',
-            description: 'Munition, Treibstoff und Material an die Front.',
+            description: 'Logistik und Sanitätsdienst.',
         },
     ];
 
