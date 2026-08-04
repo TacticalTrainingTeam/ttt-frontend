@@ -91,7 +91,7 @@ export class AufstellungComponent implements OnInit {
     private readonly memberService = inject(MemberService);
 
     readonly pageTitle = AUFSTELLUNG_CONFIG.PAGE_TITLE;
-    readonly heroImage = '/img/home-banner/home-banner4.webp';
+    readonly heroImage = '/img/banner/banner-img4.webp';
     readonly pageSubtitle = AUFSTELLUNG_CONFIG.PAGE_SUBTITLE;
     readonly sections: AufstellungSections = AUFSTELLUNG_CONFIG.SECTIONS;
     readonly loadingMessages: AufstellungLoadingMessages = AUFSTELLUNG_CONFIG.LOADING_MESSAGES;

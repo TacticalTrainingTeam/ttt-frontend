@@ -24,21 +24,21 @@ export class HomeComponent {
     // Public readonly properties
     readonly bannerSlides: HomeBannerSlide[] = [
         {
-            image: '/img/home-banner/home-banner1.webp',
+            image: '/img/banner/banner-img1.webp',
             title: 'TACTICAL TRAINING',
             titleAccent: 'TEAM',
             subtitle:
                 'Als eine der größeren Arma-Gemeinschaften im deutschsprachigen Raum bieten wir dir das volle Paket: Von Ausbildung und Training bis hin zu Events und Kampagnen ist alles dabei.',
         },
         {
-            image: '/img/home-banner/home-banner2.webp',
+            image: '/img/banner/banner-img2.webp',
             title: 'REALISTISCHES',
             titleAccent: 'MILSIM',
             subtitle:
                 'Erlebe authentische militärische Simulation in Arma 3 und Arma Reforger mit taktischem Tiefgang und koordinierten Großoperationen.',
         },
         {
-            image: '/img/home-banner/home-banner3.webp',
+            image: '/img/banner/banner-img3.webp',
             title: 'STARKE',
             titleAccent: 'COMMUNITY',
             subtitle:
@@ -47,35 +47,35 @@ export class HomeComponent {
     ];
     readonly galleryImages: HomeGalleryImage[] = [
         {
-            itemImageSrc: '/img/home-gallery/gallery-img1.webp',
+            itemImageSrc: '/img/gallery/gallery-img1.webp',
             alt: 'TTT Community Moment 1',
         },
         {
-            itemImageSrc: '/img/home-gallery/gallery-img2.webp',
+            itemImageSrc: '/img/gallery/gallery-img2.webp',
             alt: 'TTT Community Moment 2',
         },
         {
-            itemImageSrc: '/img/home-gallery/gallery-img3.webp',
+            itemImageSrc: '/img/gallery/gallery-img3.webp',
             alt: 'TTT Community Moment 3',
         },
         {
-            itemImageSrc: '/img/home-gallery/gallery-img4.webp',
+            itemImageSrc: '/img/gallery/gallery-img4.webp',
             alt: 'TTT Community Moment 4',
         },
         {
-            itemImageSrc: '/img/home-gallery/gallery-img5.webp',
+            itemImageSrc: '/img/gallery/gallery-img5.webp',
             alt: 'TTT Community Moment 5',
         },
         {
-            itemImageSrc: '/img/home-gallery/gallery-img6.webp',
+            itemImageSrc: '/img/gallery/gallery-img6.webp',
             alt: 'TTT Community Moment 6',
         },
         {
-            itemImageSrc: '/img/home-gallery/gallery-img7.webp',
+            itemImageSrc: '/img/gallery/gallery-img7.webp',
             alt: 'TTT Community Moment 7',
         },
         {
-            itemImageSrc: '/img/home-gallery/gallery-img8.webp',
+            itemImageSrc: '/img/gallery/gallery-img8.webp',
             alt: 'TTT Community Moment 8',
         },
     ];

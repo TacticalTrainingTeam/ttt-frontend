@@ -31,9 +31,9 @@ describe('PageHeaderComponent', () => {
     });
 
     it('should render the banner when provided', () => {
-        fixture.componentRef.setInput('heroImage', '/img/home-banner/home-banner1.webp');
+        fixture.componentRef.setInput('heroImage', '/img/banner/banner-img1.webp');
         fixture.detectChanges();
 
-        expect(fixture.nativeElement.querySelector('img').getAttribute('src')).toBe('/img/home-banner/home-banner1.webp');
+        expect(fixture.nativeElement.querySelector('img').getAttribute('src')).toBe('/img/banner/banner-img1.webp');
     });
 });

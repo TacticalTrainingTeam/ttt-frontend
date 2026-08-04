@@ -13,8 +13,8 @@ describe('HomeHeroSliderComponent', () => {
         fixture = TestBed.createComponent(HomeHeroSliderComponent);
         component = fixture.componentInstance;
         fixture.componentRef.setInput('bannerSlides', [
-            { image: '/img/home-banner/home-banner1.webp', title: 'Title', titleAccent: 'Accent', subtitle: 'Subtitle' },
-            { image: '/img/home-banner/home-banner2.webp', title: 'Title2', titleAccent: 'Accent2', subtitle: 'Subtitle2' },
+            { image: '/img/banner/banner-img1.webp', title: 'Title', titleAccent: 'Accent', subtitle: 'Subtitle' },
+            { image: '/img/banner/banner-img2.webp', title: 'Title2', titleAccent: 'Accent2', subtitle: 'Subtitle2' },
         ]);
         fixture.detectChanges();
     });

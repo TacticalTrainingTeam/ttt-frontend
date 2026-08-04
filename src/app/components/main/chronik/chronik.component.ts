@@ -17,7 +17,7 @@ import { TTT_LINKS } from '../../../shared/constants/external-links';
 export class ChronikComponent {
     // Public readonly properties
     readonly pageTitle = 'Chronik';
-    readonly heroImage = '/img/home-banner/home-banner5.webp';
+    readonly heroImage = '/img/banner/banner-img5.webp';
     readonly pageSubtitle = 'Geschichte des Tactical Training Teams';
     readonly fictionDocumentationLink = TTT_LINKS.fictionDocumentation;
 

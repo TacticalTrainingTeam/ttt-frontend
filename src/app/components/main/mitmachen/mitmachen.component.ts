@@ -14,7 +14,7 @@ import { TTT_LINKS } from '../../../shared/constants/external-links';
 })
 export class MitmachenComponent {
     readonly pageTitle = 'Mitmachen beim TTT';
-    readonly heroImage = '/img/home-banner/home-banner7.webp';
+    readonly heroImage = '/img/banner/banner-img7.webp';
     readonly pageSubtitle =
         'Wir veranstalten regelmäßig Events für Arma 3 und Arma Reforger – dienstags und freitags von 19:30 bis 23:30 Uhr. Mitmachen kann jeder, egal ob Rekrut oder Gast.';
 

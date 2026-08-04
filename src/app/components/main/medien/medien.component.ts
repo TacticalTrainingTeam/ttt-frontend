@@ -22,7 +22,7 @@ export class MedienComponent {
     // private readonly medienService = inject(MedienService);
 
     readonly pageTitle = 'Medien';
-    readonly heroImage = '/img/home-banner/home-banner6.webp';
+    readonly heroImage = '/img/banner/banner-img8.webp';
     readonly pageSubtitle = 'Streams, Videos und Community-Kanäle des Tactical Training Teams';
     // Temporaer deaktiviert bis die Twitch-API live ist - zeigt solange den Leerzustand
     // readonly liveStreams$ = this.medienService.getTwitchStreams();
