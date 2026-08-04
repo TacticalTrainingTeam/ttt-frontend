@@ -34,12 +34,12 @@ describe('MedienComponent', () => {
         expect(component.socialLinks).toBe(TTT_SOCIAL_LINKS);
         expect(component.corporateDesignWikiUrl).toBe(TTT_LINKS.wikiCorporateDesign);
         expect(component.mediaPlatforms[0].url).toBe(TTT_SOCIAL_LINKS.youtube);
-        expect(component.socialPlatforms.every((platform) => platform.url.startsWith('https://'))).toBeTrue();
+        expect(component.socialPlatforms.every((platform) => platform.url.startsWith('https://'))).toBe(true);
     });
 
     it('should expose media and social platform cards', () => {
-        expect(component.mediaPlatforms).toHaveSize(2);
-        expect(component.socialPlatforms).toHaveSize(8);
+        expect(component.mediaPlatforms).toHaveLength(2);
+        expect(component.socialPlatforms).toHaveLength(8);
 
         expect(component.mediaPlatforms[0].id).toBe('youtube');
         expect(component.socialPlatforms.find((item) => item.id === 'github')?.handle).toBe('TacticalTrainingTeam');

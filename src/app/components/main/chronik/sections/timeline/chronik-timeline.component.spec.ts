@@ -33,7 +33,7 @@ describe('ChronikTimelineComponent', () => {
 
     it('should toggle event details', () => {
         component.toggleEventDetails(component.timelineEvents()[0]);
-        expect(component.timelineEvents()[0].expanded).toBeTrue();
+        expect(component.timelineEvents()[0].expanded).toBe(true);
     });
 
     it('should render event content inside the timeline', () => {

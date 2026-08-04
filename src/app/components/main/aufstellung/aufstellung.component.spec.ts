@@ -1,3 +1,4 @@
+import type { Mocked } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 import { AufstellungComponent } from './aufstellung.component';
@@ -7,7 +8,7 @@ import { Member } from '../../../shared/types/member.types';
 describe('AufstellungComponent', () => {
     let component: AufstellungComponent;
     let fixture: ComponentFixture<AufstellungComponent>;
-    let memberServiceSpy: jasmine.SpyObj<MemberService>;
+    let memberServiceSpy: Mocked<Pick<MemberService, 'getAllMembers'>>;
 
     const mockMembers: Member[] = [
         {
@@ -43,8 +44,10 @@ describe('AufstellungComponent', () => {
     ];
 
     beforeEach(async () => {
-        memberServiceSpy = jasmine.createSpyObj<MemberService>('MemberService', ['getAllMembers']);
-        memberServiceSpy.getAllMembers.and.returnValue(of(mockMembers));
+        memberServiceSpy = {
+            getAllMembers: vi.fn().mockName('MemberService.getAllMembers'),
+        };
+        memberServiceSpy.getAllMembers.mockReturnValue(of(mockMembers));
 
         await TestBed.configureTestingModule({
             imports: [AufstellungComponent],
@@ -62,7 +65,7 @@ describe('AufstellungComponent', () => {
     it('should load dummy members', () => {
         component.ngOnInit();
         expect(memberServiceSpy.getAllMembers).toHaveBeenCalled();
-        expect(component.members()).toHaveSize(3);
+        expect(component.members()).toHaveLength(3);
         expect(component.totalMembers()).toBe(3);
     });
 
@@ -70,12 +73,12 @@ describe('AufstellungComponent', () => {
         component.ngOnInit();
         const membersByRank = component.membersByRank();
 
-        expect(membersByRank.offizier).toHaveSize(1);
-        expect(membersByRank.soldat).toHaveSize(2);
-        expect(membersByRank.unteroffizier).toHaveSize(0);
-        expect(membersByRank.veteran).toHaveSize(0);
-        expect(membersByRank.rekrut).toHaveSize(0);
-        expect(membersByRank.gast).toHaveSize(0);
+        expect(membersByRank.offizier).toHaveLength(1);
+        expect(membersByRank.soldat).toHaveLength(2);
+        expect(membersByRank.unteroffizier).toHaveLength(0);
+        expect(membersByRank.veteran).toHaveLength(0);
+        expect(membersByRank.rekrut).toHaveLength(0);
+        expect(membersByRank.gast).toHaveLength(0);
     });
 
     it('should calculate member stats correctly', () => {
@@ -97,7 +100,7 @@ describe('AufstellungComponent', () => {
     });
 
     it('should expose rank metadata for all ranks', () => {
-        expect(component.rankOrder).toHaveSize(6);
+        expect(component.rankOrder).toHaveLength(6);
         expect(component.rankInfo['offizier'].name).toBe('Offizier');
         expect(component.rankInfo['rekrut'].priority).toBe(5);
         expect(component.rankInfo['gast'].shortName).toBe('Gast');
@@ -106,7 +109,7 @@ describe('AufstellungComponent', () => {
     it('should derive abteilung options from the loaded members', () => {
         component.ngOnInit();
 
-        expect(component.abteilungOptions()).toHaveSize(1);
+        expect(component.abteilungOptions()).toHaveLength(1);
         expect(component.abteilungOptions()[0].name).toBe('Missionsbau');
     });
 
@@ -115,9 +118,9 @@ describe('AufstellungComponent', () => {
 
         component.selectedAbteilungId.set('missionsbau');
 
-        expect(component.membersByRank().soldat).toHaveSize(1);
+        expect(component.membersByRank().soldat).toHaveLength(1);
         expect(component.membersByRank().soldat[0].name).toBe('Bravo');
-        expect(component.membersByRank().offizier).toHaveSize(0);
+        expect(component.membersByRank().offizier).toHaveLength(0);
         expect(component.memberStats().soldat).toBe(2);
         expect(component.totalMembers()).toBe(3);
     });
@@ -128,18 +131,18 @@ describe('AufstellungComponent', () => {
 
         component.selectedAbteilungId.set(null);
 
-        expect(component.membersByRank().soldat).toHaveSize(2);
-        expect(component.membersByRank().offizier).toHaveSize(1);
+        expect(component.membersByRank().soldat).toHaveLength(2);
+        expect(component.membersByRank().offizier).toHaveLength(1);
     });
 
     it('should handle loading errors', () => {
-        memberServiceSpy.getAllMembers.and.returnValue(throwError(() => new Error('boom')));
+        memberServiceSpy.getAllMembers.mockReturnValue(throwError(() => new Error('boom')));
 
         component.ngOnInit();
 
-        expect(component.isLoading()).toBeFalse();
+        expect(component.isLoading()).toBe(false);
         expect(component.loadingError()).toBe('Fehler beim Laden der Mitgliederdaten');
-        expect(component.members()).toHaveSize(0);
+        expect(component.members()).toHaveLength(0);
     });
 
     it('should retry loading on retryLoading call', () => {
