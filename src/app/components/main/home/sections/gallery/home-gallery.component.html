@@ -10,7 +10,7 @@
             [autoplayInterval]="5000"
             [responsiveOptions]="responsiveOptions"
         >
-            <ng-template pTemplate="item" let-item>
+            <ng-template #item let-item>
                 <div class="px-2">
                     <img
                         [src]="item.itemImageSrc"
