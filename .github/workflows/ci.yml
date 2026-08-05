@@ -99,7 +99,7 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Cache Angular build cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: .angular/cache
           key: ${{ runner.os }}-angular-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -136,7 +136,7 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Cache Angular build cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: .angular/cache
           key: ${{ runner.os }}-angular-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
