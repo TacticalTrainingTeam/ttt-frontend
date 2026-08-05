@@ -1,6 +1,6 @@
-# TTT Frontend
+# TTT-Frontend
 
-Angular 20 application for Tactical Training Team website.
+Frontend for the Tactical Training Team website.
 
 ## Project Structure
 
