@@ -38,37 +38,13 @@ const AUFSTELLUNG_CONFIG = {
     },
     ASSETS: {
         RANKS: {
-            BASE_PATH: '/img/aufstellung/ranks/',
+            BASE_PATH: '/img/ranks/',
             OFFIZIER: 'TTT-Icon_Offizier.png',
             UNTEROFFIZIER: 'TTT-Icon_Unteroffizier.png',
             VETERAN: 'TTT-Icon_Soldat-Veteran.png',
             SOLDAT: 'TTT-Icon_Soldat-Veteran.png',
             REKRUT: 'TTT-Icon_Rekrut.png',
             GAST: 'TTT-Icon_Gast.png',
-        },
-        MEDALS: {
-            BASE_PATH: '/img/aufstellung/medals/',
-            HONOR: 'medal-mdh.png',
-            TRAINING_GOLD: 'medal-gold-training.png',
-        },
-        RIBBONS: {
-            BASE_PATH: '/img/aufstellung/ribbons/',
-            ASPIS: 'ttt_veteran-kampagne-aspis.png',
-            BETH_NAHRIN: 'ttt_veteran-kampagne-beth-nahrin.png',
-            ENTZUG: 'ttt_veteran-kampagne-entzug-q4-2015.png',
-            PARADISO: 'ttt_veteran-kampagne-paradiso.png',
-            PHOENIX: 'ttt_veteran-kampagne-phoenix-q2-2016.jpg',
-            THEMIS_Q1: 'ttt_veteran-kampagne-themis-q1-2015.png',
-            THEMIS_Q2: 'ttt_veteran-kampagne-themis-q2-2015.png',
-        },
-        GROUPS: {
-            BASE_PATH: '/img/aufstellung/group/',
-            MISSIONSBAU: 'group-missionsbau-icon.png',
-            MEDIEN: 'group-pr-icon.png',
-            TECHNIK: 'group-technik-icon.png',
-        },
-        AVATARS: {
-            OFFIZIER: '/img/aufstellung/offizier-kopf.webp',
         },
     },
 } as const;
