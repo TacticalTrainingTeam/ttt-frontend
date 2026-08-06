@@ -17,4 +17,5 @@ export class ExternalLinkTileComponent {
     ariaLabel = input<string>();
     cardClass = input('ttt-content-card ttt-card-interactive group block text-left');
     iconWrapperClass = input('ttt-icon-tile');
+    descriptionClass = input('text-tttGray-200 mb-2 text-base');
 }

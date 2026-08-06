@@ -79,7 +79,7 @@
                                             [pTooltip]="member.medals.length + ' Medaille(n)'"
                                             tooltipPosition="top"
                                         >
-                                            <i class="pi pi-star-fill text-tttGray-300 text-xs" aria-hidden="true"></i>
+                                            <i class="pi pi-star-fill text-tttGray-200 text-xs" aria-hidden="true"></i>
                                         </span>
                                     }
                                     @if (member.campaignRibbons.length > 0) {
@@ -88,7 +88,7 @@
                                             [pTooltip]="member.campaignRibbons.length + ' Kampagne(n)'"
                                             tooltipPosition="top"
                                         >
-                                            <i class="pi pi-flag text-tttGray-300 text-xs" aria-hidden="true"></i>
+                                            <i class="pi pi-flag text-tttGray-200 text-xs" aria-hidden="true"></i>
                                         </span>
                                     }
                                     @if (member.abteilungen.length > 0) {
@@ -97,14 +97,14 @@
                                             [pTooltip]="member.abteilungen.length + ' Abteilung(en)'"
                                             tooltipPosition="top"
                                         >
-                                            <i class="pi pi-briefcase text-tttGray-300 text-xs" aria-hidden="true"></i>
+                                            <i class="pi pi-briefcase text-tttGray-200 text-xs" aria-hidden="true"></i>
                                         </span>
                                     }
                                 </div>
 
                                 @if (hasExpandableContent(member)) {
                                     <div class="mt-1 flex justify-center">
-                                        <i class="pi pi-info-circle text-tttGray-300 text-xs" aria-hidden="true"></i>
+                                        <i class="pi pi-info-circle text-tttGray-200 text-xs" aria-hidden="true"></i>
                                     </div>
                                 }
                             </div>
@@ -146,7 +146,7 @@
                         <span class="rounded px-2 py-1 text-sm font-medium" [ngClass]="getRankTagClasses(member.rank)">
                             {{ getRankInfo(member.rank).name }}
                         </span>
-                        <span class="text-tttGray-300 text-sm"> Mitglied seit {{ getFormattedMemberSince(member.memberSince) }} </span>
+                        <span class="text-tttGray-200 text-sm"> Mitglied seit {{ getFormattedMemberSince(member.memberSince) }} </span>
                     </div>
                 </div>
             </div>
@@ -169,7 +169,7 @@
                                 />
                                 <div class="min-w-0 flex-1">
                                     <p class="text-tttWhite text-sm font-medium break-words">{{ medal.name }}</p>
-                                    <p class="text-tttGray-300 text-sm break-words">{{ medal.description }}</p>
+                                    <p class="text-tttGray-200 text-sm break-words">{{ medal.description }}</p>
                                 </div>
                             </div>
                         }
@@ -193,7 +193,7 @@
                                 />
                                 <div class="min-w-0 flex-1">
                                     <p class="text-tttWhite text-sm font-medium break-words">{{ ribbon.campaign }}</p>
-                                    <p class="text-tttGray-300 text-sm">{{ ribbon.year }}</p>
+                                    <p class="text-tttGray-200 text-sm">{{ ribbon.year }}</p>
                                 </div>
                             </div>
                         }
@@ -217,7 +217,7 @@
                                 />
                                 <div class="min-w-0 flex-1">
                                     <p class="text-tttWhite text-sm font-medium break-words">{{ abt.name }}</p>
-                                    <p class="text-tttGray-300 text-sm break-words">{{ abt.description }}</p>
+                                    <p class="text-tttGray-200 text-sm break-words">{{ abt.description }}</p>
                                 </div>
                             </div>
                         }

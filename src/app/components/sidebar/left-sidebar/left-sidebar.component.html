@@ -23,7 +23,7 @@
                                 <div class="text-tttWhite truncate text-base font-bold" [attr.title]="ev.title">
                                     {{ ev.title }}
                                 </div>
-                                <div class="text-tttGray-300 text-sm">
+                                <div class="text-tttGray-200 text-sm">
                                     {{ ev.date | date: "dd.MM.yyyy" }} • {{ ev.startTime }} • {{ ev.durationHours }} h
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                         </a>
                     </div>
                 } @empty {
-                    <div class="text-tttGray-300 text-sm">Keine anstehenden Events</div>
+                    <div class="text-tttGray-200 text-sm">Keine anstehenden Events</div>
                 }
             </div>
         </div>

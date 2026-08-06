@@ -7,9 +7,9 @@
         </div>
         <div class="min-w-0 flex-1">
             <h3 class="ttt-card-title mb-1">{{ title() }}</h3>
-            <p class="text-tttGray-300 mb-2 text-base">{{ description() }}</p>
+            <p [class]="descriptionClass()">{{ description() }}</p>
             @if (displayUrl()) {
-                <div class="text-tttGray-300 flex items-center gap-2 text-sm">
+                <div class="text-tttGray-200 flex items-center gap-2 text-sm">
                     <i class="pi pi-external-link"></i>
                     {{ displayUrl() }}
                 </div>

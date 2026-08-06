@@ -52,7 +52,7 @@
                         <h3 class="ttt-card-title mb-1 line-clamp-2">
                             {{ stream.title }}
                         </h3>
-                        <p class="text-tttGray-300 text-base">
+                        <p class="text-tttGray-200 text-base">
                             <i class="pi pi-user mr-1"></i>
                             {{ stream.userName }}
                         </p>
@@ -63,7 +63,7 @@
     }
 
     @if ((liveStreams$() | async)?.length === 0) {
-        <div class="border-tttGray-700 text-tttGray-300 flex items-center justify-center gap-3 rounded-lg border border-dashed p-4">
+        <div class="border-tttGray-700 text-tttGray-200 flex items-center justify-center gap-3 rounded-lg border border-dashed p-4">
             <i class="pi pi-video text-tttGray-400" aria-hidden="true"></i>
             <span class="text-sm">Derzeit sind keine Live-Übertragungen aktiv.</span>
         </div>
