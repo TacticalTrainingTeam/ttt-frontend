@@ -13,42 +13,17 @@
                 <!-- Social Links - inline -->
                 <div class="mb-4 flex items-center gap-2">
                     <span class="text-tttGray-300 mr-2 text-sm font-medium">Folge uns:</span>
-                    <a
-                        [href]="links.discord"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Discord"
-                        class="border-tttGray-700 bg-tttGray-800/50 text-tttGray-300 hover:border-tttGray-500 hover:text-tttWhite flex h-8 w-8 items-center justify-center rounded-lg border transition-colors"
-                    >
-                        <i class="pi pi-discord text-sm" aria-hidden="true"></i>
-                    </a>
-                    <a
-                        [href]="socialLinks.youtube"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="YouTube"
-                        class="border-tttGray-700 bg-tttGray-800/50 text-tttGray-300 hover:border-tttGray-500 hover:text-tttWhite flex h-8 w-8 items-center justify-center rounded-lg border transition-colors"
-                    >
-                        <i class="pi pi-youtube text-sm" aria-hidden="true"></i>
-                    </a>
-                    <a
-                        [href]="socialLinks.x"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="X (Twitter)"
-                        class="border-tttGray-700 bg-tttGray-800/50 text-tttGray-300 hover:border-tttGray-500 hover:text-tttWhite flex h-8 w-8 items-center justify-center rounded-lg border transition-colors"
-                    >
-                        <i class="pi pi-twitter text-sm" aria-hidden="true"></i>
-                    </a>
-                    <a
-                        [href]="socialLinks.mastodon"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Mastodon"
-                        class="border-tttGray-700 bg-tttGray-800/50 text-tttGray-300 hover:border-tttGray-500 hover:text-tttWhite flex h-8 w-8 items-center justify-center rounded-lg border transition-colors"
-                    >
-                        <i class="pi pi-at text-sm" aria-hidden="true"></i>
-                    </a>
+                    @for (social of socialIcons; track social.label) {
+                        <a
+                            [href]="social.href"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            [attr.aria-label]="social.label"
+                            class="border-tttGray-700 bg-tttGray-800/50 text-tttGray-300 hover:border-tttGray-500 hover:text-tttWhite flex h-8 w-8 items-center justify-center rounded-lg border transition-colors"
+                        >
+                            <i class="{{ social.icon }} text-sm" aria-hidden="true"></i>
+                        </a>
+                    }
                 </div>
             </div>
 
@@ -87,38 +62,16 @@
             <div>
                 <h4 class="text-tttWhite mb-3 text-sm font-semibold tracking-wide uppercase">Partner</h4>
                 <div class="space-y-2">
-                    <a
-                        href="https://www.gruppe-w.de/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-tttGray-300 hover:text-tttWhite block text-sm transition-colors"
-                    >
-                        Gruppe W
-                    </a>
-                    <a
-                        href="https://gruppe-adler.de/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-tttGray-300 hover:text-tttWhite block text-sm transition-colors"
-                    >
-                        Gruppe Adler
-                    </a>
-                    <a
-                        href="https://prae-garde.de/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-tttGray-300 hover:text-tttWhite block text-sm transition-colors"
-                    >
-                        Praetorianische Garde™
-                    </a>
-                    <a
-                        href="https://discord.gg/GxH7C4VWhf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-tttGray-300 hover:text-tttWhite block text-sm transition-colors"
-                    >
-                        Special Tactical Service
-                    </a>
+                    @for (partner of partners; track partner.name) {
+                        <a
+                            [href]="partner.href"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-tttGray-300 hover:text-tttWhite block text-sm transition-colors"
+                        >
+                            {{ partner.name }}
+                        </a>
+                    }
                 </div>
             </div>
 

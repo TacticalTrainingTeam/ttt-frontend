@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { SocialPlatformCard } from '../../../../../shared/types/medien.types';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
@@ -6,7 +6,7 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
 @Component({
     selector: 'ttt-medien-social-platforms',
     standalone: true,
-    imports: [CommonModule, SectionHeaderComponent],
+    imports: [NgClass, SectionHeaderComponent],
     templateUrl: './medien-social-platforms.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 import { Dialog } from '@openng/optimus-ui/dialog';
 import { Tooltip } from '@openng/optimus-ui/tooltip';
@@ -10,7 +10,7 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
 @Component({
     selector: 'ttt-aufstellung-roster',
     standalone: true,
-    imports: [CommonModule, Dialog, Tooltip, ActivableDirective, SectionHeaderComponent],
+    imports: [NgClass, Dialog, Tooltip, ActivableDirective, SectionHeaderComponent],
     templateUrl: './aufstellung-roster.component.html',
     styleUrl: './aufstellung-roster.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -19,7 +19,6 @@ export interface MediaPlatformCard {
     displayUrl: string;
     ariaLabel: string;
     iconClass: string;
-    cardClass: string;
 }
 
 export interface SocialPlatformCard {
@@ -29,5 +28,4 @@ export interface SocialPlatformCard {
     handle: string;
     ariaLabel: string;
     iconClass: string;
-    cardClass: string;
 }

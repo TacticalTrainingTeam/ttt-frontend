@@ -7,5 +7,4 @@ export interface TimelineEvent {
     type: TimelineEventType;
     description: string;
     details: string[];
-    expanded?: boolean;
 }

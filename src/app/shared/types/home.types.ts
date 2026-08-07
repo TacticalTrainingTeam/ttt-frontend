@@ -14,7 +14,6 @@ export interface HomeGalleryImage {
 export interface HomeCommunityStat {
     value: string;
     label: string;
-    color: string;
 }
 
 export interface HomeBranch {

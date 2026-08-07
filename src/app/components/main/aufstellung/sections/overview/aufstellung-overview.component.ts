@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MemberStats, RankInfoMap } from '../../../../../shared/types/aufstellung.types';
 import { RankType } from '../../../../../shared/types/member.types';
@@ -7,7 +7,7 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
 @Component({
     selector: 'ttt-aufstellung-overview',
     standalone: true,
-    imports: [CommonModule, SectionHeaderComponent],
+    imports: [NgClass, SectionHeaderComponent],
     templateUrl: './aufstellung-overview.component.html',
     styleUrl: './aufstellung-overview.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
