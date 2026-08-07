@@ -21,7 +21,6 @@ export class HomeComponent {
     // Temporaer deaktiviert bis die Member-API live ist
     // private readonly memberService = inject(MemberService);
 
-    // Public readonly properties
     readonly bannerSlides: HomeBannerSlide[] = [
         {
             image: '/img/banner/banner-img1.webp',
@@ -80,7 +79,6 @@ export class HomeComponent {
         },
     ];
 
-    // Public mutable state
     readonly branches: HomeBranch[] = [
         {
             id: 'infanterie',

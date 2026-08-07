@@ -15,13 +15,11 @@ import { TTT_LINKS } from '../../../shared/constants/external-links';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChronikComponent {
-    // Public readonly properties
     readonly pageTitle = 'Chronik';
     readonly heroImage = '/img/banner/banner-img5.webp';
     readonly pageSubtitle = 'Geschichte des Tactical Training Teams';
     readonly fictionDocumentationLink = TTT_LINKS.fictionDocumentation;
 
-    // Public properties
     timelineEvents: TimelineEvent[] = [
         this.createTimelineEvent(
             'genesis',
@@ -127,7 +125,6 @@ export class ChronikComponent {
         ),
     ];
 
-    // Private methods
     private createTimelineEvent(
         id: string,
         title: string,

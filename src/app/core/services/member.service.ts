@@ -1,4 +1,4 @@
-import { Member, Medal, CampaignRibbon, Abteilung, RankType, MemberResponse, MemberStatsResponse } from '../../shared/types/member.types';
+import { Member, RankType, MemberResponse, MemberStatsResponse } from '../../shared/types/member.types';
 
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -45,59 +45,5 @@ export class MemberService {
             `${this.baseUrl}/members/stats`,
             (response) => response.stats
         );
-    }
-
-    /**
-     * Get member by ID with full details
-     * @param memberId - The unique member ID
-     * @returns Observable<Member>
-     */
-    getMemberById(memberId: string): Observable<Member> {
-        return this.api.get<Member>(`${this.baseUrl}/members/${memberId}`);
-    }
-
-    /**
-     * Get members by rank
-     * @param rank - The rank to filter by
-     * @returns Observable<Member[]>
-     */
-    getMembersByRank(rank: RankType): Observable<Member[]> {
-        return this.api
-            .get<MemberResponse>(`${this.baseUrl}/members?rank=${rank}`)
-            .pipe(map((response: MemberResponse) => response.members));
-    }
-
-    /**
-     * Update member information (for admin users)
-     * @param memberId - The unique member ID
-     * @param updates - Partial member data to update
-     * @returns Observable<Member>
-     */
-    updateMember(memberId: string, updates: Partial<Member>): Observable<Member> {
-        return this.api.patch<Member>(`${this.baseUrl}/members/${memberId}`, updates);
-    }
-
-    /**
-     * Get available medals
-     * @returns Observable<Medal[]>
-     */
-    getAvailableMedals(): Observable<Medal[]> {
-        return this.api.get<Medal[]>(`${this.baseUrl}/medals`);
-    }
-
-    /**
-     * Get available campaign ribbons
-     * @returns Observable<CampaignRibbon[]>
-     */
-    getAvailableCampaignRibbons(): Observable<CampaignRibbon[]> {
-        return this.api.get<CampaignRibbon[]>(`${this.baseUrl}/campaign-ribbons`);
-    }
-
-    /**
-     * Get available departments (Abteilungen)
-     * @returns Observable<Abteilung[]>
-     */
-    getAvailableAbteilungen(): Observable<Abteilung[]> {
-        return this.api.get<Abteilung[]>(`${this.baseUrl}/abteilungen`);
     }
 }
