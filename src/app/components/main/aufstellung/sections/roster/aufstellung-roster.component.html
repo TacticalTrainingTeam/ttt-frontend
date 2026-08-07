@@ -66,7 +66,7 @@
                                     </h4>
                                     <span
                                         class="mb-1 block rounded px-1.5 py-0.5 text-xs font-medium"
-                                        [ngClass]="getRankTagClasses(member.rank)"
+                                        [ngClass]="getRankInfo(member.rank).color"
                                     >
                                         {{ getRankInfo(member.rank).name }}
                                     </span>
@@ -129,7 +129,7 @@
     @if (selectedMember(); as member) {
         <ng-template #header>
             <div class="flex items-center gap-3">
-                <div class="h-12 w-12 flex-shrink-0">
+                <div class="h-12 w-12 shrink-0">
                     @if (member.avatar && member.avatar !== "") {
                         <div class="border-tttRed/50 h-12 w-12 overflow-hidden rounded-full border-2">
                             <img [src]="member.avatar" [alt]="member.name" [title]="member.name" class="h-full w-full object-cover" />
@@ -143,7 +143,7 @@
                 <div>
                     <h4 class="text-tttWhite mb-1 text-xl font-bold">{{ member.name }}</h4>
                     <div class="flex flex-wrap items-center gap-2">
-                        <span class="rounded px-2 py-1 text-sm font-medium" [ngClass]="getRankTagClasses(member.rank)">
+                        <span class="rounded px-2 py-1 text-sm font-medium" [ngClass]="getRankInfo(member.rank).color">
                             {{ getRankInfo(member.rank).name }}
                         </span>
                         <span class="text-tttGray-200 text-sm"> Mitglied seit {{ getFormattedMemberSince(member.memberSince) }} </span>
