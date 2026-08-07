@@ -25,7 +25,7 @@ export class ChronikComponent {
     timelineEvents: TimelineEvent[] = [
         this.createTimelineEvent(
             'genesis',
-            'OP Genesis',
+            'Operation Genesis',
             '11. November 2013',
             'anniversary',
             'Offizielle Gründung des Tactical Training Teams',
@@ -35,18 +35,25 @@ export class ChronikComponent {
                 'Kombination aus Training, Teamspiel und offener Community',
             ]
         ),
-        this.createTimelineEvent('intel', 'OP Intel', 'März 2014', 'milestone', 'Veröffentlichung des ersten TTT-Newsletters', [
+        this.createTimelineEvent('intel', 'Operation Intel', 'März 2014', 'milestone', 'Veröffentlichung des ersten TTT-Newsletters', [
             'Erste offizielle Kommunikation an die Mitglieder',
             'Etablierung regelmäßiger Informationskanäle',
         ]),
-        this.createTimelineEvent('rookie', 'OP Rookie', 'Mai 2015', 'system', 'Einführung von Einsteiger-Events und Managementposten', [
-            'Strukturierte Ausbildungsprogramme entwickelt',
-            'Managementposten zur besseren Organisation',
-            'Fokus auf Einsteiger-freundliche Events',
-        ]),
+        this.createTimelineEvent(
+            'rookie',
+            'Operation Rookie',
+            'Mai 2015',
+            'system',
+            'Einführung von Einsteiger-Events und Managementposten',
+            [
+                'Strukturierte Ausbildungsprogramme entwickelt',
+                'Managementposten zur besseren Organisation',
+                'Fokus auf Einsteiger-freundliche Events',
+            ]
+        ),
         this.createTimelineEvent(
             'handover',
-            'OP Handover',
+            'Operation Handover',
             'Juni 2016',
             'system',
             'Beendigung des TTT-Public-Servers und Übertragung an ArmaWorld',
@@ -54,33 +61,36 @@ export class ChronikComponent {
         ),
         this.createTimelineEvent(
             'gladiator',
-            'OP Gladiator',
+            'Operation Gladiator',
             'September 2018',
             'milestone',
             'Neue Sparte im TTT: TVT-Team und E-Sport-Ära',
             ['Electronic Sports Masters™ (ESM)', 'Wettkampforientierte Missionsformate', 'Professionelle E-Sport-Aktivitäten']
         ),
-        this.createTimelineEvent('rebrand', 'OP Rebrand', 'Januar 2019', 'milestone', 'Das neue Corporate-Design wird eingeführt', [
+        this.createTimelineEvent('rebrand', 'Operation Rebrand', 'Januar 2019', 'milestone', 'Das neue Corporate-Design wird eingeführt', [
             'Moderne visuelle Identität entwickelt',
             'Einheitliches Branding für alle Plattformen',
             'Professioneller Auftritt etabliert',
         ]),
         this.createTimelineEvent(
             'hierarchy',
-            'OP Hierarchy',
+            'Operation Hierarchy',
             'März 2019',
             'system',
             'TTT-Rangneustrukturierung zu Soldat, Veteran und Gast',
             ['Vereinfachte Rangstruktur eingeführt', 'Etablierung von Offiziersposten']
         ),
-        this.createTimelineEvent('digital', 'OP Digital', 'September 2020', 'milestone', 'Neuer TTT-Webauftritt mit modernem Design', [
-            'Responsive Design für alle Geräte',
-            'Verbesserte Navigation',
-            'Integration moderner Webtechnologien',
-        ]),
+        this.createTimelineEvent(
+            'digital',
+            'Operation Digital',
+            'September 2020',
+            'milestone',
+            'Neuer TTT-Webauftritt mit modernem Design',
+            ['Responsive Design für alle Geräte', 'Verbesserte Navigation', 'Integration moderner Webtechnologien']
+        ),
         this.createTimelineEvent(
             'knowledge',
-            'OP Knowledge',
+            'Operation Knowledge',
             'Oktober 2021',
             'milestone',
             'TTT-Wiki mit über 150 Informationsseiten veröffentlicht',
@@ -93,7 +103,7 @@ export class ChronikComponent {
         ),
         this.createTimelineEvent(
             'decade',
-            'OP Decade',
+            'Operation Decade',
             '11. November 2023',
             'anniversary',
             '10 Jahre TTT - Eine erfolgreiche Dekade der taktischen Exzellenz',
@@ -105,7 +115,7 @@ export class ChronikComponent {
         ),
         this.createTimelineEvent(
             'reforger',
-            'OP Reforger',
+            'Operation Reforger',
             'September 2024',
             'milestone',
             'Arma Reforger wird neben Arma 3 Teil des TTT-Spielbetriebs',

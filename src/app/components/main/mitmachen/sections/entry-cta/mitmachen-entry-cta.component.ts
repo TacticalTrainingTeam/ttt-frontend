@@ -12,4 +12,6 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
 export class MitmachenEntryCtaComponent {
     eventsUrl = input.required<string>();
     discordUrl = input.required<string>();
+
+    readonly entrySteps = ['Discord beitreten', 'Setup einrichten', 'Einsteiger-Event', "Los geht's"];
 }

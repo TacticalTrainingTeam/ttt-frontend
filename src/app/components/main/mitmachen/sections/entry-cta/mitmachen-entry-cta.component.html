@@ -1,9 +1,9 @@
-<!-- Dein Event in das TTT -->
+<!-- Dein erstes Event -->
 <section class="bg-tttGray-800 py-12">
     <div class="ttt-page-container">
         <ttt-section-header
-            title="Dein Event in das TTT"
-            subtitle="Zwei verschiedene Wege stehen zur Auswahl - je nach deiner Erfahrung."
+            title="Dein erstes Event bei uns"
+            subtitle="Einsteiger-Event oder Fast Path, je nach deiner Erfahrung."
         ></ttt-section-header>
 
         <div class="grid gap-8 lg:grid-cols-2">
@@ -115,9 +115,24 @@
 <section class="bg-tttRed py-16">
     <div class="ttt-hero-container ttt-text-center">
         <h2 class="ttt-section-title mb-4">Das nächste Einsteiger Event finden</h2>
-        <p class="text-tttRed-100 ttt-constrained-text mb-6 text-lg">
-            <strong>Anmeldung TTT-Discord -> Setup (Arma3Sync für Arma 3) -> Einsteiger-Event -> Los geht's!</strong>
-        </p>
+        <ol class="mb-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+            @for (step of entrySteps; track step; let last = $last) {
+                <li class="flex items-center gap-3">
+                    <span class="bg-tttWhite/10 flex items-center gap-2 rounded-full py-1 pr-4 pl-1.5">
+                        <span
+                            class="bg-tttWhite text-tttRed flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-bold"
+                        >
+                            {{ $index + 1 }}
+                        </span>
+                        <span class="text-tttWhite text-base font-semibold whitespace-nowrap">{{ step }}</span>
+                    </span>
+
+                    @if (!last) {
+                        <i class="pi pi-chevron-right text-tttRed-200 text-xs" aria-hidden="true"></i>
+                    }
+                </li>
+            }
+        </ol>
 
         <div class="mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a pButton [href]="eventsUrl()" target="_blank" rel="noopener noreferrer" class="ttt-btn-light ttt-btn-lg">
