@@ -6,6 +6,7 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
     standalone: true,
     imports: [SectionHeaderComponent],
     templateUrl: './home-features-join.component.html',
+    styleUrl: './home-features-join.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeFeaturesJoinComponent {}

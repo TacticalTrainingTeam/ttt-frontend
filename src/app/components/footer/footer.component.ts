@@ -7,6 +7,7 @@ import { TTT_LINKS, TTT_SOCIAL_LINKS } from '../../shared/constants/external-lin
     standalone: true,
     imports: [RouterLink],
     templateUrl: './footer.component.html',
+    styleUrl: './footer.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {

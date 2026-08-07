@@ -6,6 +6,7 @@ import { PageLayoutComponent } from '../../../shared/components/page-layout/page
     standalone: true,
     imports: [PageLayoutComponent],
     templateUrl: './impressum.component.html',
+    styleUrl: './impressum.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImpressumComponent {

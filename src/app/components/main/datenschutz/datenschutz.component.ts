@@ -7,6 +7,7 @@ import { PageLayoutComponent } from '../../../shared/components/page-layout/page
     standalone: true,
     imports: [RouterModule, PageLayoutComponent],
     templateUrl: './datenschutz.component.html',
+    styleUrl: './datenschutz.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatenschutzComponent {

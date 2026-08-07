@@ -61,6 +61,7 @@ const AUFSTELLUNG_CONFIG = {
         AufstellungRosterComponent,
     ],
     templateUrl: './aufstellung.component.html',
+    styleUrl: './aufstellung.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AufstellungComponent implements OnInit {

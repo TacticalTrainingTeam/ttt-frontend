@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     standalone: true,
     // imports: [RouterLink, ButtonDirective],
     templateUrl: './home-orbat.component.html',
+    styleUrl: './home-orbat.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeOrbatComponent {

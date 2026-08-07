@@ -8,6 +8,7 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
     standalone: true,
     imports: [NgClass, SectionHeaderComponent],
     templateUrl: './medien-social-platforms.component.html',
+    styleUrl: './medien-social-platforms.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MedienSocialPlatformsComponent {

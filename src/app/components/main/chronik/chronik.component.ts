@@ -12,6 +12,7 @@ import { TTT_LINKS } from '../../../shared/constants/external-links';
     standalone: true,
     imports: [PageLayoutComponent, ChronikOriginComponent, ChronikTimelineComponent, ChronikFictionComponent, ChronikCtaComponent],
     templateUrl: './chronik.component.html',
+    styleUrl: './chronik.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChronikComponent {

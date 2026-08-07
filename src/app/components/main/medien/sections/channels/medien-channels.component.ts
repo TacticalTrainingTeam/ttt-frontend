@@ -10,6 +10,7 @@ import { ExternalLinkTileComponent } from '../../../../../shared/components/exte
     standalone: true,
     imports: [AsyncPipe, SectionHeaderComponent, ExternalLinkTileComponent],
     templateUrl: './medien-channels.component.html',
+    styleUrl: './medien-channels.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MedienChannelsComponent {

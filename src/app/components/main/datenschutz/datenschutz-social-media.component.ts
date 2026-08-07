@@ -8,6 +8,7 @@ import { PageLayoutComponent } from '../../../shared/components/page-layout/page
     standalone: true,
     imports: [RouterModule, PageLayoutComponent],
     templateUrl: './datenschutz-social-media.component.html',
+    styleUrl: './datenschutz-social-media.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatenschutzSocialMediaComponent {
