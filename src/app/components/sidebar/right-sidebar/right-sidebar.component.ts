@@ -9,6 +9,7 @@ import { TTT_LINKS } from '../../../shared/constants/external-links';
     standalone: true,
     imports: [SectionHeaderComponent, DiscordWidgetComponent],
     templateUrl: './right-sidebar.component.html',
+    styleUrl: './right-sidebar.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RightSidebarComponent {

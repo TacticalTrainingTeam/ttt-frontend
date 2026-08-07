@@ -7,6 +7,7 @@ import { ExternalLinkTileComponent } from '../../../../../shared/components/exte
     standalone: true,
     imports: [SectionHeaderComponent, ExternalLinkTileComponent],
     templateUrl: './mitmachen-requirements-setup.component.html',
+    styleUrl: './mitmachen-requirements-setup.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MitmachenRequirementsSetupComponent {

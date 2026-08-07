@@ -10,6 +10,7 @@ import { TTT_LINKS } from '../../shared/constants/external-links';
     standalone: true,
     imports: [RouterLink, Menubar, ButtonDirective],
     templateUrl: './header.component.html',
+    styleUrl: './header.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {

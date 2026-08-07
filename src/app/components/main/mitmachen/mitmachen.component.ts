@@ -10,6 +10,7 @@ import { TTT_LINKS } from '../../../shared/constants/external-links';
     standalone: true,
     imports: [PageHeaderComponent, MitmachenJoinPathsComponent, MitmachenRequirementsSetupComponent, MitmachenEntryCtaComponent],
     templateUrl: './mitmachen.component.html',
+    styleUrl: './mitmachen.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MitmachenComponent {

@@ -7,6 +7,7 @@ import { HomeBannerSlide } from '../../../../../shared/types/home.types';
     standalone: true,
     imports: [GalleriaModule],
     templateUrl: './home-hero-slider.component.html',
+    styleUrl: './home-hero-slider.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeHeroSliderComponent {

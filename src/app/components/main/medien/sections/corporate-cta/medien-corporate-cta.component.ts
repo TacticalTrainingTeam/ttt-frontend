@@ -9,6 +9,7 @@ import { ExternalLinkTileComponent } from '../../../../../shared/components/exte
     standalone: true,
     imports: [RouterLink, ButtonDirective, SectionHeaderComponent, ExternalLinkTileComponent],
     templateUrl: './medien-corporate-cta.component.html',
+    styleUrl: './medien-corporate-cta.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MedienCorporateCtaComponent {

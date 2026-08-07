@@ -11,6 +11,7 @@ import { EventsService } from '../../../core/services/events.service';
     standalone: true,
     // imports: [DatePipe, AsyncPipe, SectionHeaderComponent],
     templateUrl: './left-sidebar.component.html',
+    styleUrl: './left-sidebar.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeftSidebarComponent {

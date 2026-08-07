@@ -7,6 +7,7 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
     standalone: true,
     imports: [ButtonDirective, SectionHeaderComponent],
     templateUrl: './mitmachen-join-paths.component.html',
+    styleUrl: './mitmachen-join-paths.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MitmachenJoinPathsComponent {

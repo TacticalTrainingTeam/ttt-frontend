@@ -8,6 +8,7 @@ import { TTT_COMMUNITY_STATS } from '../../../../../shared/constants/community-s
     standalone: true,
     imports: [ButtonDirective, SectionHeaderComponent],
     templateUrl: './mitmachen-entry-cta.component.html',
+    styleUrl: './mitmachen-entry-cta.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MitmachenEntryCtaComponent {
