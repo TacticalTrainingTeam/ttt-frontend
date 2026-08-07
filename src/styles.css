@@ -80,7 +80,7 @@
 
     /* Heading scale, largest first. Margins belong in the layout, not here. */
     .ttt-hero-title {
-        @apply text-tttWhite text-3xl font-bold break-words hyphens-auto drop-shadow-lg md:text-4xl lg:text-5xl;
+        @apply text-tttWhite text-3xl font-bold text-balance break-words hyphens-auto drop-shadow-lg md:text-4xl lg:text-5xl;
     }
 
     /* clone: keeps padding intact when the accent wraps */
@@ -89,19 +89,19 @@
     }
 
     .ttt-section-title {
-        @apply text-tttWhite text-3xl font-bold break-words hyphens-auto md:text-4xl;
+        @apply text-tttWhite text-3xl font-bold text-balance break-words hyphens-auto md:text-4xl;
     }
 
     .ttt-section-badge {
-        @apply bg-tttRed text-tttWhite w-fit max-w-full px-3 py-1.5 text-xl font-bold break-words hyphens-auto;
+        @apply bg-tttRed text-tttWhite w-fit max-w-full px-3 py-1.5 text-xl font-bold text-balance break-words hyphens-auto;
     }
 
     .ttt-subsection-title {
-        @apply text-tttWhite text-2xl font-bold break-words hyphens-auto;
+        @apply text-tttWhite text-2xl font-bold text-balance break-words hyphens-auto;
     }
 
     .ttt-card-title {
-        @apply text-tttWhite text-lg font-bold break-words hyphens-auto;
+        @apply text-tttWhite text-lg font-bold text-balance break-words hyphens-auto;
     }
 
     .ttt-label {
@@ -109,19 +109,19 @@
     }
 
     .ttt-hero-text {
-        @apply text-tttGray-100 mx-auto mb-6 max-w-2xl text-base leading-relaxed break-words hyphens-auto drop-shadow-md md:text-lg;
+        @apply text-tttGray-100 mx-auto mb-6 max-w-2xl text-base leading-relaxed text-pretty break-words hyphens-auto drop-shadow-md md:text-lg;
     }
 
     .ttt-content-text {
-        @apply text-tttGray-200 space-y-4 leading-relaxed break-words hyphens-auto;
+        @apply text-tttGray-200 space-y-4 leading-relaxed text-pretty break-words hyphens-auto;
     }
 
     .ttt-description-text {
-        @apply text-tttGray-200 mx-auto max-w-3xl text-base leading-relaxed break-words hyphens-auto md:text-lg;
+        @apply text-tttGray-200 mx-auto max-w-3xl text-base leading-relaxed text-pretty break-words hyphens-auto md:text-lg;
     }
 
     .ttt-feature-description {
-        @apply text-tttGray-200 text-base leading-relaxed break-words hyphens-auto;
+        @apply text-tttGray-200 text-base leading-relaxed text-pretty break-words hyphens-auto;
     }
 
     .ttt-accent-text {

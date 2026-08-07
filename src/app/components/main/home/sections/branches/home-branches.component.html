@@ -12,7 +12,7 @@
             @for (branch of branches(); track branch.id) {
                 <div class="ttt-content-card flex flex-col items-center text-center">
                     <img [src]="branch.icon" alt="" class="mb-3 h-20 w-auto" loading="lazy" />
-                    <h3 class="ttt-card-title mb-2 hyphens-auto">{{ branch.name }}</h3>
+                    <h3 class="ttt-card-title mb-2">{{ branch.name }}</h3>
                     <p class="text-tttGray-200 text-sm leading-relaxed">{{ branch.description }}</p>
                 </div>
             }
