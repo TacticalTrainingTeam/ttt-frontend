@@ -40,7 +40,6 @@ export class MedienComponent {
             displayUrl: 'youtube.com/@tacticalteamde',
             ariaLabel: 'YouTube Kanal öffnen',
             iconClass: 'pi pi-youtube text-2xl text-red-400',
-            cardClass: 'ttt-card-interactive',
         },
         {
             id: 'twitch',
@@ -50,7 +49,6 @@ export class MedienComponent {
             displayUrl: 'twitch.tv/tacticaltrainingteam',
             ariaLabel: 'Twitch Kanal öffnen',
             iconClass: 'pi pi-video text-2xl text-purple-400',
-            cardClass: 'ttt-card-interactive',
         },
     ];
 
@@ -62,7 +60,6 @@ export class MedienComponent {
             handle: '@TTT_Arma',
             ariaLabel: 'Social Media öffnen: X (Twitter)',
             iconClass: 'pi pi-twitter text-xl text-blue-400',
-            cardClass: 'ttt-card-interactive',
         },
         {
             id: 'mastodon',
@@ -71,7 +68,6 @@ export class MedienComponent {
             handle: '@tacticaltrainingteam',
             ariaLabel: 'Social Media öffnen: Mastodon',
             iconClass: 'pi pi-share-alt text-xl text-purple-400',
-            cardClass: 'ttt-card-interactive',
         },
         {
             id: 'bluesky',
@@ -80,7 +76,6 @@ export class MedienComponent {
             handle: 'tacticalteam.bsky.social',
             ariaLabel: 'Social Media öffnen: Bluesky',
             iconClass: 'pi pi-cloud text-xl text-blue-500',
-            cardClass: 'ttt-card-interactive',
         },
         {
             id: 'instagram',
@@ -89,7 +84,6 @@ export class MedienComponent {
             handle: 'tacticaltrainingteam',
             ariaLabel: 'Social Media öffnen: Instagram',
             iconClass: 'pi pi-camera text-xl text-pink-400',
-            cardClass: 'ttt-card-interactive',
         },
         {
             id: 'tiktok',
@@ -98,7 +92,6 @@ export class MedienComponent {
             handle: '@tacticaltrainingteam',
             ariaLabel: 'Social Media öffnen: TikTok',
             iconClass: 'pi pi-play text-xl text-tttWhite',
-            cardClass: 'ttt-card-interactive',
         },
         {
             id: 'steam',
@@ -107,7 +100,6 @@ export class MedienComponent {
             handle: 'Community-Gruppe',
             ariaLabel: 'Steam Gruppe öffnen',
             iconClass: 'pi pi-users text-xl text-blue-400',
-            cardClass: 'ttt-card-interactive',
         },
         {
             id: 'reddit',
@@ -116,7 +108,6 @@ export class MedienComponent {
             handle: 'u/tacticaltrainingteam',
             ariaLabel: 'Reddit Subreddit öffnen',
             iconClass: 'pi pi-reddit text-xl text-orange-500',
-            cardClass: 'ttt-card-interactive',
         },
         {
             id: 'github',
@@ -125,7 +116,6 @@ export class MedienComponent {
             handle: 'TacticalTrainingTeam',
             ariaLabel: 'GitHub Repository öffnen',
             iconClass: 'pi pi-github text-xl text-gray-400',
-            cardClass: 'ttt-card-interactive',
         },
     ];
 }

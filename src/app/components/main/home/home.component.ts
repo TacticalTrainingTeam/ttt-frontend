@@ -8,6 +8,7 @@ import { HomeBranchesComponent } from './sections/branches/home-branches.compone
 import { HomeGalleryComponent } from './sections/gallery/home-gallery.component';
 import { HomeOrbatComponent } from './sections/orbat/home-orbat.component';
 import { HomeBannerSlide, HomeBranch, HomeCommunityStat, HomeGalleryImage } from '../../../shared/types/home.types';
+import { TTT_COMMUNITY_STATS } from '../../../shared/constants/community-stats';
 
 @Component({
     selector: 'ttt-home',
@@ -113,9 +114,9 @@ export class HomeComponent {
     ];
 
     readonly communityStats = signal<HomeCommunityStat[]>([
-        { value: '80+', label: 'Mitglieder', color: 'text-tttGreen' },
-        { value: '2013', label: 'Gegründet', color: 'text-tttGreen' },
-        { value: '2', label: 'Events/Woche', color: 'text-tttGreen' },
+        { value: TTT_COMMUNITY_STATS.members, label: 'Mitglieder' },
+        { value: TTT_COMMUNITY_STATS.founded, label: 'Gegründet' },
+        { value: TTT_COMMUNITY_STATS.eventsPerWeek, label: 'Events/Woche' },
     ]);
     // Temporaer deaktiviert bis die Member-API live ist - zeigt solange die statischen Kennzahlen
     // ngOnInit(): void {

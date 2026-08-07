@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
     selector: 'ttt-external-link-tile',
     standalone: true,
-    imports: [CommonModule],
+    imports: [NgClass],
     templateUrl: './external-link-tile.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

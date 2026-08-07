@@ -6,60 +6,17 @@
         </p>
 
         <div class="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            <div class="border-tttWhite/20 bg-tttWhite/10 rounded-lg border p-3">
-                <div class="mb-2 flex items-center gap-3">
-                    <img src="/img/ranks/TTT-Icon_Offizier.png" alt="Offizier" class="h-8 w-8 shrink-0 object-contain" />
-                    <div class="text-left">
-                        <h3 class="ttt-label">Offiziere</h3>
-                        <p class="text-base opacity-80">Führen die TTT-Abteilungen</p>
+            @for (rank of rankTiles; track rank.title) {
+                <div class="border-tttWhite/20 bg-tttWhite/10 rounded-lg border p-3">
+                    <div class="mb-2 flex items-center gap-3">
+                        <img [src]="rank.icon" [alt]="rank.alt" class="h-8 w-8 shrink-0 object-contain" />
+                        <div class="text-left">
+                            <h3 class="ttt-label">{{ rank.title }}</h3>
+                            <p class="text-base opacity-80">{{ rank.description }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="border-tttWhite/20 bg-tttWhite/10 rounded-lg border p-3">
-                <div class="mb-2 flex items-center gap-3">
-                    <img src="/img/ranks/TTT-Icon_Unteroffizier.png" alt="Unteroffizier" class="h-8 w-8 shrink-0 object-contain" />
-                    <div class="text-left">
-                        <h3 class="ttt-label">Unteroffiziere</h3>
-                        <p class="text-base opacity-80">Direkte Unterstützer der Offiziere</p>
-                    </div>
-                </div>
-            </div>
-            <div class="border-tttWhite/20 bg-tttWhite/10 rounded-lg border p-3">
-                <div class="mb-2 flex items-center gap-3">
-                    <img src="/img/ranks/TTT-Icon_Soldat-Veteran.png" alt="Veteran" class="h-8 w-8 shrink-0 object-contain" />
-                    <div class="text-left">
-                        <h3 class="ttt-label">Veteranen</h3>
-                        <p class="text-base opacity-80">Besonders engagierte Mitglieder</p>
-                    </div>
-                </div>
-            </div>
-            <div class="border-tttWhite/20 bg-tttWhite/10 rounded-lg border p-3">
-                <div class="mb-2 flex items-center gap-3">
-                    <img src="/img/ranks/TTT-Icon_Soldat-Veteran.png" alt="Soldat" class="h-8 w-8 shrink-0 object-contain" />
-                    <div class="text-left">
-                        <h3 class="ttt-label">Soldaten</h3>
-                        <p class="text-base opacity-80">Vollwertige TTT-Mitglieder</p>
-                    </div>
-                </div>
-            </div>
-            <div class="border-tttWhite/20 bg-tttWhite/10 rounded-lg border p-3">
-                <div class="mb-2 flex items-center gap-3">
-                    <img src="/img/ranks/TTT-Icon_Rekrut.png" alt="Rekrut" class="h-8 w-8 shrink-0 object-contain" />
-                    <div class="text-left">
-                        <h3 class="ttt-label">Rekruten</h3>
-                        <p class="text-base opacity-80">Angehende TTT-Mitglieder</p>
-                    </div>
-                </div>
-            </div>
-            <div class="border-tttWhite/20 bg-tttWhite/10 rounded-lg border p-3">
-                <div class="mb-2 flex items-center gap-3">
-                    <img src="/img/ranks/TTT-Icon_Gast.png" alt="Gast" class="h-8 w-8 shrink-0 object-contain" />
-                    <div class="text-left">
-                        <h3 class="ttt-label">Gäste</h3>
-                        <p class="text-base opacity-80">Freie Mitspieler bei Events</p>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
 
         <div class="border-tttWhite/20 bg-tttWhite/10 mb-6 rounded-lg border p-4">

@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 import { ButtonDirective } from '@openng/optimus-ui/button';
 import { Timeline } from '@openng/optimus-ui/timeline';
 import { TimelineEvent } from '../../../../../shared/types/chronik.types';
@@ -8,7 +8,7 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
 @Component({
     selector: 'ttt-chronik-timeline',
     standalone: true,
-    imports: [CommonModule, ButtonDirective, Timeline, SectionHeaderComponent],
+    imports: [NgClass, ButtonDirective, Timeline, SectionHeaderComponent],
     templateUrl: './chronik-timeline.component.html',
     styleUrl: './chronik-timeline.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -16,15 +16,10 @@ import { SectionHeaderComponent } from '../../../../../shared/components/section
 export class ChronikTimelineComponent {
     timelineEvents = input.required<TimelineEvent[]>();
 
-    toggleEventDetails(event: TimelineEvent): void {
-        if (event.expanded) {
-            event.expanded = false;
-            return;
-        }
+    /** Id of the event whose details are open; null when all are collapsed */
+    readonly expandedId = signal<string | null>(null);
 
-        for (const e of this.timelineEvents()) {
-            e.expanded = false;
-        }
-        event.expanded = true;
+    toggleEventDetails(event: TimelineEvent): void {
+        this.expandedId.update((id) => (id === event.id ? null : event.id));
     }
 }

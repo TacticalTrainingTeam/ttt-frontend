@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
     selector: 'ttt-section-header',
     standalone: true,
-    imports: [CommonModule],
+    imports: [NgClass],
     templateUrl: './section-header.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

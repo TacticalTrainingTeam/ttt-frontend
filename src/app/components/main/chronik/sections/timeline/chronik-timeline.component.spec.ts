@@ -21,7 +21,6 @@ describe('ChronikTimelineComponent', () => {
                 type: 'milestone',
                 description: 'desc',
                 details: ['detail'],
-                expanded: false,
             } as TimelineEvent,
         ]);
         fixture.detectChanges();
@@ -32,8 +31,13 @@ describe('ChronikTimelineComponent', () => {
     });
 
     it('should toggle event details', () => {
-        component.toggleEventDetails(component.timelineEvents()[0]);
-        expect(component.timelineEvents()[0].expanded).toBe(true);
+        const event = component.timelineEvents()[0];
+
+        component.toggleEventDetails(event);
+        expect(component.expandedId()).toBe(event.id);
+
+        component.toggleEventDetails(event);
+        expect(component.expandedId()).toBeNull();
     });
 
     it('should render event content inside the timeline', () => {

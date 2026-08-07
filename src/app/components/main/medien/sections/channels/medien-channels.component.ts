@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MediaPlatformCard, TwitchStream } from '../../../../../shared/types/medien.types';
@@ -8,7 +8,7 @@ import { ExternalLinkTileComponent } from '../../../../../shared/components/exte
 @Component({
     selector: 'ttt-medien-channels',
     standalone: true,
-    imports: [CommonModule, SectionHeaderComponent, ExternalLinkTileComponent],
+    imports: [AsyncPipe, SectionHeaderComponent, ExternalLinkTileComponent],
     templateUrl: './medien-channels.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
