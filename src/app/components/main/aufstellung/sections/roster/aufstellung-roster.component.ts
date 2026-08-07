@@ -4,7 +4,6 @@ import { Dialog } from '@openng/optimus-ui/dialog';
 import { Tooltip } from '@openng/optimus-ui/tooltip';
 import { ActivableDirective } from '../../../../../shared/directives/activable.directive';
 import { CampaignRibbon, RankType } from '../../../../../shared/types/member.types';
-import { AUFSTELLUNG_SECURITY } from '../../aufstellung.shared';
 import { Member, MembersByRank, RankInfoMap } from '../../../../../shared/types/aufstellung.types';
 import { SectionHeaderComponent } from '../../../../../shared/components/section-header/section-header.component';
 
@@ -56,33 +55,6 @@ export class AufstellungRosterComponent {
     }
 
     getSortedCampaignRibbons(ribbons: CampaignRibbon[]): CampaignRibbon[] {
-        return [...ribbons].sort((a, b) => {
-            const yearA = Number.parseInt(a.year, AUFSTELLUNG_SECURITY.RADIX);
-            const yearB = Number.parseInt(b.year, AUFSTELLUNG_SECURITY.RADIX);
-            return yearB - yearA;
-        });
-    }
-
-    private getRankColorClasses(rank: RankType): { text: string; bg: string } {
-        switch (rank) {
-            case 'offizier':
-                return { text: 'text-yellow-400', bg: 'bg-yellow-400/10' };
-            case 'unteroffizier':
-                return { text: 'text-gray-400', bg: 'bg-gray-400/10' };
-            case 'veteran':
-                return { text: 'text-green-400', bg: 'bg-green-400/10' };
-            case 'soldat':
-                return { text: 'text-blue-600', bg: 'bg-blue-600/10' };
-            case 'rekrut':
-                return { text: 'text-blue-300', bg: 'bg-blue-300/10' };
-            case 'gast':
-                return { text: 'text-gray-300', bg: 'bg-gray-300/10' };
-            default:
-                return { text: 'text-gray-400', bg: 'bg-gray-400/10' };
-        }
-    }
-
-    getRankTagClasses(rank: RankType): string {
-        return this.getRankColorClasses(rank).text;
+        return [...ribbons].sort((a, b) => Number.parseInt(b.year, 10) - Number.parseInt(a.year, 10));
     }
 }
