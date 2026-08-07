@@ -1,0 +1,25 @@
+<div class="bg-tttGray-800 border-tttGray-700 rounded-lg border p-4">
+    @if (widget(); as data) {
+        <div class="mb-3 flex items-center gap-2">
+            <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-green-500"></span>
+            <span class="text-tttWhite text-sm font-semibold">{{ data.presence_count }} online</span>
+        </div>
+        <ul class="mb-4 max-h-72 space-y-2 overflow-y-auto pr-1">
+            @for (member of data.members; track member.id) {
+                <li class="flex items-center gap-2">
+                    <span class="relative shrink-0">
+                        <img [src]="member.avatar_url" alt="" class="h-6 w-6 rounded-full" loading="lazy" referrerpolicy="no-referrer" />
+                        <span
+                            class="border-tttGray-800 absolute -right-0.5 -bottom-0.5 h-2 w-2 rounded-full border"
+                            [class]="statusDotClass[member.status]"
+                        ></span>
+                    </span>
+                    <span class="text-tttGray-200 truncate text-sm">{{ member.username }}</span>
+                </li>
+            }
+        </ul>
+    }
+    <div class="text-center">
+        <a [href]="discordUrl" target="_blank" rel="noopener noreferrer" class="ttt-btn-primary">Discord beitreten</a>
+    </div>
+</div>

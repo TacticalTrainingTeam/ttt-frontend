@@ -1,14 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
-import { TTT_LINKS } from '../../../shared/constants/external-links';
+import { DiscordWidgetComponent } from './discord-widget/discord-widget.component';
 
 @Component({
     selector: 'ttt-right-sidebar',
     standalone: true,
-    imports: [SectionHeaderComponent],
+    imports: [SectionHeaderComponent, DiscordWidgetComponent],
     templateUrl: './right-sidebar.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RightSidebarComponent {
-    readonly discordUrl = TTT_LINKS.discord;
-}
+export class RightSidebarComponent {}
