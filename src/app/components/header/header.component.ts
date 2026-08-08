@@ -91,6 +91,14 @@ export class HeaderComponent {
                     target: '_blank',
                     rel: 'noopener noreferrer',
                 },
+                {
+                    label: 'Unit Profile',
+                    icon: 'pi pi-book',
+                    styleClass: 'font-heading',
+                    url: TTT_LINKS.unitProfile,
+                    target: '_blank',
+                    rel: 'noopener noreferrer',
+                },
             ],
         },
     ];

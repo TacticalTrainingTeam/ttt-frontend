@@ -15,6 +15,7 @@ export const TTT_LINKS = {
     fictionDocumentation: 'https://files.tacticalteam.de/s/qYyDrxxCXTbAx9j',
     arma3SyncVideo: 'https://www.youtube.com/watch?v=lJ2DYk7SMPY',
     arma3SyncTips: 'https://www.youtube.com/watch?v=mFCTQJLqQNY',
+    unitProfile: 'https://arma3.com/news/unit-profile-03-tactical-training-team',
 } as const;
 
 export const TTT_SOCIAL_LINKS = {
