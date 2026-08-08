@@ -36,8 +36,8 @@ importers:
         specifier: 1.0.0
         version: 1.0.0(08439a90c290d37f3a307dc7101a9872)
       '@openng/optimus-ui-themes':
-        specifier: 1.0.0
-        version: 1.0.0
+        specifier: 1.0.1
+        version: 1.0.1
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
@@ -1163,6 +1163,10 @@ packages:
     resolution: {integrity: sha512-Us+p+/J8zAfGjPBHY/cJkwi28Ep5eW4XptPHwPTdVxQwhfl8OVa00D2hFr5lkxyNlxnJHVxdJmTptn9UPS0JMQ==}
     engines: {node: '>=12.11.0'}
 
+  '@openng/optimus-ui-styled@1.0.1':
+    resolution: {integrity: sha512-v/h1v/buJbK43SILIuZ1NyWe7Ks6hy3TOFYsDGSsOmDYRb18/7hGoG+qWWc928FsTvPcksoPDfhYgme06nBqzg==}
+    engines: {node: '>=12.11.0'}
+
   '@openng/optimus-ui-styles@1.0.0':
     resolution: {integrity: sha512-fl6im44EhBdjB8996OmU0pdCvSJHzglUxjeGWKIkNr4MHV1yeO2kSlBE3LThI7YtjE572Juavuc3lnnTtJti9A==}
 
@@ -1171,11 +1175,15 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.1.0'
 
-  '@openng/optimus-ui-themes@1.0.0':
-    resolution: {integrity: sha512-nZo2bTgtcycGeBHYDnUmjnRv+wZ1RNnmla9H4gsRwEZ57CE9JoJlEjhzor8sAY/BAKXY5Q/g+1EKe1sCEEP7Ug==}
+  '@openng/optimus-ui-themes@1.0.1':
+    resolution: {integrity: sha512-o5hPXCN52lVgyq9Xb5cp5hX0FjPpC0WpfwHiZmJcZ5NE5Fm2te6fTxStcFnFYueV5NjzizSl/5BjIetqtfJRtA==}
 
   '@openng/optimus-ui-utils@1.0.0':
     resolution: {integrity: sha512-+Dw2M1A+BfcQ27GTUhEft/kxPwx0vgUZotrpMH0YF+ZOJPEacDZH9XzN+1UzlYkTij65M1dvjYbyIiBqYEI3fA==}
+    engines: {node: '>=12.11.0'}
+
+  '@openng/optimus-ui-utils@1.0.1':
+    resolution: {integrity: sha512-GecG8TZ8wjI348KsS2MHZGRipTkq20/R9zd1Iqo+4YO/Ip4DnbAJZ67RxhXL2mtwZCbY+rCMgW2enY0JAHSnSw==}
     engines: {node: '>=12.11.0'}
 
   '@openng/optimus-ui@1.0.0':
@@ -4943,6 +4951,10 @@ snapshots:
     dependencies:
       '@openng/optimus-ui-utils': 1.0.0
 
+  '@openng/optimus-ui-styled@1.0.1':
+    dependencies:
+      '@openng/optimus-ui-utils': 1.0.1
+
   '@openng/optimus-ui-styles@1.0.0':
     dependencies:
       '@openng/optimus-ui-styled': 1.0.0
@@ -4951,11 +4963,13 @@ snapshots:
     dependencies:
       tailwindcss: 4.3.3
 
-  '@openng/optimus-ui-themes@1.0.0':
+  '@openng/optimus-ui-themes@1.0.1':
     dependencies:
-      '@openng/optimus-ui-styled': 1.0.0
+      '@openng/optimus-ui-styled': 1.0.1
 
   '@openng/optimus-ui-utils@1.0.0': {}
+
+  '@openng/optimus-ui-utils@1.0.1': {}
 
   '@openng/optimus-ui@1.0.0(08439a90c290d37f3a307dc7101a9872)':
     dependencies:
