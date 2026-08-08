@@ -37,7 +37,7 @@ export class HeaderComponent {
             rel: 'noopener noreferrer',
         },
         {
-            label: 'TS3',
+            label: 'TeamSpeak',
             icon: 'pi pi-microphone',
             styleClass: 'font-heading',
             url: TTT_LINKS.teamspeak,

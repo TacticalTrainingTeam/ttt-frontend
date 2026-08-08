@@ -4,6 +4,7 @@
 export const TTT_LINKS = {
     discord: 'https://discord.tacticalteam.de',
     teamspeak: 'ts3server://ts3.tacticalteam.de',
+    teamspeakStatusViewer: 'https://ts3.tacticalteam.de',
     wiki: 'https://wiki.tacticalteam.de',
     events: 'https://events.tacticalteam.de',
     eventsCalendar: 'https://events.tacticalteam.de/events',

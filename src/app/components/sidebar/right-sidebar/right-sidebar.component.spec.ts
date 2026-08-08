@@ -30,19 +30,28 @@ describe('RightSidebarComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should display the Discord section', () => {
+    it('should display the Discord and TeamSpeak sections', () => {
         const compiled = fixture.nativeElement as HTMLElement;
         expect(compiled.querySelector('aside')).toBeTruthy();
         expect(compiled.textContent).toContain('Live Discord');
+        expect(compiled.textContent).toContain('Live TeamSpeak');
     });
 
-    it('should embed the custom Discord widget', () => {
+    it('should embed the custom Discord widget instead of an iframe', () => {
         httpMock
             .expectOne((req) => req.url.endsWith('/widget.json'))
             .flush({ id: '1', name: 'TTT', instant_invite: null, presence_count: 0, members: [] });
 
         const compiled = fixture.nativeElement as HTMLElement;
         expect(compiled.querySelector('ttt-discord-widget')).toBeTruthy();
-        expect(compiled.querySelector('iframe')).toBeNull();
+    });
+
+    it('should embed the TeamSpeak status viewer as an iframe with a connect fallback', () => {
+        const compiled = fixture.nativeElement as HTMLElement;
+        const iframe = compiled.querySelector('iframe');
+
+        expect(iframe).toBeTruthy();
+        expect(iframe?.getAttribute('title')).toBe('TTT TeamSpeak Server');
+        expect(compiled.querySelector('a[href^="ts3server://"]')).toBeTruthy();
     });
 });
