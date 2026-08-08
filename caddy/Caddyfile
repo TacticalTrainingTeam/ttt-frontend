@@ -1,0 +1,15 @@
+:80 {
+	handle /squadxml/* {
+		reverse_proxy https://squadxml.tacticalteam.de
+	}
+
+	handle /squadxml_tvt/* {
+		reverse_proxy https://squadxml.tacticalteam.de
+	}
+
+	handle {
+		root * /usr/share/caddy
+		try_files {path} /index.html
+		file_server
+	}
+}
