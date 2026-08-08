@@ -5,6 +5,8 @@ import { routes } from './app.routes';
 import { provideOptimus } from '@openng/optimus-ui/config';
 import { tttOptimusTheme } from './themes.config';
 import { securityInterceptor } from './core/interceptors/security.interceptor';
+import { provideMatomo, withRouter } from 'ngx-matomo-client';
+import { environment } from '../environments/environment';
 
 /**
  * Application configuration
@@ -19,5 +21,6 @@ export const appConfig: ApplicationConfig = {
             theme: tttOptimusTheme,
         }),
         provideHttpClient(withInterceptors([securityInterceptor])),
+        provideMatomo({ trackerUrl: 'https://analytics.tacticalteam.de', siteId: '4', disabled: !environment.production }, withRouter()),
     ],
 };

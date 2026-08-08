@@ -38,6 +38,9 @@ importers:
       '@openng/optimus-ui-themes':
         specifier: 1.0.1
         version: 1.0.1
+      ngx-matomo-client:
+        specifier: 9.1.0
+        version: 9.1.0(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
@@ -2975,6 +2978,12 @@ packages:
   negotiator@1.0.0:
     resolution: {integrity: sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==}
     engines: {node: '>= 0.6'}
+
+  ngx-matomo-client@9.1.0:
+    resolution: {integrity: sha512-1kdht0kpqWe6NJl/zvtAMReXWe8cmLweArcAv9rgYrx2EQANrsg5NphrIbpTlOJFwMz98S27zJp/ZxXzc+vXEQ==}
+    peerDependencies:
+      '@angular/common': ^21.0.0
+      '@angular/core': ^21.0.0
 
   node-addon-api@6.1.0:
     resolution: {integrity: sha512-+eawOlIgy680F0kBzPUNFhMZGtJ1YmqM6l4+Crf4IkImjYrO/mqPwRMh352g23uIaQKFItcQ64I7KMaJxHgAVA==}
@@ -6862,6 +6871,12 @@ snapshots:
     optional: true
 
   negotiator@1.0.0: {}
+
+  ngx-matomo-client@9.1.0(@angular/common@21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)):
+    dependencies:
+      '@angular/common': 21.2.19(@angular/core@21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2)
+      '@angular/core': 21.2.19(@angular/compiler@21.2.19)(rxjs@7.8.2)(zone.js@0.15.0)
+      tslib: 2.8.1
 
   node-addon-api@6.1.0:
     optional: true
