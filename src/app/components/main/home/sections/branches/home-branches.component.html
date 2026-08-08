@@ -1,17 +1,22 @@
-<section class="bg-tttGray-950 border-tttGray-800 border-t py-20">
+<section class="bg-tttGray-950 border-tttGray-800 border-t pt-12 pb-20">
     <div class="ttt-page-container">
-        <ttt-section-header
-            title="Was wir spielen"
-            subtitle="Vom Schützen über den Panzerkommandanten bis zum Piloten"
-            containerClass="ttt-text-center mb-10"
-            titleClass="ttt-section-title mb-4"
-            [showDivider]="true"
-        ></ttt-section-header>
+        <div class="ttt-text-center mb-10">
+            <h2 class="ttt-section-title mx-auto mb-4 grid max-w-lg grid-cols-[1fr_auto_1fr] items-center gap-3">
+                <span class="justify-self-end">Deine</span>
+                <img src="/img/logo-hex-black.webp" alt="TTT" class="h-16 w-auto md:h-32" />
+                <span class="justify-self-start">Rolle</span>
+            </h2>
+            <p class="ttt-description-text">
+                Vom Schützen über den Panzerkommandanten bis zum Piloten. Bei uns gibt es keine festen Rollen, du entscheidest bei jedem
+                Event ganz frei, worauf du gerade Lust hast.
+            </p>
+            <div class="ttt-section-divider mt-4" aria-hidden="true"></div>
+        </div>
 
         <div class="grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-4">
             @for (branch of branches(); track branch.id) {
                 <div class="ttt-content-card flex flex-col items-center text-center">
-                    <img [src]="branch.icon" alt="" class="mb-3 h-20 w-auto" loading="lazy" />
+                    <img [src]="branch.icon" alt="" class="mb-3 h-32 w-auto" loading="lazy" />
                     <h3 class="ttt-card-title mb-2">{{ branch.name }}</h3>
                     <p class="text-tttGray-200 text-sm leading-relaxed">{{ branch.description }}</p>
                 </div>
