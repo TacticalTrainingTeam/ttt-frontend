@@ -104,7 +104,7 @@
     }
 
     .ttt-card-title {
-        @apply text-tttWhite text-lg font-bold break-words;
+        @apply text-tttWhite text-lg font-bold text-balance break-words;
     }
 
     .ttt-label {
