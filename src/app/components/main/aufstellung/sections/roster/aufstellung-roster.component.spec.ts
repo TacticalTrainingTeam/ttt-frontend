@@ -44,7 +44,7 @@ describe('AufstellungRosterComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should open the details dialog for a member with expandable content', () => {
+    it('should open the details dialog for a member with awards', () => {
         const member = createMember({ medals: [{ id: 'm1', name: 'Medal', description: '', image: '' }] });
 
         component.openMemberDetails(member);
@@ -52,12 +52,45 @@ describe('AufstellungRosterComponent', () => {
         expect(component.selectedMember()).toBe(member);
     });
 
-    it('should not open the details dialog for a member without expandable content', () => {
+    it('should open the details dialog for a member without any awards', () => {
         const member = createMember();
 
         component.openMemberDetails(member);
 
-        expect(component.selectedMember()).toBeNull();
+        expect(component.selectedMember()).toBe(member);
+    });
+
+    it('should report that a member without awards has nothing to list', () => {
+        expect(component.hasListedDetails(createMember())).toBe(false);
+    });
+
+    it('should list merits before campaign ribbons sorted by most recent first', () => {
+        const member = createMember({
+            medals: [{ id: 'm1', name: 'Medien Gold', description: '', image: '' }],
+            campaignRibbons: [
+                { id: 'c1', name: 'Alte Kampagne', image: '', campaign: 'Alt', quarter: 'Q1', year: '2014' },
+                { id: 'c2', name: 'Neue Kampagne', image: '', campaign: 'Neu', quarter: 'Q2', year: '2023' },
+            ],
+        });
+
+        component.openMemberDetails(member);
+
+        expect(component.ribbonItems().map((item) => item.id)).toEqual(['m1', 'c2', 'c1']);
+    });
+
+    it('should keep hanging medals out of the ribbon bar but in the side list', () => {
+        const member = createMember({
+            medals: [
+                { id: 'hanging', name: 'Medal of Honor', description: '', image: '', isRibbon: false },
+                { id: 'racked', name: 'Medien Gold', description: '', image: '' },
+            ],
+        });
+
+        component.openMemberDetails(member);
+
+        expect(component.ribbonItems().map((item) => item.id)).toEqual(['hanging', 'racked']);
+        expect(component.rackRibbons().map((item) => item.id)).toEqual(['racked']);
+        expect(component.uniformMedal()?.id).toBe('hanging');
     });
 
     it('should clear the selected member when the dialog is closed', () => {

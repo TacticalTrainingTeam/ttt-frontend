@@ -1,0 +1,185 @@
+<div class="relative w-full">
+    <svg [attr.viewBox]="viewBox" class="block w-full" role="img" [attr.aria-label]="label()">
+        <defs>
+            <linearGradient id="tttStrap" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#6d767d" />
+                <stop offset="0.42" stop-color="#e8eef0" />
+                <stop offset="1" stop-color="#8f989f" />
+            </linearGradient>
+            <linearGradient id="tttFlap" x1="0" y1="0" x2="0.6" y2="1">
+                <stop offset="0" stop-color="#c4c9cf" />
+                <stop offset="0.55" stop-color="#b1b6bc" />
+                <stop offset="1" stop-color="#9ea3a9" />
+            </linearGradient>
+            <radialGradient id="tttBtn" cx="0.34" cy="0.28" r="0.85">
+                <stop offset="0" stop-color="#ffffff" />
+                <stop offset="0.3" stop-color="#eef2f5" />
+                <stop offset="0.62" stop-color="#ccd3d8" />
+                <stop offset="0.86" stop-color="#9aa4ab" />
+                <stop offset="1" stop-color="#6d767d" />
+            </radialGradient>
+            <filter id="tttDrop" x="-40%" y="-40%" width="180%" height="180%">
+                <feDropShadow dx="0" dy="1.6" stdDeviation="1.1" flood-color="#121820" flood-opacity="0.75" />
+            </filter>
+            <filter id="tttFlapDrop" x="-25%" y="-30%" width="150%" height="200%">
+                <feDropShadow dx="0.9" dy="2.4" stdDeviation="1.7" flood-color="#141719" flood-opacity="0.62" />
+            </filter>
+            <!-- same 3x3 weave as the jacket, so the redrawn flap does not look glued on -->
+            <pattern id="tttFlapWeave" width="3" height="3" patternUnits="userSpaceOnUse">
+                <rect width="3" height="3" fill="none" />
+                <path d="M0 0 L3 3" stroke="#ffffff" stroke-opacity="0.035" stroke-width="0.6" />
+                <path d="M3 0 L0 3" stroke="#000000" stroke-opacity="0.035" stroke-width="0.6" />
+            </pattern>
+        </defs>
+
+        <image href="/img/ttt-dienstanzug-brust.svg" x="0" y="14" width="430" height="290" />
+
+        @if (crest()) {
+            <g [attr.transform]="crestTransform">
+                <image
+                    href="/img/logos/ttt-aermelabzeichen.svg"
+                    [attr.x]="crestGeometry.x"
+                    [attr.y]="crestGeometry.y"
+                    [attr.width]="crestGeometry.width"
+                    [attr.height]="crestGeometry.height"
+                    filter="url(#tttDrop)"
+                />
+            </g>
+        }
+
+        <g filter="url(#tttDrop)">
+            @for (ribbon of placedRibbons(); track ribbon.id) {
+                <!-- stretched to the slot so every ribbon has the same size and the rack stays seamless -->
+                <image
+                    [attr.href]="ribbon.image"
+                    [attr.x]="ribbon.x"
+                    [attr.y]="ribbon.y"
+                    [attr.width]="rack.width"
+                    [attr.height]="rack.height"
+                    preserveAspectRatio="none"
+                    class="cursor-pointer"
+                    [tttActivable]="true"
+                    [activableAriaLabel]="ribbon.label"
+                    (activableActivate)="selectBadge(ribbon.id, ribbon.label, ribbon.anchorX, ribbon.anchorY)"
+                />
+            }
+        </g>
+
+        @if (medal(); as medalBadge) {
+            <image
+                [attr.href]="medalBadge.image"
+                [attr.x]="medalGeometry.x"
+                [attr.y]="medalGeometry.y"
+                [attr.width]="medalGeometry.width"
+                [attr.height]="medalGeometry.height"
+                filter="url(#tttDrop)"
+                class="cursor-pointer"
+                [tttActivable]="true"
+                [activableAriaLabel]="medalBadge.label"
+                (activableActivate)="selectBadge(medalBadge.id, medalBadge.label, medalAnchor.x, medalAnchor.y)"
+            />
+
+            <!-- flap drawn again so the medal ribbon disappears underneath it -->
+            <g filter="url(#tttFlapDrop)">
+                <path [attr.d]="rightFlap.path" fill="url(#tttFlap)" stroke="#7c8187" stroke-width="0.8" />
+            </g>
+            <path [attr.d]="rightFlap.path" fill="url(#tttFlapWeave)" />
+            <path d="M 266.68,176.87 H 340.08" fill="none" stroke="#f2f6f9" stroke-opacity="0.38" stroke-width="0.9" />
+            <path d="M 263.38,182.87 V 191.87" fill="none" stroke="#f2f6f9" stroke-opacity="0.24" stroke-width="0.9" />
+            <path d="M 343.38,182.87 V 191.87" fill="none" stroke="#666b71" stroke-opacity="0.36" stroke-width="1" />
+            <path
+                d="M 264.38,194.47 C 264.38,199.47 289.38,200.47 303.38,201.47 C 317.38,200.47 342.38,199.47 342.38,194.47"
+                fill="none"
+                stroke="#eef2f6"
+                stroke-opacity="0.28"
+                stroke-width="0.9"
+            />
+            <circle
+                [attr.cx]="rightFlap.button.x"
+                [attr.cy]="rightFlap.button.y"
+                [attr.r]="rightFlap.button.radius"
+                fill="url(#tttBtn)"
+                stroke="#5c646b"
+                stroke-width="0.35"
+                filter="url(#tttDrop)"
+            />
+        }
+
+        <!-- straps first, then plaques, button last: the first strap has to vanish behind the button -->
+        @for (department of placedDepartments(); track department.id) {
+            <rect
+                [attr.x]="hangerGeometry.buttonX - hangerGeometry.strapWidth / 2"
+                [attr.y]="department.strapY"
+                [attr.width]="hangerGeometry.strapWidth"
+                [attr.height]="department.strapHeight"
+                [attr.rx]="hangerGeometry.strapRadius"
+                fill="url(#tttStrap)"
+                filter="url(#tttDrop)"
+            />
+        }
+        @for (department of placedDepartments(); track department.id) {
+            <image
+                [attr.href]="department.image"
+                [attr.x]="department.x"
+                [attr.y]="department.y"
+                [attr.width]="hangerGeometry.size"
+                [attr.height]="hangerGeometry.size"
+                filter="url(#tttDrop)"
+                class="cursor-pointer"
+                [tttActivable]="true"
+                [activableAriaLabel]="department.label"
+                (activableActivate)="selectBadge(department.id, department.label, department.anchorX, department.anchorY)"
+            />
+        }
+        @if (placedDepartments().length > 0) {
+            <circle
+                [attr.cx]="hangerGeometry.buttonX"
+                [attr.cy]="hangerGeometry.buttonY"
+                [attr.r]="6.3"
+                fill="url(#tttBtn)"
+                stroke="#5c646b"
+                stroke-width="0.35"
+                filter="url(#tttDrop)"
+            />
+        }
+
+        @if (rankImage(); as rankSrc) {
+            <!-- full-size overlay, already clipped to the jacket outline; hit areas below make it clickable -->
+            <image [attr.href]="rankSrc" x="0" y="0" width="430" height="600" style="pointer-events: none" />
+            <rect
+                [attr.x]="shoulder.left.x"
+                [attr.y]="shoulder.left.y"
+                [attr.width]="shoulder.left.width"
+                [attr.height]="shoulder.left.height"
+                fill="none"
+                pointer-events="all"
+                class="cursor-pointer"
+                [tttActivable]="true"
+                [activableAriaLabel]="rankLabel()"
+                (activableActivate)="selectBadge('rank-left', rankLabel() ?? '', rankAnchor.left.x, rankAnchor.left.y)"
+            />
+            <rect
+                [attr.x]="shoulder.right.x"
+                [attr.y]="shoulder.right.y"
+                [attr.width]="shoulder.right.width"
+                [attr.height]="shoulder.right.height"
+                fill="none"
+                pointer-events="all"
+                class="cursor-pointer"
+                [tttActivable]="true"
+                [activableAriaLabel]="rankLabel()"
+                (activableActivate)="selectBadge('rank-right', rankLabel() ?? '', rankAnchor.right.x, rankAnchor.right.y)"
+            />
+        }
+    </svg>
+
+    @if (activeLabel(); as active) {
+        <div
+            class="border-tttGray-600/50 bg-tttGray-900/95 text-tttWhite pointer-events-none absolute z-10 -mt-1 -translate-x-1/2 -translate-y-full rounded-md border px-2 py-1 text-xs font-medium whitespace-nowrap shadow-lg"
+            [style.left]="active.left"
+            [style.top]="active.top"
+        >
+            {{ active.text }}
+        </div>
+    }
+</div>

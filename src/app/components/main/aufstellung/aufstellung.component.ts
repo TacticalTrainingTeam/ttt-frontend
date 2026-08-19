@@ -173,8 +173,6 @@ export class AufstellungComponent implements OnInit {
         return stats;
     });
 
-    readonly totalMembers = computed(() => this.members().length);
-
     private createEmptyRankRecord<T>(factory: () => T): Record<RankType, T> {
         return this.rankOrder.reduce(
             (acc, rank) => {
