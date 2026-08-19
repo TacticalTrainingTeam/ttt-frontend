@@ -16,7 +16,6 @@ export class AufstellungOverviewComponent {
     rankOrder = input.required<RankType[]>();
     rankInfo = input.required<RankInfoMap>();
     memberStats = input.required<MemberStats>();
-    totalMembers = input.required<number>();
     title = input.required<string>();
     subtitle = input.required<string>();
 

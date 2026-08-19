@@ -66,7 +66,6 @@ describe('AufstellungComponent', () => {
         component.ngOnInit();
         expect(memberServiceSpy.getAllMembers).toHaveBeenCalled();
         expect(component.members()).toHaveLength(3);
-        expect(component.totalMembers()).toBe(3);
     });
 
     it('should group members by rank correctly', () => {
@@ -88,7 +87,7 @@ describe('AufstellungComponent', () => {
 
         expect(stats.offizier).toBe(1);
         expect(stats.soldat).toBe(2);
-        expect(totalFromStats).toBe(component.totalMembers());
+        expect(totalFromStats).toBe(component.members().length);
     });
 
     it('should provide expected static configuration', () => {
@@ -122,7 +121,7 @@ describe('AufstellungComponent', () => {
         expect(component.membersByRank().soldat[0].name).toBe('Bravo');
         expect(component.membersByRank().offizier).toHaveLength(0);
         expect(component.memberStats().soldat).toBe(2);
-        expect(component.totalMembers()).toBe(3);
+        expect(component.members()).toHaveLength(3);
     });
 
     it('should show all members again when the filter is cleared', () => {
