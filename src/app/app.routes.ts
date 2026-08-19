@@ -38,12 +38,11 @@ export const routes: Routes = [
         loadComponent: () => import('./components/main/medien/medien.component').then((m) => m.MedienComponent),
         title: 'Medien & Streams | Tactical Training Team',
     },
-    // Temporaer deaktiviert bis die Member-API live ist
-    // {
-    //     path: 'aufstellung',
-    //     loadComponent: () => import('./components/main/aufstellung/aufstellung.component').then((m) => m.AufstellungComponent),
-    //     title: 'Aufstellung & Mitglieder | Tactical Training Team',
-    // },
+    {
+        path: 'aufstellung',
+        loadComponent: () => import('./components/main/aufstellung/aufstellung.component').then((m) => m.AufstellungComponent),
+        title: 'Aufstellung & Mitglieder | Tactical Training Team',
+    },
     // Wildcard route - redirect unknown routes to home
     {
         path: '**',
