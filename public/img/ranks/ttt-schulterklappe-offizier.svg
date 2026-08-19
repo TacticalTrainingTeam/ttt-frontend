@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="600" viewBox="0 0 430 600">
+  <defs>
+    <clipPath id="jk" clipPathUnits="userSpaceOnUse"><path d="m 69.717338,581.7854 296.458272,-0.56254 c 0.0218,-26.81438 0.64912,-53.62876 0,-80.44314 l 52.8787,1.68762 C 422.49115,358.64477 434.30227,214.82219 409.49114,70.99962 360.92524,61.16669 312.35934,53.304725 263.79344,23.183769 L 218.22774,172.81925 172.42904,22.922488 C 123.38487,52.80039 80.950028,57.277565 30.339578,66.4993 -2.4719365,229.94606 15.262288,359.69566 15.151015,501.34226 l 54.285053,-0.56254 c -0.85975,26.11739 0.33163,53.93885 0.28127,81.00568 z"></path></clipPath>
+    <pattern id="wv" width="2.2" height="2.2" patternUnits="userSpaceOnUse" patternTransform="rotate(-13)">
+      <path d="M0,0 V2.2" stroke="#ffffff" stroke-opacity="0.26" stroke-width="1.1"></path>
+      <path d="M0,0 H2.2" stroke="#000000" stroke-opacity="0.2" stroke-width="1.1"></path>
+    </pattern>
+    <linearGradient id="rl" x1="0" y1="0" x2="0.12" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.44"></stop>
+      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0.04"></stop>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.46"></stop>
+    </linearGradient>
+    <radialGradient id="bt" cx="0.34" cy="0.28" r="0.85">
+      <stop offset="0" stop-color="#ffffff"></stop><stop offset="0.35" stop-color="#eef2f5"></stop>
+      <stop offset="0.68" stop-color="#c3cbd1"></stop><stop offset="1" stop-color="#798188"></stop>
+    </radialGradient>
+  </defs>
+  <g clip-path="url(#jk)">
+    <g transform="rotate(-13.3 87.5 53.8)">
+      <path d="M 49.15,35.8 H 112.85 A 5,5 0 0 1 117.85,40.8 V 66.8 A 5,5 0 0 1 112.85,71.8 H 49.15 A 18,18 0 0 1 49.15,35.8 Z" fill="#FDC700" stroke="#12161a" stroke-width="1.5"></path>
+      <path d="M 49.15,35.8 H 112.85 A 5,5 0 0 1 117.85,40.8 V 66.8 A 5,5 0 0 1 112.85,71.8 H 49.15 A 18,18 0 0 1 49.15,35.8 Z" fill="url(#wv)" style="mix-blend-mode:overlay"></path>
+      <path d="M 49.15,35.8 H 112.85 A 5,5 0 0 1 117.85,40.8 V 66.8 A 5,5 0 0 1 112.85,71.8 H 49.15 A 18,18 0 0 1 49.15,35.8 Z" fill="url(#rl)"></path>
+      <circle cx="109" cy="60.2" r="4.4" fill="url(#bt)" stroke="#5c646b" stroke-width="0.4"></circle>
+    </g>
+    <g transform="rotate(14.9 351.2 56.5)">
+      <path d="M 324,38.5 H 391.4 A 18,18 0 0 1 391.4,74.5 H 324 A 5,5 0 0 1 319,69.5 V 43.5 A 5,5 0 0 1 324,38.5 Z" fill="#FDC700" stroke="#12161a" stroke-width="1.5"></path>
+      <path d="M 324,38.5 H 391.4 A 18,18 0 0 1 391.4,74.5 H 324 A 5,5 0 0 1 319,69.5 V 43.5 A 5,5 0 0 1 324,38.5 Z" fill="url(#wv)" style="mix-blend-mode:overlay"></path>
+      <path d="M 324,38.5 H 391.4 A 18,18 0 0 1 391.4,74.5 H 324 A 5,5 0 0 1 319,69.5 V 43.5 A 5,5 0 0 1 324,38.5 Z" fill="url(#rl)"></path>
+      <circle cx="327" cy="62.9" r="4.4" fill="url(#bt)" stroke="#5c646b" stroke-width="0.4"></circle>
+    </g>
+  </g>
+</svg>
