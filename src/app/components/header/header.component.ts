@@ -52,23 +52,22 @@ export class HeaderComponent {
             rel: 'noopener noreferrer',
         },
         {
-            label: 'Medien',
-            icon: 'pi pi-images',
+            label: 'Aufstellung',
+            icon: 'pi pi-sitemap',
             styleClass: 'font-heading',
-            routerLink: ['/medien'],
+            routerLink: ['/aufstellung'],
         },
-        // Temporaer deaktiviert bis die Member-API live ist
-        // {
-        //     label: 'Aufstellung',
-        //     icon: 'pi pi-sitemap',
-        //     styleClass: 'font-heading',
-        //     routerLink: ['/aufstellung'],
-        // },
         {
             label: 'Über uns',
             icon: 'pi pi-info-circle',
             styleClass: 'font-heading',
             items: [
+                {
+                    label: 'Medien',
+                    icon: 'pi pi-images',
+                    styleClass: 'font-heading',
+                    routerLink: ['/medien'],
+                },
                 {
                     label: 'Chronik',
                     icon: 'pi pi-history',
