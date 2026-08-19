@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 46" width="168" height="46" role="img" aria-label="TTT Medien – Oxid">
+  <title>TTT Medien – Oxid</title>
+  <defs>
+    <linearGradient id="r-medien-oxid-frame" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#95564a"></stop><stop offset="0.42" stop-color="#68332b"></stop><stop offset="1" stop-color="#1d100d"></stop>
+    </linearGradient>
+    <linearGradient id="r-medien-oxid-device" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d5bbb7"></stop><stop offset="0.78" stop-color="#c3adaa"></stop>
+    </linearGradient>
+    <linearGradient id="r-medien-oxid-sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"></stop>
+      <stop offset="0.46" stop-color="#ffffff" stop-opacity="0"></stop>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.32"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="168" height="46" fill="url(#r-medien-oxid-frame)"></rect>
+  <g>
+    <rect x="3" y="3" width="22.68" height="40" fill="#1d100d"></rect>
+    <rect x="25.68" y="3" width="4.86" height="40" fill="#95564a"></rect>
+    <rect x="30.54" y="3" width="106.92" height="40" fill="#68332b"></rect>
+    <rect x="137.46" y="3" width="4.86" height="40" fill="#95564a"></rect>
+    <rect x="142.32" y="3" width="22.68" height="40" fill="#1d100d"></rect>
+  </g>
+  <rect x="3" y="3" width="162" height="40" fill="url(#r-medien-oxid-sheen)"></rect>
+  <rect x="3.5" y="3.5" width="161" height="39" fill="none" stroke="#000000" stroke-opacity="0.45"></rect>
+  <path d="M74.5 8.5 L99.5 23 L74.5 37.5 Z" fill="url(#r-medien-oxid-device)" stroke="#05070a" stroke-width="2.4" stroke-linejoin="round" paint-order="stroke fill"></path>
+</svg>
