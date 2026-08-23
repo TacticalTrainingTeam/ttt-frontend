@@ -1,5 +1,5 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors, withXhr } from '@angular/common/http';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
 import { provideOptimus } from '@openng/optimus-ui/config';
@@ -20,7 +20,7 @@ export const appConfig: ApplicationConfig = {
         provideOptimus({
             theme: tttOptimusTheme,
         }),
-        provideHttpClient(withInterceptors([securityInterceptor])),
+        provideHttpClient(withXhr(), withInterceptors([securityInterceptor])),
         provideMatomo({ trackerUrl: 'https://analytics.tacticalteam.de', siteId: '4', disabled: !environment.production }, withRouter()),
     ],
 };
