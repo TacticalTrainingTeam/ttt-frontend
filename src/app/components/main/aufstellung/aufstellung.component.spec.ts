@@ -1,5 +1,6 @@
 import type { Mocked } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { AufstellungComponent } from './aufstellung.component';
 import { MemberService } from '../../../core/services/member.service';
@@ -51,7 +52,7 @@ describe('AufstellungComponent', () => {
 
         await TestBed.configureTestingModule({
             imports: [AufstellungComponent],
-            providers: [{ provide: MemberService, useValue: memberServiceSpy }],
+            providers: [{ provide: MemberService, useValue: memberServiceSpy }, provideRouter([])],
         }).compileComponents();
 
         fixture = TestBed.createComponent(AufstellungComponent);
@@ -132,6 +133,20 @@ describe('AufstellungComponent', () => {
 
         expect(component.membersByRank().soldat).toHaveLength(2);
         expect(component.membersByRank().offizier).toHaveLength(1);
+    });
+
+    it('should resolve the deep-linked member from the ?mitglied= query param by id', () => {
+        component.ngOnInit();
+        fixture.componentRef.setInput('mitglied', 'member-2');
+
+        expect(component.deepLinkedMember()?.name).toBe('Bravo');
+    });
+
+    it('should have no deep-linked member without a matching query param', () => {
+        component.ngOnInit();
+        fixture.componentRef.setInput('mitglied', 'unbekannt');
+
+        expect(component.deepLinkedMember()).toBeNull();
     });
 
     it('should handle loading errors', () => {

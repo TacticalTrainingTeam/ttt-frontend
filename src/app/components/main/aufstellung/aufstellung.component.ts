@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Select } from '@openng/optimus-ui/select';
 import { PageLayoutComponent } from '../../../shared/components/page-layout/page-layout.component';
 import { Abteilung, Member as BackendMember, RankType } from '../../../shared/types/member.types';
@@ -66,6 +67,10 @@ const AUFSTELLUNG_CONFIG = {
 })
 export class AufstellungComponent implements OnInit {
     private readonly memberService = inject(MemberService);
+    private readonly router = inject(Router);
+    private readonly activatedRoute = inject(ActivatedRoute);
+
+    readonly mitglied = input<string | null>(null);
 
     readonly pageTitle = AUFSTELLUNG_CONFIG.PAGE_TITLE;
     readonly heroImage = '/img/banner/banner-img4.webp';
@@ -129,6 +134,15 @@ export class AufstellungComponent implements OnInit {
 
     readonly members = signal<Member[]>([]);
 
+    /** Member matching the ?mitglied= query param, once loaded; drives the roster's deep-linked dialog */
+    readonly deepLinkedMember = computed<Member | null>(() => {
+        const query = this.mitglied();
+        if (!query) {
+            return null;
+        }
+        return this.members().find((member) => member.id === query) ?? null;
+    });
+
     /** Selected Abteilung id; null shows all members */
     readonly selectedAbteilungId = signal<string | null>(null);
 
@@ -185,6 +199,15 @@ export class AufstellungComponent implements OnInit {
 
     retryLoading(): void {
         this.loadMembers();
+    }
+
+    /** Keeps ?mitglied= in sync so the open (or closed) card stays shareable/bookmarkable */
+    onMemberOpened(member: Member | null): void {
+        this.router.navigate([], {
+            relativeTo: this.activatedRoute,
+            queryParams: { mitglied: member?.id ?? null },
+            queryParamsHandling: 'merge',
+        });
     }
 
     private loadMembers(): void {

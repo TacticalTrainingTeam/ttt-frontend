@@ -255,9 +255,6 @@ export class MemberService {
         return this.api.get<T>(url).pipe(timeout(timeoutMs), retry({ count: retries, delay: retryDelay }), map(mapFn));
     }
 
-    /**
-     * Dummy members shown while the member API is not yet live
-     */
     private getDummyMembers(): Member[] {
         return [
             {
@@ -314,21 +311,35 @@ export class MemberService {
             {
                 id: 'dummy-3',
                 name: 'GSG9_abzocker',
-                rank: 'soldat',
+                rank: 'offizier',
                 avatar: '',
-                memberSince: '2015-01-01',
-                medals: [MEDALS.medienBronze],
+                memberSince: '2014-01-01',
+                medals: [MEDALS.medalOfHonor, MEDALS.medienBronze],
                 campaignRibbons: [
+                    CAMPAIGN_RIBBONS.aspis,
+                    CAMPAIGN_RIBBONS.bethNahrin,
                     CAMPAIGN_RIBBONS.themisQ1,
                     CAMPAIGN_RIBBONS.themisQ2,
                     CAMPAIGN_RIBBONS.entzug,
                     CAMPAIGN_RIBBONS.phoenix,
+                    CAMPAIGN_RIBBONS.solomon,
+                    CAMPAIGN_RIBBONS.justitia,
                     CAMPAIGN_RIBBONS.nemesis,
                     CAMPAIGN_RIBBONS.eastgate,
                     CAMPAIGN_RIBBONS.kotirintama,
                     CAMPAIGN_RIBBONS.andromeda,
                 ],
-                abteilungen: [],
+                abteilungen: [DEPARTMENTS.finanzenVerwaltung, DEPARTMENTS.technik],
+            },
+            {
+                id: 'dummy-4',
+                name: 'Bad Destiny',
+                rank: 'unteroffizier',
+                avatar: '',
+                memberSince: '2016-04-01',
+                medals: [],
+                campaignRibbons: [CAMPAIGN_RIBBONS.phoenix, CAMPAIGN_RIBBONS.kotirintama, CAMPAIGN_RIBBONS.andromeda],
+                abteilungen: [DEPARTMENTS.technik],
             },
         ];
     }

@@ -101,4 +101,25 @@ describe('AufstellungRosterComponent', () => {
 
         expect(component.selectedMember()).toBeNull();
     });
+
+    it('should emit the opened member so the parent can sync the URL', () => {
+        const member = createMember();
+        const opened = vi.fn();
+        component.memberOpened.subscribe(opened);
+
+        component.openMemberDetails(member);
+        component.onDetailsVisibleChange(false);
+
+        expect(opened).toHaveBeenNthCalledWith(1, member);
+        expect(opened).toHaveBeenNthCalledWith(2, null);
+    });
+
+    it('should open the deep-linked member once it is set', () => {
+        const member = createMember({ name: 'Deeplinked' });
+
+        fixture.componentRef.setInput('deepLinkedMember', member);
+        fixture.detectChanges();
+
+        expect(component.selectedMember()).toBe(member);
+    });
 });
