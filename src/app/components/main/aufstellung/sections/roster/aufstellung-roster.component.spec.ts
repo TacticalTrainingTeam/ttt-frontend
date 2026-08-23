@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { AufstellungRosterComponent } from './aufstellung-roster.component';
 import { Member } from '../../../../../shared/types/aufstellung.types';
 
@@ -22,7 +21,6 @@ describe('AufstellungRosterComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [AufstellungRosterComponent],
-            providers: [provideNoopAnimations()],
         }).compileComponents();
 
         fixture = TestBed.createComponent(AufstellungRosterComponent);
