@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, input, output, signal } from '@angular/core';
 import { Dialog } from '@openng/optimus-ui/dialog';
 import { Tooltip } from '@openng/optimus-ui/tooltip';
 import { ActivableDirective } from '../../../../../shared/directives/activable.directive';
@@ -30,9 +30,18 @@ export class AufstellungRosterComponent {
     rankInfo = input.required<RankInfoMap>();
     title = input.required<string>();
     subtitle = input.required<string>();
+    /** Member to open on load, e.g. from a ?mitglied= deep link */
+    deepLinkedMember = input<Member | null>(null);
+
+    /** Emits the member whose dialog is now open, or null once it closes; lets the parent sync the URL */
+    readonly memberOpened = output<Member | null>();
 
     /** Member shown in the details dialog; null while the dialog is closed */
     readonly selectedMember = signal<Member | null>(null);
+
+    constructor() {
+        effect(() => this.selectedMember.set(this.deepLinkedMember()));
+    }
 
     /**
      * Medals and campaign ribbons of the selected member, merits first and campaigns sorted by date.
@@ -85,11 +94,13 @@ export class AufstellungRosterComponent {
 
     openMemberDetails(member: Member): void {
         this.selectedMember.set(member);
+        this.memberOpened.emit(member);
     }
 
     onDetailsVisibleChange(visible: boolean): void {
         if (!visible) {
             this.selectedMember.set(null);
+            this.memberOpened.emit(null);
         }
     }
 

@@ -23,6 +23,8 @@
                 [rankInfo]="rankInfo"
                 [title]="sections.ROSTER.TITLE"
                 [subtitle]="sections.ROSTER.SUBTITLE"
+                [deepLinkedMember]="deepLinkedMember()"
+                (memberOpened)="onMemberOpened($event)"
             >
                 <p-select
                     rosterFilter
