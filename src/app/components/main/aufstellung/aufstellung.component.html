@@ -13,14 +13,21 @@
                 [rankOrder]="rankOrder"
                 [rankInfo]="rankInfo"
                 [memberStats]="memberStats()"
-                [totalMembers]="totalMembers()"
                 [title]="sections.OVERVIEW.TITLE"
                 [subtitle]="sections.OVERVIEW.SUBTITLE"
             ></ttt-aufstellung-overview>
 
-            <!-- Abteilung filter for the roster below -->
-            <div class="mb-4 flex justify-end">
+            <ttt-aufstellung-roster
+                [membersByRank]="membersByRank()"
+                [rankOrder]="rankOrder"
+                [rankInfo]="rankInfo"
+                [title]="sections.ROSTER.TITLE"
+                [subtitle]="sections.ROSTER.SUBTITLE"
+                [deepLinkedMember]="deepLinkedMember()"
+                (memberOpened)="onMemberOpened($event)"
+            >
                 <p-select
+                    rosterFilter
                     [options]="abteilungOptions()"
                     optionLabel="name"
                     optionValue="id"
@@ -31,15 +38,7 @@
                     ariaLabel="Roster nach Abteilung filtern"
                     styleClass="w-64"
                 />
-            </div>
-
-            <ttt-aufstellung-roster
-                [membersByRank]="membersByRank()"
-                [rankOrder]="rankOrder"
-                [rankInfo]="rankInfo"
-                [title]="sections.ROSTER.TITLE"
-                [subtitle]="sections.ROSTER.SUBTITLE"
-            ></ttt-aufstellung-roster>
+            </ttt-aufstellung-roster>
         </div>
     }
 </ttt-page-layout>
