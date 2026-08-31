@@ -36,8 +36,8 @@ importers:
         specifier: 2.0.1
         version: 2.0.1(c6e3ccdd919e42ede22112c235b87b8f)
       '@openng/optimus-ui-themes':
-        specifier: 2.0.1
-        version: 2.0.1
+        specifier: 2.0.2
+        version: 2.0.2
       ngx-matomo-client:
         specifier: 10.0.0
         version: 10.0.0(@angular/common@22.1.3(@angular/core@22.1.3(@angular/compiler@22.1.3)(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@22.1.3(@angular/compiler@22.1.3)(rxjs@7.8.2)(zone.js@0.15.0))
@@ -1130,6 +1130,10 @@ packages:
     resolution: {integrity: sha512-g33Ld01n0sHuW9cOiE25+vKUx1WFN+xJGeDO/Mjh+7sm0l1KyUUJkfqgVgvM+ILAQ1IB6pexFvYZCnknWi60vQ==}
     engines: {node: '>=12.11.0'}
 
+  '@openng/optimus-ui-styled@2.0.2':
+    resolution: {integrity: sha512-bCojQR6xzEoLUm2C+WfeG+MPu6XjLkLPmjU5s5DTuXcCA5W97SA0L0XdYtr/XF8G35JNBaEyyis8Fv/PdXELyA==}
+    engines: {node: '>=12.11.0'}
+
   '@openng/optimus-ui-styles@2.0.1':
     resolution: {integrity: sha512-z8Ad2dBRoBOYmipsSrwM3cQ3z+4DgNvL3S7uGIi9o0+YFa+Q7g29b3k1Sa03oUkI+WYiNr8nvNGjVocmDcTByg==}
 
@@ -1138,11 +1142,15 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.1.0'
 
-  '@openng/optimus-ui-themes@2.0.1':
-    resolution: {integrity: sha512-eewulqxWAxc7s8K/BAiUCpXnQszaZWIeu5ys/hjmXryN2e2kiYs8W8cLfd6p8IK2A0McylMAwglVA7mU77pnVg==}
+  '@openng/optimus-ui-themes@2.0.2':
+    resolution: {integrity: sha512-nEQb83g8pssx5dJM+31sUEKwPjDX9OGZMyRoln2cvPQl7eHbFkafjgDNBL5oMHdnFVRQofmoJXgdC7sWn6XxbA==}
 
   '@openng/optimus-ui-utils@2.0.1':
     resolution: {integrity: sha512-s4Kt6T6mZv6JJPDQTAj6qtt1+y8fD0uTxU05tanydoGPwvV8aBh/ysCnVGDTUeJCgrSpp1eEHjIfqrhGWyqasQ==}
+    engines: {node: '>=12.11.0'}
+
+  '@openng/optimus-ui-utils@2.0.2':
+    resolution: {integrity: sha512-RgkiY91+X8h0rHI8UIKT1Pdvr352J/fSvFJ2wETYUGphCBw7j1lubhySn8yFfT6Ng+CVEZnviekvZSaBcUk2JA==}
     engines: {node: '>=12.11.0'}
 
   '@openng/optimus-ui@2.0.1':
@@ -4873,6 +4881,10 @@ snapshots:
     dependencies:
       '@openng/optimus-ui-utils': 2.0.1
 
+  '@openng/optimus-ui-styled@2.0.2':
+    dependencies:
+      '@openng/optimus-ui-utils': 2.0.2
+
   '@openng/optimus-ui-styles@2.0.1':
     dependencies:
       '@openng/optimus-ui-styled': 2.0.1
@@ -4881,11 +4893,13 @@ snapshots:
     dependencies:
       tailwindcss: 4.3.3
 
-  '@openng/optimus-ui-themes@2.0.1':
+  '@openng/optimus-ui-themes@2.0.2':
     dependencies:
-      '@openng/optimus-ui-styled': 2.0.1
+      '@openng/optimus-ui-styled': 2.0.2
 
   '@openng/optimus-ui-utils@2.0.1': {}
+
+  '@openng/optimus-ui-utils@2.0.2': {}
 
   '@openng/optimus-ui@2.0.1(c6e3ccdd919e42ede22112c235b87b8f)':
     dependencies:
