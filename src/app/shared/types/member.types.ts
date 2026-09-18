@@ -18,6 +18,8 @@ export interface Medal {
     name: string;
     image: string;
     description: string;
+    /** false for hanging medals, which are not worn on the ribbon bar */
+    isRibbon?: boolean;
 }
 
 export interface CampaignRibbon {
@@ -25,6 +27,7 @@ export interface CampaignRibbon {
     name: string;
     image: string;
     campaign: string;
+    quarter: string;
     year: string;
 }
 
