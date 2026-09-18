@@ -1,52 +1,25 @@
 # TTT-Frontend
 
-Frontend for the Tactical Training Team website.
+Website of the Tactical Training Team (Angular, Optimus UI, Tailwind CSS).
 
-## Project Structure
-
-```
-src/
-├── app/
-│   ├── core/
-│   │   ├── services/        # Singleton services (API, events, medien, members)
-│   │   └── interceptors/    # HTTP interceptors (security)
-│   ├── shared/
-│   │   ├── components/      # Reusable components (page-layout, section-header, external-link-tile)
-│   │   ├── directives/      # Custom directives
-│   │   └── types/           # TypeScript interfaces
-│   └── components/
-│       ├── header/          # Navigation
-│       ├── footer/          # Footer
-│       ├── sidebar/         # Left and right sidebars
-│       └── main/            # Content pages
-└── environments/            # Environment configs
-```
-
-## Getting Started
+## Development
 
 ```bash
 pnpm install
-pnpm start
-```
-
-## Build & Test
-
-```bash
-pnpm build          # Production build
-pnpm test           # Unit tests
+pnpm start          # dev server, /api is proxied to localhost:8080
+pnpm build          # production build into dist/
+pnpm test           # unit tests (Vitest)
 pnpm lint           # ESLint
-pnpm prettier       # Format code
+pnpm prettier       # formatting
 ```
 
-## Documentation
+## Structure
 
-- [Security](docs/security.md) - Security implementation
-- [Backend Overview](docs/backend-overview.md) - API integration
+```
+src/app/
+├── core/        services and HTTP interceptor
+├── shared/      reusable components, directives, types, constants
+└── components/  header, footer, sidebars and the pages under main/
+```
 
-## Tech Stack
-
-- Angular 21
-- Optimus UI
-- TailwindCSS 4
-- RxJS 7
-- TypeScript 5
+More docs: [Backend integration](docs/backend-overview.md), [Security](docs/security.md)

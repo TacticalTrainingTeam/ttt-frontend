@@ -1,35 +1,14 @@
 # Security
 
-## Security Headers
+## HTTP headers
 
-Server-side HTTP headers (must be configured in nginx/Apache/CDN, not in HTML):
+Headers such as `X-Frame-Options`, `X-Content-Type-Options` and `Permissions-Policy` are set by Traefik in front of the container. Caddy or nginx inside the image only serve the static files.
 
-- `X-Content-Type-Options: nosniff`
-- `X-Frame-Options: DENY`
-- `Permissions-Policy: camera=(), microphone=(), geolocation=()`
+The HTML itself only contains `<meta name="referrer" content="strict-origin-when-cross-origin">`.
 
-Notes:
+## In the frontend
 
-- `X-XSS-Protection` is obsolete and should not be used.
-- `Referrer-Policy` can be set as HTTP header or as HTML meta tag.
-
-Browser-side meta configuration in `src/index.html`:
-
-- `<meta name="referrer" content="strict-origin-when-cross-origin">`
-
-## Template Security
-
-Application uses Angular's built-in template sanitization.
-
-## HTTP Security
-
-**Interceptor:** `securityInterceptor` (`src/app/core/interceptors/security.interceptor.ts`)
-
-- Blocks insecure `http://` requests when app runs in HTTPS context
-- Sets `Cache-Control: no-cache` headers on all requests
-
-## ESLint Security Rules
-
-- No eval, implied-eval, new Function
-- No script URLs
-- No explicit any types
+- Templates rely on Angular's sanitization. The only exception is the TeamSpeak viewer URL in the right sidebar, which is trusted as a resource URL for a sandboxed iframe.
+- `securityInterceptor` aborts `http://` requests when the page runs on HTTPS.
+- External links open with `rel="noopener noreferrer"`.
+- ESLint forbids `eval`, `new Function` and `javascript:` URLs and warns on `any`.

@@ -8,12 +8,6 @@ import { securityInterceptor } from './core/interceptors/security.interceptor';
 import { provideMatomo, withRouter } from 'ngx-matomo-client';
 import { environment } from '../environments/environment';
 
-/**
- * Application configuration
- *
- * CSP: Content Security Policy should be configured via server headers (nginx/Apache).
- * Angular supports CSP nonces via CSP_NONCE injection token for SSR.
- */
 export const appConfig: ApplicationConfig = {
     providers: [
         provideRouter(routes, withComponentInputBinding(), withInMemoryScrolling({ scrollPositionRestoration: 'top' })),

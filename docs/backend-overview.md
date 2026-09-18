@@ -1,72 +1,23 @@
-# Backend Integration
+# Backend integration
 
-## Overview
+All requests go through `ApiService` (`src/app/core/services/api.service.ts`). The base URL is `environment.apiBaseUrl` (`/api/v1`); the dev server proxies it to `localhost:8080` via `proxy.conf.json`.
 
-All backend communication goes through `ApiService` (`src/app/core/services/api.service.ts`).
+## Endpoints
 
-Base API URL: `environment.apiBaseUrl`
+| Service        | Endpoint                      | Response                     |
+| -------------- | ----------------------------- | ---------------------------- |
+| MemberService  | `GET /members`                | `MemberResponse`             |
+| MemberService  | `GET /members/stats`          | `MemberStatsResponse`        |
+| EventsService  | `GET /events/upcoming?limit=` | `{ events: SlotbotEvent[] }` |
+| MedienService  | `GET /twitch/streams`         | `TwitchStream[]`             |
+| DiscordService | Discord widget API (external) | `DiscordWidgetData`          |
 
-## Services
+Types live in `src/app/shared/types/`.
 
-### ApiService
+## Error handling
 
-Central HTTP client wrapper with consistent request/response handling.
+Events, Twitch and Discord fall back to an empty state on errors. `MemberService` propagates errors, and the Aufstellung page shows its error state with a retry button.
 
-### MemberService
+## Status
 
-**Endpoints:**
-
-- `GET /members` → `MemberResponse`
-- `GET /members/stats` → `MemberStatsResponse`
-- `GET /members/:id` → `Member`
-- `GET /members?rank=:rank` → `MemberResponse`
-- `GET /medals` → `Medal[]`
-- `GET /campaign-ribbons` → `CampaignRibbon[]`
-- `GET /abteilungen` → `Abteilung[]`
-
-Fallback: Dummy data if backend unavailable.
-
-### EventsService
-
-**Endpoint:**
-
-- `GET /events/upcoming?limit=:n` → `{ events: SlotbotEvent[] }`
-
-Fallback: Dummy data if backend unavailable.
-
-### MedienService
-
-**Endpoint:**
-
-- `GET /twitch/streams` → `TwitchStream[]`
-
-Fallback: Dummy data if backend unavailable.
-
-## Data Types
-
-See `src/app/shared/types/member.types.ts` for interfaces.
-
-**Member:**
-
-```typescript
-interface Member {
-    id: string;
-    name: string;
-    rank: RankType;
-    avatar: string;
-    memberSince: string;
-    medals: Medal[];
-    campaignRibbons: CampaignRibbon[];
-    abteilungen: Abteilung[];
-}
-```
-
-**MemberResponse:**
-
-```typescript
-interface MemberResponse {
-    members: Member[];
-    total: number;
-    lastUpdated: string;
-}
-```
+Until the member, events and Twitch APIs are live, the Aufstellung page, the events sidebar and the livestreams are commented out. Only the Discord widget is active.
