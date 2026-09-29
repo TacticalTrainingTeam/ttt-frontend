@@ -27,7 +27,8 @@ export interface CampaignRibbon {
     name: string;
     image: string;
     campaign: string;
-    quarter: string;
+    /** Q1–Q4; not part of the backend contract yet */
+    quarter?: string;
     year: string;
 }
 

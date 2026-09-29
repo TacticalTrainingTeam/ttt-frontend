@@ -31,11 +31,12 @@ describe('AufstellungOverviewComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should render compact rank cards with a combined icon and label row', () => {
-        const cards = fixture.nativeElement.querySelectorAll('img[alt*="Abzeichen"]');
-        const labels = fixture.nativeElement.querySelectorAll('h3');
+    it('should render one card per rank with icon, name and count', () => {
+        const element: HTMLElement = fixture.nativeElement;
 
-        expect(cards.length).toBeGreaterThan(0);
-        expect(labels.length).toBeGreaterThan(0);
+        expect(element.querySelectorAll('h3')).toHaveLength(1);
+        expect(element.querySelector('img')?.getAttribute('alt')).toBe('Offizier Abzeichen');
+        expect(element.querySelector('h3')?.textContent?.trim()).toBe('Offizier');
+        expect(element.querySelector('.text-yellow-400')?.textContent?.trim()).toBe('1');
     });
 });

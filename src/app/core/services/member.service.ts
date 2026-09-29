@@ -21,7 +21,7 @@ const CAMPAIGN_RIBBONS = {
     kotirintama: {
         id: 'campaign-kotirintama',
         name: 'Kotirintama Kampagne',
-        image: '/img/ribbons/ttt_veretan-kampagne-kotirintama.png',
+        image: '/img/ribbons/ttt_veteran-kampagne-kotirintama.png',
         campaign: 'Kotirintama',
         quarter: 'Q2',
         year: '2022',

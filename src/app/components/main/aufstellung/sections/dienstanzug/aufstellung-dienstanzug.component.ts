@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, ElementRef, HostListener, inject, input, signal } from '@angular/core';
 import { ActivableDirective } from '../../../../../shared/directives/activable.directive';
 import { RankType } from '../../../../../shared/types/member.types';
 
@@ -57,6 +57,17 @@ const RIGHT_FLAP = {
         'C 345.58,198.87 318.38,202.67 303.38,203.87 ' +
         'C 288.38,202.67 261.18,198.87 261.18,191.87 V 179.37 ' +
         'A 4.5 4.5 0 0 1 265.68,174.87 Z',
+    seams: [
+        { d: 'M 266.68,176.87 H 340.08', stroke: '#f2f6f9', opacity: 0.38, width: 0.9 },
+        { d: 'M 263.38,182.87 V 191.87', stroke: '#f2f6f9', opacity: 0.24, width: 0.9 },
+        { d: 'M 343.38,182.87 V 191.87', stroke: '#666b71', opacity: 0.36, width: 1 },
+        {
+            d: 'M 264.38,194.47 C 264.38,199.47 289.38,200.47 303.38,201.47 C 317.38,200.47 342.38,199.47 342.38,194.47',
+            stroke: '#eef2f6',
+            opacity: 0.28,
+            width: 0.9,
+        },
+    ],
 };
 
 @Component({
@@ -73,7 +84,8 @@ export class AufstellungDienstanzugComponent {
     medal = input<UniformBadge | null>(null);
     rank = input<RankType | null>(null);
     rankLabel = input<string | null>(null);
-    crest = input(true);
+
+    private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
 
     /** Label shown after clicking a badge; null while nothing is selected */
     readonly activeLabel = signal<ActiveLabel | null>(null);
@@ -139,24 +151,6 @@ export class AufstellungDienstanzugComponent {
         right: { x: SHOULDER.right.x + SHOULDER.right.width / 2, y: SHOULDER.right.y },
     };
 
-    /** Clicking the same badge again hides its label */
-    selectBadge(id: string, text: string, anchorX: number, anchorY: number): void {
-        if (this.activeLabel()?.id === id) {
-            this.clearLabel();
-            return;
-        }
-        this.activeLabel.set({
-            id,
-            text,
-            left: `${((anchorX - VIEW.x) / VIEW.width) * 100}%`,
-            top: `${((anchorY - VIEW.y) / VIEW.height) * 100}%`,
-        });
-    }
-
-    clearLabel(): void {
-        this.activeLabel.set(null);
-    }
-
     readonly label = computed(() => {
         const parts = ['TTT Dienstanzug', `${this.placedRibbons().length} Auszeichnungen`];
         if (this.rank()) {
@@ -171,4 +165,34 @@ export class AufstellungDienstanzugComponent {
         }
         return parts.join(', ');
     });
+
+    /** Clicking the same badge again hides its label */
+    selectBadge(id: string, text: string, anchorX: number, anchorY: number): void {
+        if (this.activeLabel()?.id === id) {
+            this.activeLabel.set(null);
+            return;
+        }
+        this.activeLabel.set({
+            id,
+            text,
+            left: `${((anchorX - VIEW.x) / VIEW.width) * 100}%`,
+            top: `${((anchorY - VIEW.y) / VIEW.height) * 100}%`,
+        });
+    }
+
+    @HostListener('document:keydown.escape')
+    onEscape(): void {
+        this.activeLabel.set(null);
+    }
+
+    /** Badge clicks bubble up here after selectBadge ran, so only clicks elsewhere clear the label */
+    @HostListener('document:click', ['$event'])
+    onDocumentClick(event: Event): void {
+        const target = event.target as Element | null;
+        const badge = target?.closest('[role="button"]');
+        if (badge && this.host.nativeElement.contains(badge)) {
+            return;
+        }
+        this.activeLabel.set(null);
+    }
 }

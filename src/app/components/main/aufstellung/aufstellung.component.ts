@@ -207,6 +207,7 @@ export class AufstellungComponent implements OnInit {
             relativeTo: this.activatedRoute,
             queryParams: { mitglied: member?.id ?? null },
             queryParamsHandling: 'merge',
+            replaceUrl: true,
         });
     }
 

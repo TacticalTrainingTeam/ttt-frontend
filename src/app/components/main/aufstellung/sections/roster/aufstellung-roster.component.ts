@@ -65,14 +65,13 @@ export class AufstellungRosterComponent {
             id: ribbon.id,
             image: ribbon.image,
             caption: ribbon.campaign,
-            label: `${ribbon.campaign} · ${ribbon.quarter} ${ribbon.year}`,
+            label: `${ribbon.campaign} · ${[ribbon.quarter, ribbon.year].filter(Boolean).join(' ')}`,
             isRacked: true,
         }));
 
         return [...merits, ...campaigns];
     });
 
-    /** Ribbon bar of the selected member; hanging medals are worn on the pocket flap instead */
     readonly rackRibbons = computed<UniformBadge[]>(() =>
         this.ribbonItems()
             .filter((item) => item.isRacked)
@@ -124,7 +123,7 @@ export class AufstellungRosterComponent {
 
     getSortedCampaignRibbons(ribbons: CampaignRibbon[]): CampaignRibbon[] {
         const sortKey = (ribbon: CampaignRibbon) =>
-            Number.parseInt(ribbon.year, 10) * 10 + Number.parseInt(ribbon.quarter.replace('Q', ''), 10);
+            Number.parseInt(ribbon.year, 10) * 10 + Number.parseInt(ribbon.quarter?.replace('Q', '') ?? '0', 10);
         return [...ribbons].sort((a, b) => sortKey(b) - sortKey(a));
     }
 }

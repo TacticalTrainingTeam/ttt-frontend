@@ -110,6 +110,35 @@ describe('AufstellungDienstanzugComponent', () => {
         expect(component.activeLabel()?.text).toBe('b');
     });
 
+    it('should hide the label on escape', () => {
+        setRibbons([badge('a')]);
+        const [first] = component.placedRibbons();
+        component.selectBadge(first.id, first.label, first.anchorX, first.anchorY);
+
+        document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+
+        expect(component.activeLabel()).toBeNull();
+    });
+
+    it('should hide the label when clicking outside a badge', () => {
+        setRibbons([badge('a')]);
+        const [first] = component.placedRibbons();
+        component.selectBadge(first.id, first.label, first.anchorX, first.anchorY);
+
+        document.body.click();
+
+        expect(component.activeLabel()).toBeNull();
+    });
+
+    it('should not clear the label when the click came from a badge', () => {
+        setRibbons([badge('a'), badge('b')]);
+        const badges = fixture.nativeElement.querySelectorAll('[role="button"]');
+
+        badges[1].dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+        expect(component.activeLabel()?.text).toBe('b');
+    });
+
     it('should anchor the label inside the viewBox', () => {
         setRibbons([badge('a')]);
         const [first] = component.placedRibbons();
