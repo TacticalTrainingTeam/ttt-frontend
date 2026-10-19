@@ -2,39 +2,38 @@
     <div class="ttt-page-container">
         <ttt-section-header [title]="title()" [subtitle]="subtitle()"></ttt-section-header>
 
+        <div class="mb-6 flex justify-end">
+            <ng-content select="[rosterFilter]"></ng-content>
+        </div>
+
         <div class="space-y-8">
             @for (rank of rankOrder(); track rank) {
                 <div [class.hidden]="membersByRank()[rank].length === 0">
                     <div class="mb-6 flex items-center gap-4">
-                        @if (rank === "offizier") {
-                            <img
-                                [src]="getRankInfo(rank).icon"
-                                [alt]="getRankInfo(rank).name + ' Abzeichen'"
-                                [title]="getRankInfo(rank).name"
-                                [pTooltip]="getRankInfo(rank).name"
-                                tooltipPosition="top"
-                                class="h-6 w-6 object-contain"
-                                loading="lazy"
-                            />
-                        }
+                        <img
+                            [src]="getRankInfo(rank).icon"
+                            [alt]="getRankInfo(rank).name + ' Abzeichen'"
+                            [title]="getRankInfo(rank).name"
+                            [pTooltip]="getRankInfo(rank).name"
+                            tooltipPosition="top"
+                            class="h-6 w-6 shrink-0 object-contain"
+                            loading="lazy"
+                        />
                         <h3 class="text-tttWhite text-xl font-bold">{{ getRankInfo(rank).name }}</h3>
                         <div class="bg-tttRed/30 h-px flex-1"></div>
                         <span class="text-tttWhite/70 text-base font-medium">{{ membersByRank()[rank].length }} Mitglieder</span>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7">
+                    <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
                         @for (member of membersByRank()[rank]; track member.id) {
                             <div
-                                class="ttt-content-card ttt-card-interactive flex flex-col justify-between p-2.5 text-center"
-                                [ngClass]="{
-                                    'cursor-pointer': hasExpandableContent(member),
-                                    'border-tttRed/50': selectedMember() === member,
-                                }"
-                                [tttActivable]="hasExpandableContent(member)"
+                                class="ttt-content-card ttt-card-interactive flex cursor-pointer flex-col justify-between p-2.5 text-center"
+                                [ngClass]="{ 'border-tttRed/50': selectedMember() === member }"
+                                [tttActivable]="true"
                                 [activableRole]="'button'"
-                                [activableAriaLabel]="hasExpandableContent(member) ? 'Details für ' + member.name + ' anzeigen' : null"
+                                [activableAriaLabel]="'Details für ' + member.name + ' anzeigen'"
                                 (activableActivate)="openMemberDetails(member)"
-                                [attr.aria-haspopup]="hasExpandableContent(member) ? 'dialog' : null"
+                                aria-haspopup="dialog"
                             >
                                 <div>
                                     @if (member.rank === "offizier") {
@@ -61,7 +60,10 @@
                                         </div>
                                     }
 
-                                    <h4 class="text-tttWhite mb-1 truncate text-base font-bold" [class.mt-2]="member.rank !== 'offizier'">
+                                    <h4
+                                        class="text-tttWhite mb-1 text-base font-bold break-words"
+                                        [class.mt-2]="member.rank !== 'offizier'"
+                                    >
                                         {{ member.name }}
                                     </h4>
                                     <span
@@ -101,12 +103,6 @@
                                         </span>
                                     }
                                 </div>
-
-                                @if (hasExpandableContent(member)) {
-                                    <div class="mt-1 flex justify-center">
-                                        <i class="pi pi-info-circle text-tttGray-200 text-xs" aria-hidden="true"></i>
-                                    </div>
-                                }
                             </div>
                         }
                     </div>
@@ -124,106 +120,93 @@
     [dismissableMask]="true"
     [draggable]="false"
     [resizable]="false"
-    [style]="{ width: '48rem', 'max-width': '92vw' }"
+    [style]="{ width: '84rem', 'max-width': '94vw' }"
 >
     @if (selectedMember(); as member) {
         <ng-template #header>
-            <div class="flex items-center gap-3">
-                <div class="h-12 w-12 shrink-0">
+            <div class="flex items-center gap-4">
+                <div
+                    class="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-current bg-current/10"
+                    [ngClass]="getRankInfo(member.rank).color"
+                >
                     @if (member.avatar && member.avatar !== "") {
-                        <div class="border-tttRed/50 h-12 w-12 overflow-hidden rounded-full border-2">
-                            <img [src]="member.avatar" [alt]="member.name" [title]="member.name" class="h-full w-full object-cover" />
-                        </div>
+                        <img [src]="member.avatar" [alt]="member.name" [title]="member.name" class="h-full w-full object-cover" />
                     } @else {
-                        <div class="border-tttRed/50 bg-tttRed/10 flex h-12 w-12 items-center justify-center rounded-full border-2">
-                            <i class="pi pi-user text-tttRed-300 text-lg" aria-hidden="true"></i>
-                        </div>
+                        <i class="pi pi-user text-xl" aria-hidden="true"></i>
                     }
                 </div>
-                <div>
-                    <h4 class="text-tttWhite mb-1 text-xl font-bold">{{ member.name }}</h4>
-                    <div class="flex flex-wrap items-center gap-2">
-                        <span class="rounded px-2 py-1 text-sm font-medium" [ngClass]="getRankInfo(member.rank).color">
-                            {{ getRankInfo(member.rank).name }}
-                        </span>
-                        <span class="text-tttGray-200 text-sm"> Mitglied seit {{ getFormattedMemberSince(member.memberSince) }} </span>
+
+                <div class="min-w-0">
+                    <h4 class="text-tttWhite text-xl font-bold">{{ member.name }}</h4>
+
+                    <div class="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm">
+                        <span class="font-medium" [ngClass]="getRankInfo(member.rank).color">{{ getRankInfo(member.rank).name }}</span>
+                        <span class="text-tttGray-400" aria-hidden="true">&middot;</span>
+                        <span class="text-tttGray-200">Erster Beitritt am {{ getFormattedMemberSince(member.memberSince) }}</span>
                     </div>
                 </div>
             </div>
         </ng-template>
 
-        <div class="grid gap-4 md:grid-cols-3">
-            @if (member.medals.length > 0) {
-                <div class="space-y-2">
-                    <h5 class="text-tttWhite flex items-center gap-2 text-sm font-semibold">Auszeichnungen</h5>
-                    <div class="space-y-2">
-                        @for (medal of member.medals; track medal.id) {
-                            <div class="bg-tttGray-800/50 border-tttGray-600/30 flex items-center gap-2 rounded-lg border p-2">
-                                <img
-                                    [src]="medal.image"
-                                    [alt]="medal.name"
-                                    [title]="medal.name"
-                                    [pTooltip]="medal.name"
-                                    tooltipPosition="top"
-                                    class="h-6 w-6 object-contain"
-                                />
-                                <div class="min-w-0 flex-1">
-                                    <p class="text-tttWhite text-sm font-medium break-words">{{ medal.name }}</p>
-                                    <p class="text-tttGray-200 text-sm break-words">{{ medal.description }}</p>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-            }
+        <div class="grid gap-6 lg:grid-cols-[3fr_2fr]">
+            <div class="flex h-fit justify-center">
+                <ttt-aufstellung-dienstanzug
+                    class="w-full"
+                    [ribbons]="rackRibbons()"
+                    [departments]="uniformDepartments()"
+                    [medal]="uniformMedal()"
+                    [rank]="member.rank"
+                    [rankLabel]="getRankInfo(member.rank).name"
+                />
+            </div>
 
-            @if (member.campaignRibbons.length > 0) {
-                <div class="space-y-2">
-                    <h5 class="text-tttWhite flex items-center gap-2 text-sm font-semibold">Kampagnen-Teilnahmen</h5>
-                    <div class="space-y-2">
-                        @for (ribbon of getSortedCampaignRibbons(member.campaignRibbons); track ribbon.id) {
-                            <div class="bg-tttGray-800/50 border-tttGray-600/30 flex items-center gap-2 rounded-lg border p-2">
-                                <img
-                                    [src]="ribbon.image"
-                                    [alt]="ribbon.name"
-                                    [title]="ribbon.name"
-                                    [pTooltip]="ribbon.name"
-                                    tooltipPosition="top"
-                                    class="h-6 w-6 object-contain"
-                                />
-                                <div class="min-w-0 flex-1">
-                                    <p class="text-tttWhite text-sm font-medium break-words">{{ ribbon.campaign }}</p>
-                                    <p class="text-tttGray-200 text-sm">{{ ribbon.year }}</p>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-            }
+            <div class="space-y-6">
+                @if (!hasListedDetails(member)) {
+                    <p class="text-tttGray-200 text-sm">Noch keine Ribbons oder Abteilungen.</p>
+                }
 
-            @if (member.abteilungen.length > 0) {
-                <div class="space-y-2">
-                    <h5 class="text-tttWhite flex items-center gap-2 text-sm font-semibold">Abteilungen</h5>
-                    <div class="space-y-2">
-                        @for (abt of member.abteilungen; track abt.id) {
-                            <div class="bg-tttGray-800/50 border-tttGray-600/30 flex items-center gap-2 rounded-lg border p-2">
-                                <img
-                                    [src]="abt.icon"
-                                    [alt]="abt.name"
-                                    [title]="abt.name"
-                                    [pTooltip]="abt.name"
+                @if (ribbonItems().length > 0) {
+                    <div>
+                        <h5 class="text-tttWhite mb-2 text-sm font-semibold">Abzeichen</h5>
+                        <!-- one shared image height so medals and campaign ribbons line up in the same grid -->
+                        <div class="grid grid-cols-4 gap-3">
+                            @for (item of ribbonItems(); track item.id) {
+                                <div
+                                    class="bg-tttGray-800/50 border-tttGray-600/30 flex flex-col items-center gap-1.5 rounded-lg border p-2 text-center"
+                                    [pTooltip]="item.label"
                                     tooltipPosition="top"
-                                    class="h-6 w-6 object-contain"
-                                />
-                                <div class="min-w-0 flex-1">
-                                    <p class="text-tttWhite text-sm font-medium break-words">{{ abt.name }}</p>
-                                    <p class="text-tttGray-200 text-sm break-words">{{ abt.description }}</p>
+                                >
+                                    <img
+                                        [src]="item.image"
+                                        [alt]="item.caption"
+                                        [title]="item.caption"
+                                        class="h-16 w-full object-contain"
+                                    />
+                                    <p class="text-tttWhite text-xs leading-tight font-medium break-words">{{ item.caption }}</p>
                                 </div>
-                            </div>
-                        }
+                            }
+                        </div>
                     </div>
-                </div>
-            }
+                }
+
+                @if (member.abteilungen.length > 0) {
+                    <div>
+                        <h5 class="text-tttWhite mb-2 text-sm font-semibold">Abteilungen</h5>
+                        <div class="grid grid-cols-4 gap-3">
+                            @for (abt of member.abteilungen; track abt.id) {
+                                <div
+                                    class="bg-tttGray-800/50 border-tttGray-600/30 flex flex-col items-center gap-1.5 rounded-lg border p-2 text-center"
+                                    [pTooltip]="abt.description"
+                                    tooltipPosition="top"
+                                >
+                                    <img [src]="abt.icon" [alt]="abt.name" [title]="abt.name" class="h-11 w-full object-contain" />
+                                    <p class="text-tttWhite text-xs leading-tight font-medium break-words">{{ abt.name }}</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
     }
 </p-dialog>
