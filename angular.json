@@ -16,6 +16,8 @@
                         "outputPath": "dist/ttt-frontend",
                         "index": "src/index.html",
                         "browser": "src/main.ts",
+                        "server": "src/main.server.ts",
+                        "outputMode": "static",
                         "polyfills": [],
                         "tsConfig": "tsconfig.app.json",
                         "assets": [
@@ -38,7 +40,7 @@
                             "budgets": [
                                 {
                                     "type": "initial",
-                                    "maximumWarning": "750kB",
+                                    "maximumWarning": "800kB",
                                     "maximumError": "1MB"
                                 },
                                 {
