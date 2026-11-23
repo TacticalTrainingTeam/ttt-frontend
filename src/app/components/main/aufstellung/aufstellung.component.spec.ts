@@ -1,5 +1,6 @@
 import type { Mocked } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { AufstellungComponent } from './aufstellung.component';
 import { MemberService } from '../../../core/services/member.service';
@@ -51,7 +52,7 @@ describe('AufstellungComponent', () => {
 
         await TestBed.configureTestingModule({
             imports: [AufstellungComponent],
-            providers: [{ provide: MemberService, useValue: memberServiceSpy }],
+            providers: [{ provide: MemberService, useValue: memberServiceSpy }, provideRouter([])],
         }).compileComponents();
 
         fixture = TestBed.createComponent(AufstellungComponent);
@@ -66,7 +67,6 @@ describe('AufstellungComponent', () => {
         component.ngOnInit();
         expect(memberServiceSpy.getAllMembers).toHaveBeenCalled();
         expect(component.members()).toHaveLength(3);
-        expect(component.totalMembers()).toBe(3);
     });
 
     it('should group members by rank correctly', () => {
@@ -88,7 +88,7 @@ describe('AufstellungComponent', () => {
 
         expect(stats.offizier).toBe(1);
         expect(stats.soldat).toBe(2);
-        expect(totalFromStats).toBe(component.totalMembers());
+        expect(totalFromStats).toBe(component.members().length);
     });
 
     it('should provide expected static configuration', () => {
@@ -122,7 +122,7 @@ describe('AufstellungComponent', () => {
         expect(component.membersByRank().soldat[0].name).toBe('Bravo');
         expect(component.membersByRank().offizier).toHaveLength(0);
         expect(component.memberStats().soldat).toBe(2);
-        expect(component.totalMembers()).toBe(3);
+        expect(component.members()).toHaveLength(3);
     });
 
     it('should show all members again when the filter is cleared', () => {
@@ -133,6 +133,20 @@ describe('AufstellungComponent', () => {
 
         expect(component.membersByRank().soldat).toHaveLength(2);
         expect(component.membersByRank().offizier).toHaveLength(1);
+    });
+
+    it('should resolve the deep-linked member from the ?mitglied= query param by id', () => {
+        component.ngOnInit();
+        fixture.componentRef.setInput('mitglied', 'member-2');
+
+        expect(component.deepLinkedMember()?.name).toBe('Bravo');
+    });
+
+    it('should have no deep-linked member without a matching query param', () => {
+        component.ngOnInit();
+        fixture.componentRef.setInput('mitglied', 'unbekannt');
+
+        expect(component.deepLinkedMember()).toBeNull();
     });
 
     it('should handle loading errors', () => {

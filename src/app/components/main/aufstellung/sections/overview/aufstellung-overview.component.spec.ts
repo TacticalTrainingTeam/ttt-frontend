@@ -22,7 +22,6 @@ describe('AufstellungOverviewComponent', () => {
             gast: { name: 'Gast', shortName: 'Gast', icon: '/img/rank.png', color: 'text-gray-300', priority: 6 },
         });
         fixture.componentRef.setInput('memberStats', { offizier: 1, unteroffizier: 0, veteran: 0, soldat: 0, rekrut: 0, gast: 0 });
-        fixture.componentRef.setInput('totalMembers', 1);
         fixture.componentRef.setInput('title', 'Mitgliederübersicht');
         fixture.componentRef.setInput('subtitle', 'Subtitle');
         fixture.detectChanges();
@@ -30,5 +29,14 @@ describe('AufstellungOverviewComponent', () => {
 
     it('should create', () => {
         expect(component).toBeTruthy();
+    });
+
+    it('should render one card per rank with icon, name and count', () => {
+        const element: HTMLElement = fixture.nativeElement;
+
+        expect(element.querySelectorAll('h3')).toHaveLength(1);
+        expect(element.querySelector('img')?.getAttribute('alt')).toBe('Offizier Abzeichen');
+        expect(element.querySelector('h3')?.textContent?.trim()).toBe('Offizier');
+        expect(element.querySelector('.text-yellow-400')?.textContent?.trim()).toBe('1');
     });
 });

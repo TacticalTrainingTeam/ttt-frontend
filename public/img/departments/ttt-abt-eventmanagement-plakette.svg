@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" width="56" height="56" role="img" aria-label="TTT Eventmanagement">
+  <title>TTT Eventmanagement</title>
+  <defs>
+    <linearGradient id="dev" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0f5f6"></stop><stop offset="0.78" stop-color="#c3ced3"></stop>
+    </linearGradient>
+    <linearGradient id="frame" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8eef0"></stop><stop offset="0.42" stop-color="#9aa5aa"></stop><stop offset="1" stop-color="#454d52"></stop>
+    </linearGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#232a2e"></stop><stop offset="0.72" stop-color="#11161a"></stop>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.14"></stop>
+      <stop offset="0.48" stop-color="#ffffff" stop-opacity="0"></stop>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.3"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="56" height="56" fill="url(#frame)"></rect>
+  <rect x="0.5" y="0.5" width="55" height="55" fill="none" stroke="#000000" stroke-opacity="0.35"></rect>
+  <rect x="3" y="3" width="50" height="50" fill="url(#face)"></rect>
+  <rect x="3" y="3" width="50" height="50" fill="url(#sheen)"></rect>
+  <rect x="3.5" y="3.5" width="49" height="49" fill="none" stroke="#000000" stroke-opacity="0.45"></rect>
+  <g transform="translate(11,11)">
+    <rect x="5" y="1" width="4" height="32" fill="#05070a" stroke="#05070a" stroke-width="4.4" stroke-linejoin="round"></rect>
+    <path d="M9 3 L31 7.94 L9 22 Z" fill="#05070a" stroke="#05070a" stroke-width="4.4" stroke-linejoin="round"></path>
+    <rect x="5" y="1" width="4" height="32" fill="url(#dev)"></rect>
+    <path d="M9 3 L31 7.94 L9 22 Z" fill="url(#dev)"></path>
+  </g>
+</svg>
