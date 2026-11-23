@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, afterNextRender, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MenuItem } from '@openng/optimus-ui/api';
 import { Menubar } from '@openng/optimus-ui/menubar';
 import { ButtonDirective } from '@openng/optimus-ui/button';
 import { TTT_LINKS } from '../../shared/constants/external-links';
+import { TTT_LOGOS, isWinterSeason } from '../../shared/constants/logos';
 
 @Component({
     selector: 'ttt-header',
@@ -14,6 +15,8 @@ import { TTT_LINKS } from '../../shared/constants/external-links';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
+    readonly logoSrc = signal<string>(TTT_LOGOS.default);
+
     readonly items: MenuItem[] = [
         {
             label: 'Home',
@@ -102,4 +105,13 @@ export class HeaderComponent {
             ],
         },
     ];
+
+    constructor() {
+        // Browser-only so the build date never ends up in the prerendered HTML
+        afterNextRender(() => {
+            if (isWinterSeason()) {
+                this.logoSrc.set(TTT_LOGOS.winter);
+            }
+        });
+    }
 }

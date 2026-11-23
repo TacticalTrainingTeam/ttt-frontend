@@ -1,4 +1,5 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformServer } from '@angular/common';
 import { Observable, of } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { DiscordWidgetData } from '../../shared/types/discord.types';
@@ -10,11 +11,16 @@ const DISCORD_WIDGET_URL = `https://discord.com/api/guilds/${DISCORD_GUILD_ID}/w
 @Injectable({ providedIn: 'root' })
 export class DiscordService {
     private readonly api = inject(ApiService);
+    private readonly platformId = inject(PLATFORM_ID);
 
     /**
      * Get live server info from the public Discord widget API with retry strategy
      */
     getWidgetData(): Observable<DiscordWidgetData | null> {
+        // Live presence must not be baked into prerendered HTML
+        if (isPlatformServer(this.platformId)) {
+            return of(null);
+        }
         return this.api.get<DiscordWidgetData>(DISCORD_WIDGET_URL).pipe(
             retry({ count: 2, delay: 1000 }),
             // Degrade to null so the widget can fall back to a plain invite link
